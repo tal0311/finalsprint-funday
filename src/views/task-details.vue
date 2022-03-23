@@ -10,20 +10,21 @@ import { taskService } from '../services/'
 export default {
   name: 'task-details',
   props: {},
+  components: {
+    taskList,
+  },
   data() {
-      return {
-         
-      };
+    return {
+      tasks: null,
+    }
   },
-  methods: {
-
-  },
+  methods: {},
   computed: {
-
+    getGroups() {
+      return this.$store.getters.groupsForDisplay
+    },
   },
   created() {},
-  components: {
-
-  },
+  components: {},
 }
 </script>
