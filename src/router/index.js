@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import boardDetails from '../views/board-details.vue'
 
+
 const router = createRouter({
   history: createWebHashHistory(),
   routes: [
