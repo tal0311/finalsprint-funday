@@ -1,17 +1,19 @@
 <template>
-  <section class="board-details">
+  <section v-if="board" class="board-details">
     <div class="header">
-      <h1>Sprint4 - Project Management and Testing</h1>
+      <h1>{{board.title}}</h1>
       <p class="description">
-        This board will be used for collaboration management on the Funday app
-        project
-      </p>
-    </div>
+        {{board.description}}
   <section class="view-board">
     <p>Main Table</p>
     <p>Timeline</p>
     <p>Dashboard</p>
     </section>
+    <section v-for="group in board.groups" key="group">
+            {{group.title}}
+        </section>
+      </p>
+    </div>
   </section>
 </template>
 
@@ -20,11 +22,18 @@ export default {
   // props: [''],
   name: "board-details",
   components: {},
-  created() {
-      
+  async created() {
+      let { boardId } = this.$route.params
+      const board = this.$store.getters.currBoard
+      this.board = JSON.parse(JSON.stringify(board))
+      console.log('boardId', boardId);
+
+
   },
   data() {
-    return {};
+    return {
+        board: null
+    };
   },
   methods: {},
   computed: {

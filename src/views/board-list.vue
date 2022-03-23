@@ -1,6 +1,14 @@
 <template>
   <section>
-    <h1>board</h1>
+    <h1>Workspace</h1>
+    <button>+ Add</button>
+    <button>V Filter</button>
+    <button>Q Search</button>
+    <hr>
+    <ul>
+      <li v-for="board in boards" :key="board">
+        <router-link :to="'/board/'+ board._id" @click="setCurrBoard(board)">{{board.title}}</router-link></li>
+    </ul>
   </section>
 </template>
 
@@ -12,12 +20,18 @@ export default {
   created() {
   },
   data() {
-    return {}
+    return {
+      boards: this.$store.getters.boards
+    }
   },
-  methods: {},
+  methods: {
+    setCurrBoard(board){
+      this.$store.commit({type:'setCurrBoard', board})
+    }
+  },
   computed: {
     boards(){
-      this.$store.getters.boards
+      return this.$store.getters.boards
     }
   },
   unmounted() {},
