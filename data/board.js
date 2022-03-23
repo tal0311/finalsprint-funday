@@ -29,13 +29,13 @@ const board = {
     "description": " this board....",
     "createdAt": 1589983468418,
     "createdBy": {
-        "_id": "u101",
+        "_id": "b101",
         "fullname": "Abi Abambi",
         "imgUrl": "http://some-img"
     },
     "members": [
         {
-            "_id": "u101",
+            "_id": "m101",
             "fullname": "Tal Tarablus",
             "imgUrl": "https://www.google.com",
         }
@@ -51,29 +51,29 @@ const board = {
                 "imgUrl": "http://some-img"
             },
             "task": {
-                "id": "c101",
+                "id": "t101",
                 "title": "Replace Logo"
             }
         }
     ],
     "groups": [
         {
-            "id": "dfg56",
+            "id": "g101",
             "title": "Group 1",
             "tasks": [
                 {
-                    "id": "c101",
+                    "id": "t101",
                     "title": "Replace logo",
                     "status": null,
                     "person": [
                         {
-                            "_id": "sdfnRRn34",
+                            "_id": "m102",
                             "username": "Abi",
                             "fullname": "Abi Abambi",
                             "imgUrl": "http://some-img.jpg",
                         },
                         {
-                            "_id": "fhrf*^%hfdg",
+                            "_id": "m103",
                             "username": "Meir",
                             "fullname": "Meir Abambi",
                             "imgUrl": "http://some-img.jpg",
@@ -82,29 +82,29 @@ const board = {
                     "Due Date": 132134654321,
                 },
                 {
-                    "id": "c102",
+                    "id": "t102",
                     "title": "Add Samples"
                 }
             ],
             "groupColor": "blue",
         },
         {
-            "id": "jkjsdf45",
+            "id": "g102",
             "title": "Group 2",
             "tasks": [
                 {
-                    "id": "c101",
+                    "id": "t103",
                     "title": "Replace logo",
                     "status": null,
                     "person": [
                         {
-                            "_id": "sdfnRRn34",
+                            "_id": "m102",
                             "username": "Abi",
                             "fullname": "Abi Abambi",
                             "imgUrl": "http://some-img.jpg",
                         },
                         {
-                            "_id": "fhrf*^%hfdg",
+                            "_id": "m103",
                             "username": "Meir",
                             "fullname": "Meir Abambi",
                             "imgUrl": "http://some-img.jpg",
@@ -113,7 +113,7 @@ const board = {
                     "Due Date": 132134654321,
                 },
                 {
-                    "id": "c102",
+                    "id": "t104",
                     "title": "Add Samples"
                 }
             ],
@@ -124,14 +124,14 @@ const board = {
     "cmpsOrder": ["status-picker", "member-picker", "date-picker"]
 }
 const user = {
-    "_id": "udxfh987101",
+    "_id": "u101",
     "fullname": "Abi Abambi",
     "username": "abi@ababmi.com",
     "password": "aBambi123",
     "imgUrl": "http://some-img.jpg",
     "mentions": [{
         "id": "m101",
-        "boardId": "m101",
+        "boardId": "b101",
         "taskId": "t101"
     }]
 }

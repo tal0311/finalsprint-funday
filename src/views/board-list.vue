@@ -1,6 +1,6 @@
 <template>
   <section>
-
+    <h1>board</h1>
   </section>
 </template>
 
@@ -9,7 +9,9 @@
 export default {
   // props: [''],
   components: {},
-  created() {},
+  created() {
+    this.$store.dispatch({type: "loadBoards"})
+  },
   data() {
     return {}
   },

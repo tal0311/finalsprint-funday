@@ -11,7 +11,7 @@ import appSidebar from "./components/app-sidebar.vue"
 export default {
   name: 'app',
   created() {
-    
+    this.$store.dispatch({ type: 'loadBoards' })
   },
   methods: {
    

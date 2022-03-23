@@ -4,15 +4,20 @@ export const boardStore = {
     strict: true,
     state: {
         boards: [],
+        currBoard: {}
     },
     getters: {
         boards(state) {
             return JSON.parse(JSON.stringify(state.boards))
         },
+        currBoard(state){
+            return JSON.parse(JSON.stringify(state.boards[0]))
+        }
     },
     mutations: {
         setBoards(state, { boards }) {
             state.boards = boards
+            console.log('state.boards', state.boards);
         },
         removeBoard(state, { _id }) {
             const idx = state.boards.findIndex(board => board._id === _id)
@@ -32,7 +37,9 @@ export const boardStore = {
                     type: 'setIsLoading',
                     isLoading: true
                 })
-                const boards = await boardService.query(state.filterBy)
+                // const boards = await boardService.query(state.filterBy)
+                const boards = await boardService.query()
+                console.log('boards', boards);
                 commit({
                     type: 'setBoards',
                     boards
@@ -48,6 +55,7 @@ export const boardStore = {
                 })
             }
         },
+
         async removeBoard({ commit }, payload) {
             try {
                 await boardService.remove(payload._id)
