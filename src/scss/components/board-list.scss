@@ -1,0 +1,30 @@
+.board-list{
+    position:absolute;
+    left:66px;
+    background-color: $clr4;
+    // width: 30px;
+    
+    animation-duration: 0.1s;
+    animation-timing-function: cubic-bezier(0, 0, 0.35, 1);
+    animation-delay: 0s;
+    
+    .title-box-container{
+        .title-container{
+            > h1 {
+                font-size: 0.875rem;
+                font-weight: 400;
+                color: $clr5;
+    
+            }
+            .elipsis {
+                &:before {
+                    content: "\f311";
+                }
+            }
+        } 
+
+    }
+    &.is-expanded{
+        width:255px;
+    }
+}

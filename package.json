@@ -8,11 +8,13 @@
     "start": "node-sass --watch -o src/styles src/scss"
   },
   "dependencies": {
+    "axios": "^0.26.1",
     "element-plus": "^2.1.4",
     "node-sass": "^7.0.1",
     "saas": "^1.0.0",
     "sass": "^1.49.9",
     "socket.io": "^4.4.1",
+    "socket.io-client": "^4.4.1",
     "vue": "^3.2.31",
     "vue-chart-3": "^3.1.6",
     "vue-router": "^4.0.12",
