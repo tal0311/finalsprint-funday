@@ -22,6 +22,13 @@ function query(filterBy) {
   return storageService.query('task')
 }
 
+async function getById(taskId) {
+  const task = await storageService.get('task', taskId)
+  // const user = await httpService.get(`user/${userId}`)
+  // gWatchedUser = user;
+  return task
+}
+
 function remove(taskId) {
   // return httpService.delete(`task/${taskId}`)
   return storageService.delete('task', taskId)

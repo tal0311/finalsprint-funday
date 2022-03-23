@@ -20,6 +20,13 @@ function query(filterBy) {
   return storageService.query('board')
 }
 
+async function getById(boardId) {
+  const group = await storageService.get('board', boardId)
+  // const user = await httpService.get(`user/${userId}`)
+  // gWatchedUser = user;
+  return group
+}
+
 function remove(boardId) {
   // return httpService.delete(`board/${boardId}`)
   return storageService.delete('board', boardId)
