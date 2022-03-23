@@ -27,7 +27,10 @@ export default {
     return {};
   },
   methods: {},
-  computed: {},
+  computed: {
+    boards() {
+    }
+  },
   unmounted() {},
 };
 </script>
