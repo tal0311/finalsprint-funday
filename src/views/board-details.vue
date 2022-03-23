@@ -9,7 +9,7 @@
     <p>Timeline</p>
     <p>Dashboard</p>
     </section>
-    <section v-for="group in board.groups" key="group">
+    <section v-for="group in board.groups" :key="group">
             {{group.title}}
         </section>
       </p>
