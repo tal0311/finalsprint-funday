@@ -1,15 +1,14 @@
 <template>
-  <section class='task-group'>
+  <section class='task-details'>
 
   </section>
 </template>
 
 <script>
-// import { carService } from '../services/car-service.js'
-// import carFilter from '../components/car-filter.vue'
+import { taskService } from '../services/'
 
 export default {
-  name: 'task-group',
+  name: 'task-details',
   props: {},
   data() {
       return {
