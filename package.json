@@ -4,10 +4,16 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview --port 5050"
+    "preview": "vite preview --port 5050",
+    "start": "node-sass --watch -o src/styles src/scss"
   },
   "dependencies": {
+    "element-plus": "^2.1.4",
+    "node-sass": "^7.0.1",
+    "saas": "^1.0.0",
+    "sass": "^1.49.9",
     "vue": "^3.2.31",
+    "vue-chart-3": "^3.1.6",
     "vue-router": "^4.0.12",
     "vuex": "^4.0.2"
   },
