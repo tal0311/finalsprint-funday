@@ -1,4 +1,4 @@
-import { httpService } from './http.service'
+import { httpService } from './http-service'
 import { storageService } from './async-storage.service'
 import { userService } from './user-service-local'
 import { socketService, SOCKET_EVENT_task_ADDED } from './socket-service'
