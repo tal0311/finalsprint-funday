@@ -1,6 +1,6 @@
 import { boardService } from '../../services/board-service.js'
 
-export default {
+export const boardStore = {
     strict: true,
     state: {
         boards: [],

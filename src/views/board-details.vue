@@ -1,6 +1,12 @@
 <template>
-  <section>
-    <h1 style="color:black">Sprint4 - Project Management and Testing</h1>
+  <section class="header">
+    <h1>Sprint4 - Project Management and Testing</h1>
+    <p class="description">This board will be used for collaboration management on the Funday app project</p>
+  </section>
+  <section class="view-board">
+      <p>Main Table</p>
+      <p>Timeline</p>
+
   </section>
 </template>
 

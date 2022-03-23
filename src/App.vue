@@ -1,14 +1,12 @@
 <template>
   <section class="app-container container">
     <app-sidebar />
-    <board-details />
-    <router-view/>
+    <router-view class="main-layout"/>
   </section>
 </template>
 
 <script>
 import appSidebar from "./components/app-sidebar.vue"
-import boardDetails from "./views/board-details.vue"
 
 export default {
   name: 'app',
@@ -20,7 +18,6 @@ export default {
   },
   components: {
     appSidebar,
-    boardDetails
   },
 }
 </script>
