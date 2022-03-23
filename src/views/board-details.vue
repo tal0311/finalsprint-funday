@@ -9,24 +9,34 @@
     <p>Timeline</p>
     <p>Dashboard</p>
     </section>
-    <section v-for="group in board.groups" key="group">
-            {{group.title}}
+    <template v-if="board">
+        <section  v-for="group in board.groups" :key="group.id">
+          
+            <group-cmp :group="group"/>
+
+            <br>
         </section>
+    </template>
+            
       </p>
     </div>
   </section>
 </template>
 
 <script>
+import groupCmp from "../components/group.vue";
 export default {
-  // props: [''],
+ 
+
   name: "board-details",
-  components: {},
-  async created() {
+  components: {
+    groupCmp
+  },
+   created() {
       let { boardId } = this.$route.params
       const board = this.$store.getters.currBoard
       this.board = JSON.parse(JSON.stringify(board))
-      console.log('boardId', boardId);
+      
 
 
   },
