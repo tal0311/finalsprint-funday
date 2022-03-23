@@ -1,9 +1,20 @@
-<script setup>
-import TheWelcome from '@/components/TheWelcome.vue'
-</script>
-
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <section>
+    <h1>hello</h1>
+  </section>
 </template>
+
+<script>
+
+export default {
+  // props: [''],
+  components: {},
+  created() {},
+  data() {
+    return {}
+  },
+  methods: {},
+  computed: {},
+  unmounted() {},
+}
+</script>

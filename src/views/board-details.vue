@@ -1,16 +1,14 @@
 <template>
-  <nav class="app-sidebar">
-      <img src="../assets/logo-no-margin.png" alt="">
-    <div>
-
-    </div>
-  </nav>
+  <section>
+    <h1 style="color:black">Sprint4 - Project Management and Testing</h1>
+  </section>
 </template>
 
 <script>
 
 export default {
   // props: [''],
+  name: 'board-details',
   components: {},
   created() {},
   data() {

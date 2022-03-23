@@ -4,8 +4,14 @@
     background-color: $clr3;
     // margin:0;
     > img {
-        width:50px;
-        margin: 8px 5px;
+        width:25px;
+        padding:7px;
+        margin: 8px 8px;
+        box-sizing: unset;
+        &:hover{
+            background-color: #000;
+            border-radius: 8px;
+        }
         // height:;
     }
 }

@@ -9,5 +9,10 @@ body {
   height: 100vh;
   background-color: #292f4c; }
   .app-sidebar > img {
-    width: 50px;
-    margin: 8px 5px; }
+    width: 25px;
+    padding: 7px;
+    margin: 8px 8px;
+    box-sizing: unset; }
+    .app-sidebar > img:hover {
+      background-color: #000;
+      border-radius: 8px; }
