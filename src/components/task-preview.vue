@@ -3,7 +3,7 @@
   <div class="task-preview">
     <div class="side-indicator">side</div>
     <div class="conversation"></div>
-    <pre>{{ task.cols }}</pre>
+
     <div>{{ task.title }}</div>
     <div>chat</div>
     <div v-for="(cmp, idx) in task.cols" :key="idx">
@@ -39,6 +39,11 @@ export default {
   display: flex;
   justify-content: space-between;
   margin: 2rem;
+  align-items: center;
+}
+
+.task-preview > * {
+  margin-inline: 1rem;
 }
 .side-indicator {
   color: red;
