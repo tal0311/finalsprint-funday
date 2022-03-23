@@ -10,13 +10,16 @@ export default {
   // props: [''],
   components: {},
   created() {
-    this.$store.dispatch({type: "loadBoards"})
   },
   data() {
     return {}
   },
   methods: {},
-  computed: {},
+  computed: {
+    boards(){
+      this.$store.getters.boards
+    }
+  },
   unmounted() {},
 }
 </script>
