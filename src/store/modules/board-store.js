@@ -10,12 +10,14 @@ export const boardStore = {
       console.log(state.boards)
       return JSON.parse(JSON.stringify(state.boards))
     },
+    groupsForDisplay(state) {
+     
+      return state.boards.groups
+    },
   },
   mutations: {
     setBoards(state, { boards }) {
-      console.log(boards)
       state.boards = boards
-      console.log('setboard:', state.boards)
     },
     removeBoard(state, { _id }) {
       const idx = state.boards.findIndex((board) => board._id === _id)

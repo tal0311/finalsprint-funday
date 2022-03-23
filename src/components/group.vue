@@ -1,30 +1,32 @@
 <template>
-  <section class='task-group'>
-
+  <section class="group" v-for="group in getGroups" :key="group">
+    <pre>{{ getGroups }}</pre>
+    <task-list :tasks="group.tasks" />
   </section>
 </template>
 
 <script>
 // import { carService } from '../services/car-service.js'
 // import carFilter from '../components/car-filter.vue'
-
+import taskList from './task-list.vue'
 export default {
-  name: 'task-group',
+  name: 'group',
   props: {},
+  components: {
+    taskList,
+  },
   data() {
-      return {
-         
-      };
+    return {
+      tasks: null,
+    }
   },
-  methods: {
-
-  },
+  methods: {},
   computed: {
-
+    getGroups() {
+      return this.$store.getters.groupsForDisplay
+    },
   },
   created() {},
-  components: {
-
-  },
+  components: {},
 }
 </script>

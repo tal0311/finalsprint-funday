@@ -7,7 +7,7 @@
 
 <script>
 import appSidebar from './components/app-sidebar.vue'
-
+import group from './components/group.vue'
 export default {
   name: 'app',
   created() {
@@ -16,6 +16,7 @@ export default {
   methods: {},
   components: {
     appSidebar,
+    group,
   },
 }
 </script>
