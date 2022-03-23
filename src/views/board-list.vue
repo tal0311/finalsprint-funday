@@ -6,19 +6,35 @@
         <button class="btn"><i class="ellipsis">...</i></button>
       </div>
       <div class="ws-name"><span class="ws-icon">M</span> Main Workspace</div>
-      <button>+ Add</button>
+    </div>
+    <div class="menu-buttons flex col">
+      <button class="btn flex justify-start">
+        <svg width="19" height="19">
+          <path
+            d="M10.75 3C10.75 2.58579 10.4142 2.25 10 2.25C9.58579 2.25 9.25 2.58579 9.25 3V9.25H3C2.58579 9.25 2.25 9.58579 2.25 10C2.25 10.4142 2.58579 10.75 3 10.75H9.25V17C9.25 17.4142 9.58579 17.75 10 17.75C10.4142 17.75 10.75 17.4142 10.75 17V10.75H17C17.4142 10.75 17.75 10.4142 17.75 10C17.75 9.58579 17.4142 9.25 17 9.25H10.75V3Z"
+            fill="currentColor"
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+          >
+          </path>
+          <span>Add</span>
+        </svg>
+      </button>
       <button>V Filter</button>
       <button>Q Search</button>
     </div>
 
-    <h1>hello</h1>
-    <ul>
-      <li v-for="board in boards" :key="board">
-        <router-link :to="'/board/' + board._id" @click="setCurrBoard(board)">{{
-          board.title
-        }}</router-link>
-      </li>
-    </ul>
+    <div class="boards">
+      <ul>
+        <li v-for="board in boards" :key="board">
+          <router-link
+            :to="'/board/' + board._id"
+            @click="setCurrBoard(board)"
+            >{{ board.title }}</router-link
+          >
+        </li>
+      </ul>
+    </div>
   </section>
 </template>
 
@@ -30,18 +46,18 @@ export default {
   data() {
     return {
       // boards: this.$store.getters.boards
-    }
+    };
   },
   methods: {
     setCurrBoard(board) {
-      this.$store.commit({ type: 'setCurrBoard', board })
+      this.$store.commit({ type: "setCurrBoard", board });
     },
   },
   computed: {
     boards() {
-      return this.$store.getters.boards
+      return this.$store.getters.boards;
     },
   },
   unmounted() {},
-}
+};
 </script>
