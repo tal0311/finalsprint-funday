@@ -95,5 +95,17 @@ export const boardStore = {
                 })
             }
         },
+        async saveUpdate({ dispatch }, payload) {
+          try {
+            await boardService.save(payload.updateText)
+            dispatch('loadBoards')
+          } catch (err) {
+            console.log('Couldnt save board', err)
+            commit({
+              type: 'setIsError',
+              isError: true,
+            })
+          }
+        },
     },
 }

@@ -37,22 +37,28 @@
       "title": "Group 1",
       "tasks": [
         {
-          "id": "c101",
-          "title": "Replace logo",
-          "status": null,
-          "person": [
+          "id": "t101",
+          "title": "replace logo",
+          "cols": [
             {
-              "_id": "fhrf*^%hfdg",
-              "username": "Meir",
-              "fullname": "Meir Abambi",
-              "imgUrl": "http://some-img.jpg"
+              "type": "status-picker",
+              "value": null
+            },
+            {
+              "type": "member-picker",
+              "value": [
+                {
+                  "_id": "fhrf*^%hfdg",
+                  "username": "Meir",
+                  "fullname": "Meir Abambi",
+                  "imgUrl": "http://some-img.jpg"
+                }
+              ]
+            },
+            {
+              "type": "date-picker"
             }
-          ],
-          "Due Date": 132134654321
-        },
-        {
-          "id": "c102",
-          "title": "Add Samples"
+          ]
         }
       ],
       "groupColor": "blue"
@@ -62,28 +68,28 @@
       "title": "Group 2",
       "tasks": [
         {
-          "id": "c101",
-          "title": "Replace logo",
-          "status": null,
-          "person": [
+          "id": "t101",
+          "title": "replace logo",
+          "cols": [
             {
-              "_id": "sdfnRRn34",
-              "username": "Abi",
-              "fullname": "Abi Abambi",
-              "imgUrl": "http://some-img.jpg"
+              "type": "status-picker",
+              "value": null
             },
             {
-              "_id": "fhrf*^%hfdg",
-              "username": "Meir",
-              "fullname": "Meir Abambi",
-              "imgUrl": "http://some-img.jpg"
+              "type": "member-picker",
+              "value": [
+                {
+                  "_id": "fhrf*^%hfdg",
+                  "username": "Meir",
+                  "fullname": "Meir Abambi",
+                  "imgUrl": "http://some-img.jpg"
+                }
+              ]
+            },
+            {
+              "type": "date-picker"
             }
-          ],
-          "Due Date": 132134654321
-        },
-        {
-          "id": "c102",
-          "title": "Add Samples"
+          ]
         }
       ],
       "groupColor": "blue"

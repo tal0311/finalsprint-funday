@@ -1,7 +1,7 @@
 import { httpService } from './http-service'
 import { storageService } from './async-storage.service'
 import { userService } from './user-service-local'
-import { socketService, SOCKET_EVENT_task_ADDED } from './socket-service'
+// import { socketService, SOCKET_EVENT_task_ADDED } from './socket-service'
 console.log('task service')
 
 export const taskService = {

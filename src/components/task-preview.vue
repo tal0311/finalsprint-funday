@@ -1,10 +1,14 @@
 <template>
   <!-- task title -->
   <div class="task-preview">
-    <div class="side-indicator"></div>
+    <div class="side-indicator">V</div>
     <div class="conversation"></div>
-
-    <component :is="datePicker"></component>
+    <div>{{ task.title }}</div>
+    <div>chat</div>
+    <div v-for="(cmp, idx) in task.cols" :key="idx">
+      <component :is="cmp.type"></component>
+    </div>
+    <!-- </div> -->
     <!-- dynamic components -->
   </div>
 </template>
@@ -28,4 +32,21 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.task-preview {
+  background-color: #c3c3c3;
+  display: flex;
+  justify-content: space-between;
+  margin: 0.2rem;
+  align-items: center;
+}
+
+.task-preview > * {
+  margin-inline: 1rem;
+}
+.side-indicator {
+  width: 10px;
+  height: 100%;
+  background: red;
+}
+</style>

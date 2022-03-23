@@ -30,18 +30,35 @@ export default {
   created() {},
   data() {
     return {
+<<<<<<< HEAD
+      // boards: this.$store.getters.boards
+    }
+  },
+  methods: {
+    setCurrBoard(board) {
+      this.$store.commit({ type: 'setCurrBoard', board })
+=======
     };
   },
   methods: {
     setCurrBoard(board) {
       this.$store.commit({ type: "setCurrBoard", board });
+>>>>>>> 60015e496540e14aca3bee8055d5a622ea1a7667
     },
   },
   computed: {
     boards() {
+<<<<<<< HEAD
+      return this.$store.getters.boards
+    },
+  },
+  unmounted() {},
+}
+=======
       return this.$store.getters.boards;
     },
   },
   unmounted() {},
 };
+>>>>>>> 60015e496540e14aca3bee8055d5a622ea1a7667
 </script>
