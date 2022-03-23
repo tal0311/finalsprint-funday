@@ -3,8 +3,33 @@
 .flex {
   display: flex;
 }
+
 .inline-flex {
   display: inline-flex;
+}
+
+.align-center {
+  align-items: center;
+}
+ 
+.justify-center {
+  justify-content: center;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.d-none {
+  display: none;
+}
+
+.col{
+  flex-direction: column;
+}
+
+.grid {
+  display: grid;
 }
 
 // List
@@ -24,4 +49,18 @@
   color: $clr1;
   text-transform: uppercase;
   // @include type(boldCondensed);
+}
+
+.hide {
+  display: none !important;
+}
+
+.relative {
+  position:relative;
+}
+
+.btn{
+  background-color: transparent;
+  cursor: pointer;
+  border: 0;
 }
