@@ -28,7 +28,9 @@ export default {
   components: {},
   created() {},
   data() {
-    return {}
+    return {
+      // boards: this.$store.getters.boards
+    }
   },
   methods: {
     setCurrBoard(board) {
