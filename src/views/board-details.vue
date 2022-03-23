@@ -5,7 +5,7 @@
       <p class="description">
         {{board.description}}
 
-    <add-group-task/>
+    <add-group-task @addGroup="currBoard"></add-group-task>
 
   <section class="view-board">
     <p>Main Table</p>
@@ -50,10 +50,19 @@ export default {
         board: null
     };
   },
-  methods: {},
+  methods: {
+//     currBoard(){
+//   this.board = this.$store.getters.currBoard
+//   return this.board
+// }
+
+  },
   computed: {
-    boards() {
-    }
+        currBoard(){
+        this.board = this.$store.getters.currBoard
+        return this.board
+}
+
   },
   unmounted() {},
 };

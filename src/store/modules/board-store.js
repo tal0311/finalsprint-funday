@@ -19,14 +19,11 @@ export const boardStore = {
     // GROUP
     setCurrGroup() {},
     removeGroup() {},
-    addGroupToBoard({ state, commit }, { boardToUpdate }) {
+    addGroupToBoard({ state }, { boardToUpdate }) {
       const idx = state.boards.findIndex(
-        (board) => board._id === boardToUpdate._id
+        board => board._id === boardToUpdate._id
       )
-
       state.boards.splice(idx, 1, boardToUpdate)
-      commit({ type: 'setCurrBoard', boardToUpdate })
-      console.log('currboard:', state.currBoard)
     },
 
     // BOARD
@@ -144,11 +141,10 @@ export const boardStore = {
         let emptyGroup = boardService.getEmptyGroup()
 
         board.groups.push(emptyGroup)
-        const boardToUpdate = await boardService.add(board)
+        const boardToUpdate = await boardService.save(board)
         // mutate state
-
-        commit({ type: 'addGroupToBoard', boardToUpdate })
-        // dispatch({ type: 'loadBoards' })
+        dispatch({ type: 'saveBoard', board: JSON.parse(JSON.stringify(boardToUpdate)) })
+        commit({type: 'setCurrBoard', board })
       } catch (error) {
         console.log('error during adding group to board', error)
       }
