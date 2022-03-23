@@ -13,6 +13,8 @@ export const boardStore = {
     mutations: {
         setBoards(state, { boards }) {
             state.boards = boards
+            console.log(state.boards)
+
         },
         removeBoard(state, { _id }) {
             const idx = state.boards.findIndex(board => board._id === _id)
@@ -23,7 +25,6 @@ export const boardStore = {
             if (idx !== -1) state.boards.splice(idx, 1, savedBoard)
             else state.boards.unshift(savedBoard)
         },
-
     },
     actions: {
         async loadBoards({ commit, state }) {
@@ -32,7 +33,7 @@ export const boardStore = {
                     type: 'setIsLoading',
                     isLoading: true
                 })
-                const boards = await boardService.query(state.filterBy)
+                const boards = await boardService.query()
                 commit({
                     type: 'setBoards',
                     boards
