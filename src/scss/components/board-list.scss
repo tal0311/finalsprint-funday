@@ -22,8 +22,22 @@
                 }
             }
         } 
+        .ws-name{
+            border: 1px solid $clr5;
+            padding: 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            > .ws-icon {
+                background-color: pink;
+                border-radius: 8px;
+                padding: 5px 10px;
+                
+            }
+        }
 
     }
+
+
     &.is-expanded{
         width:255px;
     }

@@ -6,6 +6,7 @@
         <h1>Workspace</h1>
         <button class="btn"><i class="ellipsis">...</i></button>
         </div>
+        <div class="ws-name"><span class="ws-icon">M</span> Main Workspace</div>
       <button>+ Add</button>
       <button>V Filter</button>
       <button>Q Search</button>
