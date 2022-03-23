@@ -1,9 +1,8 @@
 <template>
   <!-- task title -->
   <div class="task-preview">
-    <div class="side-indicator">side</div>
+    <div class="side-indicator">V</div>
     <div class="conversation"></div>
-
     <div>{{ task.title }}</div>
     <div>chat</div>
     <div v-for="(cmp, idx) in task.cols" :key="idx">
@@ -46,6 +45,8 @@ export default {
   margin-inline: 1rem;
 }
 .side-indicator {
-  color: red;
+  width: 10px;
+  height: 100%;
+  background: red;
 }
 </style>
