@@ -1,0 +1,15 @@
+.board-details{
+    .header{
+        display: flex;
+        flex-direction: column;
+        .title{
+            line-height: 40px;
+        }
+        .description{
+            max-height:65px;
+        }
+    }
+    .view-board{
+        display: flex;
+    }
+}

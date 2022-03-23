@@ -7,11 +7,12 @@
 // BASICS
 // @import 'basics/helper';
 @import 'basics/base';
-// @import 'basics/layout';
+@import 'basics/layout';
 
 // COMPONENTS
-@import 'components/app-sidebar.scss'
-// @import 'components/header.scss';
+@import 'components/app-container.scss';
+@import 'components/app-sidebar.scss';
+@import 'components/board-details.scss';
 // @import 'components/filter';
 // @import 'components/teaser';
 // @import 'components/list';

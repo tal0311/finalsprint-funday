@@ -1,10 +1,7 @@
 <template>
-  <nav class="app-sidebar">
+  <aside class="app-sidebar">
       <img src="../assets/logo-no-margin.png" alt="">
-    <div>
-
-    </div>
-  </nav>
+  </aside>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 import { createStore } from 'vuex';
-import { boardStore } from './modules/board.store.js';
+import { boardStore } from './modules/board-store.js';
 // import { userStore } from './modules/user.store.js'
 
 // create a store instance
