@@ -38,7 +38,7 @@ export default {
   background-color: #c3c3c3;
   display: flex;
   justify-content: space-between;
-  margin: 2rem;
+  margin: 0.2rem;
   align-items: center;
 }
 
