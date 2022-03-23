@@ -4,6 +4,9 @@
       <h1>{{board.title}}</h1>
       <p class="description">
         {{board.description}}
+
+    <add-group-task/>
+
   <section class="view-board">
     <p>Main Table</p>
     <p>Timeline</p>
@@ -24,13 +27,15 @@
 </template>
 
 <script>
+import addGroupTask from "../components/add-group-task.vue";
 import groupCmp from "../components/group.vue";
 export default {
  
 
   name: "board-details",
   components: {
-    groupCmp
+    groupCmp,
+    addGroupTask
   },
    created() {
       let { boardId } = this.$route.params

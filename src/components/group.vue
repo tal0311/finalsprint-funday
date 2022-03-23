@@ -1,5 +1,6 @@
 <template>
   <section class="group">
+    {{ group.title }}
     <tasks-list :tasks="group.tasks"></tasks-list>
   </section>
 </template>

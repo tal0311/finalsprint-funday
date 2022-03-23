@@ -19,7 +19,15 @@ export const boardStore = {
     // GROUP
     setCurrGroup() {},
     removeGroup() {},
-    addGroup() {},
+    addGroupToBoard({ state, commit }, { boardToUpdate }) {
+      const idx = state.boards.findIndex(
+        (board) => board._id === boardToUpdate._id
+      )
+
+      state.boards.splice(idx, 1, boardToUpdate)
+      commit({ type: 'setCurrBoard', boardToUpdate })
+      console.log('currboard:', state.currBoard)
+    },
 
     // BOARD
     setBoards(state, { boards }) {
@@ -40,6 +48,7 @@ export const boardStore = {
     },
     setCurrBoard(state, { board }) {
       state.currBoard = board
+      console.log(state.currBoard)
     },
   },
   actions: {
@@ -112,6 +121,32 @@ export const boardStore = {
           isError: true,
         })
       }
+    },
+    async addGroup({ state, dispatch, commit }, { boardId }) {
+      console.log(boardId)
+      try {
+        let board = await boardService.getById(boardId)
+        // update model
+        board = JSON.parse(JSON.stringify(board))
+        let emptyGroup = boardService.getEmptyGroup()
+
+        board.groups.push(emptyGroup)
+        const boardToUpdate = await boardService.add(board)
+        // mutate state
+
+        commit({ type: 'addGroupToBoard', boardToUpdate })
+        // dispatch({ type: 'loadBoards' })
+      } catch (error) {
+        console.log('error during adding group to board', error)
+      }
+    },
+
+    async addTask({ commit }) {
+      console.log('add task')
+      try {
+        // update model
+        // mutate state
+      } catch (error) {}
     },
   },
 }
