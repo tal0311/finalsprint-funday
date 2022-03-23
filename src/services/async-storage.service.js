@@ -7,8 +7,8 @@ export const storageService = {
 }
 
 function query(entityType) {
-  console.log('async query')
   var entities = JSON.parse(localStorage.getItem(entityType)) || []
+
   return Promise.resolve(entities)
 }
 
