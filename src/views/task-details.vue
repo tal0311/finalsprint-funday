@@ -1,16 +1,14 @@
 <template>
-  <section class="group" v-for="group in getGroups" :key="group">
-    <pre>{{ getGroups }}</pre>
-    <task-list :tasks="group.tasks" />
+  <section class='task-details'>
+
   </section>
 </template>
 
 <script>
-// import { carService } from '../services/car-service.js'
-// import carFilter from '../components/car-filter.vue'
-import taskList from './task-list.vue'
+import { taskService } from '../services/'
+
 export default {
-  name: 'group',
+  name: 'task-details',
   props: {},
   components: {
     taskList,

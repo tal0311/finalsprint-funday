@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import boardDetails from '../views/board-details.vue'
 import boardList from '../views/board-list.vue'
 
+
 const router = createRouter({
   history: createWebHashHistory(),
   routes: [
