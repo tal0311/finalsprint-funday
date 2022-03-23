@@ -1,0 +1,11 @@
+.app-sidebar{
+    width:66px;
+    height:100vh;
+    background-color: $clr3;
+    margin:0;
+    > img {
+        width:100%;
+        margin: 8px 0 8px;
+        // height:;
+    }
+}

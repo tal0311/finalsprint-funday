@@ -1,0 +1,14 @@
+* {
+  box-sizing: border-box; }
+
+body {
+  margin: 0; }
+
+.app-sidebar {
+  width: 66px;
+  height: 100vh;
+  background-color: #292f4c;
+  margin: 0; }
+  .app-sidebar > img {
+    width: 100%;
+    margin: 8px 0 8px; }
