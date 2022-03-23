@@ -1,4 +1,5 @@
 // import { httpService } from './http.service'
+import { utilService } from './util-service'
 import { storageService } from './async-storage.service'
 // import { userService } from './user-service-local'
 // import { socketService, SOCKET_EVENT_board_ADDED } from './socket-service'
@@ -11,7 +12,8 @@ export const boardService = {
   remove,
   getById,
   save,
-  saveGroup
+  saveGroup,
+  getEmptyGroup
 }
 
 // More ways to send query params:
@@ -33,6 +35,10 @@ async function getById(boardId) {
 }
 
 async function add(board) {
+  if (board._id) {
+    const updatedBoard = await storageService.put('board', board)
+    return updatedBoard
+  }
   // const addedboard = await httpService.post(`board`, board)
   
   // board.byUser = userService.getLoggedinUser()
@@ -65,6 +71,33 @@ async function saveGroup(board, group){
         return storageService.put(KEY, board)
     }
 }
+function getEmptyGroup() {
+  return {
+    _id: 'g' + utilService.makeId(),
+    title: 'new group',
+    tasks: [
+      {
+        id: 't' + utilService.makeId(),
+        title: 'new task',
+        cols: [
+          {
+            type: 'status-picker',
+            value: null,
+          },
+          {
+            type: 'member-picker',
+            value: [],
+          },
+          {
+            type: 'date-picker',
+          },
+        ],
+      },
+    ],
+    groupColor: utilService.getRandomColor(),
+  }
+}
+
 // This IIFE functions for Dev purposes
 // It allows testing of real time updates (such as sockets) by listening to storage events
 // (async () => {
