@@ -33,7 +33,7 @@ export default {
     groupCmp
   },
    created() {
-      let { boardId } = this.$route.params
+      // let { boardId } = this.$route.params
       const board = this.$store.getters.currBoard
       this.board = JSON.parse(JSON.stringify(board))
       

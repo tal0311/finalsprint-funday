@@ -43,6 +43,7 @@ export const boardStore = {
     },
   },
   actions: {
+    // BOARDS 
     async loadBoards({ commit, state }) {
       try {
         commit({
@@ -101,9 +102,21 @@ export const boardStore = {
         })
       }
     },
-    async saveUpdate({ dispatch }, payload) {
+
+    async updateGroup( { dispatch , state}, {groupToUpdate}) {
       try {
-        await boardService.save(payload.updateText)
+        const board = JSON.parse(JSON.stringify(state.currBoard))
+        await boardService.saveGroup(board, groupToUpdate)
+        dispatch('loadBoards')
+      }
+      catch (err) {
+        console.log('Problem with saving group', err)
+      }
+    },
+    //TASK
+    async saveTaskUpdate({ dispatch }, { updateText }) {
+      try {
+        await boardService.save(updateText)
         dispatch('loadBoards')
       } catch (err) {
         console.log('Couldnt save board', err)
