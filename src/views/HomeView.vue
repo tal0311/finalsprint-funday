@@ -1,26 +1,22 @@
 <template>
   <section>
     <h1>hello</h1>
-    {{boards}}
   </section>
 </template>
 
 <script>
-
+import taskDetails from "./task-details.vue";
 export default {
   // props: [''],
-  components: {},
   created() {},
   data() {
-    return {}
+    return {};
   },
   methods: {},
-  computed: {
-    boards() {
-      return this.$store.getters.boards
-
-    }
-  },
+  computed: {},
   unmounted() {},
-}
+  components: {
+    taskDetails,
+  },
+};
 </script>
