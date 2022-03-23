@@ -1,6 +1,6 @@
 <template>
   <section>
-
+    <h1>board</h1>
   </section>
 </template>
 
@@ -9,12 +9,17 @@
 export default {
   // props: [''],
   components: {},
-  created() {},
+  created() {
+  },
   data() {
     return {}
   },
   methods: {},
-  computed: {},
+  computed: {
+    boards(){
+      this.$store.getters.boards
+    }
+  },
   unmounted() {},
 }
 </script>
