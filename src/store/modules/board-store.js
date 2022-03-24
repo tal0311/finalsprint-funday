@@ -23,7 +23,12 @@ export const boardStore = {
     // GROUP
     setCurrGroup() {},
     removeGroup() {},
-    addGroup() {},
+    addGroupToBoard({ state }, { boardToUpdate }) {
+      const idx = state.boards.findIndex(
+        board => board._id === boardToUpdate._id
+      )
+      state.boards.splice(idx, 1, boardToUpdate)
+    },
 
     // BOARD
     setBoards(state, { boards }) {
@@ -44,6 +49,7 @@ export const boardStore = {
     },
     setCurrBoard(state, { board }) {
       state.currBoard = board
+      console.log(state.currBoard)
     },
     setCurrTask(state, {task}) {
       // console.log(task)
@@ -52,6 +58,7 @@ export const boardStore = {
     }
   },
   actions: {
+    // BOARDS 
     async loadBoards({ commit, state }) {
       try {
         commit({
@@ -110,9 +117,21 @@ export const boardStore = {
         })
       }
     },
-    async saveUpdate({ dispatch }, payload) {
+
+    async updateGroup( { dispatch , state}, {groupToUpdate}) {
       try {
-        await boardService.save(payload.updateText)
+        const board = JSON.parse(JSON.stringify(state.currBoard))
+        await boardService.saveGroup(board, groupToUpdate)
+        dispatch('loadBoards')
+      }
+      catch (err) {
+        console.log('Problem with saving group', err)
+      }
+    },
+    //TASK
+    async saveTaskUpdate({ dispatch }, { updateText }) {
+      try {
+        await boardService.save(updateText)
         dispatch('loadBoards')
       } catch (err) {
         console.log('Couldnt save board', err)
@@ -122,9 +141,30 @@ export const boardStore = {
         })
       }
     },
-    setCurrTask({commit}, {task}) {
-      console.log(task)
-      commit({type: 'setCurrTask', task})
-    }
+    async addGroup({ state, dispatch, commit }, { boardId }) {
+      console.log(boardId)
+      try {
+        let board = await boardService.getById(boardId)
+        // update model
+        board = JSON.parse(JSON.stringify(board))
+        let emptyGroup = boardService.getEmptyGroup()
+
+        board.groups.push(emptyGroup)
+        const boardToUpdate = await boardService.save(board)
+        // mutate state
+        dispatch({ type: 'saveBoard', board: JSON.parse(JSON.stringify(boardToUpdate)) })
+        commit({type: 'setCurrBoard', board })
+      } catch (error) {
+        console.log('error during adding group to board', error)
+      }
+    },
+
+    async addTask({ commit }) {
+      console.log('add task')
+      try {
+        // update model
+        // mutate state
+      } catch (error) {}
+    },
   },
 }

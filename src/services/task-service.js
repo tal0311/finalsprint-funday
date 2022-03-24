@@ -17,7 +17,6 @@ query()
 // return axios.get('api/toy/?', {params: {id: 1223, balanse:13}})
 
 function query(filterBy) {
-  console.log('query')
   // var queryStr = (!filterBy) ? '' : `?name=${filterBy.name}&sort=anaAref`
   // return httpService.get(`task${queryStr}`)
   return storageService.query('task')

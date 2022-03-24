@@ -1,5 +1,6 @@
 <template>
   <section class="group">
+    <div class="group-title" @blur="updateGroup(group, $event)" contenteditable="true">{{group.title}}</div>
     <tasks-list :tasks="group.tasks"></tasks-list>
   </section>
 </template>
@@ -18,7 +19,15 @@ export default {
   },
 
   data() {
-    return {}
+    return {
+    }
+  },
+  methods:{
+    updateGroup(group, $event){
+      const groupToUpdate = JSON.parse(JSON.stringify(group))
+      groupToUpdate.title = $event.target.innerText
+      this.$store.dispatch({type: 'updateGroup', groupToUpdate} )
+    }
   },
   computed: {
     getTasks() {

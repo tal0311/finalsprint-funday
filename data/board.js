@@ -165,10 +165,6 @@ async function loadAndWatchBoard(boardId) {
     // subscribe to socket and commit to store
 }
 
-
-
-
-
 // For Monday Mostly:
 // Dynamic Components: 
 // <TaskPreview> => <tr> 
