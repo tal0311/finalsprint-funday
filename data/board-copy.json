@@ -52,7 +52,7 @@
           "cols": [
             {
               "type": "status-picker",
-              "value": null
+              "value": "Status"
             },
             {
               "type": "member-picker",
@@ -74,7 +74,8 @@
               ]
             },
             {
-              "type": "date-picker"
+              "type": "date-picker",
+              "value": null
             }
           ]
         },
@@ -84,7 +85,7 @@
           "cols": [
             {
               "type": "status-picker",
-              "value": null
+              "value": "Status"
             },
             {
               "type": "member-picker",
@@ -98,7 +99,8 @@
               ]
             },
             {
-              "type": "date-picker"
+              "type": "date-picker",
+              "value": null
             }
           ]
         }
@@ -115,7 +117,7 @@
           "cols": [
             {
               "type": "status-picker",
-              "value": null
+              "value": "Status"
             },
             {
               "type": "member-picker",
@@ -129,7 +131,8 @@
               ]
             },
             {
-              "type": "date-picker"
+              "type": "date-picker",
+              "value": null
             }
           ]
         }

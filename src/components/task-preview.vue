@@ -16,9 +16,9 @@
 </template>
 
 <script>
-import memberPicker from './member-picker.vue'
-import datePicker from './date-picker.vue'
-import statusPicker from './status-picker.vue'
+import memberPicker from './dynamic-cmps/member-picker.vue'
+import datePicker from './dynamic-cmps/date-picker.vue'
+import statusPicker from './dynamic-cmps/status-picker.vue'
 import taskOptions from './task-options.vue'
 
 export default {
@@ -34,12 +34,7 @@ export default {
   },
   methods: {
     setStatus() {
-      // this.$store.dispatch({
-      //   type: "setStatus",
-      //   status,
-      //   task,
-      // });
-      this.$emit('updateTask')
+      // this.$emit('updateTask')
     },
      setIsOptions() {
       this.isOptions = !this.isOptions

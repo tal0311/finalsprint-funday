@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import { utilService } from '../services/util-service'
-import miniMember from './mini-member.vue'
+import { utilService } from '../../services/util-service.js'
+import miniMember from '../mini-member.vue'
 export default {
   name: 'memberPicker',
   props: {

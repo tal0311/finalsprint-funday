@@ -1,8 +1,9 @@
 <template>
-  <section @click="toggleShow" class="status-picker">
-    <h4>status</h4>
+  <section @click="toggleShow" :class="statusClass" class="status-picker" >
+    <div>{{task.cols[0].value}}</div>
     <div v-if="menuOpen" class="picker-box">
-      <div @click="setStatus('working')" class="working">Working on it</div>
+      <!-- TODO - change back to working on it -->
+      <div @click="setStatus('Working-on-it')" class="working-on-it">Working on it</div>
       <div @click="setStatus('stuck')" class="stuck">Stuck</div>
       <div @click="setStatus('done')" class="done">Done</div>
       <div @click="setStatus('null')" class="null">.</div>
@@ -23,6 +24,7 @@ export default {
   data() {
     return {
       menuOpen: false,
+      currStatus: null,
     };
   },
   methods: {
@@ -47,8 +49,14 @@ export default {
       this.$emit("updateTask");
     },
   },
-  computed: {},
-  created() {},
+  computed: {
+    statusClass() {
+      return this.task.cols[0].value
+    }
+  },
+  created() {
+    if (!this.task.cols[0].value) this.task.cols[0].value = "status"
+  },
   components: {},
 };
 </script>

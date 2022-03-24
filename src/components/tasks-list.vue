@@ -14,7 +14,6 @@ export default {
     taskPreview,
   },
   created() {
-    console.log('this.tasks', this.tasks)
   },
 }
 </script>
