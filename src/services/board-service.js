@@ -13,7 +13,7 @@ export const boardService = {
   getById,
   save,
   saveGroup,
-  getEmptyGroup
+  getEmptyGroup,
 }
 
 // More ways to send query params:
@@ -24,7 +24,7 @@ async function query(filterBy) {
   console.log('query board')
   // var queryStr = (!filterBy) ? '' : `?name=${filterBy.name}&sort=anaAref`
   // return httpService.get(`board${queryStr}`)
-  return await  storageService.query(KEY)
+  return await storageService.query(KEY)
 }
 
 async function getById(boardId) {
@@ -40,18 +40,17 @@ async function add(board) {
     return updatedBoard
   }
   // const addedboard = await httpService.post(`board`, board)
-  
+
   // board.byUser = userService.getLoggedinUser()
   // board.aboutUser = await userService.getById(board.aboutUserId)
   const addedboard = await storageService.post(KEY, board)
-  
+
   return addedboard
 }
 
-
 async function save(board) {
-      if (board._id) return storageService.put(KEY, board)
-    return await storageService.post(KEY, board)
+  if (board._id) return storageService.put(KEY, board)
+  return await storageService.post(KEY, board)
 }
 
 async function remove(boardId) {
@@ -59,21 +58,20 @@ async function remove(boardId) {
   return await storageService.delete(KEY, boardId)
 }
 
-async function saveGroup(board, group){
-    // const board = await getById(boardId)
-    const idx = board.groups.findIndex(boardGroup => boardGroup.id === group.id)
-    if (idx === -1) {
-      board.groups.push(group)
-      return storageService.post(KEY, board)
-    }
-    else {
-      board.groups.splice(idx, 1, group)
-        return storageService.put(KEY, board)
-    }
+async function saveGroup(board, group) {
+  // const board = await getById(boardId)
+  const idx = board.groups.findIndex((boardGroup) => boardGroup.id === group.id)
+  if (idx === -1) {
+    board.groups.push(group)
+    return storageService.post(KEY, board)
+  } else {
+    board.groups.splice(idx, 1, group)
+    return storageService.put(KEY, board)
+  }
 }
 function getEmptyGroup() {
   return {
-    _id: 'g' + utilService.makeId(),
+    id: 'g' + utilService.makeId(),
     title: 'new group',
     tasks: [
       {
@@ -94,17 +92,16 @@ function getEmptyGroup() {
         ],
       },
     ],
-    groupColor: utilService.getRandomColor(),
   }
 }
 
 // This IIFE functions for Dev purposes
 // It allows testing of real time updates (such as sockets) by listening to storage events
 // (async () => {
-  //   var boards = await storageService.query('board')
-  
-  //   // Dev Helper: Listens to when localStorage changes in OTHER browser
-  //   window.addEventListener('storage', async () => {
+//   var boards = await storageService.query('board')
+
+//   // Dev Helper: Listens to when localStorage changes in OTHER browser
+//   window.addEventListener('storage', async () => {
 //     console.log('Storage updated');
 //     const freshboards = await storageService.query('board')
 //     if (freshboards.length === boards.length + 1 ){
