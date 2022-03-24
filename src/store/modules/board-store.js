@@ -136,7 +136,7 @@ export const boardStore = {
       } catch (error) { }
     },
 
-    async updateGroup({ dispatch, state }, { groupToUpdate }) {
+    async updateGroup({ state }, { groupToUpdate }) {
       try {
         const board = JSON.parse(JSON.stringify(state.currBoard));
         await boardService.saveGroup(board, groupToUpdate);

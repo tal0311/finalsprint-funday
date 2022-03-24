@@ -12,7 +12,7 @@ export const boardService = {
   remove,
   getById,
   save,
-  saveGroup,
+  // saveGroup,
   getEmptyGroup
 }
 
@@ -59,21 +59,23 @@ async function remove(boardId) {
   return await storageService.delete(KEY, boardId)
 }
 
-async function saveGroup(board, group){
-    // const board = await getById(boardId)
-    const idx = board.groups.findIndex(boardGroup => boardGroup.id === group.id)
-    if (idx === -1) {
-      board.groups.push(group)
-      return storageService.post(KEY, board)
-    }
-    else {
-      board.groups.splice(idx, 1, group)
-        return storageService.put(KEY, board)
-    }
-}
+// NOT IN USE
+// async function saveGroup(board, group){
+//     // const board = await getById(boardId)
+//     const idx = board.groups.findIndex(boardGroup => boardGroup.id === group.id)
+//     if (idx === -1) {
+//       board.groups.push(group)
+//       return storageService.post(KEY, board)
+//     }
+//     else {
+//       board.groups.splice(idx, 1, group)
+//         return storageService.put(KEY, board)
+//     }
+// }
+
 function getEmptyGroup() {
   return {
-    _id: 'g' + utilService.makeId(),
+    id: 'g' + utilService.makeId(),
     title: 'new group',
     tasks: [
       {
