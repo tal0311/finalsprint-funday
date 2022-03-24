@@ -1,0 +1,24 @@
+.members-container {
+  &flex {
+    flex-direction: row;
+  }
+  .member {
+    padding: 0.5em 0.65em;
+    border-radius: 50%;
+  }
+}
+
+.mini-member {
+  &:hover {
+    display: block;
+  }
+}
+
+.member-picker {
+  .no-members {
+    padding: 0.5em 0.7em;
+    background-color: #5c5c5c;
+    color: #fff;
+    border-radius: 50%;
+  }
+}

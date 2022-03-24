@@ -10,8 +10,18 @@
   },
   "members": [
     {
-      "_id": "u101",
-      "fullname": "Tal Tarablus",
+      "id": "u101",
+      "fullname": "Tal amit",
+      "imgUrl": "https://www.google.com"
+    },
+    {
+      "id": "u102",
+      "fullname": "guy shimon",
+      "imgUrl": "https://www.google.com"
+    },
+    {
+      "id": "u103",
+      "fullname": "shiran elad",
       "imgUrl": "https://www.google.com"
     }
   ],
@@ -48,16 +58,18 @@
               "type": "member-picker",
               "value": [
                 {
-                  "_id": "fhrf*^%hfdg",
-                  "username": "Meir",
-                  "fullname": "Meir Abambi",
-                  "imgUrl": "http://some-img.jpg"
+                  "id": "fhrf*^%hfdg",
+                  "username": "Lili",
+                  "fullname": "Lili Abambi",
+                  "imgUrl": "http://some-img.jpg",
+                  "color": "FFF833"
                 },
                 {
-                  "_id": "fhrf*^%hfdg",
+                  "id": "fhrf*^%hfdg",
                   "username": "Meir",
                   "fullname": "Meir Abambi",
-                  "imgUrl": "http://some-img.jpg"
+                  "imgUrl": "http://some-img.jpg",
+                  "color": "#FF5733"
                 }
               ]
             },

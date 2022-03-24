@@ -16,7 +16,7 @@
 <script>
 import tasksList from './tasks-list.vue'
 import groupOptions from './group-options.vue'
-import GroupOptions from './group-options.vue'
+
 export default {
   name: 'group-cmp',
   emits: ['updateGroup'],
@@ -26,7 +26,6 @@ export default {
   components: {
     tasksList,
     groupOptions,
-    GroupOptions,
   },
 
   data() {
