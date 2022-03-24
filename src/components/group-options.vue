@@ -22,6 +22,16 @@
         v-model="optionsValue"
       />
     </label>
+    <label for="color">
+      color
+      <input
+        @change="setUpdateValue"
+        type="color"
+        name="options"
+        id="color"
+        v-model="optionsValue"
+      />
+    </label>
   </div>
 </template>
 

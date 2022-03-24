@@ -1,14 +1,14 @@
 <template>
   <!-- task title -->
   <div class="task-preview">
-      <div class="side-indicator">V</div>
-    <router-link :to="'/board/b101/task/' + task.id" class="title-chat" @click="setCurrTask">
+    <div class="side-indicator">V</div>
+    <router-link :to="'/board/b101/task/' + task.id" class="title-chat">
       <div class="conversation"></div>
       <div>{{ task.title }}</div>
       <div>chat</div>
     </router-link>
     <div v-for="(cmp, idx) in task.cols" :key="idx">
-      <component :is="cmp.type" :value="cmp.value"></component>
+      <component :is="cmp.type" :task="task" :value="cmp.value" @setStatus="setStatus" />
     </div>
     <!-- </div> -->
     <!-- dynamic components -->
@@ -16,29 +16,30 @@
 </template>
 
 <script>
-import memberPicker from "./member-picker.vue";
-import datePicker from "./date-picker.vue";
-import statusPicker from "./status-picker.vue";
+import memberPicker from './member-picker.vue'
+import datePicker from './date-picker.vue'
+import statusPicker from './status-picker.vue'
 
 export default {
-  name: "task-preview",
+  name: 'task-preview',
   props: {
     task: Object,
   },
   methods: {
-    setCurrTask() {
+    setStatus(status, task) {
       this.$store.dispatch({
-          type: 'setCurrTask',
-          task: this.task
-      })
-    }
+        type: "setStatus",
+        status,
+        task,
+      });
+    },
   },
   components: {
     datePicker,
     memberPicker,
     statusPicker,
   },
-};
+}
 </script>
 
 <style>
@@ -63,6 +64,6 @@ i {
 }
 
 .title-chat {
-  display:flex;
+  display: flex;
 }
 </style>

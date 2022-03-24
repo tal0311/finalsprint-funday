@@ -25,7 +25,7 @@ async function query(filterBy) {
   console.log('query board')
   // var queryStr = (!filterBy) ? '' : `?name=${filterBy.name}&sort=anaAref`
   // return httpService.get(`board${queryStr}`)
-  return await  storageService.query(KEY)
+  return await storageService.query(KEY)
 }
 
 async function getById(boardId) {
@@ -41,18 +41,17 @@ async function add(board) {
     return updatedBoard
   }
   // const addedboard = await httpService.post(`board`, board)
-  
+
   // board.byUser = userService.getLoggedinUser()
   // board.aboutUser = await userService.getById(board.aboutUserId)
   const addedboard = await storageService.post(KEY, board)
-  
+
   return addedboard
 }
 
-
 async function save(board) {
-      if (board._id) return storageService.put(KEY, board)
-    return await storageService.post(KEY, board)
+  if (board._id) return storageService.put(KEY, board)
+  return await storageService.post(KEY, board)
 }
 
 async function remove(boardId) {
@@ -97,7 +96,6 @@ function getEmptyGroup() {
         ],
       },
     ],
-    groupColor: utilService.getRandomColor(),
   }
 }
 
@@ -125,10 +123,10 @@ function getEmptyTask(){
 // This IIFE functions for Dev purposes
 // It allows testing of real time updates (such as sockets) by listening to storage events
 // (async () => {
-  //   var boards = await storageService.query('board')
-  
-  //   // Dev Helper: Listens to when localStorage changes in OTHER browser
-  //   window.addEventListener('storage', async () => {
+//   var boards = await storageService.query('board')
+
+//   // Dev Helper: Listens to when localStorage changes in OTHER browser
+//   window.addEventListener('storage', async () => {
 //     console.log('Storage updated');
 //     const freshboards = await storageService.query('board')
 //     if (freshboards.length === boards.length + 1 ){
