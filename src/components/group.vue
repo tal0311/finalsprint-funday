@@ -11,6 +11,8 @@
 import tasksList from './tasks-list.vue'
 export default {
   name: 'group-cmp',
+  emits: ['updateGroup'],
+
   props: {
     group: Object,
   },

@@ -11,6 +11,7 @@
     <el-button type="success">More</el-button>
     <el-button type="info">Add View</el-button>
   </el-row>
+<hr />
 
 <div class="flex flex-wrap items-center">
     <el-dropdown split-button type="primary" @click="addNewTask">
@@ -23,7 +24,7 @@
     </el-dropdown>
   </div>
 
-    <add-group-task @addGroup="currBoard" @updateGroup="currBoard"></add-group-task>
+    <add-group-task @updateGroup="currBoard"></add-group-task>
 
   <section class="view-board">
     <p>Main Table</p>
@@ -60,7 +61,6 @@ export default {
  
 
   name: "board-details",
-  emits: ['addGroup', 'updateGroup'],
   components: {
     groupCmp,
     addGroupTask

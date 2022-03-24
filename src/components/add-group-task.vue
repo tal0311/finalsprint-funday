@@ -1,9 +1,5 @@
 <template>
   <hr />
-  <button @click="addNewTask">new</button
-  ><button @click="openOptions">V</button>
-  <hr />
-
   <div v-if="isOptions">
     <ul>
       <li @click="addGroup">new group</li>
