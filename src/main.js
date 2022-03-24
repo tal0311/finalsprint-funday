@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import store from './store'
 import router from './router'
-import ElementPlus from 'element-plus'
+import ElementPlus, { ElIcon } from 'element-plus'
 import 'element-plus/dist/index.css'
 import 'element-plus/es/components/message/style/css'
 // import ElementUI from 'element-ui'
@@ -17,5 +17,6 @@ const app = createApp(App)
 app.use(router)
 app.use(ElementPlus)
 // app.use(ElementUI)
+
 app.use(store)
 app.mount('#app')

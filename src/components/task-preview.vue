@@ -1,8 +1,9 @@
 <template>
   <!-- task title -->
   <div class="task-preview flex space-between">
-    <task-options v-if="isOptions"></task-options>
+    <!-- <task-options v-if="isOptions"></task-options> -->
     <div class="side-indicator" @click="setIsOptions">V</div>
+    <div class="remove-task btn" @click="removeTask">X</div>
       <div class="task-title" contenteditable="true" @blur="updateTask(task, $event)">{{ task.title }}</div>
     <router-link :to="'/board/b101/task/' + task.id" class="title-chat flex space-between">
       <div>chat</div>
@@ -45,6 +46,13 @@ export default {
       const {boardId, groupId, task} = await this.$store.dispatch({type: 'findTask', boardId: board._id, taskId: newTask.id})
       task.title = $event.target.innerText
       await this.$store.dispatch({type: 'updateTask', boardId, groupId, task})
+      this.$emit('updateTask')
+    },
+    async removeTask(){
+      const taskToDelete = this.task
+      const board = this.$store.getters.currBoard
+      const {boardId, groupId, task} = await this.$store.dispatch({type: 'findTask', boardId: board._id, taskId: taskToDelete.id})
+      await this.$store.dispatch({type:'removeTask', boardId, groupId, task})
       this.$emit('updateTask')
     }
 
