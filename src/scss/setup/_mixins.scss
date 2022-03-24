@@ -9,7 +9,19 @@
 }
 @mixin hoverHeader {
   background-color: $ClrHover;
+  border-radius: 0.3em;
 }
 @mixin boardTitle {
   font-size: 3rem;
+}
+
+@mixin hoverToEditTxt {
+  outline: dashed #3333 2px;
+}
+
+@mixin headerBtn {
+  padding: toRem(8) toRem(15);
+  background-color: transparent;
+  border: none;
+  border: 1px solid transparent;
 }
