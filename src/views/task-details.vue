@@ -1,6 +1,10 @@
 <template>
-  <section class="task-details">
-    <button>x</button>
+  <section v-if="task" class="task-details">
+    <router-link  :to="'/board/' + boardId">
+      <button>x</button>
+    </router-link>
+    <br>
+    <br>
     {{ task }}
 
     <!-- <ul>
@@ -23,6 +27,7 @@
       <button @click="activeTab = 'taskFiles'">Task Files</button>
       <button @click="activeTab = 'activityLog'">Activity Log</button>
       <hr />
+
       <!-- dynamic component -->
       <task-updates v-if="activeTab === 'taskUpdates'" />
       <task-files v-if="activeTab === 'taskFiles'" />
@@ -46,28 +51,28 @@ export default {
   data() {
     return {
       task: null,
+      boardId: null,
       activeTab: "taskUpdates",
     };
   },
   methods: {},
   computed: {
-    // task() {
-    //   return this.$store.getters.currTask;
-    // },
+    task() {
+      return this.$store.getters.currTask;
+    },
     activities() {
       return this.$store.getters.boards.activities;
     },
   },
-  async created() {
-    // console.log(this.$route.params)
-    const { taskId } = this.$route.params.id;
-    try {
-      const task = await taskService.getById(taskId)
-      this.task = task
-      console.log(this.task)
-    } catch (error) {
-      
-    }
+  created() {
+    const { boardId, taskId } = this.$route.params;
+    this.boardId = boardId
+    // console.log(boardId, taskId)
+    this.$store.commit({
+      type: "setCurrTask",
+      boardId,
+      taskId,
+    });
   },
   components: {
     taskUpdates,

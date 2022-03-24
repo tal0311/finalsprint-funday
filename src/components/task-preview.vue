@@ -2,17 +2,13 @@
   <!-- task title -->
   <div class="task-preview">
     <div class="side-indicator">V</div>
-    <router-link
-      :to="'/board/b101/task/' + task.id"
-      class="title-chat"
-      @click="setCurrTask"
-    >
+    <router-link :to="'/board/b101/task/' + task.id" class="title-chat">
       <div class="conversation"></div>
       <div>{{ task.title }}</div>
       <div>chat</div>
     </router-link>
     <div v-for="(cmp, idx) in task.cols" :key="idx">
-      <component :is="cmp.type" :value="cmp.value"></component>
+      <component :is="cmp.type" :task="task" :value="cmp.value" @setStatus="setStatus" />
     </div>
     <!-- </div> -->
     <!-- dynamic components -->
@@ -30,11 +26,12 @@ export default {
     task: Object,
   },
   methods: {
-    setCurrTask() {
+    setStatus(status, taskId) {
       this.$store.dispatch({
-        type: 'setCurrTask',
-        task: this.task,
-      })
+        type: "setStatus",
+        status,
+        taskId,
+      });
     },
   },
   components: {
