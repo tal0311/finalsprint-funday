@@ -8,7 +8,7 @@
       <div>chat</div>
     </router-link>
     <div v-for="(cmp, idx) in task.cols" :key="idx">
-      <component :is="cmp.type"></component>
+      <component :is="cmp.type" :value="cmp.value"></component>
     </div>
     <!-- </div> -->
     <!-- dynamic components -->
