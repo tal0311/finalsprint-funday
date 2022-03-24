@@ -188,7 +188,8 @@ export const boardStore = {
         // mutate state
       } catch (error) { }
     },
-    async setStatus({commit}, {status, taskId}) {
+    async setStatus({commit}, {status, task}) {
+      // task.cols.map(col => )
       try {
         const newStatus = await boardService.save()
       } catch (error) {

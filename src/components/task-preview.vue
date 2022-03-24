@@ -26,11 +26,11 @@ export default {
     task: Object,
   },
   methods: {
-    setStatus(status, taskId) {
+    setStatus(status, task) {
       this.$store.dispatch({
         type: "setStatus",
         status,
-        taskId,
+        task,
       });
     },
   },

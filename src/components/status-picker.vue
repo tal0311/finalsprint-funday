@@ -29,7 +29,7 @@ export default {
       this.menuOpen = !this.menuOpen
     },
     setStatus(status) {
-      this.$emit('setStatus', status, this.task.id)
+      this.$emit('setStatus', status, this.task)
     }
   },
   computed: {},
