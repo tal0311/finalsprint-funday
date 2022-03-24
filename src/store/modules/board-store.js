@@ -19,9 +19,11 @@ export const boardStore = {
     // GROUP
     setCurrGroup() {},
     removeGroup() {},
+
+    // !not in use
     addGroupToBoard({ state }, { boardToUpdate }) {
       const idx = state.boards.findIndex(
-        board => board._id === boardToUpdate._id
+        (board) => board._id === boardToUpdate._id
       )
       state.boards.splice(idx, 1, boardToUpdate)
     },
@@ -49,7 +51,7 @@ export const boardStore = {
     },
   },
   actions: {
-    // BOARDS 
+    // BOARDS
     async loadBoards({ commit, state }) {
       try {
         commit({
@@ -108,14 +110,24 @@ export const boardStore = {
         })
       }
     },
+    async removeGroup({ state, commit }, { groupId }) {
+      console.log('group id :', groupId, 'currBoard:', state.currBoard)
 
-    async updateGroup( { dispatch , state}, {groupToUpdate}) {
+      try {
+        const board = await boardService.getById(state.currBoard._id)
+        const idx = board.groups.findIndex((group) => group.id === groupId)
+        board.groups.splice(idx, 1)
+        
+        boardService.save(board)
+      } catch (error) {}
+    },
+
+    async updateGroup({ dispatch, state }, { groupToUpdate }) {
       try {
         const board = JSON.parse(JSON.stringify(state.currBoard))
         await boardService.saveGroup(board, groupToUpdate)
         dispatch('loadBoards')
-      }
-      catch (err) {
+      } catch (err) {
         console.log('Problem with saving group', err)
       }
     },
@@ -143,8 +155,11 @@ export const boardStore = {
         board.groups.push(emptyGroup)
         const boardToUpdate = await boardService.save(board)
         // mutate state
-        dispatch({ type: 'saveBoard', board: JSON.parse(JSON.stringify(boardToUpdate)) })
-        commit({type: 'setCurrBoard', board })
+        dispatch({
+          type: 'saveBoard',
+          board: JSON.parse(JSON.stringify(boardToUpdate)),
+        })
+        commit({ type: 'setCurrBoard', board })
       } catch (error) {
         console.log('error during adding group to board', error)
       }

@@ -21,7 +21,6 @@ export default {
   },
   methods: {
     addNewTask() {
-      console.log('new task')
       this.$store.dispatch({ type: 'addTask' })
     },
     openOptions() {
