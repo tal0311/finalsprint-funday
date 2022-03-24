@@ -13,7 +13,8 @@ export const boardService = {
   getById,
   save,
   // saveGroup,
-  getEmptyGroup
+  getEmptyGroup,
+  getEmptyTask
 }
 
 // More ways to send query params:
@@ -97,6 +98,27 @@ function getEmptyGroup() {
       },
     ],
     groupColor: utilService.getRandomColor(),
+  }
+}
+
+function getEmptyTask(){
+  return {
+    id: 't' + utilService.makeId,
+    title: "New Task",
+    cols: [
+      {
+        type: "status-picker",
+        value: null
+      },
+      {
+        type: "member-picker",
+        value: []
+      },
+      {
+        type: "date-picker",
+        value: null
+      }
+    ]
   }
 }
 

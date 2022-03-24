@@ -83,7 +83,7 @@ export default {
 //   return this.board
 // }
     addNewTask(){
-      // this.$store.dispatch({ type: 'addTask', board: this.board})
+      this.$store.dispatch({ type: 'addTask', board: this.board, groupId: 0})
       alert('new task')
     },
     addGroup() {

@@ -9,6 +9,8 @@
 
 <script>
 export default {
+  emits: ['addGroup'],
+  name: 'add-group-task',
   data() {
     return {
       isOptions: false,

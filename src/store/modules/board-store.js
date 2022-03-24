@@ -9,7 +9,7 @@ export const boardStore = {
   },
   getters: {
     boards(state) {
-      console.log(state.boards)
+      // console.log(state.boards)
       return JSON.parse(JSON.stringify(state.boards))
     },
     currBoard(state) {
@@ -36,7 +36,7 @@ export const boardStore = {
     setBoards(state, { boards }) {
       console.log(boards)
       state.boards = boards
-      console.log('setboard:', state.boards)
+      // console.log('setboard:', state.boards)
     },
     removeBoard(state, { _id }) {
       const idx = state.boards.findIndex((board) => board._id === _id)
@@ -51,12 +51,11 @@ export const boardStore = {
     },
     setCurrBoard(state, { board }) {
       state.currBoard = board
-      console.log(state.currBoard)
+      // console.log(state.currBoard)
     },
     setCurrTask(state, {task}) {
-      // console.log(task)
       state.currTask = task
-      console.log('yay', state.currTask)
+      // console.log(state.currTask)
     }
   },
   actions: {
@@ -109,7 +108,8 @@ export const boardStore = {
     },
     async getBoardById({ commit }, { boardId }) {
       try {
-        const board = await boardService.getById(boardId)
+        let board = await boardService.getById(boardId)
+        board = JSON.parse(JSON.stringify(board))
         commit({ type: 'setCurrBoard', board })
       } catch (err) {
         console.log('', err)
@@ -119,7 +119,24 @@ export const boardStore = {
         })
       }
     },
-    async removeGroup({ state, commit }, { groupId }) {
+
+    // GROUP
+
+    async addGroup({ commit }, { board }) {
+      try {
+        // update model
+        board = JSON.parse(JSON.stringify(board))
+        let emptyGroup = boardService.getEmptyGroup()
+
+        board.groups.push(emptyGroup)
+        await boardService.save(board)
+        commit({ type: 'setCurrBoard', board })
+      } catch (error) {
+        console.log('error during adding group to board', error)
+      }
+    },
+
+    async removeGroup({ state }, { groupId }) {
       console.log('group id :', groupId, 'currBoard:', state.currBoard)
 
       try {
@@ -148,6 +165,7 @@ export const boardStore = {
         console.log('Problem with saving group', err)
       }
     },
+
     //TASK
     async saveTaskUpdate({ dispatch }, { updateText }) {
       try {
@@ -161,32 +179,22 @@ export const boardStore = {
         })
       }
     },
-    async addGroup({ dispatch, commit }, { board }) {
+    
+    async addTask({ commit } , { board , groupId}) {
+      console.log('add task', board, groupId)
       try {
-        // let board = await boardService.getById(boardId)
         // update model
         board = JSON.parse(JSON.stringify(board))
-        let emptyGroup = boardService.getEmptyGroup()
-
-        board.groups.push(emptyGroup)
-        const boardToUpdate = await boardService.save(board)
-        // mutate state
-        dispatch({
-          type: 'saveBoard',
-          board: JSON.parse(JSON.stringify(boardToUpdate)),
-        })
+        const len = board.groups[groupId].tasks.push(boardService.getEmptyTask())
+        const task = board.groups[groupId].tasks[len-1]
+        await boardService.save(board)
         commit({ type: 'setCurrBoard', board })
-      } catch (error) {
+        state.currTask = task
+        console.log(state.currTask)
+      }
+      catch (error) {
         console.log('error during adding group to board', error)
       }
-    },
-
-    async addTask({ commit }) {
-      console.log('add task')
-      try {
-        // update model
-        // mutate state
-      } catch (error) {}
-    },
-  },
+    }
+  }
 }
