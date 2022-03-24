@@ -101,7 +101,7 @@ function getEmptyGroup() {
 
 function getEmptyTask(){
   return {
-    id: 't' + utilService.makeId,
+    id: 't' + utilService.makeId(),
     title: "New Task",
     cols: [
       {

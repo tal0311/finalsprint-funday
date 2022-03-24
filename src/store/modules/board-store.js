@@ -53,16 +53,11 @@ export const boardStore = {
       console.log(state.currBoard);
     },
 
-    setCurrTask(state, { boardId, taskId }) {
-      // let board = state.boards.find(board => board._id === boardId);
-      // board = JSON.parse(JSON.stringify(board))
-      // const group = board.groups.find(group => 
-      //    group.tasks.find(task => task.id === taskId)
-      // );
-      // const task = group.tasks.find(task => task.id === taskId)
+    setCurrTask(state, { task }) {
       state.currTask = task
-      console.log(state.currTask)
+      // console.log(state.currTask)
     },
+
   },
   actions: {
     // BOARDS
@@ -201,18 +196,6 @@ export const boardStore = {
       }
     },
     //TASK
-    async saveTaskUpdate({ dispatch }, { updateText }) {
-      try {
-        await boardService.save(updateText);
-        dispatch('loadBoards');
-      } catch (err) {
-        console.log('Couldnt save board', err);
-        commit({
-          type: 'setIsError',
-          isError: true,
-        });
-      }
-    },
 
     async addTask({ commit }, { board, groupId }) {
       console.log('add task', board, groupId)
@@ -228,6 +211,35 @@ export const boardStore = {
       }
       catch (error) {
         console.log('error during adding group to board', error)
+      }
+    },
+
+    async findTask({commit}, { boardId, taskId }) {
+      try {
+
+      let board = await boardService.getById(boardId);
+      board = JSON.parse(JSON.stringify(board))
+      const group = board.groups.find(group =>
+        group.tasks.find(task => task.id === taskId)
+      );
+      const task = group.tasks.find(task => task.id === taskId)
+      commit({type: 'setCurrTask', task})
+      }
+      catch(err){
+        console.log('error finding task', err);
+      }
+    },
+
+    async saveTaskUpdate({ dispatch }, { updateText }) {
+      try {
+        await boardService.save(updateText);
+        dispatch('loadBoards');
+      } catch (err) {
+        console.log('Couldnt save board', err);
+        commit({
+          type: 'setIsError',
+          isError: true,
+        });
       }
     },
 
