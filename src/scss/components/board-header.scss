@@ -1,17 +1,52 @@
 .header {
   background-color: rgb(206, 238, 206);
-  .board-title {
-    font-size: 2rem;
-    font-weight: 100;
-    color: black;
+  padding: toRem(16) toRem(30) 0 toRem(30);
+  .btn-container {
+    & > * {
+      @include headerBtn;
+      &:hover {
+        @include hoverHeader;
+      }
+    }
+  }
+  .active {
+    height: 1px;
+    background-color: blue;
+    width: ;
+  }
+
+  .description {
+    padding: 2px;
+    width: 70%;
     &:hover {
       @include hoverToEditTxt;
     }
   }
-  .description {
-    padding: 2px;
-    &:hover {
-      @include hoverToEditTxt;
+  .board-header-top {
+    width: 100%;
+
+    .board-title {
+      line-height: toRem(40);
+      font-size: 2rem;
+      font-weight: 100;
+      color: black;
+      &:hover {
+        outline: solid #3333 2px;
+      }
+    }
+
+    &.flex {
+      justify-content: space-between;
+      .board-actions {
+        flex-basis: 50%;
+        &.flex {
+          padding: 2px;
+          justify-content: space-between;
+        }
+      }
+      .board-title {
+        flex-basis: 50%;
+      }
     }
   }
 }

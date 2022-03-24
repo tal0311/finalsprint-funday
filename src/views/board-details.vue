@@ -1,17 +1,27 @@
 <template>
   <section v-if="board" class="board-details">
     <div class="header">
-      <h1 class="board-title">{{ board.title }}</h1>
-      <p class="description">
-        {{ board.description }}
-      </p>
-      <hr />
-      <el-row class="mb-4">
-        <el-button>Main Table</el-button>
-        <el-button type="primary">Timeline</el-button>
-        <el-button type="success">More</el-button>
-        <el-button type="info">Add View</el-button>
-      </el-row>
+      <div class="">
+        <div class="board-header-top flex">
+          <h1 class="board-title">{{ board.title }}</h1>
+          <div class="board-actions flex">
+            <button>i</button>
+            <button>i</button>
+            <button>i</button>
+            <button>i</button>
+          </div>
+        </div>
+        <p class="description">
+          {{ board.description }}
+        </p>
+        <hr />
+        <div class="btn-container">
+          <button>Main Table</button>
+          <button type="primary">Timeline</button>
+          <button type="success">More</button>
+          <button type="info">Add View</button>
+        </div>
+      </div>
       <hr />
 
       <div class="flex flex-wrap items-center">
@@ -67,6 +77,7 @@ export default {
   components: {
     groupCmp,
     addGroupTask,
+    ArrowDown,
   },
   created() {
     let { boardId } = this.$route.params
