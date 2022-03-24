@@ -1,18 +1,22 @@
 <template>
   <section class="task-details">
     <button>x</button>
+    {{ task }}
+
     <!-- <ul>
       <li v-for="person in task.person" :key="person._id">
         {{ person.fullname }}
       </li>
     </ul> -->
-    <div class="subscribers">
+
+    <!-- <div class="subscribers">
       <span v-for="person in task.person" :key="person._id">
         {{ person.fullname }}, 
       </span>
-    </div>
+    </div> -->
+
     <div class="title">
-      <h2>{{ task.title }}</h2>
+      <!-- <h2>{{ task.title }}</h2> -->
       <br />
       <br />
       <button @click="activeTab = 'taskUpdates'">Task Updates</button>
@@ -22,7 +26,10 @@
       <!-- dynamic component -->
       <task-updates v-if="activeTab === 'taskUpdates'" />
       <task-files v-if="activeTab === 'taskFiles'" />
-      <activity-log v-if="activeTab === 'activityLog'" :activities="activities" />
+      <activity-log
+        v-if="activeTab === 'activityLog'"
+        :activities="activities"
+      />
     </div>
   </section>
 </template>
@@ -38,19 +45,30 @@ export default {
   props: {},
   data() {
     return {
+      task: null,
       activeTab: "taskUpdates",
     };
   },
   methods: {},
   computed: {
-    task() {
-      return this.$store.getters.boards.groups[0].tasks[0];
-    },
+    // task() {
+    //   return this.$store.getters.currTask;
+    // },
     activities() {
-      return this.$store.getters.boards.activities
+      return this.$store.getters.boards.activities;
+    },
+  },
+  async created() {
+    // console.log(this.$route.params)
+    const { taskId } = this.$route.params.id;
+    try {
+      const task = await taskService.getById(taskId)
+      this.task = task
+      console.log(this.task)
+    } catch (error) {
+      
     }
   },
-  created() {},
   components: {
     taskUpdates,
     taskFiles,

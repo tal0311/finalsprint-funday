@@ -8,6 +8,7 @@ export const taskService = {
   add,
   query,
   remove,
+  getById,
 }
 
 query()

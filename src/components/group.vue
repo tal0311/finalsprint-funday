@@ -19,6 +19,7 @@ import groupOptions from './group-options.vue'
 import GroupOptions from './group-options.vue'
 export default {
   name: 'group-cmp',
+  emits: ['updateGroup'],
   props: {
     group: Object,
   },
@@ -48,6 +49,7 @@ export default {
       const groupToUpdate = JSON.parse(JSON.stringify(group))
       groupToUpdate.title = $event.target.innerText
       this.$store.dispatch({ type: 'updateGroup', groupToUpdate })
+      this.$emit('updateGroup')
     },
   },
   computed: {

@@ -29,9 +29,8 @@
         <li v-for="board in boards" :key="board">
           <router-link
             :to="'/board/' + board._id"
-            @click="setCurrBoard(board)"
-            >{{ board.title }}</router-link
-          >
+            >{{ board.title }}</router-link>
+            <!-- @click="setCurrBoard(board)" -->
         </li>
       </ul>
     </div>
@@ -49,9 +48,9 @@ export default {
     };
   },
   methods: {
-    setCurrBoard(board) {
-      this.$store.commit({ type: "setCurrBoard", board });
-    },
+    // setCurrBoard(board) {
+    //   this.$store.commit({ type: "setCurrBoard", board });
+    // },
   },
   computed: {
     boards() {

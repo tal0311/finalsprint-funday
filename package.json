@@ -23,6 +23,10 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.2.2",
+    "babel-plugin-component": "^1.1.1",
+    "unplugin-auto-import": "^0.6.6",
+    "unplugin-element-plus": "^0.3.2",
+    "unplugin-vue-components": "^0.18.4",
     "vite": "^2.8.4"
   }
 }

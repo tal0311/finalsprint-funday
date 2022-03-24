@@ -24,13 +24,13 @@ const router = createRouter({
       component: boardList,
     },
     {
-      path: '/board/:id?',
+      path: '/board/:boardId?',
       name: 'board-details',
       component: boardDetails,
     },
     {
-      // path: '/task/:id?',
-      path: '/task/details',
+      path: '/board/b101/task/:taskId?',
+      // path: '/task/details',
       name: 'task-details',
       component: taskDetails,
     },
