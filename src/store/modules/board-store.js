@@ -118,14 +118,18 @@ export const boardStore = {
       }
     },
 
-    async updateGroup( { dispatch , state}, {groupToUpdate}) {
+    async updateGroup( { state}, {groupToUpdate}) {
       try {
         const board = JSON.parse(JSON.stringify(state.currBoard))
-        await boardService.saveGroup(board, groupToUpdate)
-        const boardToUpdate = await boardService.save(board)
-        dispatch({ type: 'saveBoard', board: JSON.parse(JSON.stringify(boardToUpdate)) })
+        const idx = board.groups.findIndex(boardGroup => boardGroup.id === groupToUpdate.id)
+        if (idx === -1) {
+          board.groups.push(groupToUpdate)
+        }
+        else {
+          board.groups.splice(idx, 1, groupToUpdate)
+        }
+         await boardService.save(board)
         commit({type: 'setCurrBoard', board })
-        // dispatch('loadBoards')
       }
       catch (err) {
         console.log('Problem with saving group', err)
