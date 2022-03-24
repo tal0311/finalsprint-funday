@@ -1,0 +1,24 @@
+.task-preview {
+    background-color: $clr6;
+    margin: 0.2rem;
+    align-items: center;
+
+    .task-title {
+        margin-inline-end: 5px;
+    }
+
+    > * {
+        margin-inline: 1rem;
+    }
+    .title-chat {
+        width: 400px;
+    }
+    .side-indicator {
+        width: 10px;
+        height: 100%;
+        background: red;
+    }
+    i {
+        color: black;
+    }
+}

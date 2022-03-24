@@ -214,23 +214,42 @@ export const boardStore = {
       }
     },
 
-    async findTask({commit}, { boardId, taskId }) {
+    async findTask({ commit }, { boardId, taskId }) {
+      console.log('boardId, taskId', boardId, taskId);
       try {
-
-      let board = await boardService.getById(boardId);
-      board = JSON.parse(JSON.stringify(board))
-      const group = board.groups.find(group =>
-        group.tasks.find(task => task.id === taskId)
-      );
-      const task = group.tasks.find(task => task.id === taskId)
-      commit({type: 'setCurrTask', task})
+        let board = await boardService.getById(boardId);
+        board = JSON.parse(JSON.stringify(board))
+        const group = board.groups.find(group =>
+          group.tasks.find(task => task.id === taskId)
+        );
+        const task = group.tasks.find(task => task.id === taskId)
+        commit({ type: 'setCurrTask', task })
+        // console.log('{ boardId: board._id, groupId: group.id, taskId: task.id }',board._id, group.id, task.id);
+        return { boardId: board._id, groupId: group.id, task }
       }
-      catch(err){
+      catch (err) {
         console.log('error finding task', err);
       }
     },
 
-    async saveTaskUpdate({ dispatch }, { updateText }) {
+    async updateTask({ commit }, { boardId, groupId, task }) {
+      try {
+        let board = await boardService.getById(boardId)
+        board = JSON.parse(JSON.stringify(board))
+        let gIdx = board.groups.findIndex(dbGroup => dbGroup.id === groupId)
+        const tIdx = board.groups[gIdx].tasks.findIndex(dbTask => dbTask.id === task.id)
+        console.log('task', task);
+        board.groups[gIdx].tasks.splice(tIdx, 1, task)
+        await boardService.save(board)
+        commit({ type: 'setCurrBoard', board })
+      }
+      catch (err) {
+        console.log('Problem with saving group', err)
+      }
+
+    },
+
+    async saveTaskUpdate({ dispatch, commit }, { updateText }) {
       try {
         await boardService.save(updateText);
         dispatch('loadBoards');

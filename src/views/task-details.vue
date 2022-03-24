@@ -68,11 +68,12 @@ export default {
     const { boardId, taskId } = this.$route.params;
     this.boardId = boardId
     // console.log(boardId, taskId)
-    this.$store.dispatch({
+    const task = this.$store.dispatch({
       type: "findTask",
       boardId,
       taskId,
     });
+    this.$store.commit({type: 'setCurrTask', task})
   },
   components: {
     taskUpdates,
