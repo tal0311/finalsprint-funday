@@ -36,7 +36,7 @@ export default {
   methods: {
     async update() {
       await this.$store.dispatch({
-        type: "saveUpdate",
+        type: "saveTaskUpdate",
         text: this.updateText,
       });
     },

@@ -1,5 +1,7 @@
 
 export const utilService = {
+    saveToStorage,
+    loadFromStorage,
     delay,
     getRandomInt,
     makeId
@@ -9,6 +11,15 @@ function delay(ms = 1500) {
     return new Promise(resolve => {
         setTimeout(resolve, ms)
     })
+}
+
+function saveToStorage(key, value) {
+    localStorage.setItem(key, JSON.stringify(value) || null);
+}
+
+function loadFromStorage(key) {
+    let data = localStorage.getItem(key);
+    return (data) ? JSON.parse(data) : undefined;
 }
 
 function getRandomInt(min, max) {

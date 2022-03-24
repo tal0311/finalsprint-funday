@@ -5,6 +5,7 @@ export const boardStore = {
   state: {
     boards: [],
     currBoard: {},
+    currTask: {},
   },
   getters: {
     boards(state) {
@@ -13,6 +14,9 @@ export const boardStore = {
     },
     currBoard(state) {
       return JSON.parse(JSON.stringify(state.currBoard))
+    },
+    currTask(state) {
+      return JSON.parse(JSON.stringify(state.currTask))
     },
   },
   mutations: {
@@ -41,6 +45,11 @@ export const boardStore = {
     setCurrBoard(state, { board }) {
       state.currBoard = board
     },
+    setCurrTask(state, {task}) {
+      // console.log(task)
+      state.currTask = task
+      console.log('yay', state.currTask)
+    }
   },
   actions: {
     async loadBoards({ commit, state }) {
@@ -113,5 +122,9 @@ export const boardStore = {
         })
       }
     },
+    setCurrTask({commit}, {task}) {
+      console.log(task)
+      commit({type: 'setCurrTask', task})
+    }
   },
 }
