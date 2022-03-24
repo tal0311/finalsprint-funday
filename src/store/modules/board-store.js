@@ -243,13 +243,6 @@ export const boardStore = {
       }
     },
 
-    async setStatus({ commit }, { status, task }) {
-      // task.cols.map(col => )
-      try {
-        const newStatus = await boardService.save()
-      } catch (error) {
-        console.log(error)
-      }
-    }
+
   },
 };
