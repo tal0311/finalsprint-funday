@@ -1,4 +1,5 @@
 .board-list{
+    
     position:absolute;
     left:66px;
     background-color: $clr4;
@@ -42,7 +43,14 @@
                 margin: 0 8px;
                 font-size: 0.875rem;
             }
+            + .bl-btn{
+                border: 1px solid black;
+                &:hover{
+                    background-color: $clr7;
+                }
+            }
         }
+
 
     }
 
