@@ -242,13 +242,28 @@ export const boardStore = {
         board = JSON.parse(JSON.stringify(board))
         let gIdx = board.groups.findIndex(dbGroup => dbGroup.id === groupId)
         const tIdx = board.groups[gIdx].tasks.findIndex(dbTask => dbTask.id === task.id)
-        console.log('task', task);
         board.groups[gIdx].tasks.splice(tIdx, 1, task)
         await boardService.save(board)
         commit({ type: 'setCurrBoard', board })
       }
       catch (err) {
-        console.log('Problem with saving group', err)
+        console.log('Problem with updating task', err)
+      }
+
+    },
+    async removeTask({ commit }, { boardId, groupId, task }) {
+      try {
+        let board = await boardService.getById(boardId)
+        board = JSON.parse(JSON.stringify(board))
+        let gIdx = board.groups.findIndex(dbGroup => dbGroup.id === groupId)
+        const tIdx = board.groups[gIdx].tasks.findIndex(dbTask => dbTask.id === task.id)
+        board.groups[gIdx].tasks.splice(tIdx, 1)
+        console.log('gIdx, tIdx', gIdx, tIdx);
+        await boardService.save(board)
+        commit({ type: 'setCurrBoard', board })
+      }
+      catch (err) {
+        console.log('Problem with removing task', err)
       }
 
     },
