@@ -16,12 +16,12 @@
 </template>
 
 <script>
-import memberPicker from "./member-picker.vue";
-import datePicker from "./date-picker.vue";
-import statusPicker from "./status-picker.vue";
+import memberPicker from './member-picker.vue'
+import datePicker from './date-picker.vue'
+import statusPicker from './status-picker.vue'
 
 export default {
-  name: "task-preview",
+  name: 'task-preview',
   props: {
     task: Object,
   },
@@ -39,7 +39,7 @@ export default {
     memberPicker,
     statusPicker,
   },
-};
+}
 </script>
 
 <style>

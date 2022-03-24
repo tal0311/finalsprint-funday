@@ -1,5 +1,5 @@
-import { boardService } from '../../services/board-service.js';
-
+import { boardService } from '../../services/board-service.js'
+import { utilService } from '../../services/util-service.js'
 export const boardStore = {
   strict: true,
   state: {
@@ -34,9 +34,8 @@ export const boardStore = {
 
     // BOARD
     setBoards(state, { boards }) {
-      console.log(boards);
-      state.boards = boards;
-      console.log('setboard:', state.boards);
+      state.boards = boards
+      
     },
     removeBoard(state, { _id }) {
       const idx = state.boards.findIndex((board) => board._id === _id);
@@ -124,29 +123,61 @@ export const boardStore = {
         });
       }
     },
-    async removeGroup({ state, commit }, { groupId }) {
-      console.log('group id :', groupId, 'currBoard:', state.currBoard);
 
+    async duplicateGroup({ dispatch, state, commit }, { groupId }) {
       try {
-        const board = await boardService.getById(state.currBoard._id);
-        const idx = board.groups.findIndex((group) => group.id === groupId);
-        board.groups.splice(idx, 1);
+        const board = await boardService.getById(state.currBoard._id)
+        var toDuplicate = board.groups.find((group) => group.id === groupId)
+        const idx = board.groups.findIndex((group) => group.id === groupId)
+        var emptyGroup = boardService.getEmptyGroup()
+        emptyGroup = JSON.parse(JSON.stringify(toDuplicate))
+        emptyGroup.id = utilService.makeId()
+        board.groups.splice(idx, 0, emptyGroup)
 
-        boardService.save(board);
-      } catch (error) { }
+        const updatedBoard = await boardService.save(board)
+        dispatch({
+          type: 'saveBoard',
+          board: JSON.parse(JSON.stringify(updatedBoard)),
+        })
+        commit({ type: 'setCurrBoard', board: updatedBoard })
+      } catch (error) {
+        console.log('problem with duplicating board', error)
+      }
     },
 
-    async updateGroup({ state }, { groupToUpdate }) {
+    async removeGroup({ dispatch, state, commit }, { groupId }) {
+      console.log('group id :', groupId, 'currBoard:', state.currBoard)
+
       try {
-        const board = JSON.parse(JSON.stringify(state.currBoard));
-        await boardService.saveGroup(board, groupToUpdate);
-        const boardToUpdate = await boardService.save(board);
-        dispatch({ type: 'saveBoard', board: JSON.parse(JSON.stringify(boardToUpdate)) });
-        commit({ type: 'setCurrBoard', board });
-        // dispatch('loadBoards')
+        const board = await boardService.getById(state.currBoard._id)
+        const idx = board.groups.findIndex((group) => group.id === groupId)
+        board.groups.splice(idx, 1)
+
+        const savedBoard = await boardService.save(board)
+
+        dispatch({
+          type: 'saveBoard',
+          board: JSON.parse(JSON.stringify(savedBoard)),
+        })
+        commit({ type: 'setCurrBoard', board })
+      } catch (error) {
+        console.log('problem removing board', error)
       }
-      catch (err) {
-        console.log('Problem with saving group', err);
+    },
+
+    async updateGroup({commit, dispatch, state }, { groupToUpdate }) {
+      try {
+        const board = JSON.parse(JSON.stringify(state.currBoard))
+        await boardService.saveGroup(board, groupToUpdate)
+        const boardToUpdate = await boardService.save(board)
+        dispatch({
+          type: 'saveBoard',
+          board: JSON.parse(JSON.stringify(boardToUpdate)),
+        })
+        commit({ type: 'setCurrBoard', board }) //!commit??
+        // dispatch('loadBoards')
+      } catch (err) {
+        console.log('Problem with saving group', err)
       }
     },
     //TASK
