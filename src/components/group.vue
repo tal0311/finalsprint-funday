@@ -9,14 +9,13 @@
     >
       {{ group.title }}
     </div>
-    <tasks-list :tasks="group.tasks"></tasks-list>
+    <tasks-list :tasks="group.tasks" @updateTask="updateGroup(group, $event)"></tasks-list>
   </section>
 </template>
 
 <script>
 import tasksList from './tasks-list.vue'
 import groupOptions from './group-options.vue'
-
 export default {
   name: 'group-cmp',
   emits: ['updateGroup'],
@@ -37,7 +36,7 @@ export default {
     setIsOptions() {
       this.isOptions = !this.isOptions
     },
-
+    
     setGroupUpdate(value) {
       console.log('setGroupUpdate', value, this.group.id)
       if (value === 'remove') {
@@ -61,6 +60,7 @@ export default {
       this.$store.dispatch({ type: 'updateGroup', groupToUpdate })
       this.$emit('updateGroup')
     },
+
   },
   computed: {
     getTasks() {

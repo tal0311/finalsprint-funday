@@ -24,7 +24,7 @@
     </el-dropdown>
   </div>
 
-    <add-group-task @updateGroup="currBoard"></add-group-task>
+    <add-group-task @updateGroup="currBoard" @updateTask="currBoard"></add-group-task>
 
   <section class="view-board">
     <p>Main Table</p>
@@ -78,10 +78,7 @@ export default {
     };
   },
   methods: {
-//     currBoard(){
-//   this.board = this.$store.getters.currBoard
-//   return this.board
-// }
+
     addNewTask(){
       this.$store.dispatch({ type: 'addTask', board: this.board, groupId: 0})
     },

@@ -1,6 +1,6 @@
 <template>
   <section @click="toggleShow" class="status-picker">
-    <h4>status</h4>    
+    <h4>status</h4>
     <div v-if="menuOpen" class="picker-box">
       <div @click="setStatus('working')" class="working">Working on it</div>
       <div @click="setStatus('stuck')" class="stuck">Stuck</div>
@@ -16,6 +16,7 @@
 
 export default {
   name: "status-picker",
+  emits: ['updateTask'],
   props: {
     task: Object,
   },
@@ -26,21 +27,28 @@ export default {
   },
   methods: {
     toggleShow() {
-      this.menuOpen = !this.menuOpen
+      this.menuOpen = !this.menuOpen;
     },
-    setStatus(status) {
-      this.$emit('setStatus', status, this.task)
-    }
+    async setStatus(status) {
+      // this.$emit('setStatus', status, this.task)
+      const board = this.$store.getters.currBoard;
+      const { boardId, groupId, task } = await this.$store.dispatch({
+        type: "findTask",
+        boardId: board._id,
+        taskId: this.task.id,
+      });
+      task.cols[0].value = status;
+      await this.$store.dispatch({
+        type: "updateTask",
+        boardId,
+        groupId,
+        task,
+      });
+      this.$emit("updateTask");
+    },
   },
   computed: {},
   created() {},
   components: {},
 };
 </script>
-
-
-
-
-
-
-
