@@ -24,7 +24,7 @@ const router = createRouter({
       component: boardList,
     },
     {
-      path: '/board/:id?',
+      path: '/board/:boardId?',
       name: 'board-details',
       component: boardDetails,
     },

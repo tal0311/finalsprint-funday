@@ -1,6 +1,6 @@
-import { httpService } from './http-service'
-import { storageService } from './async-storage.service'
-import { userService } from './user-service-local'
+import { httpService } from '../http-service'
+import { storageService } from '../async-storage.service'
+import { userService } from '../user-service-local'
 // import { socketService, SOCKET_EVENT_group_ADDED } from './socket-service'
 console.log('group service')
 

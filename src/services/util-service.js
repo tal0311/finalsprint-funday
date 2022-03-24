@@ -3,6 +3,7 @@ export const utilService = {
     loadFromStorage,
     delay,
     getRandomInt,
+    getRandomColor,
     makeId
 }
 

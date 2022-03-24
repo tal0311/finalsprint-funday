@@ -27,6 +27,7 @@ export default {
       const groupToUpdate = JSON.parse(JSON.stringify(group))
       groupToUpdate.title = $event.target.innerText
       this.$store.dispatch({type: 'updateGroup', groupToUpdate} )
+      this.$emit('updateGroup')
     }
   },
   computed: {

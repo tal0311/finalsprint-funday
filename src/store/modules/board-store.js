@@ -107,7 +107,7 @@ export const boardStore = {
     },
     async getBoardById({ commit }, { boardId }) {
       try {
-        const board = await boardService.getBoardById(boardId)
+        const board = await boardService.getById(boardId)
         commit({ type: 'setCurrBoard', board })
       } catch (err) {
         console.log('', err)
@@ -122,7 +122,10 @@ export const boardStore = {
       try {
         const board = JSON.parse(JSON.stringify(state.currBoard))
         await boardService.saveGroup(board, groupToUpdate)
-        dispatch('loadBoards')
+        const boardToUpdate = await boardService.save(board)
+        dispatch({ type: 'saveBoard', board: JSON.parse(JSON.stringify(boardToUpdate)) })
+        commit({type: 'setCurrBoard', board })
+        // dispatch('loadBoards')
       }
       catch (err) {
         console.log('Problem with saving group', err)
@@ -141,10 +144,9 @@ export const boardStore = {
         })
       }
     },
-    async addGroup({ state, dispatch, commit }, { boardId }) {
-      console.log(boardId)
+    async addGroup({ dispatch, commit }, { board }) {
       try {
-        let board = await boardService.getById(boardId)
+        // let board = await boardService.getById(boardId)
         // update model
         board = JSON.parse(JSON.stringify(board))
         let emptyGroup = boardService.getEmptyGroup()
