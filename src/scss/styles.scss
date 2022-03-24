@@ -1,7 +1,7 @@
 // SETUP
 // @import 'setup/typography';
 @import 'setup/variables';
-// @import 'setup/mixins';
+@import 'setup/mixins';
 // @import 'setup/functions';
 
 // BASICS
@@ -12,7 +12,7 @@
 // COMPONENTS
 @import 'components/app-container.scss';
 @import 'components/app-sidebar.scss';
-@import 'components/board-details.scss';
+@import 'components/board-header.scss';
 @import 'components/task-details.scss';
 @import 'components/board-list.scss';
 @import 'components/status-picker.scss';

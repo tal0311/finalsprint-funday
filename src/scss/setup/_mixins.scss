@@ -6,5 +6,10 @@
 }
 
 @mixin input-field {
-  
+}
+@mixin hoverHeader {
+  background-color: $ClrHover;
+}
+@mixin boardTitle {
+  font-size: 3rem;
 }
