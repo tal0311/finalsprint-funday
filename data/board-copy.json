@@ -59,6 +59,30 @@
               "type": "date-picker"
             }
           ]
+        },
+        {
+          "id": "t102",
+          "title": "replace logo",
+          "cols": [
+            {
+              "type": "status-picker",
+              "value": null
+            },
+            {
+              "type": "member-picker",
+              "value": [
+                {
+                  "_id": "fhrf*^%hfdg",
+                  "username": "Meir",
+                  "fullname": "Meir Abambi",
+                  "imgUrl": "http://some-img.jpg"
+                }
+              ]
+            },
+            {
+              "type": "date-picker"
+            }
+          ]
         }
       ],
       "groupColor": "blue"

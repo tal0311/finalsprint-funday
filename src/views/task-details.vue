@@ -23,6 +23,7 @@
       <button @click="activeTab = 'taskFiles'">Task Files</button>
       <button @click="activeTab = 'activityLog'">Activity Log</button>
       <hr />
+      
       <!-- dynamic component -->
       <task-updates v-if="activeTab === 'taskUpdates'" />
       <task-files v-if="activeTab === 'taskFiles'" />
@@ -51,24 +52,21 @@ export default {
   },
   methods: {},
   computed: {
-    // task() {
-    //   return this.$store.getters.currTask;
-    // },
+    task() {
+      return this.$store.getters.currTask;
+    },
     activities() {
       return this.$store.getters.boards.activities;
     },
   },
-  async created() {
-    // console.log(this.$route.params)
-    const { taskId } = this.$route.params.id;
-    try {
-      const task = await taskService.getById(taskId)
-      this.task = task
-      console.log(this.task)
-    } catch (error) {
-      
-    }
-  },
+  created() {
+    const {boardId, taskId} = this.$route.params
+    this.$store.dispatch({
+        type: 'setCurrTask',
+        boardId,
+        taskId,
+    })
+   },
   components: {
     taskUpdates,
     taskFiles,

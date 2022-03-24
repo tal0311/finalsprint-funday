@@ -1,36 +1,56 @@
 <template>
   <section class="group">
-    <div class="group-title" @blur="updateGroup(group, $event)" contenteditable="true">{{group.title}}</div>
+    <button @click="setIsOptions">V</button>
+    <group-options @update="setGroupUpdate" v-if="isOptions" />
+    <div
+      class="group-title"
+      @blur="updateGroup(group, $event)"
+      contenteditable="true"
+    >
+      {{ group.title }}
+    </div>
     <tasks-list :tasks="group.tasks"></tasks-list>
   </section>
 </template>
 
 <script>
-// import { carService } from '../services/car-service.js'
-// import carFilter from '../components/car-filter.vue'
 import tasksList from './tasks-list.vue'
+import groupOptions from './group-options.vue'
+import GroupOptions from './group-options.vue'
 export default {
   name: 'group-cmp',
   emits: ['updateGroup'],
-
   props: {
     group: Object,
   },
   components: {
     tasksList,
+    groupOptions,
+    GroupOptions,
   },
 
   data() {
     return {
+      isOptions: false,
     }
   },
-  methods:{
-    updateGroup(group, $event){
+  methods: {
+    setIsOptions() {
+      this.isOptions = !this.isOptions
+    },
+    setGroupUpdate(value) {
+      console.log('setGroupUpdate', value, this.group.id)
+      if (value === 'remove') {
+        this.$store.dispatch({ type: 'removeGroup', groupId: this.group.id })
+      }
+    },
+
+    updateGroup(group, $event) {
       const groupToUpdate = JSON.parse(JSON.stringify(group))
       groupToUpdate.title = $event.target.innerText
-      this.$store.dispatch({type: 'updateGroup', groupToUpdate} )
+      this.$store.dispatch({ type: 'updateGroup', groupToUpdate })
       this.$emit('updateGroup')
-    }
+    },
   },
   computed: {
     getTasks() {
