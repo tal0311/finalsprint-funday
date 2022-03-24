@@ -52,6 +52,12 @@
                   "username": "Meir",
                   "fullname": "Meir Abambi",
                   "imgUrl": "http://some-img.jpg"
+                },
+                {
+                  "_id": "fhrf*^%hfdg",
+                  "username": "Meir",
+                  "fullname": "Meir Abambi",
+                  "imgUrl": "http://some-img.jpg"
                 }
               ]
             },
