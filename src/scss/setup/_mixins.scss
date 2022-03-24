@@ -13,3 +13,7 @@
 @mixin boardTitle {
   font-size: 3rem;
 }
+
+@mixin hoverToEditTxt {
+  outline: dashed #3333 2px;
+}

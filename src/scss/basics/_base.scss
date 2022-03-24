@@ -1,14 +1,14 @@
 // here goes generic styles for elements h1, buttons...
 * {
   box-sizing: border-box;
-  font-family: 'Roboto', 'Rubik', 'Noto Kufi Arabic', 'Noto Sans JP', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 body {
   margin: 0;
 }
 
 html {
-  font-family: robotoThin;
+  font-family: 'Roboto', sans-serif;
 }
 
 h1,
@@ -17,5 +17,5 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: robotoLight;
+  font-family: 'Roboto', sans-serif;
 }

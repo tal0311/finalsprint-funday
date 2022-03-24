@@ -4,5 +4,14 @@
     font-size: 2rem;
     font-weight: 100;
     color: black;
+    &:hover {
+      @include hoverToEditTxt;
+    }
+  }
+  .description {
+    padding: 2px;
+    &:hover {
+      @include hoverToEditTxt;
+    }
   }
 }
