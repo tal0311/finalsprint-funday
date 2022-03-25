@@ -3,13 +3,14 @@
   .btn-dialog {
     margin-inline-end: toRem(10);
     // background-color: $clrG1;
-
+    
     &.flex {
       align-items: center;
       justify-content: center;
     }
     &::after {
       content: '\f106';
+      color: $clr9;
 
       padding-top: 60%;
       font-family: 'IconFont';

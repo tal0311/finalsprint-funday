@@ -1,6 +1,6 @@
 <template>
   <!-- task title -->
-  <div class="task-preview flex space-between">
+  <div class="task-preview flex">
     <!-- <task-options v-if="isOptions"></task-options> -->
     <div class="task-title-comp">
       <div
@@ -33,8 +33,8 @@
             Edit
           </button></span
         >
-                <span class="chat">
-          <svg 
+        <span class="chat">
+          <svg
             viewBox="0 0 20 20"
             fill="currentColor"
             width="24"
@@ -56,23 +56,24 @@
             ></path>
           </svg>
         </span>
-
       </router-link>
       <div class="remove-task btn" @click="removeTask"></div>
     </div>
-    <div class="task-col-comp">
-      <div v-for="(cmp, idx) in task.cols" :key="idx">
-        <component
-          :is="cmp.type"
-          :task="task"
-          :value="cmp.value"
-          @updateStatus="setStatus"
-        />
+    <div class="task-columns flex space-between">
+      <div class="task-col-comp">
+        <div v-for="(cmp, idx) in task.cols" :key="idx">
+          <component
+            :is="cmp.type"
+            :task="task"
+            :value="cmp.value"
+            @updateStatus="setStatus"
+          />
+        </div>
       </div>
+      <div class="right-indicator"></div>
     </div>
     <!-- </div> -->
     <!-- dynamic components -->
-    <div class="right-indicator"></div>
   </div>
 </template>
 
