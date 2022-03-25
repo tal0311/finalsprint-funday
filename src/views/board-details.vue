@@ -48,12 +48,12 @@
         @updateTask="currBoard"
       ></add-group-task>
     </div>
-    <template v-if="board">
+    <section class="group-list" v-if="board">
       <section v-for="group in board.groups" :key="group.id">
         <group-cmp :group="group" />
         <br />
       </section>
-    </template>
+    </section>
   </section>
 </template>
 <style scoped>

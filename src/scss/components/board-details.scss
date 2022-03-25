@@ -1,0 +1,28 @@
+.board-details {
+    color: $clr11; 
+    height:100%;
+    width: 100%;
+
+    // .header {
+    //     display: flex;
+    //     flex-direction: column;
+    //     .title {
+    //         line-height: 40px;
+    //     }
+    //     .description {
+    //         max-height: 65px;
+    //     }
+    // }
+
+    .group-list {
+        box-sizing: content-box;
+        padding-bottom: 40px;
+        padding-top: 18px;
+        padding-left: 16px;
+        vertical-align: baseline;
+        height: 100%;
+        width: 100%; 
+        // min-width: 964px;
+        // height: 1972px;
+    }
+}
