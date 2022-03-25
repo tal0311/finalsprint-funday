@@ -4,6 +4,7 @@
       <label for="remove">
         remove
         <input
+          class="d-none"
           @change="setUpdateValue"
           type="radio"
           name="options"
@@ -17,6 +18,7 @@
       <label for="duplicate">
         duplicate
         <input
+          class="d-none"
           @change="setUpdateValue"
           type="radio"
           name="options"
@@ -26,18 +28,15 @@
         />
       </label>
     </div>
-    <div class="input-container">
-      <label for="color">
-        color
-        <input
-          @change="setUpdateValue"
-          type="color"
-          name="options"
-          id="color"
-          :color="newColor"
-          v-model="optionsValue"
-        />
-      </label>
+    <div class="input-container color-input flex">
+      <input
+        @change="setUpdateValue"
+        type="color"
+        name="options"
+        id="color"
+        v-model="optionsValue"
+      />
+      <label for="color"> color </label>
     </div>
   </div>
 </template>

@@ -15,9 +15,27 @@
     text-align: start;
     padding: 2%;
 
+    label[for='duplicate'] {
+      @include mkIcon('\f30c');
+    }
+    label[for='remove'] {
+      @include mkIcon('\f2ff');
+    }
+
     &:hover {
       @include hoverHeader;
     }
+
+    &.color-input {
+      &.flex {
+        align-items: center;
+
+        & :last-child {
+          padding-inline-start: toRem(12);
+        }
+      }
+    }
+
     input[type='color'] {
       -webkit-appearance: none;
       border: none;
