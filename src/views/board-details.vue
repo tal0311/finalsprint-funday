@@ -4,27 +4,32 @@
       <div class="">
         <div class="board-header-top flex">
           <h1 class="board-title">{{ board.title }}</h1>
+          <div class="info-star flex">
+            <button class="info">i</button>
+            <button class="star">star</button>
+          </div>
+
           <div class="board-actions flex">
-            <button>i</button>
-            <button>i</button>
-            <button>i</button>
-            <button>i</button>
+            <button class="btn last">Last seen</button>
+            <button class="btn invite">Invite / <span>4</span></button>
+            <button class="btn activity">Activity</button>
+            <button class="btn add">Add to board</button>
           </div>
         </div>
         <p class="description">
           {{ board.description }}
         </p>
-        <hr />
+
         <div class="btn-container">
-          <button>Main Table</button>
-          <button type="primary">Timeline</button>
-          <button type="success">More</button>
-          <button type="info">Add View</button>
+          <button class="main">Main Table</button>
+          <button class="timeline">Timeline</button>
+          <button class="more">More</button>
+          <button class="add">Add View</button>
         </div>
       </div>
       <hr />
 
-      <div class="flex flex-wrap items-center">
+      <div class="board-filter flex flex-wrap items-center">
         <el-dropdown split-button type="primary" @click="addNewTask">
           New Task
           <template #dropdown>
@@ -35,18 +40,13 @@
             </el-dropdown-menu>
           </template>
         </el-dropdown>
+        <app-filter />
       </div>
 
       <add-group-task
         @updateGroup="currBoard"
         @updateTask="currBoard"
       ></add-group-task>
-
-      <section class="view-board">
-        <p>Main Table</p>
-        <p>Timeline</p>
-        <p>Dashboard</p>
-      </section>
     </div>
     <section class="group-list" v-if="board">
       <section v-for="group in board.groups" :key="group.id">
@@ -71,13 +71,14 @@
 import addGroupTask from '../components/add-group-task.vue'
 import groupCmp from '../components/group.vue'
 import { ArrowDown } from '@element-plus/icons-vue'
+import appFilter from '../components/filter.vue'
 
 export default {
   name: 'board-details',
   components: {
     groupCmp,
     addGroupTask,
-    ArrowDown,
+    appFilter,
   },
   created() {
     let { boardId } = this.$route.params

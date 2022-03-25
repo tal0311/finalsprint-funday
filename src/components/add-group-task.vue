@@ -1,5 +1,4 @@
 <template>
-  <hr />
   <div v-if="isOptions">
     <ul>
       <li @click="addGroup">new group</li>
