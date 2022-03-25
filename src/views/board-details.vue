@@ -4,9 +4,14 @@
       <div class="">
         <div class="board-header-top flex">
           <h1 class="board-title">{{ board.title }}</h1>
+          <div class="info-star flex">
+            <button class="info">i</button>
+            <button class="star">star</button>
+          </div>
+
           <div class="board-actions flex">
             <button class="btn last">Last seen</button>
-            <button class="btn invite">Invite/ 4</button>
+            <button class="btn invite">Invite / <span>4</span></button>
             <button class="btn activity">Activity</button>
             <button class="btn add">Add to board</button>
           </div>

@@ -37,6 +37,23 @@
   .board-header-top {
     width: 100%;
 
+    .info-star {
+      margin-inline-end: 5%;
+
+      .info {
+        color: #222;
+        @include headerBtn;
+        @include mkIcon('\f345');
+      }
+      .star {
+        @include headerBtn;
+        @include mkIcon('\f3dc');
+      }
+      .flex {
+        justify-content: start;
+      }
+    }
+
     .board-title {
       line-height: toRem(40);
       font-size: 2rem;
