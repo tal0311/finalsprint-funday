@@ -21,7 +21,7 @@
       />
     </div>
     <tasks-list
-      :tasks="group.tasks"
+      :tasks="group.tasks" :groupColor="group.groupColor"
       @updateTask="updateGroup(group, $event)"
     ></tasks-list>
   </section>

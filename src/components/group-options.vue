@@ -34,6 +34,7 @@
           type="color"
           name="options"
           id="color"
+          :color="newColor"
           v-model="optionsValue"
         />
       </label>
@@ -48,9 +49,10 @@ export default {
   props: {
     groupColor: String,
   },
-  date() {
+  data() {
     return {
       optionsValue: '',
+      newColor: `"${this.groupColor}"`
     }
   },
   methods: {

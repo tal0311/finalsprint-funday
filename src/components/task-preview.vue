@@ -3,7 +3,11 @@
   <div class="task-preview flex space-between">
     <!-- <task-options v-if="isOptions"></task-options> -->
     <div class="task-title-comp">
-      <div class="side-indicator" @click="setIsOptions">V</div>
+      <div
+        class="side-indicator"
+        @click="setIsOptions"
+        :style="{ backgroundColor: groupColor }"
+      ></div>
 
       <router-link
         :to="'/board/b101/task/' + task.id"
@@ -19,11 +23,19 @@
           {{ task.title }}
         </div>
 
-        <span class="chat ">chat</span>
-        <span><button class="edit" @mouseover="hover=true" @mouseleave="hover=false" @click.prevent="editTaskTitle">Edit</button></span>
+        <span class="chat">chat</span>
+        <span
+          ><button
+            class="edit"
+            @mouseover="hover = true"
+            @mouseleave="hover = false"
+            @click.prevent="editTaskTitle"
+          >
+            Edit
+          </button></span
+        >
       </router-link>
-            <div class="remove-task btn" @click="removeTask">X</div>
-
+      <div class="remove-task btn" @click="removeTask">X</div>
     </div>
     <div class="task-col-comp">
       <div v-for="(cmp, idx) in task.cols" :key="idx">
@@ -52,6 +64,7 @@ export default {
   emits: ["updateTask"],
   props: {
     task: Object,
+    groupColor: String,
   },
   data() {
     return {
@@ -101,7 +114,7 @@ export default {
     },
 
     editTaskTitle() {
-       this.$refs.title.focus();
+      this.$refs.title.focus();
     },
   },
   components: {
@@ -110,11 +123,7 @@ export default {
     statusPicker,
     taskOptions,
   },
-  computed: {
-    markTitle(){
-        this.hover = true
-        
-}  }
+  computed: {},
 };
 </script>
 
