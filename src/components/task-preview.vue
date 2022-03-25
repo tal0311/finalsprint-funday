@@ -10,7 +10,7 @@
         class="title-chat flex space-between"
       >
         <div
-          :class="{ 'mark-outline': hover, 'unmark-outline': !hover }"
+          :class="{ 'mark-outline': hover, 'task-title': !hover }"
           class="task-title"
           contenteditable="true"
           ref="title"
