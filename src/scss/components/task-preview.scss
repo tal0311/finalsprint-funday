@@ -12,13 +12,14 @@
     // }
 
     .task-title-comp {
+        background-color: $clr10;
         display: flex;
         align-items: center;
-        padding: 0 10px 0 0;
         height: 100%;
         text-align: left;
-        background-color: $clr10;
         flex-basis: 400px;
+        padding: 0 10px 0 0;
+        border-right: 1px solid $clr8;
         .side-indicator {
             flex: 0 0 8px;
             position: relative;
@@ -35,14 +36,13 @@
             padding-left: 10px;
             line-height: 23px;
             text-decoration: none;
-            color: #323338;
             color: $clr9;
             font-weight: 400;
             font-size: 0.8125rem;
             &.mark-outline{
-                outline:#323338 1px solid;
+                outline:$clr9 1px solid;
             }
-            
+
         }
         .title-chat {
             display: flex;
@@ -78,10 +78,14 @@
         padding: 0;
         border: 0;
         flex-shrink: 0;
+        background-color: $clr10;
+        cursor: pointer;
+        text-align: center;
+
     }
 
     > * {
-        margin-inline: 1rem;
+        // margin-inline: 1rem;
     }
     i {
         color: black;

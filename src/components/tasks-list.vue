@@ -1,7 +1,7 @@
 <template>
-  <Container orientation="vertical" @drop="onDrop">
-    <Draggable v-for="eltask in eltasks" :key="eltask.id">
-      <task-preview :task="eltask"></task-preview>
+  <Container  orientation="vertical" @drop="onDrop">
+    <Draggable  v-for="eltask in eltasks" :key="eltask.id">
+      <task-preview :task="eltask" :groupColor="groupColor"></task-preview>
     </Draggable>
   </Container>
 </template>
@@ -13,6 +13,7 @@ export default {
   props: {
     tasks: Array,
     group: Object,
+    groupColor: String
   },
   data() {
     return {

@@ -11,14 +11,15 @@ $clr10: #f5f6f8; /* task preview bgc */
 $clr11: #c5c7d0; /* bgc edit btn on task preview */
 $clr12: #d0d4e4; /* right indicator bgc in task preview */
 $clr13: #cce5ff; /* focus on task preview bgc */
+$clr14: rgb(87, 155, 252); /* default group color */
 
 // status label colors
-$stClrWorking: #fdab3d;
+$stClrWorking: #fda83d;
 $stClrDone: #00c875;
 $stClrHold: #ff5ac4;
-$stClrStuck: #e37588;
+$stClrStuck: #e2445c;
 
-// heder colors
+// header colors
 $ClrHover: #dcdfec;
 
 // group colors

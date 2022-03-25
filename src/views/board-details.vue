@@ -44,13 +44,18 @@
       </div>
 
       <add-group-task
-        @updateGroup="currBoard"
-        @updateTask="currBoard"
+        @addGroup="currBoard"
+        @addTask="currBoard"
       ></add-group-task>
     </div>
+
     <section class="group-list" v-if="board">
       <section v-for="group in board.groups" :key="group.id">
-        <group-cmp :group="group" />
+        <group-cmp @updateGroup="currBoard"
+        @updateTask="currBoard"
+
+          :group="group"
+        />
         <br />
       </section>
     </section>
@@ -68,45 +73,48 @@
 }
 </style>
 <script>
-import addGroupTask from '../components/add-group-task.vue'
-import groupCmp from '../components/group.vue'
-import { ArrowDown } from '@element-plus/icons-vue'
-import appFilter from '../components/filter.vue'
+import addGroupTask from "../components/add-group-task.vue";
+import groupCmp from "../components/group.vue";
+import { ArrowDown } from "@element-plus/icons-vue";
+import appFilter from "../components/filter.vue";
+import { Container, Draggable } from "vue3-smooth-dnd";
 
 export default {
-  name: 'board-details',
+  name: "board-details",
   components: {
     groupCmp,
     addGroupTask,
     appFilter,
+    Container,
+    Draggable,
   },
   created() {
-    let { boardId } = this.$route.params
-    const board = this.$store.dispatch({ type: 'getBoardById', boardId })
-    this.$store.commit({ type: 'setCurrBoard', board })
+    let { boardId } = this.$route.params;
+    const board = this.$store.dispatch({ type: "getBoardById", boardId });
+    this.$store.commit({ type: "setCurrBoard", board });
     // const board = this.$store.getters.currBoard
-    this.board = JSON.parse(JSON.stringify(board))
+    this.board = JSON.parse(JSON.stringify(board));
   },
   data() {
     return {
       board: null,
-    }
+    };
   },
   methods: {
     addNewTask() {
-      this.$store.dispatch({ type: 'addTask', board: this.board, groupId: 0 })
+      this.$store.dispatch({ type: "addTask", board: this.board, groupIdx: 0 });
     },
     addGroup() {
-      this.$store.dispatch({ type: 'addGroup', board: this.board })
+      this.$store.dispatch({ type: "addGroup", board: this.board });
     },
   },
   computed: {
     currBoard() {
       // return this.$store.getters.currBoard
-      this.board = this.$store.getters.currBoard
-      return this.board
+      this.board = this.$store.getters.currBoard;
+      return this.board;
     },
   },
   unmounted() {},
-}
+};
 </script>

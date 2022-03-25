@@ -3,9 +3,9 @@
     <div>{{task.cols[0].value}}</div>
     <div v-if="menuOpen" class="picker-box">
       <!-- TODO - change back to working on it -->
-      <div @click="setStatus('Working-on-it')" class="working-on-it">Working on it</div>
-      <div @click="setStatus('stuck')" class="stuck">Stuck</div>
-      <div @click="setStatus('done')" class="done">Done</div>
+      <div @click="setStatus('Working on it')" class="working">Working on it</div>
+      <div @click="setStatus('Stuck')" class="stuck">Stuck</div>
+      <div @click="setStatus('Done')" class="done">Done</div>
       <div @click="setStatus('null')" class="null">.</div>
     </div>
   </section>
@@ -51,7 +51,8 @@ export default {
   },
   computed: {
     statusClass() {
-      return this.task.cols[0].value
+      if(this.task.cols[0].value === 'Working on it') return 'working'
+      return this.task.cols[0].value.toLowerCase()
     }
   },
   created() {

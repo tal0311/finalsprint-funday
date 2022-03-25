@@ -199,21 +199,22 @@ export const boardStore = {
     },
     //TASK
 
-    async addTask({ commit }, { board, groupId }) {
-      console.log('add task', board, groupId)
+    async addTask({ commit }, { board, groupIdx }) {
+      console.log('add task', board, groupIdx)
       try {
         // update model
         board = JSON.parse(JSON.stringify(board))
-        const len = board.groups[groupId].tasks.push(
+        const len = board.groups[groupIdx].tasks.push(
           boardService.getEmptyTask()
         )
-        const task = board.groups[groupId].tasks[len - 1]
+        const task = board.groups[groupIdx].tasks[len - 1]
         await boardService.save(board)
         commit({ type: 'setCurrBoard', board })
-        state.currTask = task
-        console.log(state.currTask)
+        commit({ type: 'setCurrTask', task })
+        // state.currTask = task
+        // console.log(state.currTask)
       } catch (error) {
-        console.log('error during adding group to board', error)
+        console.log('error during adding task to board', error)
       }
     },
 
@@ -256,7 +257,7 @@ export const boardStore = {
         let gIdx = board.groups.findIndex(dbGroup => dbGroup.id === groupId)
         const tIdx = board.groups[gIdx].tasks.findIndex(dbTask => dbTask.id === task.id)
         board.groups[gIdx].tasks.splice(tIdx, 1)
-        console.log('gIdx, tIdx', gIdx, tIdx);
+        // console.log('gIdx, tIdx', gIdx, tIdx);
         await boardService.save(board)
         commit({ type: 'setCurrBoard', board })
       }
