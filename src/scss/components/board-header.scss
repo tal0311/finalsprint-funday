@@ -1,7 +1,7 @@
 .header {
   padding: toRem(16) toRem(30) 0 toRem(30);
- 
-  .btn-container {
+  color: $clr11;
+   .btn-container {
     & > * {
       @include headerBtn;
       &:hover {
@@ -59,7 +59,7 @@
       line-height: toRem(40);
       font-size: 2rem;
       font-weight: 100;
-      color: black;
+
       &:hover {
         outline: solid #3333 1px;
       }
