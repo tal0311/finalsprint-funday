@@ -5,7 +5,7 @@
         <div class="board-header-top flex">
           <h1 class="board-title">{{ board.title }}</h1>
           <div class="info-star flex">
-            <button class="info">i</button>
+            <button class="info"></button>
             <button class="star">star</button>
           </div>
 
