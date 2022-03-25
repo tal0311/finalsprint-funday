@@ -13,6 +13,7 @@
           :class="{ 'mark-outline': hover, 'unmark-outline': !hover }"
           class="task-title"
           contenteditable="true"
+          ref="title"
           @blur="updateTask(task, $event)"
         >
           {{ task.title }}
@@ -100,7 +101,7 @@ export default {
     },
 
     editTaskTitle() {
-      document.querySelector(".task-title").focus();
+       this.$refs.title.focus();
     },
   },
   components: {
