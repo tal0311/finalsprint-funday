@@ -105,7 +105,7 @@
           ]
         }
       ],
-      "groupColor": "blue"
+      "groupColor": "#579bfc"
     },
     {
       "id": "jkjsdf45",
@@ -137,7 +137,7 @@
           ]
         }
       ],
-      "groupColor": "blue"
+      "groupColor": "#a25ddc"
     }
   ],
   "cmpsOrder": ["status-picker", "member-picker", "date-picker"]
