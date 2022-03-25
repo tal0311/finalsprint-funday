@@ -1,12 +1,18 @@
 @font-face {
   font-family: 'robotoThin';
-  src: url('./../../assets/fonts/Roboto-Thin.ttf');
+  src: url('@/assets/fonts/Roboto-Thin.ttf');
 }
 @font-face {
   font-family: 'robotoLight';
-  src: url('./../../assets/fonts/Roboto-light.ttf');
+  src: url('@/assets/fonts/Roboto-Light.ttf');
 }
 @font-face {
   font-family: 'robotoRegular';
-  src: url('./../../assets/fonts/Roboto-light.ttf');
+  src: url('@/assets/fonts/Roboto-light.ttf');
+}
+
+@font-face {
+  font-family: 'IconFont';
+
+  src: url('@/assets/fonts/icon.woff');
 }

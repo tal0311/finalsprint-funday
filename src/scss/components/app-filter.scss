@@ -1,0 +1,27 @@
+.board-filter {
+  padding: toRem(16) 0;
+
+  .filter {
+    margin-inline-start: toRem(6);
+
+    & > * {
+      @include headerBtn;
+      &:hover {
+        @include hoverHeader;
+      }
+    }
+    .search {
+      @include mkIcon('\f3aa');
+    }
+    .person {
+      @include mkIcon('\f1c7');
+    }
+
+    .filter {
+      @include mkIcon('\f333');
+    }
+    .sort {
+      @include mkIcon('\f3d4');
+    }
+  }
+}

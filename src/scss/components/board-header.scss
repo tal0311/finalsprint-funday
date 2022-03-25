@@ -1,5 +1,4 @@
 .header {
-  background-color: rgb(206, 238, 206);
   padding: toRem(16) toRem(30) 0 toRem(30);
   .btn-container {
     & > * {
@@ -7,6 +6,24 @@
       &:hover {
         @include hoverHeader;
       }
+    }
+    .main {
+      @include mkIcon('\f420');
+    }
+    .timeline {
+      @include mkIcon('\f211');
+    }
+    .more {
+      &::after {
+        content: '\f106';
+
+        padding: 0 5px;
+        font-family: 'IconFont';
+        font-style: 'normal';
+      }
+    }
+    .add {
+      @include mkIcon('\f47b');
     }
   }
 
@@ -26,7 +43,7 @@
       font-weight: 100;
       color: black;
       &:hover {
-        outline: solid #3333 2px;
+        outline: solid #3333 1px;
       }
     }
 
@@ -37,6 +54,17 @@
         &.flex {
           padding: 2px;
           justify-content: space-between;
+        }
+        .invite {
+          @include mkIcon('\f3fb');
+        }
+        .activity {
+          @include mkIcon('\f468');
+        }
+        .add {
+          @include mkIcon('\f47b');
+          border: 1px solid #bdbdbd;
+          border-radius: 0.3em;
         }
       }
       .board-title {
