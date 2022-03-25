@@ -6,12 +6,12 @@
           <h1 class="board-title">{{ board.title }}</h1>
           <div class="info-star flex">
             <button class="info"></button>
-            <button class="star">star</button>
+            <button class="star">Star</button>
           </div>
 
           <div class="board-actions flex">
             <button class="btn last">Last seen</button>
-            <button class="btn invite">Invite / <span>4</span></button>
+            <button class="btn invite">Invite / <span>{{board.members?.length}}</span></button>
             <button class="btn activity">Activity</button>
             <button class="btn add">Add to board</button>
           </div>
@@ -30,7 +30,7 @@
       <hr />
 
       <div class="board-filter flex flex-wrap items-center">
-        <el-dropdown split-button type="primary" @click="addNewTask">
+        <el-dropdown class="btn-new-task" split-button type="primary" width="104.63px" height="32px" @click="addNewTask">
           New Task
           <template #dropdown>
             <el-dropdown-menu>

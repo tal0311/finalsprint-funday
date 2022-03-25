@@ -1,27 +1,37 @@
 .board-filter {
   padding: toRem(16) 0;
 
+  > el-dropdown {
+    background-color: $clr15;
+    color: $clr8;
+  }
+
   .filter {
     margin-inline-start: toRem(6);
 
     & > * {
       @include headerBtn;
+      // font-size: toRem(15);
+      // font-weight:300;
+      // height:toRem(28);
+      // padding-left: toRem(5);
+
       &:hover {
         @include hoverHeader;
       }
     }
     .search {
-      @include mkIcon('\f3aa');
+      @include mkIcon("\f3aa");
     }
     .person {
-      @include mkIcon('\f1c7');
+      @include mkIcon("\f1c7");
     }
 
     .filter {
-      @include mkIcon('\f333');
+      @include mkIcon("\f333");
     }
     .sort {
-      @include mkIcon('\f3d4');
+      @include mkIcon("\f3d4");
     }
   }
 }
