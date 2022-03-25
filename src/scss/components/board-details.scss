@@ -1,15 +1,38 @@
 .board-details {
-    .header{
+    padding-top: 16px;
+    padding: 30px 30px 0px 30px;
+    color: $clr11; 
+    height:100%;
+    width: 100%;
+    // overflow: auto;
+    // display: flex;
+    // flex-direction: column;
+    // contain: layout;
+    // position: relative;
+
+    .header {
         display: flex;
         flex-direction: column;
-        .title{
+        .title {
             line-height: 40px;
         }
-        .description{
-            max-height:65px;
+        .description {
+            max-height: 65px;
         }
     }
-    .view-board{
+    .view-board {
         display: flex;
+    }
+
+    .group-list {
+        box-sizing: content-box;
+        padding-bottom: 40px;
+        padding-top: 18px;
+        padding-left: 16px;
+        vertical-align: baseline;
+        height: 100%;
+        width: 100%; 
+        // min-width: 964px;
+        // height: 1972px;
     }
 }

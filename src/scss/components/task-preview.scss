@@ -1,24 +1,66 @@
 .task-preview {
-    background-color: $clr6;
-    margin: 0.2rem;
-    align-items: center;
+    top: 40px;
+    color: $clr9;
+    height: 36px;
+    line-height: 36px;
+    padding-inline-start: 30px;
+    cursor: pointer;
+    border-bottom: 1px solid $clr8;
+    justify-content: start;
 
-    .task-title {
-        margin-inline-end: 5px;
+    .task-title-comp {
+        display: flex;
+        align-items: center;
+        padding: 0 10px 0 0;
+        height: 100%;
+        text-align: left;
+        background-color: $clr10;
+        flex-basis: 400px;
+        .side-indicator {
+            flex: 0 0 8px;
+            position: relative;
+            height: 100%;
+            background-color: rgb(87, 155, 252);
+            color: rgb(87, 155, 252);
+        }
+        .task-title {
+            margin-inline-end: 5px;
+            display: flex;
+            flex: 1;
+            align-items: center;
+            min-width: 0;
+            padding-left: 10px;
+            line-height: 23px;
+            text-decoration: none;
+            color: #323338;
+            color: $clr9;
+            font-weight: 400;
+            font-size: 0.8125rem;
+        }
+        .title-chat {
+            display: flex;
+            justify-content: center;
+            padding: 0 4px;
+        }
+    }
+
+    .task-col-comp{
+        flex-basis: 496px;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        flex-shrink: 0;
     }
 
     > * {
         margin-inline: 1rem;
     }
-    .title-chat {
-        width: 400px;
-    }
-    .side-indicator {
-        width: 10px;
-        height: 100%;
-        background: red;
-    }
     i {
         color: black;
+    }
+    .right-indicator {
+        max-width: 38px;
+        background-color: black;
+        border-right: 8px solid $clr12;
     }
 }
