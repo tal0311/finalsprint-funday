@@ -14,7 +14,11 @@
       >
         {{ group.title }}
       </div>
-      <group-options @update="setGroupUpdate" v-if="isOptions" />
+      <group-options
+        @update="setGroupUpdate"
+        v-if="isOptions"
+        :groupColor="group.groupColor"
+      />
     </div>
     <tasks-list
       :tasks="group.tasks"
