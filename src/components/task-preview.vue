@@ -3,21 +3,26 @@
   <div class="task-preview flex space-between">
     <!-- <task-options v-if="isOptions"></task-options> -->
     <div class="task-title-comp">
-    <div class="side-indicator" @click="setIsOptions">V</div>
-      <div class="task-title"
-        contenteditable="true"
-        @blur="updateTask(task, $event)"
-      >
-        {{ task.title }}
-      </div>
-            <div class="remove-task btn" @click="removeTask">X</div>
+      <div class="side-indicator" @click="setIsOptions">V</div>
 
       <router-link
         :to="'/board/b101/task/' + task.id"
         class="title-chat flex space-between"
       >
-        <div>chat</div>
+        <div
+          :class="{ 'mark-outline': hover, 'unmark-outline': !hover }"
+          class="task-title"
+          contenteditable="true"
+          @blur="updateTask(task, $event)"
+        >
+          {{ task.title }}
+        </div>
+
+        <span class="chat ">chat</span>
+        <span><button class="edit" @mouseover="hover=true" @mouseleave="hover=false" @click.prevent="editTaskTitle">Edit</button></span>
       </router-link>
+            <div class="remove-task btn" @click="removeTask">X</div>
+
     </div>
     <div class="task-col-comp">
       <div v-for="(cmp, idx) in task.cols" :key="idx">
@@ -50,6 +55,7 @@ export default {
   data() {
     return {
       isOptions: false,
+      hover: false,
     };
   },
   methods: {
@@ -92,6 +98,10 @@ export default {
       });
       this.$emit("updateTask");
     },
+
+    editTaskTitle() {
+      document.querySelector(".task-title").focus();
+    },
   },
   components: {
     datePicker,
@@ -99,6 +109,11 @@ export default {
     statusPicker,
     taskOptions,
   },
+  computed: {
+    markTitle(){
+        this.hover = true
+        
+}  }
 };
 </script>
 
