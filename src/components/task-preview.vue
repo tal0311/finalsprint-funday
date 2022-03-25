@@ -23,7 +23,17 @@
           {{ task.title }}
         </div>
 
-        <span class="chat">
+        <span
+          ><button
+            class="edit"
+            @mouseover="hover = true"
+            @mouseleave="hover = false"
+            @click.prevent="editTaskTitle"
+          >
+            Edit
+          </button></span
+        >
+                <span class="chat">
           <svg 
             viewBox="0 0 20 20"
             fill="currentColor"
@@ -46,18 +56,9 @@
             ></path>
           </svg>
         </span>
-        <span
-          ><button
-            class="edit"
-            @mouseover="hover = true"
-            @mouseleave="hover = false"
-            @click.prevent="editTaskTitle"
-          >
-            Edit
-          </button></span
-        >
+
       </router-link>
-      <div class="remove-task btn" @click="removeTask">X</div>
+      <div class="remove-task btn" @click="removeTask"></div>
     </div>
     <div class="task-col-comp">
       <div v-for="(cmp, idx) in task.cols" :key="idx">

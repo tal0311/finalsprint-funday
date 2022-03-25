@@ -147,6 +147,7 @@ export const boardStore = {
         var emptyGroup = boardService.getEmptyGroup()
         emptyGroup = JSON.parse(JSON.stringify(toDuplicate))
         emptyGroup.id = utilService.makeId()
+        emptyGroup.title = 'Duplicate of ' + emptyGroup.title
         board.groups.splice(idx, 0, emptyGroup)
 
         const updatedBoard = await boardService.save(board)
