@@ -1,15 +1,29 @@
 <template>
   <section class="group">
-    <button @click="setIsOptions">V</button>
-    <group-options @update="setGroupUpdate" v-if="isOptions" />
-    <div
-      class="group-title"
-      @blur="updateGroup(group, $event)"
-      contenteditable="true"
-    >
-      {{ group.title }}
+    <div class="group-dialog flex">
+      <button
+        class="btn-dialog flex"
+        @click="setIsOptions"
+        :style="{ backgroundColor: group.groupColor }"
+      ></button>
+      <div
+        :style="{ color: group.groupColor }"
+        class="group-title"
+        @blur="updateGroup(group, $event)"
+        contenteditable="true"
+      >
+        {{ group.title }}
+      </div>
+      <group-options
+        @update="setGroupUpdate"
+        v-if="isOptions"
+        :groupColor="group.groupColor"
+      />
     </div>
-    <tasks-list :tasks="group.tasks" @updateTask="updateGroup(group, $event)"></tasks-list>
+    <tasks-list
+      :tasks="group.tasks"
+      @updateTask="updateGroup(group, $event)"
+    ></tasks-list>
   </section>
 </template>
 
@@ -36,7 +50,7 @@ export default {
     setIsOptions() {
       this.isOptions = !this.isOptions
     },
-    
+
     setGroupUpdate(value) {
       console.log('setGroupUpdate', value, this.group.id)
       if (value === 'remove') {
@@ -60,12 +74,15 @@ export default {
       this.$store.dispatch({ type: 'updateGroup', groupToUpdate })
       this.$emit('updateGroup')
     },
-
   },
   computed: {
     getTasks() {
       return this.group.tasks
     },
+    // setGroupClr() {
+    //   console.log(this.group.groupColor)
+    //   return { backGroundColor: group.groupColor }
+    // },
   },
 }
 </script>

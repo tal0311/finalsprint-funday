@@ -1,37 +1,43 @@
 <template>
   <div class="group-options">
-    <label for="remove">
-      remove
-      <input
-        @change="setUpdateValue"
-        type="radio"
-        name="options"
-        id="remove"
-        value="remove"
-        v-model="optionsValue"
-      />
-    </label>
-    <label for="duplicate">
-      duplicate
-      <input
-        @change="setUpdateValue"
-        type="radio"
-        name="options"
-        id="duplicate"
-        value="duplicate"
-        v-model="optionsValue"
-      />
-    </label>
-    <label for="color">
-      color
-      <input
-        @change="setUpdateValue"
-        type="color"
-        name="options"
-        id="color"
-        v-model="optionsValue"
-      />
-    </label>
+    <div class="input-container">
+      <label for="remove">
+        remove
+        <input
+          @change="setUpdateValue"
+          type="radio"
+          name="options"
+          id="remove"
+          value="remove"
+          v-model="optionsValue"
+        />
+      </label>
+    </div>
+    <div class="input-container">
+      <label for="duplicate">
+        duplicate
+        <input
+          @change="setUpdateValue"
+          type="radio"
+          name="options"
+          id="duplicate"
+          value="duplicate"
+          v-model="optionsValue"
+        />
+      </label>
+    </div>
+    <div class="input-container">
+      <label for="color">
+        color
+        <input
+          @change="setUpdateValue"
+          type="color"
+          name="options"
+          id="color"
+          v-model="optionsValue"
+        />
+      </label>
+    </div>
   </div>
 </template>
 
@@ -39,6 +45,9 @@
 export default {
   name: 'group-options',
   emits: ['update'],
+  props: {
+    groupColor: String,
+  },
   date() {
     return {
       optionsValue: '',
