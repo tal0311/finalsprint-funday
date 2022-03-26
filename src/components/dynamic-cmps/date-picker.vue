@@ -14,8 +14,10 @@
 <script>
 export default {
   name: "date-picker",
+  emits: ['updateTask'],
   props: {
     task: Object,
+    group: Object
   },
   data() {
     return {
@@ -26,18 +28,18 @@ export default {
 
     async setDate() {
       // this.$emit('setStatus', status, this.task)
-      const board = this.$store.getters.currBoard;
-      const { boardId, groupId, task } = await this.$store.dispatch({
-        type: "findTask",
-        boardId: board._id,
-        taskId: this.task.id,
-      });
-      task.cols[2].value = this.date;
+      const board = JSON.parse(JSON.stringify(this.$store.getters.currBoard))
+      // const { boardId, groupId, task } = await this.$store.dispatch({
+      //   type: "findTask",
+      //   boardId: board._id,
+      //   taskId: this.task.id,
+      // });
+      this.task.cols[2].value = this.date;
       await this.$store.dispatch({
         type: "updateTask",
-        boardId,
-        groupId,
-        task,
+        boardId: board,
+        groupId: this.group.id,
+        task: this.task,
       });
       this.$emit("updateTask");
     },

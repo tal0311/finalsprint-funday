@@ -98,7 +98,7 @@ export const boardStore = {
       }
     },
     async saveBoard({ dispatch, commit }, { board }) {
-      console.log(board)
+
       try {
         await boardService.save(board)
         dispatch({type: 'loadBoards'})

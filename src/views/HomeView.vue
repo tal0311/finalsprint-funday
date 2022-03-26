@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { Container, Draggable, } from "vue3-smooth-dnd";
+import { Container, Draggable } from "vue3-smooth-dnd";
 export default {
   name: "app",
   components: { Container, Draggable },

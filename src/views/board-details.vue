@@ -168,6 +168,7 @@ export default {
   },
   computed: {
     currBoard() {
+      console.log(this.$store.getters.currBoard)
       return this.$store.getters.currBoard;
       // this.board = this.$store.getters.currBoard
       // return this.board

@@ -1,0 +1,690 @@
+[
+    {
+        "_id": "b101",
+        "title": "Robot dev proj",
+        "description": " this board....",
+        "createdAt": 1589983468418,
+        "createdBy": {
+            "_id": "u101",
+            "fullname": "Abi Abambi",
+            "imgUrl": "http://some-img"
+        },
+        "members": [
+            {
+                "id": "u101",
+                "fullname": "Tal amit",
+                "imgUrl": "https://www.google.com"
+            },
+            {
+                "id": "u102",
+                "fullname": "guy shimon",
+                "imgUrl": "https://www.google.com"
+            },
+            {
+                "id": "u103",
+                "fullname": "shiran elad",
+                "imgUrl": "https://www.google.com"
+            }
+        ],
+        "activities": [
+            {
+                "id": "a101",
+                "txt": "Changed Color",
+                "createdAt": 154514,
+                "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "http://some-img"
+                },
+                "task": {
+                    "id": "c101",
+                    "title": "Replace Logo"
+                }
+            }
+        ],
+        "groups": [
+            {
+                "id": "gy5LnM",
+                "title": "Frontend",
+                "tasks": [
+                    {
+                        "id": "t2yn4E",
+                        "title": "Complete UI for demo1",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": "Working on it"
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker",
+                                "value": "2022-03-02T22:00:00.000Z"
+                            }
+                        ],
+                        "comments": [
+                            {
+                                "creator": "Lili Abambi",
+                                "content": "can some one help me"
+                            },
+                            {
+                                "creator": "tal Amit",
+                                "content": "fix problem with bug"
+                            },
+                            {
+                                "creator": "Shiran Elad",
+                                "content": "i can help"
+                            },
+                            {
+                                "creator": "Guy shimon",
+                                "content": "made that dnd work"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tyCQHY",
+                        "title": "Routes & pages",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": "Done"
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker",
+                                "value": null
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tdAYQ1",
+                        "title": "Dashboards / BI",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": "Working on it"
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker",
+                                "value": null
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tM21Dc",
+                        "title": "task crud",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": "Done"
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": [
+                                    {
+                                        "id": "u101",
+                                        "username": "shiran",
+                                        "fullname": "Shiran Elad",
+                                        "imgUrl": "http://some-img.jpg"
+                                    },
+                                    {
+                                        "id": "u102",
+                                        "username": "tal",
+                                        "fullname": "Tal Amit",
+                                        "imgUrl": "http://some-img.jpg"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "date-picker",
+                                "value": null
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tkZP69",
+                        "title": "Guest functionality",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": "Working on it"
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker",
+                                "value": null
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tvhcgs",
+                        "title": "CSS/SCSS",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": "Working on it"
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker",
+                                "value": null
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tGHVTo",
+                        "title": "Notifications / Chat",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": "Stuck"
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker",
+                                "value": null
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tRI28x",
+                        "title": "Filter component",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": "Done"
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker",
+                                "value": null
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tHZHYI",
+                        "title": "Sort Component",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": ""
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker",
+                                "value": null
+                            }
+                        ]
+                    },
+                    {
+                        "id": "twJ3I8",
+                        "title": "Loading feature",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": ""
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker",
+                                "value": null
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tLFRul",
+                        "title": "Group List Design",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": "Done"
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker",
+                                "value": null
+                            }
+                        ]
+                    },
+                    {
+                        "id": "twtWvS",
+                        "title": "Login / signup page + Logout",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": ""
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker",
+                                "value": null
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tMZJTI",
+                        "title": "change url to board id on task-preview",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": "Working on it"
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker",
+                                "value": null
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "gE1sWb",
+                "title": "Smart Components",
+                "tasks": [
+                    {
+                        "id": "tl7hOU",
+                        "title": "switch set status to dumb",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": "Working on it"
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "trV6cr",
+                        "title": "when clicking a different status collapse all the rest",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": "Stuck"
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker",
+                                "value": null
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tOiAz3",
+                        "title": "on status picker \"working on it\" does not change to orange",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": "Done"
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker",
+                                "value": null
+                            }
+                        ]
+                    }
+                ],
+                "groupColor": "#2ecbff"
+            },
+            {
+                "id": "gUYFvs",
+                "title": "Completed",
+                "tasks": [
+                    {
+                        "id": "t0zknv",
+                        "title": "Create Technical Design Document",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": "Done"
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "ti2G9v",
+                        "title": "Folder structure",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": "Done"
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker",
+                                "value": null
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tHEYk5",
+                        "title": "Store",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": "Done"
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker",
+                                "value": null
+                            }
+                        ]
+                    },
+                    {
+                        "id": "to4odq",
+                        "title": "Main app component",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": ""
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker",
+                                "value": null
+                            }
+                        ]
+                    },
+                    {
+                        "id": "thv22F",
+                        "title": "group crud",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": "Done"
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker",
+                                "value": null
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tANzw2",
+                        "title": "basic CRUDL with FE service",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": ""
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker",
+                                "value": null
+                            }
+                        ]
+                    },
+                    {
+                        "id": "t3HMYg",
+                        "title": "task details",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": ""
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker",
+                                "value": null
+                            }
+                        ]
+                    }
+                ],
+                "groupColor": "#eac510"
+            },
+            {
+                "id": "gl41DR",
+                "title": "Backend",
+                "tasks": [
+                    {
+                        "id": "tAS9ke",
+                        "title": "convert to awaits",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": ""
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "ts6Pfe",
+                        "title": "Setup database architecture in mongoDB",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": ""
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker",
+                                "value": null
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tlTzsG",
+                        "title": "Load data to DB",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": ""
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker",
+                                "value": null
+                            }
+                        ]
+                    },
+                    {
+                        "id": "t78YOI",
+                        "title": "sockets",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": ""
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker",
+                                "value": null
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tzN8IS",
+                        "title": "Auth for users",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": ""
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker",
+                                "value": null
+                            }
+                        ]
+                    }
+                ],
+                "groupColor": "#c457ff"
+            },
+            {
+                "id": "gCp8Vx",
+                "title": "Miscelleneous",
+                "tasks": [
+                    {
+                        "id": "tB02il",
+                        "title": "Create app logo",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": ""
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tsTwIo",
+                        "title": "Create Design Document",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": ""
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker",
+                                "value": null
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tAOGVd",
+                        "title": "Create git repository with collaboration",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": ""
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker",
+                                "value": null
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tmuMhT",
+                        "title": "Upload to Hiroku",
+                        "cols": [
+                            {
+                                "type": "status-picker",
+                                "value": ""
+                            },
+                            {
+                                "type": "member-picker",
+                                "value": []
+                            },
+                            {
+                                "type": "date-picker",
+                                "value": null
+                            }
+                        ]
+                    }
+                ],
+                "groupColor": "#2fbc34"
+            }
+        ],
+        "cmpsOrder": [
+            "status-picker",
+            "member-picker",
+            "date-picker"
+        ]
+    }
+]
