@@ -12,7 +12,6 @@
     // padding: 0.5em 0.65em;
     text-align: center;
     font-size: 0.8rem;
-    box-sizing: border-box;
     padding: 0px 0 10px 0;
     color: $clr8;
     font-weight: 700;
@@ -34,9 +33,24 @@
 
 .member-picker {
   .no-members {
-    padding: 0.5em 0.7em;
-    background-color: #5c5c5c;
+    // padding: 0.5em 0.7em;
+    // background-color: #5c5c5c;
     color: #fff;
     border-radius: 50%;
+    width:25px;
+    height:25px;
+
+    background-image: url('https://cdn.monday.com/icons/dapulse-person-column.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    // padding: 0px 0 10px 0;
+    margin:5px auto;
+    flex-shrink: 0;
+    position: relative;
+
   }
 }
