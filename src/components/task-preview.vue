@@ -1,24 +1,31 @@
 <template>
   <!-- task title -->
-  <div class="task-preview flex">
+  <div class="task-preview flex" @mouseleave="delHover = false" >
     <!-- <task-options v-if="isOptions"></task-options> -->
-    
       <div
         class="btn-remove-task btn"
+        @mouseover="delHover = true"
+        @mouseleave="delHover = false"
         @click="removeTask"
-        :class="{ 'btn-remove-task': taskHover}"
+        :class="{
+          'btn-remove-task': delHover,
+          'btn-remove-task-hidden': !delHover,
+        }"
       ></div>
+  
     <div class="task-title-comp">
       <div
         class="side-indicator"
         @click="setIsOptions"
         :style="{ backgroundColor: groupColor }"
       ></div>
-
       <router-link
         :to="'/board/b101/task/' + task.id"
         class="title-chat flex space-between"
-        @mouseover="taskHover = true"
+        @mouseover="
+          taskHover = true;
+          delHover = true;
+        "
         @mouseleave="taskHover = false"
       >
         <div class="title-edit">
@@ -109,6 +116,7 @@ export default {
       isOptions: false,
       editHover: false,
       taskHover: false,
+      delHover: false,
       focus: false,
     };
   },
