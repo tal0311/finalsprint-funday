@@ -64,20 +64,17 @@
       </router-link>
       <div class="remove-task btn" @click="removeTask"></div>
     </div>
-    <div class="task-columns flex space-between">
-      <div class="task-col-comp">
+    <div class="task-columns flex space-between relative">
         <div v-for="(cmp, idx) in task.cols" :key="idx">
-          <component
+          <component class="task-col-comp absolute" 
             :is="cmp.type"
             :task="task"
             :value="cmp.value"
             @updateStatus="setStatus"
           />
         </div>
-      </div>
       <div class="right-indicator"></div>
     </div>
-    <!-- </div> -->
     <!-- dynamic components -->
   </div>
 </template>

@@ -68,6 +68,7 @@
                     // font-size: 0.8125rem;
                     &.mark-outline {
                         outline: $clr11 1px solid;
+                        border-radius: 1px;
                         
                     }
                     &.bgc-white {
@@ -113,18 +114,19 @@
         width: 100%;
         background-color: $clr10;
 
-        .task-col-comp {
-            flex-basis: 496px;
-            margin: 0;
-            padding: 0;
-            border: 0;
-            flex-shrink: 0;
-            cursor: pointer;
-            text-align: center;
-            border-right: $clr8 1px solid;
-            display: flex;
-            justify-content: center;
-            min-width: 200px;
+        > .task-col-comp {
+            flex-basis: 200px;
+            position:relative;
+            // margin: 0;
+            // padding: 0;
+            // border: 0;
+            // flex-shrink: 0;
+            // cursor: pointer;
+            // text-align: center;
+            // border-right: $clr8 1px solid;
+            // display: flex;
+            // justify-content: center;
+            // min-width: 200px;
         }
 
         .right-indicator {

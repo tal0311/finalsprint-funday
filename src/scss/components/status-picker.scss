@@ -1,7 +1,19 @@
+.status {
+    // position:relative;
+    &:hover {
+        transition: border-width 0.3s ease;
+        border-width: 0 18px 18px 0;
+        // position: absolute;
+        top: 0;
+        right: 1px;
+        border-style: solid;
+        border-color: rgba(0, 0, 0, 0.2) $clr8;
+    }
+
+}
 .picker-box {
     background-color: $clr8;
-    position:absolute;
-
+    position: absolute;
 }
 .working {
     background-color: $stClrWorking;

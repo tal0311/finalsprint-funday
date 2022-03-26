@@ -1,5 +1,5 @@
 <template>
-  <section @click="toggleShow" :class="statusClass" class="status-picker" >
+  <section @click="toggleShow" :class="statusClass" class="status-picker status" >
     <div>{{task.cols[0].value}}</div>
     <div v-if="menuOpen" class="picker-box">
       <!-- TODO - change back to working on it -->
