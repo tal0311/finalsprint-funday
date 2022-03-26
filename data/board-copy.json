@@ -48,7 +48,7 @@
       "tasks": [
         {
           "id": "t101",
-          "title": "replace logo",
+          "title": "replace items",
           "cols": [
             {
               "type": "status-picker",
@@ -74,11 +74,11 @@
         },
         {
           "id": "t102",
-          "title": "replace logo",
+          "title": "implement D&D",
           "cols": [
             {
               "type": "status-picker",
-              "value": "Status"
+              "value": "working on it"
             },
             {
               "type": "member-picker",
@@ -87,7 +87,7 @@
                   "_id": "fhrf*^%hfdg",
                   "username": "Meir",
                   "fullname": "Meir Abambi",
-                  "imgUrl": "http://some-img.jpg"
+                  "imgUrl": "https://randomuser.me/api/portraits/women/38.jpg"
                 }
               ]
             },
@@ -106,11 +106,61 @@
       "tasks": [
         {
           "id": "t101",
+          "title": "learn scss",
+          "cols": [
+            {
+              "type": "status-picker",
+              "value": "done"
+            },
+            {
+              "type": "member-picker",
+              "value": [
+                {
+                  "_id": "fhrf*^%hfdg",
+                  "username": "meir",
+                  "fullname": "Meir Abambi",
+                  "imgUrl": "https://randomuser.me/api/portraits/men/38.jpg"
+                }
+              ]
+            },
+            {
+              "type": "date-picker",
+              "value": null
+            }
+          ]
+        },
+        {
+          "id": "t101",
           "title": "replace logo",
           "cols": [
             {
               "type": "status-picker",
               "value": "Status"
+            },
+            {
+              "type": "member-picker",
+              "value": [
+                {
+                  "_id": "fhrf*^%hfdg",
+                  "username": "Meir",
+                  "fullname": "Meir Abambi",
+                  "imgUrl": "https://randomuser.me/api/portraits/men/28.jpg"
+                }
+              ]
+            },
+            {
+              "type": "date-picker",
+              "value": null
+            }
+          ]
+        },
+        {
+          "id": "t101",
+          "title": "learn js logo",
+          "cols": [
+            {
+              "type": "status-picker",
+              "value": "done"
             },
             {
               "type": "member-picker",
@@ -131,6 +181,88 @@
         }
       ],
       "groupColor": "#a25ddc"
+    },
+    {
+      "id": "jkjsdf78",
+      "title": "Group 3",
+      "tasks": [
+        {
+          "id": "t101",
+          "title": "nake it happen",
+          "cols": [
+            {
+              "type": "status-picker",
+              "value": "done"
+            },
+            {
+              "type": "member-picker",
+              "value": [
+                {
+                  "_id": "fhrf*^%hfdg",
+                  "username": "tal",
+                  "fullname": "tal amit",
+                  "imgUrl": "http://some-img.jpg"
+                }
+              ]
+            },
+            {
+              "type": "date-picker",
+              "value": null
+            }
+          ]
+        },
+        {
+          "id": "t101",
+          "title": "nake it happen",
+          "cols": [
+            {
+              "type": "status-picker",
+              "value": "working on it"
+            },
+            {
+              "type": "member-picker",
+              "value": [
+                {
+                  "_id": "fhrf*^%hfdg",
+                  "username": "shiran",
+                  "fullname": "shiran elad",
+                  "imgUrl": "http://some-img.jpg"
+                }
+              ]
+            },
+            {
+              "type": "date-picker",
+              "value": null
+            }
+          ]
+        },
+        {
+          "id": "t103",
+          "title": "make it happen again",
+          "cols": [
+            {
+              "type": "status-picker",
+              "value": "stuck"
+            },
+            {
+              "type": "member-picker",
+              "value": [
+                {
+                  "_id": "fhrf*^%hfdg",
+                  "username": "guy",
+                  "fullname": "guy shimon",
+                  "imgUrl": "http://some-img.jpg"
+                }
+              ]
+            },
+            {
+              "type": "date-picker",
+              "value": null
+            }
+          ]
+        }
+      ],
+      "groupColor": "##9cd326"
     }
   ],
   "cmpsOrder": ["status-picker", "member-picker", "date-picker"]

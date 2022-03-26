@@ -1,10 +1,10 @@
 <template>
-  <section v-if="board" class="board-details">
+  <section v-if="currBoard" class="board-details" :key="currBoard">
     <div class="header">
       <div class="">
         <div class="board-header-top flex">
           <h1 class="board-title" @blur="setBoardTitle" contenteditable="true">
-            {{ board.title }}
+            {{ currBoard.title }}
           </h1>
           <div class="info-star flex">
             <button class="info"></button>
@@ -14,14 +14,14 @@
           <div class="board-actions flex">
             <button class="btn last">Last seen</button>
             <button class="btn invite">
-              Invite / <span>{{ board.members?.length }}</span>
+              Invite / <span>{{ currBoard.members?.length }}</span>
             </button>
             <button class="btn activity">Activity</button>
             <button class="btn add">Add to board</button>
           </div>
         </div>
         <p class="description" @blur="setBoardTitle" contenteditable="true">
-          {{ board.description }}
+          {{ currBoard.description }}
         </p>
 
         <div class="btn-container">
@@ -55,7 +55,7 @@
       </div>
 
       <add-group-task
-        @addGroup="currBoard"
+        @addGroup="addGroup"
         @addTask="currBoard"
       ></add-group-task>
     </div>
@@ -106,7 +106,7 @@ export default {
     const board = this.$store.dispatch({ type: "getBoardById", boardId });
     this.$store.commit({ type: "setCurrBoard", board });
     // const board = this.$store.getters.currBoard
-    this.board = JSON.parse(JSON.stringify(board));
+    // board = JSON.parse(JSON.stringify(board));
   },
   data() {
     return {
@@ -115,13 +115,14 @@ export default {
   },
   methods: {
     addNewTask() {
-      this.$store.dispatch({ type: "addTask", board: this.board, groupIdx: 0 });
+      this.$store.dispatch({ type: "addTask", board: this.currBoard, groupIdx: 0 });
     },
     addGroup() {
-      this.$store.dispatch({ type: "addGroup", board: this.board });
+      this.$store.dispatch({ type: "addGroup", board: this.currBoard });
     },
+
     setBoardTitle(event) {
-      const board = JSON.parse(JSON.stringify(this.board));
+      const board = JSON.parse(JSON.stringify(this.currBoard));
       if (event.target.nodeName === "H1") {
         const value = event.target.innerText;
         board.title = value;
@@ -134,7 +135,8 @@ export default {
       this.$store.dispatch({ type: "saveBoard", board });
     },
     onDrop(dropResult) {
-      this.board.groups = this.applyDrag(this.board.groups, dropResult);
+      const board = JSON.parse(JSON.stringify(this.currBoard))
+      board.groups = this.applyDrag(board.groups, dropResult);
     },
     applyDrag(arr, dragResult) {
       const { removedIndex, addedIndex, payload } = dragResult;
@@ -156,7 +158,7 @@ export default {
       return result;
     },
     updateBoard(result) {
-      const updatedBoard = JSON.parse(JSON.stringify(this.board));
+      const updatedBoard = JSON.parse(JSON.stringify(this.currBoard));
       updatedBoard.groups = JSON.parse(JSON.stringify(result));
       this.$store.dispatch({
         type: "saveBoard",
@@ -166,9 +168,9 @@ export default {
   },
   computed: {
     currBoard() {
-      // return this.$store.getters.currBoard
-      this.board = this.$store.getters.currBoard;
-      return this.board;
+      return this.$store.getters.currBoard;
+      // this.board = this.$store.getters.currBoard
+      // return this.board
     },
   },
 };

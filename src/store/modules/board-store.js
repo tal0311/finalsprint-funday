@@ -97,11 +97,12 @@ export const boardStore = {
         })
       }
     },
-    async saveBoard({ dispatch }, { board }) {
+    async saveBoard({ dispatch, commit }, { board }) {
 
       try {
         await boardService.save(board)
-        dispatch('loadBoards')
+        dispatch({type: 'loadBoards'})
+        commit({type: 'setCurrBoard', board})
       } catch (err) {
         console.log("Couldn't save board", err)
         commit({
