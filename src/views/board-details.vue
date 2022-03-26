@@ -61,16 +61,14 @@
     </div>
 
     <section class="group-list" v-if="board">
-      <Container orientation="vertical" @drop="onDrop">
-        <Draggable v-for="group in board.groups" :key="group.id">
-          <group-cmp
-            @updateGroup="currBoard"
-            @updateTask="currBoard"
-            :group="group"
-          />
-          <br />
-        </Draggable>
-      </Container>
+      <section v-for="group in board.groups" :key="group.id">
+        <group-cmp
+          @updateGroup="currBoard"
+          @updateTask="currBoard"
+          :group="group"
+        />
+        <br />
+      </section>
     </section>
   </section>
 </template>
@@ -132,36 +130,6 @@ export default {
       }
       console.log(board)
       this.$store.dispatch({ type: 'saveBoard', board })
-    },
-    onDrop(dropResult) {
-      this.board.groups = this.applyDrag(this.board.groups, dropResult);
-    },
-    applyDrag(arr, dragResult) {
-      const { removedIndex, addedIndex, payload } = dragResult;
-
-      if (removedIndex === null && addedIndex === null) return arr;
-      const result = [...arr];
-      let taskToAdd = payload;
-
-      if (removedIndex !== null) {
-        taskToAdd = result.splice(removedIndex, 1)[0];
-      }
-      if (addedIndex !== null) {
-        result.splice(addedIndex, 0, taskToAdd);
-      }
-
-      // console.log('result:', result)
-      this.updateBoard(result);
-
-      return result;
-    },
-    updateBoard(result) {
-      const updatedBoard = JSON.parse(JSON.stringify(this.board));
-      updatedBoard.groups = JSON.parse(JSON.stringify(result));
-      this.$store.dispatch({
-        type: "saveBoard",
-        board: updatedBoard,
-      });
     },
   },
   computed: {

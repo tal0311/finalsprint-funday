@@ -1,5 +1,5 @@
 <template>
-  <Container  orientation="vertical" @drop="onDrop" class="zone">
+  <Container  orientation="vertical" @drop="onDrop">
     <Draggable  v-for="eltask in eltasks" :key="eltask.id">
       <task-preview :task="eltask" :groupColor="groupColor" :group="group"></task-preview>
     </Draggable>
@@ -42,11 +42,11 @@ export default {
       return result;
     },
     updateGroup(result) {
-      const updatedGroup = JSON.parse(JSON.stringify(this.group))
-      updatedGroup.tasks = JSON.parse(JSON.stringify(result))
+      const newGroup = JSON.parse(JSON.stringify(this.group))
+      newGroup.tasks = JSON.parse(JSON.stringify(result))
       this.$store.dispatch({
           type: 'updateGroup',
-          groupToUpdate: updatedGroup,
+          groupToUpdate: newGroup,
       })
     },
   },
@@ -67,10 +67,4 @@ export default {
 };
 </script>
 
-<style>
-.zone{
-  background-color: pink;
-  /* position: abso; */
-  
-}
-</style>
+<style></style>
