@@ -21,6 +21,7 @@
       />
     </div>
     <tasks-list
+    class="task-list"
       :tasks="group.tasks"
       :group="group"
       :groupColor="group.groupColor"
