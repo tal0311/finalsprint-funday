@@ -11,7 +11,9 @@
 
           <div class="board-actions flex">
             <button class="btn last">Last seen</button>
-            <button class="btn invite">Invite / <span>{{board.members?.length}}</span></button>
+            <button class="btn invite">
+              Invite / <span>{{ board.members?.length }}</span>
+            </button>
             <button class="btn activity">Activity</button>
             <button class="btn add">Add to board</button>
           </div>
@@ -30,7 +32,14 @@
       <hr />
 
       <div class="board-filter flex flex-wrap items-center">
-        <el-dropdown class="btn-new-task" split-button type="primary" width="104.63px" height="32px" @click="addNewTask">
+        <el-dropdown
+          class="btn-new-task"
+          split-button
+          type="primary"
+          width="104.63px"
+          height="32px"
+          @click="addNewTask"
+        >
           New Task
           <template #dropdown>
             <el-dropdown-menu>
@@ -50,14 +59,16 @@
     </div>
 
     <section class="group-list" v-if="board">
-      <section v-for="group in board.groups" :key="group.id">
-        <group-cmp @updateGroup="currBoard"
-        @updateTask="currBoard"
-
-          :group="group"
-        />
-        <br />
-      </section>
+      <Container orientation="vertical" @drop="onDrop">
+        <Draggable v-for="group in board.groups" :key="group.id">
+          <group-cmp
+            @updateGroup="currBoard"
+            @updateTask="currBoard"
+            :group="group"
+          />
+          <br />
+        </Draggable>
+      </Container>
     </section>
   </section>
 </template>
@@ -106,6 +117,36 @@ export default {
     },
     addGroup() {
       this.$store.dispatch({ type: "addGroup", board: this.board });
+    },
+    onDrop(dropResult) {
+      this.board.groups = this.applyDrag(this.board.groups, dropResult);
+    },
+    applyDrag(arr, dragResult) {
+      const { removedIndex, addedIndex, payload } = dragResult;
+
+      if (removedIndex === null && addedIndex === null) return arr;
+      const result = [...arr];
+      let taskToAdd = payload;
+
+      if (removedIndex !== null) {
+        taskToAdd = result.splice(removedIndex, 1)[0];
+      }
+      if (addedIndex !== null) {
+        result.splice(addedIndex, 0, taskToAdd);
+      }
+
+      // console.log('result:', result)
+      this.updateBoard(result);
+
+      return result;
+    },
+    updateBoard(result) {
+      const updatedBoard = JSON.parse(JSON.stringify(this.board));
+      updatedBoard.groups = JSON.parse(JSON.stringify(result));
+      this.$store.dispatch({
+        type: "saveBoard",
+        board: updatedBoard,
+      });
     },
   },
   computed: {

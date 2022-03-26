@@ -42,11 +42,11 @@ export default {
       return result;
     },
     updateGroup(result) {
-      const newGroup = JSON.parse(JSON.stringify(this.group))
-      newGroup.tasks = JSON.parse(JSON.stringify(result))
+      const updatedGroup = JSON.parse(JSON.stringify(this.group))
+      updatedGroup.tasks = JSON.parse(JSON.stringify(result))
       this.$store.dispatch({
           type: 'updateGroup',
-          groupToUpdate: newGroup,
+          groupToUpdate: updatedGroup,
       })
     },
   },
