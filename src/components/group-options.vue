@@ -5,7 +5,7 @@
         Remove Group
         <input
           class="d-none"
-          @change="setUpdateValue"
+          @change="setUpdateValue(optionsValue)"
           type="radio"
           name="options"
           id="remove"
@@ -19,7 +19,7 @@
         Duplicate Group
         <input
           class="d-none"
-          @change="setUpdateValue"
+          @change="setUpdateValue(optionsValue)"
           type="radio"
           name="options"
           id="duplicate"
@@ -58,7 +58,7 @@ export default {
     this.newColor = this.groupColor
   },
   methods: {
-    setUpdateValue(val=this.optionsValue) {
+    setUpdateValue(val) {
       this.optionsValue = val
       this.$emit('update', this.optionsValue)
     },
