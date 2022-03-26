@@ -12,9 +12,12 @@
       <router-link
         :to="'/board/b101/task/' + task.id"
         class="title-chat flex space-between"
+         @mouseover="taskHover = true"
+            @mouseleave="taskHover = false"
       >
+      <div class="title-edit">
         <div
-          :class="{ 'mark-outline': hover, 'task-title': !hover }"
+          :class="{ 'mark-outline': editHover, 'task-title': !editHover, 'bgc-white': focus}"
           class="task-title"
           contenteditable="true"
           ref="title"
@@ -22,17 +25,19 @@
         >
           {{ task.title }}
         </div>
-
-        <span
-          ><button
+        <span>
+          <button
             class="edit"
-            @mouseover="hover = true"
-            @mouseleave="hover = false"
+            @mouseover="editHover = true"
+            @mouseleave="editHover = false"
             @click.prevent="editTaskTitle"
+            :class="{ 'd-none': !taskHover }"
           >
             Edit
-          </button></span
-        >
+          </button>
+        </span>
+        </div>
+
         <span class="chat">
           <svg
             viewBox="0 0 20 20"
@@ -93,7 +98,9 @@ export default {
   data() {
     return {
       isOptions: false,
-      hover: false,
+      editHover: false,
+      taskHover: false,
+      focus: false
     };
   },
   methods: {
@@ -104,6 +111,7 @@ export default {
       this.isOptions = !this.isOptions;
     },
     async updateTask(newTask, $event) {
+      this.focus = false
       newTask = JSON.parse(JSON.stringify(newTask));
       const board = this.$store.getters.currBoard;
       const { boardId, groupId, task } = await this.$store.dispatch({
@@ -138,6 +146,7 @@ export default {
     },
 
     editTaskTitle() {
+      this.focus = true
       this.$refs.title.focus();
     },
   },

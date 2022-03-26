@@ -2,10 +2,10 @@
   <div class="group-options">
     <div class="input-container">
       <label for="remove">
-        remove
+        Remove Group
         <input
           class="d-none"
-          @change="setUpdateValue"
+          @change="setUpdateValue(optionsValue)"
           type="radio"
           name="options"
           id="remove"
@@ -16,10 +16,10 @@
     </div>
     <div class="input-container">
       <label for="duplicate">
-        duplicate
+        Duplicate Group
         <input
           class="d-none"
-          @change="setUpdateValue"
+          @change="setUpdateValue(optionsValue)"
           type="radio"
           name="options"
           id="duplicate"
@@ -30,13 +30,13 @@
     </div>
     <div class="input-container color-input flex">
       <input
-        @change="setUpdateValue"
+        @change="setUpdateValue(newColor)"
         type="color"
         name="options"
         id="color"
-        v-model="optionsValue"
+        v-model="newColor"
       />
-      <label for="color"> color </label>
+      <label for="color">Change Group Color</label>
     </div>
   </div>
 </template>
@@ -51,11 +51,15 @@ export default {
   data() {
     return {
       optionsValue: '',
-      newColor: `"${this.groupColor}"`
+      newColor: null
     }
   },
+  mounted(){
+    this.newColor = this.groupColor
+  },
   methods: {
-    setUpdateValue() {
+    setUpdateValue(val) {
+      this.optionsValue = val
       this.$emit('update', this.optionsValue)
     },
   },
