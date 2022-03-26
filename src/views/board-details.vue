@@ -60,9 +60,9 @@
       ></add-group-task>
     </div>
 
-    <section class="group-list" v-if="board">
+    <section class="group-list" v-if="currBoard">
       <Container orientation="vertical" @drop="onDrop">
-        <Draggable v-for="group in board.groups" :key="group.id">
+        <Draggable v-for="group in currBoard.groups" :key="group.id">
           <group-cmp
             @updateGroup="currBoard"
             @updateTask="currBoard"
@@ -168,6 +168,7 @@ export default {
   },
   computed: {
     currBoard() {
+      console.log(this.$store.getters.currBoard)
       return this.$store.getters.currBoard;
       // this.board = this.$store.getters.currBoard
       // return this.board
