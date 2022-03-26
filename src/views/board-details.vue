@@ -61,14 +61,16 @@
     </div>
 
     <section class="group-list" v-if="currBoard">
-      <section v-for="group in currBoard.groups" :key="group.id">
-        <group-cmp
-          @updateGroup="currBoard"
-          @updateTask="currBoard"
-          :group="group"
-        />
-        <br />
-      </section>
+      <Container orientation="vertical" @drop="onDrop">
+        <Draggable v-for="group in currBoard.groups" :key="group.id">
+          <group-cmp
+            @updateGroup="currBoard"
+            @updateTask="currBoard"
+            :group="group"
+          />
+          <br />
+        </Draggable>
+      </Container>
     </section>
   </section>
 </template>
@@ -129,12 +131,44 @@ export default {
         const value = event.target.innerText;
         board.description = value;
       }
-      // console.log(board)
+      console.log(board);
       this.$store.dispatch({ type: "saveBoard", board });
+    },
+    onDrop(dropResult) {
+      const board = JSON.parse(JSON.stringify(this.currBoard))
+      board.groups = this.applyDrag(board.groups, dropResult);
+    },
+    applyDrag(arr, dragResult) {
+      const { removedIndex, addedIndex, payload } = dragResult;
+
+      if (removedIndex === null && addedIndex === null) return arr;
+      const result = [...arr];
+      let taskToAdd = payload;
+
+      if (removedIndex !== null) {
+        taskToAdd = result.splice(removedIndex, 1)[0];
+      }
+      if (addedIndex !== null) {
+        result.splice(addedIndex, 0, taskToAdd);
+      }
+
+      // console.log('result:', result)
+      this.updateBoard(result);
+
+      return result;
+    },
+    updateBoard(result) {
+      const updatedBoard = JSON.parse(JSON.stringify(this.currBoard));
+      updatedBoard.groups = JSON.parse(JSON.stringify(result));
+      this.$store.dispatch({
+        type: "saveBoard",
+        board: updatedBoard,
+      });
     },
   },
   computed: {
     currBoard() {
+      console.log(this.$store.getters.currBoard)
       return this.$store.getters.currBoard;
       // this.board = this.$store.getters.currBoard
       // return this.board
