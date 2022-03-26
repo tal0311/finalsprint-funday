@@ -1,5 +1,5 @@
 <template>
-  <Container  orientation="vertical" @drop="onDrop">
+  <Container  orientation="vertical" @drop="onDrop" class="zone">
     <Draggable  v-for="eltask in eltasks" :key="eltask.id">
       <task-preview :task="eltask" :groupColor="groupColor" :group="group"></task-preview>
     </Draggable>
@@ -67,4 +67,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.zone{
+  background-color: pink;
+  /* position: abso; */
+  
+}
+</style>
