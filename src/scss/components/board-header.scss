@@ -1,6 +1,6 @@
 .header {
   padding: toRem(16) toRem(30) 0 toRem(30);
-  color: $clr9;
+  // color: red;
   .btn-container {
     & > * {
       @include headerBtn;
@@ -33,15 +33,14 @@
     width: 70%;
     &:hover {
       @include hoverToEditTxt;
-
     }
-    &:focus{
-      @include hoverToEditTxt
+    &:focus {
+      @include hoverToEditTxt;
     }
   }
   .board-header-top {
     width: 100%;
-
+    
     .info-star {
       margin-inline-start: -20%;
       z-index: 1;
@@ -64,6 +63,7 @@
       line-height: toRem(40);
       font-size: 2rem;
       font-weight: 100;
+      text-transform: capitalize;
 
       &:hover {
         outline: solid #3333 1px;
@@ -95,7 +95,7 @@
         text-overflow: ellipsis;
 
         &:focus {
-          @include hoverToEditTxt
+          @include hoverToEditTxt;
         }
       }
     }
