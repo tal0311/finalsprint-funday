@@ -1,6 +1,6 @@
 <template>
   <section @click="toggleShow" :class="statusClass" class="status-picker" >
-    <div class="status">{{task.cols[0].value === '&nbsp' ? '&nbsp;' : task.cols[0].value}}
+    <div class="status">{{task.cols[0].value === '' ? '&nbsp' : task.cols[0].value}} 
     </div>
     <div v-if="menuOpen" class="picker-box">
       <!-- TODO - change back to working on it -->

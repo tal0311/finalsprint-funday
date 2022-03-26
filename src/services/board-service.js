@@ -78,11 +78,11 @@ async function remove(boardId) {
 function getEmptyGroup() {
   return {
     id: 'g' + utilService.makeId(),
-    title: 'new group',
+    title: 'New Group',
     tasks: [
       {
         id: 't' + utilService.makeId(),
-        title: 'new task',
+        title: 'New Task',
         cols: [
           {
             type: 'status-picker',

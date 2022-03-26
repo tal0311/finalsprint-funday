@@ -2,6 +2,12 @@
   <!-- task title -->
   <div class="task-preview flex">
     <!-- <task-options v-if="isOptions"></task-options> -->
+    
+      <div
+        class="btn-remove-task btn"
+        @click="removeTask"
+        :class="{ 'btn-remove-task': taskHover}"
+      ></div>
     <div class="task-title-comp">
       <div
         class="side-indicator"
@@ -12,30 +18,34 @@
       <router-link
         :to="'/board/b101/task/' + task.id"
         class="title-chat flex space-between"
-         @mouseover="taskHover = true"
-            @mouseleave="taskHover = false"
+        @mouseover="taskHover = true"
+        @mouseleave="taskHover = false"
       >
-      <div class="title-edit">
-        <div
-          :class="{ 'mark-outline': editHover, 'task-title': !editHover, 'bgc-white': focus}"
-          class="task-title"
-          contenteditable="true"
-          ref="title"
-          @blur="updateTask(task, $event)"
-        >
-          {{ task.title }}
-        </div>
-        <span>
-          <button
-            class="edit"
-            @mouseover="editHover = true"
-            @mouseleave="editHover = false"
-            @click.prevent="editTaskTitle"
-            :class="{ 'd-none': !taskHover }"
+        <div class="title-edit">
+          <div
+            :class="{
+              'mark-outline': editHover,
+              'task-title': !editHover,
+              'bgc-white': focus,
+            }"
+            class="task-title"
+            contenteditable="true"
+            ref="title"
+            @blur="updateTask(task, $event)"
           >
-            Edit
-          </button>
-        </span>
+            {{ task.title }}
+          </div>
+          <span>
+            <button
+              class="edit"
+              @mouseover="editHover = true"
+              @mouseleave="editHover = false"
+              @click.prevent="editTaskTitle"
+              :class="{ 'd-none': !taskHover }"
+            >
+              Edit
+            </button>
+          </span>
         </div>
 
         <span class="chat">
@@ -62,18 +72,18 @@
           </svg>
         </span>
       </router-link>
-      <div class="remove-task btn" @click="removeTask"></div>
     </div>
     <div class="task-columns flex">
-        <div class="dyn-cmp" v-for="(cmp, idx) in task.cols" :key="idx">
-          <component class="task-col-comp" 
-            :is="cmp.type"
-            :task="task"
-            :value="cmp.value"
-            :group="group"
-            @updateStatus="setStatus"
-          />
-        </div>
+      <div class="dyn-cmp" v-for="(cmp, idx) in task.cols" :key="idx">
+        <component
+          class="task-col-comp"
+          :is="cmp.type"
+          :task="task"
+          :value="cmp.value"
+          :group="group"
+          @updateStatus="setStatus"
+        />
+      </div>
       <div class="right-indicator"></div>
     </div>
     <!-- dynamic components -->
@@ -92,14 +102,14 @@ export default {
   props: {
     task: Object,
     groupColor: String,
-    group: Object
+    group: Object,
   },
   data() {
     return {
       isOptions: false,
       editHover: false,
       taskHover: false,
-      focus: false
+      focus: false,
     };
   },
   methods: {
@@ -110,42 +120,42 @@ export default {
       this.isOptions = !this.isOptions;
     },
     async updateTask(newTask, $event) {
-      this.focus = false
+      this.focus = false;
       newTask = JSON.parse(JSON.stringify(newTask));
       const board = this.$store.getters.currBoard;
-      const { boardId, groupId, task } = await this.$store.dispatch({
-        type: "findTask",
-        boardId: board._id,
-        taskId: newTask.id,
-      });
-      task.title = $event.target.innerText;
+      // const { boardId, groupId, task } = await this.$store.dispatch({
+      //   type: "findTask",
+      //   boardId: board._id,
+      //   taskId: newTask.id,
+      // });
+      newTask.title = $event.target.innerText;
       await this.$store.dispatch({
         type: "updateTask",
-        boardId,
-        groupId,
-        task,
+        boardId: board._id,
+        groupId: this.group.id,
+        task: newTask,
       });
       this.$emit("updateTask");
     },
     async removeTask() {
       const taskToDelete = this.task;
       const board = this.$store.getters.currBoard;
-      const { boardId, groupId, task } = await this.$store.dispatch({
-        type: "findTask",
-        boardId: board._id,
-        taskId: taskToDelete.id,
-      });
+      // const { boardId, groupId, task } = await this.$store.dispatch({
+      //   type: "findTask",
+      //   boardId: board._id,
+      //   taskId: taskToDelete.id,
+      // });
       await this.$store.dispatch({
         type: "removeTask",
-        boardId,
-        groupId,
-        task,
+        boardId: board._id,
+        groupId: this.group.id,
+        task: taskToDelete,
       });
       this.$emit("updateTask");
     },
 
     editTaskTitle() {
-      this.focus = true
+      this.focus = true;
       this.$refs.title.focus();
     },
   },
