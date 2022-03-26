@@ -90,10 +90,22 @@
               "type": "member-picker",
               "value": [
                 {
-                  "_id": "fhrf*^%hfdg",
+                  "id": "m303",
                   "username": "Meir",
                   "fullname": "Meir Abambi",
-                  "imgUrl": "https://randomuser.me/api/portraits/women/38.jpg"
+                  "imgUrl": "https://randomuser.me/api/portraits/men/27.jpg"
+                },
+                {
+                  "id": "mfdg",
+                  "username": "Momi",
+                  "fullname": "Momi Alfasi",
+                  "imgUrl": "https://randomuser.me/api/portraits/men/22.jpg"
+                },
+                {
+                  "id": "m404g",
+                  "username": "Meni",
+                  "fullname": "some men",
+                  "imgUrl": "https://randomuser.me/api/portraits/men/24.jpg"
                 }
               ]
             },
@@ -107,7 +119,7 @@
       "groupColor": "#579bfc"
     },
     {
-      "id": "jkjsdf45",
+      "id": "g093",
       "title": "Group 2",
       "tasks": [
         {
@@ -122,10 +134,22 @@
               "type": "member-picker",
               "value": [
                 {
-                  "_id": "fhrf*^%hfdg",
+                  "id": "m3748",
                   "username": "meir",
                   "fullname": "Meir Abambi",
-                  "imgUrl": "https://randomuser.me/api/portraits/men/38.jpg"
+                  "imgUrl": "https://randomuser.me/api/portraits/men/55.jpg"
+                },
+                {
+                  "id": "m1hfdg",
+                  "username": "meir",
+                  "fullname": "Meir Abambi",
+                  "imgUrl": "https://randomuser.me/api/portraits/men/55.jpg"
+                },
+                {
+                  "id": "m304^%hfdg",
+                  "username": "meir",
+                  "fullname": "Meir Abambi",
+                  "imgUrl": "https://randomuser.me/api/portraits/men/55.jpg"
                 }
               ]
             },
@@ -147,7 +171,7 @@
               "type": "member-picker",
               "value": [
                 {
-                  "_id": "fhrf*^%hfdg",
+                  "id": "fhrhfdg",
                   "username": "Meir",
                   "fullname": "Meir Abambi",
                   "imgUrl": "https://randomuser.me/api/portraits/men/28.jpg"
@@ -172,10 +196,10 @@
               "type": "member-picker",
               "value": [
                 {
-                  "_id": "fhrf*^%hfdg",
-                  "username": "Meir",
+                  "id": "f^%hfdg",
+                  "username": "meir",
                   "fullname": "Meir Abambi",
-                  "imgUrl": "http://some-img.jpg"
+                  "imgUrl": "https://randomuser.me/api/portraits/men/38.jpg"
                 }
               ]
             },
@@ -204,10 +228,10 @@
               "type": "member-picker",
               "value": [
                 {
-                  "_id": "fhrf*^%hfdg",
-                  "username": "tal",
-                  "fullname": "tal amit",
-                  "imgUrl": "http://some-img.jpg"
+                  "id": "fhrf5093g",
+                  "username": "Meir",
+                  "fullname": "Meir Abambi",
+                  "imgUrl": "https://randomuser.me/api/portraits/men/28.jpg"
                 }
               ]
             },
@@ -229,7 +253,7 @@
               "type": "member-picker",
               "value": [
                 {
-                  "_id": "fhrf*^%hfdg",
+                  "id": "hfdg",
                   "username": "shiran",
                   "fullname": "shiran elad",
                   "imgUrl": "http://some-img.jpg"
@@ -254,7 +278,7 @@
               "type": "member-picker",
               "value": [
                 {
-                  "_id": "fhrf*^%hfdg",
+                  "id": "708fdg",
                   "username": "guy",
                   "fullname": "guy shimon",
                   "imgUrl": "http://some-img.jpg"

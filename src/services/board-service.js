@@ -394,11 +394,10 @@ const board = [
   },
 ]
 
-
-function loadItemsToStorage() {
-  console.log('loading')
-  localStorage.setItem('board', JSON.stringify(board))
-}
+// function loadItemsToStorage() {
+//   console.log('loading')
+//   localStorage.setItem('board', JSON.stringify(board))
+// }
 // This IIFE functions for Dev purposes
 // It allows testing of real time updates (such as sockets) by listening to storage events
 // (async () => {
