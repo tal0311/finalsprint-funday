@@ -78,11 +78,11 @@ async function remove(boardId) {
 function getEmptyGroup() {
   return {
     id: 'g' + utilService.makeId(),
-    title: 'new group',
+    title: 'New Group',
     tasks: [
       {
         id: 't' + utilService.makeId(),
-        title: 'new task',
+        title: 'New Task',
         cols: [
           {
             type: 'status-picker',
@@ -393,7 +393,8 @@ const board = [
     cmpsOrder: ['status-picker', 'member-picker', 'date-picker'],
   },
 ]
-loadItemsToStorage()
+
+// loadItemsToStorage()
 function loadItemsToStorage() {
   console.log('loading')
   localStorage.setItem('board', JSON.stringify(board))
