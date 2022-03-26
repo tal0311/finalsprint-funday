@@ -11,7 +11,7 @@
         {{ member.username.substring(0, 1) }}
       </li>
     </ul>
-    <div class="no-members" v-else @click="addMember">+</div>
+    <div class="no-members" v-else @click="addMember"></div>
   </div>
 </template>
 

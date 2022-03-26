@@ -1,5 +1,5 @@
 .status-picker {
-    width:fit-content;
+    width: fit-content;
     width: 140px;
     .status {
         // position: relative;
@@ -20,8 +20,32 @@
     }
     .picker-box {
         background-color: $clr8;
+        color: $clr8;
         position: absolute;
         z-index: 10;
+        text-align: center;
+        border-radius: 4px;
+        box-shadow: 0 8px 16px 0px rgb(0 0 0 / 32%);
+        > div {
+            padding: 0px 10px;
+            margin: 10px;
+        }
+        &::after {
+            content: " ";
+            right: 50%;
+            transform: translateX(50%);
+            border-bottom-color: $clr8;
+            background-color: $clr8;
+            border-width: 8px;
+            position: absolute;
+            border: solid transparent;
+            bottom: 100%;
+            border-color: rgba(225, 225, 225, 0);
+            pointer-events: none;
+            height: 0;
+            width: 0;
+            z-index: 11;
+        }
     }
 }
 .working {

@@ -115,7 +115,8 @@
         .dyn-cmp {
             width: 100%;
             .task-col-comp {
-                border: black 1px solid;
+                font-size: toRem(14);
+                border-right: $clr8 1px solid;
                 // width: 140px;
                 margin: 0;
                 padding: 0;
