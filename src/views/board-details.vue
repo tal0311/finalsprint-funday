@@ -3,7 +3,9 @@
     <div class="header">
       <div class="">
         <div class="board-header-top flex">
-          <h1 class="board-title">{{ board.title }}</h1>
+          <h1 class="board-title" @blur="setBoardTitle" contenteditable="true">
+            {{ board.title }}
+          </h1>
           <div class="info-star flex">
             <button class="info"></button>
             <button class="star">Star</button>
@@ -18,7 +20,7 @@
             <button class="btn add">Add to board</button>
           </div>
         </div>
-        <p class="description">
+        <p class="description" @blur="setBoardTitle" contenteditable="true">
           {{ board.description }}
         </p>
 
@@ -84,14 +86,14 @@
 }
 </style>
 <script>
-import addGroupTask from "../components/add-group-task.vue";
-import groupCmp from "../components/group.vue";
-import { ArrowDown } from "@element-plus/icons-vue";
-import appFilter from "../components/filter.vue";
-import { Container, Draggable } from "vue3-smooth-dnd";
+import addGroupTask from '../components/add-group-task.vue'
+import groupCmp from '../components/group.vue'
+import { ArrowDown } from '@element-plus/icons-vue'
+import appFilter from '../components/filter.vue'
+import { Container, Draggable } from 'vue3-smooth-dnd'
 
 export default {
-  name: "board-details",
+  name: 'board-details',
   components: {
     groupCmp,
     addGroupTask,
@@ -100,23 +102,36 @@ export default {
     Draggable,
   },
   created() {
-    let { boardId } = this.$route.params;
-    const board = this.$store.dispatch({ type: "getBoardById", boardId });
-    this.$store.commit({ type: "setCurrBoard", board });
+    let { boardId } = this.$route.params
+    const board = this.$store.dispatch({ type: 'getBoardById', boardId })
+    this.$store.commit({ type: 'setCurrBoard', board })
     // const board = this.$store.getters.currBoard
-    this.board = JSON.parse(JSON.stringify(board));
+    this.board = JSON.parse(JSON.stringify(board))
   },
   data() {
     return {
       board: null,
-    };
+    }
   },
   methods: {
     addNewTask() {
-      this.$store.dispatch({ type: "addTask", board: this.board, groupIdx: 0 });
+      this.$store.dispatch({ type: 'addTask', board: this.board, groupIdx: 0 })
     },
     addGroup() {
-      this.$store.dispatch({ type: "addGroup", board: this.board });
+      this.$store.dispatch({ type: 'addGroup', board: this.board })
+    },
+    setBoardTitle(event) {
+      const board = JSON.parse(JSON.stringify(this.board))
+      if (event.target.nodeName === 'H1') {
+        const value = event.target.innerText
+        board.title = value
+      }
+      if (event.target.nodeName === 'P') {
+        const value = event.target.innerText
+        board.description = value
+      }
+      console.log(board)
+      this.$store.dispatch({ type: 'saveBoard', board })
     },
     onDrop(dropResult) {
       this.board.groups = this.applyDrag(this.board.groups, dropResult);
@@ -152,10 +167,9 @@ export default {
   computed: {
     currBoard() {
       // return this.$store.getters.currBoard
-      this.board = this.$store.getters.currBoard;
-      return this.board;
+      this.board = this.$store.getters.currBoard
+      return this.board
     },
   },
-  unmounted() {},
-};
+}
 </script>

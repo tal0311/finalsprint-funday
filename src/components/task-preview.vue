@@ -12,9 +12,12 @@
       <router-link
         :to="'/board/b101/task/' + task.id"
         class="title-chat flex space-between"
+         @mouseover="taskHover = true"
+            @mouseleave="taskHover = false"
       >
+      <div class="title-edit">
         <div
-          :class="{ 'mark-outline': hover, 'task-title': !hover }"
+          :class="{ 'mark-outline': editHover, 'task-title': !editHover, 'bgc-white': focus}"
           class="task-title"
           contenteditable="true"
           ref="title"
@@ -22,17 +25,19 @@
         >
           {{ task.title }}
         </div>
-
-        <span
-          ><button
+        <span>
+          <button
             class="edit"
-            @mouseover="hover = true"
-            @mouseleave="hover = false"
+            @mouseover="editHover = true"
+            @mouseleave="editHover = false"
             @click.prevent="editTaskTitle"
+            :class="{ 'd-none': !taskHover }"
           >
             Edit
-          </button></span
-        >
+          </button>
+        </span>
+        </div>
+
         <span class="chat">
           <svg
             viewBox="0 0 20 20"
@@ -59,20 +64,18 @@
       </router-link>
       <div class="remove-task btn" @click="removeTask"></div>
     </div>
-    <div class="task-columns flex space-between">
-      <div class="task-col-comp">
-        <div v-for="(cmp, idx) in task.cols" :key="idx">
-          <component
+    <div class="task-columns flex">
+        <div class="dyn-cmp" v-for="(cmp, idx) in task.cols" :key="idx">
+          <component class="task-col-comp" 
             :is="cmp.type"
             :task="task"
             :value="cmp.value"
+            :group="group"
             @updateStatus="setStatus"
           />
         </div>
-      </div>
       <div class="right-indicator"></div>
     </div>
-    <!-- </div> -->
     <!-- dynamic components -->
   </div>
 </template>
@@ -89,11 +92,14 @@ export default {
   props: {
     task: Object,
     groupColor: String,
+    group: Object
   },
   data() {
     return {
       isOptions: false,
-      hover: false,
+      editHover: false,
+      taskHover: false,
+      focus: false
     };
   },
   methods: {
@@ -104,6 +110,7 @@ export default {
       this.isOptions = !this.isOptions;
     },
     async updateTask(newTask, $event) {
+      this.focus = false
       newTask = JSON.parse(JSON.stringify(newTask));
       const board = this.$store.getters.currBoard;
       const { boardId, groupId, task } = await this.$store.dispatch({
@@ -138,6 +145,7 @@ export default {
     },
 
     editTaskTitle() {
+      this.focus = true
       this.$refs.title.focus();
     },
   },

@@ -90,7 +90,7 @@ export const boardStore = {
         await boardService.remove(_id)
         commit(payload)
       } catch {
-        console.log('Couldnt remove board')
+        console.log('couldn\'t remove board')
         commit({
           type: 'setIsError',
           isError: true,
@@ -98,6 +98,7 @@ export const boardStore = {
       }
     },
     async saveBoard({ dispatch }, { board }) {
+
       try {
         await boardService.save(board)
         dispatch('loadBoards')

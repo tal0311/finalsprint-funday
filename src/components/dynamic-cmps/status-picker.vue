@@ -1,6 +1,7 @@
 <template>
   <section @click="toggleShow" :class="statusClass" class="status-picker" >
-    <div>{{task.cols[0].value}}</div>
+    <div class="status">{{task.cols[0].value}}
+    </div>
     <div v-if="menuOpen" class="picker-box">
       <!-- TODO - change back to working on it -->
       <div @click="setStatus('Working on it')" class="working">Working on it</div>
@@ -20,6 +21,7 @@ export default {
   emits: ['updateTask'],
   props: {
     task: Object,
+    group: Object
   },
   data() {
     return {
@@ -34,17 +36,17 @@ export default {
     async setStatus(status) {
       // this.$emit('setStatus', status, this.task)
       const board = this.$store.getters.currBoard;
-      const { boardId, groupId, task } = await this.$store.dispatch({
-        type: "findTask",
-        boardId: board._id,
-        taskId: this.task.id,
-      });
-      task.cols[0].value = status;
+      // const { boardId, groupId, task } = await this.$store.dispatch({
+      //   type: "findTask",
+      //   boardId: board._id,
+      //   taskId: this.task.id,
+      // });
+      this.task.cols[0].value = status;
       await this.$store.dispatch({
         type: "updateTask",
-        boardId,
-        groupId,
-        task,
+        boardId: board._id,
+        groupId: this.group.id,
+        task: this.task,
       });
       this.$emit("updateTask");
     },

@@ -28,24 +28,8 @@
             background-color: rgb(87, 155, 252);
             color: rgb(87, 155, 252);
         }
-        .task-title {
-            margin-inline-end: 5px;
-            display: flex;
-            flex: 1;
-            align-items: center;
-            min-width: 0;
-            padding-left: 10px;
-            line-height: 23px;
-            text-decoration: none;
-            color: $clr9;
-            font-weight: 400;
-            font-size: 0.8125rem;
-            &.mark-outline {
-                outline: $clr11 1px solid;
-                background-color: $clr8;
-            }
-        }
         .title-chat {
+            flex: 1;
             display: flex;
             padding: 0px 10px;
             align-items: center;
@@ -56,31 +40,67 @@
             &:focus {
                 background-color: $clr13;
             }
-            .edit {
-                margin-left: 8px;
-                cursor: pointer;
-                height: 24px;
-                flex: initial;
-                margin-left: 8px;
-                padding-left: 8px;
-                padding-right: 8px;
-                border-radius: 4px;
-                line-height: 22px;
-                padding-top: 2px;
-                outline: 0;
-                border: 0;
-                color: $clr5;
-                &:hover {
+            .title-edit {
+                margin-inline-end: 5px;
+                display: flex;
+                flex: 1;
+                align-items: center;
+                min-width: 0;
+                padding-left: 10px;
+                line-height: 23px;
+                text-decoration: none;
+                color: $clr9;
+                font-weight: 400;
+                font-size: 0.8125rem;
+                .task-title {
+                    padding: 2px 5px;
+                    // margin-inline-end: 5px;
+                    // display: flex;
+                    // // flex: 1;
+                    // align-items: center;
+                    // min-width: 0;
+                    // padding-left: 10px;
+                    // line-height: 23px;
+                    // text-decoration: none;
+                    // color: $clr9;
+                    // font-weight: 400;
+                    // font-size: 0.8125rem;
+                    &.mark-outline {
+                        outline: $clr11 1px solid;
+                        border-radius: 1px;
+                    }
+                    &.bgc-white {
+                        background-color: $clr8;
+                    }
+                }
+                .edit {
+                    margin-left: 8px;
+                    cursor: pointer;
+                    height: 24px;
+                    flex: initial;
+                    margin-left: 8px;
+                    padding-left: 8px;
+                    padding-right: 8px;
+                    border-radius: 4px;
+                    line-height: 22px;
+                    padding-top: 2px;
+                    outline: 0;
+                    border: 0;
+                    color: $clr5;
                     background-color: transparent;
+                    &:hover {
+                        background-color: $clr8;
+                    }
                 }
             }
+
             .chat-without-update {
                 color: $clr11;
                 overflow: hidden;
                 position: relative;
                 font-size: 24px;
                 text-align: left;
-                // padding: 0 10px 0 0 ;
+                margin-top: 10px;
                 &:hover {
                     color: $clr16;
                 }
@@ -91,19 +111,27 @@
     .task-columns {
         width: 100%;
         background-color: $clr10;
-        
-        .task-col-comp {
-            flex-basis: 496px;
-            margin: 0;
-            padding: 0;
-            border: 0;
-            flex-shrink: 0;
-            cursor: pointer;
-            text-align: center;
-            border-right: $clr8 1px solid;
-            display: flex;
-            justify-content: center;
-            min-width: 200px;
+        flex: 1;
+        .dyn-cmp {
+            width: 100%;
+            .task-col-comp {
+                border: black 1px solid;
+                // width: 140px;
+                margin: 0;
+                padding: 0;
+                // flex-basis: 200px;
+                // position: relative;
+                // margin: 0;
+                // padding: 0;
+                // border: 0;
+                // flex-shrink: 0;
+                // cursor: pointer;
+                // text-align: center;
+                // border-right: $clr8 1px solid;
+                // display: flex;
+                // justify-content: center;
+                // min-width: 200px;
+            }
         }
 
         .right-indicator {
