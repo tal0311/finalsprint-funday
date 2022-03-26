@@ -393,7 +393,7 @@ const board = [
     cmpsOrder: ['status-picker', 'member-picker', 'date-picker'],
   },
 ]
-// loadItemsToStorage()
+loadItemsToStorage()
 function loadItemsToStorage() {
   console.log('loading')
   localStorage.setItem('board', JSON.stringify(board))
