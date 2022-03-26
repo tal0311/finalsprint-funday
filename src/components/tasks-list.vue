@@ -1,7 +1,7 @@
 <template>
   <Container  orientation="vertical" @drop="onDrop">
     <Draggable  v-for="eltask in eltasks" :key="eltask.id">
-      <task-preview :task="eltask" :groupColor="groupColor"></task-preview>
+      <task-preview :task="eltask" :groupColor="groupColor" :group="group"></task-preview>
     </Draggable>
   </Container>
 </template>
