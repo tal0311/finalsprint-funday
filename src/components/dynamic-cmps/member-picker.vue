@@ -8,7 +8,7 @@
         class="member"
         :style="{ backgroundColor: userColor }"
       >
-        {{ member.username.substring(0, 1) }}
+        {{ member.username.substring(0, 1).toUpperCase() }}
       </li>
     </ul>
     <div class="no-members" v-else @click="addMember"></div>
