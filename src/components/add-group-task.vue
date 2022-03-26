@@ -25,7 +25,7 @@ export default {
     },
     addGroup() {
       console.log('add group')
-      this.$store.dispatch({ type: 'addGroup', boardId: this.boardId })
+      // this.$store.dispatch({ type: 'addGroup', boardId: this.boardId })
       this.$emit('addGroup')
       this.openOptions()
     },
