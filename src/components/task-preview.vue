@@ -64,12 +64,13 @@
       </router-link>
       <div class="remove-task btn" @click="removeTask"></div>
     </div>
-    <div class="task-columns flex space-between relative">
-        <div v-for="(cmp, idx) in task.cols" :key="idx">
-          <component class="task-col-comp absolute" 
+    <div class="task-columns flex">
+        <div class="dyn-cmp" v-for="(cmp, idx) in task.cols" :key="idx">
+          <component class="task-col-comp" 
             :is="cmp.type"
             :task="task"
             :value="cmp.value"
+            :group="group"
             @updateStatus="setStatus"
           />
         </div>
@@ -91,6 +92,7 @@ export default {
   props: {
     task: Object,
     groupColor: String,
+    group: Object
   },
   data() {
     return {

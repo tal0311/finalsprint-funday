@@ -41,7 +41,6 @@
                 background-color: $clr13;
             }
             .title-edit {
-                
                 margin-inline-end: 5px;
                 display: flex;
                 flex: 1;
@@ -69,7 +68,6 @@
                     &.mark-outline {
                         outline: $clr11 1px solid;
                         border-radius: 1px;
-                        
                     }
                     &.bgc-white {
                         background-color: $clr8;
@@ -113,20 +111,27 @@
     .task-columns {
         width: 100%;
         background-color: $clr10;
-
-        > .task-col-comp {
-            flex-basis: 200px;
-            position:relative;
-            // margin: 0;
-            // padding: 0;
-            // border: 0;
-            // flex-shrink: 0;
-            // cursor: pointer;
-            // text-align: center;
-            // border-right: $clr8 1px solid;
-            // display: flex;
-            // justify-content: center;
-            // min-width: 200px;
+        flex: 1;
+        .dyn-cmp {
+            width: 100%;
+            .task-col-comp {
+                border: black 1px solid;
+                // width: 140px;
+                margin: 0;
+                padding: 0;
+                // flex-basis: 200px;
+                // position: relative;
+                // margin: 0;
+                // padding: 0;
+                // border: 0;
+                // flex-shrink: 0;
+                // cursor: pointer;
+                // text-align: center;
+                // border-right: $clr8 1px solid;
+                // display: flex;
+                // justify-content: center;
+                // min-width: 200px;
+            }
         }
 
         .right-indicator {
