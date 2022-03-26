@@ -5,8 +5,7 @@ task files
 </template>
 
 <script>
-// import { carService } from '../services/car-service.js'
-// import carFilter from '../components/car-filter.vue'
+
 
 export default {
   name: 'task-files',

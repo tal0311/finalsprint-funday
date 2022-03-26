@@ -6,7 +6,8 @@
       type="text"
       placeholder="Write an update..."
     />
-    <textarea
+    <input
+      type="text"
       v-if="writing"
       v-model="updateText"
       name=""
@@ -14,35 +15,39 @@
       cols="30"
       rows="10"
     /><br />
+
     <button @click="update">Update</button>
-    <ul class="updates-list">
-      <li>update 1</li>
-      <li>update 2</li>
-      <li>update 3</li>
+    <ul class="update-list clean-list">
+      <li v-for="(comment, idx) in task.comments" :key="idx">
+        <h4>{{ comment.creator }}</h4>
+        <p>{{ comment.content }}</p>
+      </li>
     </ul>
   </section>
 </template>
 
 <script>
 export default {
-  name: "task-updates",
-  props: {},
+  name: 'task-updates',
+  props: {
+    task: Object,
+  },
   data() {
     return {
       updateText: null,
       writing: false,
-    };
+    }
   },
   methods: {
     async update() {
       await this.$store.dispatch({
-        type: "saveTaskUpdate",
+        type: 'saveTaskUpdate',
         text: this.updateText,
-      });
+      })
     },
   },
   computed: {},
   created() {},
   components: {},
-};
+}
 </script>

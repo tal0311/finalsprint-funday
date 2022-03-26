@@ -70,6 +70,12 @@
               "type": "date-picker",
               "value": null
             }
+          ],
+          "comments": [
+            { "creator": "Lili Abambi", "content": "can some one help me" },
+            { "creator": "tal amit", "content": "fix problem with bug" },
+            { "creator": "shiarn elad", "content": "i can help" },
+            { "creator": "Guy shimon ", "content": "made that dnd work" }
           ]
         },
         {
