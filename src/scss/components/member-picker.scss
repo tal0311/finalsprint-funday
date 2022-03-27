@@ -1,9 +1,10 @@
 .members-container {
-  width:fit-content;
+  width:216px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin:auto;
+  // position: absolute;
   // &flex {
   //   flex-direction: row;
 
@@ -22,6 +23,7 @@
     margin: 0 -4px;
     flex-shrink: 0;
     position: relative;
+    margin-top:3px;
   }
 }
 

@@ -1,11 +1,11 @@
 [
     {
         "_id": "b101",
-        "title": "Sprint4 - Project Management",
+        "title": "Sprint4 - Project Mgmt",
         "description": "This board will be used for collaboration management on the Funday app project",
         "createdAt": 1589983468418,
         "createdBy": {
-            "_id": "u101",
+            "id": "u101",
             "fullname": "Abi Abambi",
             "imgUrl": "http://some-img"
         },
@@ -13,17 +13,26 @@
             {
                 "id": "u101",
                 "fullname": "Tal Amit",
-                "imgUrl": "https://www.google.com"
+                "imgUrl": "https://www.google.com",
+                "color": "#8338ec"
             },
             {
                 "id": "u102",
                 "fullname": "Guy Shimon",
-                "imgUrl": "https://www.google.com"
+                "imgUrl": "https://www.google.com",
+                "color": "#3a86ff"
             },
             {
                 "id": "u103",
                 "fullname": "Shiran Elad",
-                "imgUrl": "https://www.google.com"
+                "imgUrl": "https://www.google.com",
+                "color": "#ff006e"
+            },
+            {
+                "id": "u104",
+                "fullname": "Rotem Bublil",
+                "imgUrl": "https://www.google.com",
+                "color": "#ffbe0b"
             }
         ],
         "activities": [
@@ -32,7 +41,7 @@
                 "txt": "Changed Color",
                 "createdAt": 154514,
                 "byMember": {
-                    "_id": "u101",
+                    "id": "u101",
                     "fullname": "Abi Abambi",
                     "imgUrl": "http://some-img"
                 },
@@ -57,11 +66,24 @@
                             },
                             {
                                 "type": "member-picker",
-                                "value": []
+                                "value": [
+                                    {
+                                        "id": "u101",
+                                        "fullname": "Tal Amit",
+                                        "imgUrl": "https://www.google.com",
+                                        "color": "#8338ec"
+                                    },
+                                    {
+                                        "id": "u102",
+                                        "fullname": "Guy Shimon",
+                                        "imgUrl": "https://www.google.com",
+                                        "color": "#3a86ff"
+                                    }
+                                ]
                             },
                             {
                                 "type": "date-picker",
-                                "value": "2022-03-02T22:00:00.000Z"
+                                "value": "2022-03-28T21:00:00.000Z"
                             }
                         ],
                         "comments": [
@@ -93,11 +115,24 @@
                             },
                             {
                                 "type": "member-picker",
-                                "value": []
+                                "value": [
+                                    {
+                                        "id": "u101",
+                                        "fullname": "Tal Amit",
+                                        "imgUrl": "https://www.google.com",
+                                        "color": "#8338ec"
+                                    },
+                                    {
+                                        "id": "u104",
+                                        "fullname": "Rotem Bublil",
+                                        "imgUrl": "https://www.google.com",
+                                        "color": "#ffbe0b"
+                                    }
+                                ]
                             },
                             {
                                 "type": "date-picker",
-                                "value": null
+                                "value": "2022-03-08T22:00:00.000Z"
                             }
                         ]
                     },
@@ -111,11 +146,30 @@
                             },
                             {
                                 "type": "member-picker",
-                                "value": []
+                                "value": [
+                                    {
+                                        "id": "u101",
+                                        "fullname": "Tal Amit",
+                                        "imgUrl": "https://www.google.com",
+                                        "color": "#8338ec"
+                                    },
+                                    {
+                                        "id": "u102",
+                                        "fullname": "Guy Shimon",
+                                        "imgUrl": "https://www.google.com",
+                                        "color": "#3a86ff"
+                                    },
+                                    {
+                                        "id": "u103",
+                                        "fullname": "Shiran Elad",
+                                        "imgUrl": "https://www.google.com",
+                                        "color": "#ff006e"
+                                    }
+                                ]
                             },
                             {
                                 "type": "date-picker",
-                                "value": null
+                                "value": "2022-03-10T22:00:00.000Z"
                             }
                         ]
                     },
@@ -132,21 +186,21 @@
                                 "value": [
                                     {
                                         "id": "u101",
-                                        "username": "shiran",
-                                        "fullname": "Shiran Elad",
-                                        "imgUrl": "http://some-img.jpg"
+                                        "fullname": "Tal Amit",
+                                        "imgUrl": "https://www.google.com",
+                                        "color": "#8338ec"
                                     },
                                     {
                                         "id": "u102",
-                                        "username": "tal",
-                                        "fullname": "Tal Amit",
-                                        "imgUrl": "http://some-img.jpg"
+                                        "fullname": "Guy Shimon",
+                                        "imgUrl": "https://www.google.com",
+                                        "color": "#3a86ff"
                                     }
                                 ]
                             },
                             {
                                 "type": "date-picker",
-                                "value": null
+                                "value": "2022-03-21T22:00:00.000Z"
                             }
                         ]
                     },
@@ -164,7 +218,7 @@
                             },
                             {
                                 "type": "date-picker",
-                                "value": null
+                                "value": "2022-03-02T22:00:00.000Z"
                             }
                         ]
                     },
@@ -178,11 +232,30 @@
                             },
                             {
                                 "type": "member-picker",
-                                "value": []
+                                "value": [
+                                    {
+                                        "id": "u101",
+                                        "fullname": "Tal Amit",
+                                        "imgUrl": "https://www.google.com",
+                                        "color": "#8338ec"
+                                    },
+                                    {
+                                        "id": "u103",
+                                        "fullname": "Shiran Elad",
+                                        "imgUrl": "https://www.google.com",
+                                        "color": "#ff006e"
+                                    },
+                                    {
+                                        "id": "u104",
+                                        "fullname": "Rotem Bublil",
+                                        "imgUrl": "https://www.google.com",
+                                        "color": "#ffbe0b"
+                                    }
+                                ]
                             },
                             {
                                 "type": "date-picker",
-                                "value": null
+                                "value": "2022-03-31T21:00:00.000Z"
                             }
                         ]
                     },
@@ -196,29 +269,24 @@
                             },
                             {
                                 "type": "member-picker",
-                                "value": []
+                                "value": [
+                                    {
+                                        "id": "u101",
+                                        "fullname": "Tal Amit",
+                                        "imgUrl": "https://www.google.com",
+                                        "color": "#8338ec"
+                                    },
+                                    {
+                                        "id": "u103",
+                                        "fullname": "Shiran Elad",
+                                        "imgUrl": "https://www.google.com",
+                                        "color": "#ff006e"
+                                    }
+                                ]
                             },
                             {
                                 "type": "date-picker",
-                                "value": null
-                            }
-                        ]
-                    },
-                    {
-                        "id": "tRI28x",
-                        "title": "Filter component",
-                        "cols": [
-                            {
-                                "type": "status-picker",
-                                "value": "Done"
-                            },
-                            {
-                                "type": "member-picker",
-                                "value": []
-                            },
-                            {
-                                "type": "date-picker",
-                                "value": null
+                                "value": "2022-03-11T22:00:00.000Z"
                             }
                         ]
                     },
@@ -236,7 +304,7 @@
                             },
                             {
                                 "type": "date-picker",
-                                "value": null
+                                "value": "2022-03-16T22:00:00.000Z"
                             }
                         ]
                     },
@@ -254,7 +322,7 @@
                             },
                             {
                                 "type": "date-picker",
-                                "value": null
+                                "value": "2022-03-15T22:00:00.000Z"
                             }
                         ]
                     },
@@ -272,7 +340,7 @@
                             },
                             {
                                 "type": "date-picker",
-                                "value": null
+                                "value": "2022-03-29T21:00:00.000Z"
                             }
                         ]
                     },
@@ -349,7 +417,7 @@
                             },
                             {
                                 "type": "date-picker",
-                                "value": null
+                                "value": "2022-03-29T21:00:00.000Z"
                             }
                         ]
                     },
@@ -459,7 +527,20 @@
                             },
                             {
                                 "type": "member-picker",
-                                "value": []
+                                "value": [
+                                    {
+                                        "id": "u101",
+                                        "fullname": "Tal Amit",
+                                        "imgUrl": "https://www.google.com",
+                                        "color": "#8338ec"
+                                    },
+                                    {
+                                        "id": "u102",
+                                        "fullname": "Guy Shimon",
+                                        "imgUrl": "https://www.google.com",
+                                        "color": "#3a86ff"
+                                    }
+                                ]
                             },
                             {
                                 "type": "date-picker",
@@ -520,7 +601,14 @@
                             },
                             {
                                 "type": "member-picker",
-                                "value": []
+                                "value": [
+                                    {
+                                        "id": "u103",
+                                        "fullname": "Shiran Elad",
+                                        "imgUrl": "https://www.google.com",
+                                        "color": "#ff006e"
+                                    }
+                                ]
                             },
                             {
                                 "type": "date-picker"
@@ -555,7 +643,20 @@
                             },
                             {
                                 "type": "member-picker",
-                                "value": []
+                                "value": [
+                                    {
+                                        "id": "u101",
+                                        "fullname": "Tal Amit",
+                                        "imgUrl": "https://www.google.com",
+                                        "color": "#8338ec"
+                                    },
+                                    {
+                                        "id": "u102",
+                                        "fullname": "Guy Shimon",
+                                        "imgUrl": "https://www.google.com",
+                                        "color": "#3a86ff"
+                                    }
+                                ]
                             },
                             {
                                 "type": "date-picker",
@@ -573,7 +674,14 @@
                             },
                             {
                                 "type": "member-picker",
-                                "value": []
+                                "value": [
+                                    {
+                                        "id": "u103",
+                                        "fullname": "Shiran Elad",
+                                        "imgUrl": "https://www.google.com",
+                                        "color": "#ff006e"
+                                    }
+                                ]
                             },
                             {
                                 "type": "date-picker",
@@ -616,7 +724,14 @@
                             },
                             {
                                 "type": "member-picker",
-                                "value": []
+                                "value": [
+                                    {
+                                        "id": "u103",
+                                        "fullname": "Shiran Elad",
+                                        "imgUrl": "https://www.google.com",
+                                        "color": "#ff006e"
+                                    }
+                                ]
                             },
                             {
                                 "type": "date-picker"
@@ -651,7 +766,20 @@
                             },
                             {
                                 "type": "member-picker",
-                                "value": []
+                                "value": [
+                                    {
+                                        "id": "u101",
+                                        "fullname": "Tal Amit",
+                                        "imgUrl": "https://www.google.com",
+                                        "color": "#8338ec"
+                                    },
+                                    {
+                                        "id": "u102",
+                                        "fullname": "Guy Shimon",
+                                        "imgUrl": "https://www.google.com",
+                                        "color": "#3a86ff"
+                                    }
+                                ]
                             },
                             {
                                 "type": "date-picker",
@@ -669,22 +797,41 @@
                             },
                             {
                                 "type": "member-picker",
-                                "value": []
+                                "value": [
+                                    {
+                                        "id": "u101",
+                                        "fullname": "Tal Amit",
+                                        "imgUrl": "https://www.google.com",
+                                        "color": "#8338ec"
+                                    },
+                                    {
+                                        "id": "u102",
+                                        "fullname": "Guy Shimon",
+                                        "imgUrl": "https://www.google.com",
+                                        "color": "#3a86ff"
+                                    },
+                                    {
+                                        "id": "u103",
+                                        "fullname": "Shiran Elad",
+                                        "imgUrl": "https://www.google.com",
+                                        "color": "#ff006e"
+                                    }
+                                ]
                             },
-                            {
-                                "type": "date-picker",
-                                "value": null
-                            }
-                        ]
-                    }
-                ],
-                "groupColor": "#2fbc34"
-            }
-        ],
-        "cmpsOrder": [
-            "status-picker",
-            "member-picker",
-            "date-picker"
-        ]
+                        {
+                            "type": "date-picker",
+                            "value": null
+                        }
+                    ],
+                    "groupColor": "#2fbc34"
+                }
+            ],
+            "cmpsOrder": [
+                "status-picker",
+                "member-picker",
+                "date-picker"
+            ]
+        }
+    ]
     }
-]
+    ]

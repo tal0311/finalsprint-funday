@@ -37,8 +37,8 @@ import tasksList from './tasks-list.vue'
 import groupProgress from './group-progress.vue'
 import groupOptions from './group-options.vue'
 export default {
-  name: 'group-cmp',
-  emits: ['updateGroup'],
+  name: "group-cmp",
+  emits: ["updateGroup"],
   props: {
     group: Object,
   },
@@ -51,22 +51,22 @@ export default {
   data() {
     return {
       isOptions: false,
-    }
+    };
   },
   methods: {
     setIsOptions() {
-      this.isOptions = !this.isOptions
+      this.isOptions = !this.isOptions;
     },
 
     setGroupUpdate(value) {
       if (value === 'remove') {
         this.$store.dispatch({ type: 'removeGroup', groupId: this.group.id })
       }
-      if (value === 'duplicate') {
+      if (value === "duplicate") {
         this.$store.dispatch({
-          type: 'duplicateGroup',
+          type: "duplicateGroup",
           groupId: this.group.id,
-        })
+        });
       }
       if (value.startsWith('#')) {
         const groupToUpdate = JSON.parse(JSON.stringify(this.group))
@@ -83,7 +83,7 @@ export default {
   },
   computed: {
     getTasks() {
-      return this.group.tasks
+      return this.group.tasks;
     },
     },
 }

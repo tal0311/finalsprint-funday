@@ -4,15 +4,14 @@
   </span>
   <div class="demo-date-picker">
     <div class="block">
-      <!-- <label> -->
       <el-date-picker
         v-model="taskDate"
         type="date"
         placeholder="Pick a day"
+        format="YYYY-MM-DD"
         @change="setDate"
         class="date-input"
       ></el-date-picker>
-      <!-- </label> -->
     </div>
   </div>
 </template>

@@ -62,7 +62,10 @@
 
     <!-- GROUP -->
     <section class="group-list" v-if="currBoard">
-      <Container orientation="vertical" @drop="onDrop">
+      <Container
+        orientation="vertical"
+        @drop="onDrop"
+      >
         <Draggable v-for="group in currBoard.groups" :key="group.id">
           <group-cmp :group="group" />
           <br />
@@ -119,7 +122,6 @@ export default {
     addGroup() {
       this.$store.dispatch({ type: 'addGroup', board: this.currBoard })
     },
-
     setBoardTitle(event) {
       const board = JSON.parse(JSON.stringify(this.currBoard))
       if (event.target.nodeName === 'H1') {
