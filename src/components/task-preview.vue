@@ -83,6 +83,7 @@
     <div class="task-columns flex">
       <div class="dyn-cmp" v-for="(cmp, idx) in task.cols" :key="idx">
         <component
+        v-if="task"
           class="task-col-comp"
           :is="cmp.type"
           :task="task"

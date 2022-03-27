@@ -1,8 +1,8 @@
 [
     {
         "_id": "b101",
-        "title": "Robot dev proj",
-        "description": " this board....",
+        "title": "Sprint4 - Project Management",
+        "description": "This board will be used for collaboration management on the Funday app project",
         "createdAt": 1589983468418,
         "createdBy": {
             "_id": "u101",
@@ -12,17 +12,17 @@
         "members": [
             {
                 "id": "u101",
-                "fullname": "Tal amit",
+                "fullname": "Tal Amit",
                 "imgUrl": "https://www.google.com"
             },
             {
                 "id": "u102",
-                "fullname": "guy shimon",
+                "fullname": "Guy Shimon",
                 "imgUrl": "https://www.google.com"
             },
             {
                 "id": "u103",
-                "fullname": "shiran elad",
+                "fullname": "Shiran Elad",
                 "imgUrl": "https://www.google.com"
             }
         ],
@@ -70,7 +70,7 @@
                                 "content": "can some one help me"
                             },
                             {
-                                "creator": "tal Amit",
+                                "creator": "Tal Amit",
                                 "content": "fix problem with bug"
                             },
                             {
@@ -78,7 +78,7 @@
                                 "content": "i can help"
                             },
                             {
-                                "creator": "Guy shimon",
+                                "creator": "Guy Shimon",
                                 "content": "made that dnd work"
                             }
                         ]

@@ -240,12 +240,16 @@ export const boardStore = {
 
     async updateTask({ commit }, { boardId, groupId, task }) {
       try {
+        console.log('boardId, groupId, task', boardId, groupId, task);
         let board = await boardService.getById(boardId)
-        board = JSON.parse(JSON.stringify(board))
+        console.log(board)
+        // board = JSON.parse(JSON.stringify(board))
         let gIdx = board.groups.findIndex(dbGroup => dbGroup.id === groupId)
         const tIdx = board.groups[gIdx].tasks.findIndex(dbTask => dbTask.id === task.id)
         board.groups[gIdx].tasks.splice(tIdx, 1, task)
         await boardService.save(board)
+        console.log('task', task);
+        console.log(board.groups[gIdx].tasks)
         commit({ type: 'setCurrBoard', board })
       }
       catch (err) {

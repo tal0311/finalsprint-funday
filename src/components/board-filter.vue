@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'filter',
+  name: 'board-filter',
 }
 </script>
 

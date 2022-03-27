@@ -1,51 +1,69 @@
 <template>
   <div class="demo-date-picker">
     <div class="block">
-      <div>{{task.cols[2].value}}</div>
+      <!-- <label>
+      
+        {{ task.cols[2].value?.substr(0, 10)}} 
+       -->
       <el-date-picker
-        v-model="date"
+        v-model="taskDate"
         type="date"
         placeholder="Pick a day"
         @change="setDate"
-      />
+      ></el-date-picker>
+      <!-- </label> -->
     </div>
   </div>
 </template>
 <script>
 export default {
   name: "date-picker",
-  emits: ['updateTask'],
+  emits: ["updateTask"],
   props: {
     task: Object,
-    group: Object
+    group: Object,
   },
   data() {
     return {
-      date: null,
+      taskDate: null,
     };
   },
   methods: {
-
+    // clickDP() {
+    //   console.log(this.$refs.dp);
+    //   document.querySelector("#dp").click();
+    // },
     async setDate() {
       // this.$emit('setStatus', status, this.task)
-      const board = JSON.parse(JSON.stringify(this.$store.getters.currBoard))
+      const board = this.$store.getters.currBoard;
+      console.log("board");
+
+      // console.log('GROUP', this.group())
       // const { boardId, groupId, task } = await this.$store.dispatch({
       //   type: "findTask",
       //   boardId: board._id,
       //   taskId: this.task.id,
       // });
-      this.task.cols[2].value = this.date;
+
+      /* FROM HERE */
+      const currTask = JSON.parse(JSON.stringify(this.task));
+      // console.log('board, this.group.id, this.task', board, this.group.id, currTask);
+      currTask.cols[2].value = this.taskDate;
       await this.$store.dispatch({
         type: "updateTask",
-        boardId: board,
+        boardId: board._id,
         groupId: this.group.id,
-        task: this.task,
+        task: currTask,
       });
       this.$emit("updateTask");
     },
   },
   computed: {},
-  created() {},
+  created() {
+    console.log("this.task", this.task);
+    // this.taskDate = JSON.parse(JSON.stringify(this.task.cols[2].value))
+    this.taskDate = this.task.cols[2].value;
+  },
   components: {},
 };
 </script>
@@ -58,11 +76,9 @@ export default {
   flex-wrap: wrap;
 }
 .demo-date-picker .block {
-  padding: 30px 0;
   text-align: center;
   border-right: solid 1px var(--el-border-color);
   flex: 1;
-  
 }
 .demo-date-picker .block:last-child {
   border-right: none;
