@@ -61,7 +61,10 @@
     </div>
 
     <section class="group-list" v-if="currBoard">
-      <Container orientation="vertical" @drop="onDrop">
+      <Container
+        orientation="vertical"
+        @drop="onDrop"
+      >
         <Draggable v-for="group in currBoard.groups" :key="group.id">
           <group-cmp
             @updateGroup="currBoard"
@@ -115,12 +118,15 @@ export default {
   },
   methods: {
     addNewTask() {
-      this.$store.dispatch({ type: "addTask", board: this.currBoard, groupIdx: 0 });
+      this.$store.dispatch({
+        type: "addTask",
+        board: this.currBoard,
+        groupIdx: 0,
+      });
     },
     addGroup() {
       this.$store.dispatch({ type: "addGroup", board: this.currBoard });
     },
-
     setBoardTitle(event) {
       const board = JSON.parse(JSON.stringify(this.currBoard));
       if (event.target.nodeName === "H1") {
@@ -135,8 +141,10 @@ export default {
       this.$store.dispatch({ type: "saveBoard", board });
     },
     onDrop(dropResult) {
-      const board = JSON.parse(JSON.stringify(this.currBoard))
+      const board = JSON.parse(JSON.stringify(this.currBoard));
       board.groups = this.applyDrag(board.groups, dropResult);
+      this.isGroupDrag = false;
+      console.log("no drag", this.isGroupDrag);
     },
     applyDrag(arr, dragResult) {
       const { removedIndex, addedIndex, payload } = dragResult;
