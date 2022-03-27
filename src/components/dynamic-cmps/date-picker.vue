@@ -70,10 +70,6 @@ export default {
   flex-wrap: wrap;
   /* position: absolute; */
   opacity: 0;
-<<<<<<< HEAD
-=======
-  
->>>>>>> 9a00c6f3961b4849ebe5a55da6010747e02e60cc
 }
 .demo-date-picker .block {
   text-align: center;
@@ -90,15 +86,7 @@ export default {
   margin-bottom: 20px;
 }
 
-<<<<<<< HEAD
 .actual-date {
   position: absolute;
 }
-=======
-.actual-date{
-  position: absolute;
-}
-
-
->>>>>>> 9a00c6f3961b4849ebe5a55da6010747e02e60cc
 </style>
