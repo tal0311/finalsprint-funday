@@ -1,18 +1,18 @@
 <template>
   <!-- task title -->
-  <div class="task-preview flex" @mouseleave="delHover = false" >
+  <div class="task-preview flex" @mouseleave="delHover = false">
     <!-- <task-options v-if="isOptions"></task-options> -->
-      <div
-        class="btn-remove-task btn"
-        @mouseover="delHover = true"
-        @mouseleave="delHover = false"
-        @click="removeTask"
-        :class="{
-          'btn-remove-task': delHover,
-          'btn-remove-task-hidden': !delHover,
-        }"
-      ></div>
-  
+    <div
+      class="btn-remove-task btn"
+      @mouseover="delHover = true"
+      @mouseleave="delHover = false"
+      @click="removeTask"
+      :class="{
+        'btn-remove-task': delHover,
+        'btn-remove-task-hidden': !delHover,
+      }"
+    ></div>
+
     <div class="task-title-comp">
       <div
         class="side-indicator"
@@ -22,10 +22,7 @@
       <router-link
         :to="'/board/b101/task/' + task.id"
         class="title-chat flex space-between"
-        @mouseover="
-          taskHover = true;
-          delHover = true;
-        "
+        @mouseover="[(taskHover = true), (delHover = true)]"
         @mouseleave="taskHover = false"
       >
         <div class="title-edit">
@@ -82,31 +79,29 @@
     </div>
     <div class="task-columns flex">
       <div class="dyn-cmp" v-for="(cmp, idx) in task.cols" :key="idx">
+        <!-- dynamic components -->
         <component
-        v-if="task"
-          class="task-col-comp"
+           v-if="task"
           :is="cmp.type"
           :task="task"
           :value="cmp.value"
           :group="group"
-          @updateStatus="setStatus"
         />
       </div>
       <div class="right-indicator"></div>
     </div>
-    <!-- dynamic components -->
   </div>
 </template>
 
 <script>
-import memberPicker from "./dynamic-cmps/member-picker.vue";
-import datePicker from "./dynamic-cmps/date-picker.vue";
-import statusPicker from "./dynamic-cmps/status-picker.vue";
-import taskOptions from "./task-options.vue";
+import memberPicker from './dynamic-cmps/member-picker.vue'
+import datePicker from './dynamic-cmps/date-picker.vue'
+import statusPicker from './dynamic-cmps/status-picker.vue'
+import taskOptions from './task-options.vue'
 
 export default {
-  name: "task-preview",
-  emits: ["updateTask"],
+  name: 'task-preview',
+  emits: ['updateTask'],
   props: {
     task: Object,
     groupColor: String,
@@ -119,53 +114,53 @@ export default {
       taskHover: false,
       delHover: false,
       focus: false,
-    };
+    }
   },
   methods: {
     setStatus() {
-      // this.$emit('updateTask')
+      this.$emit('updateTask')
     },
     setIsOptions() {
-      this.isOptions = !this.isOptions;
+      this.isOptions = !this.isOptions
     },
     async updateTask(newTask, $event) {
-      this.focus = false;
-      newTask = JSON.parse(JSON.stringify(newTask));
-      const board = this.$store.getters.currBoard;
+      this.focus = false
+      newTask = JSON.parse(JSON.stringify(newTask))
+      const board = this.$store.getters.currBoard
       // const { boardId, groupId, task } = await this.$store.dispatch({
       //   type: "findTask",
       //   boardId: board._id,
       //   taskId: newTask.id,
       // });
-      newTask.title = $event.target.innerText;
+      newTask.title = $event.target.innerText
       await this.$store.dispatch({
-        type: "updateTask",
+        type: 'updateTask',
         boardId: board._id,
         groupId: this.group.id,
         task: newTask,
-      });
-      this.$emit("updateTask");
+      })
+      this.$emit('updateTask')
     },
     async removeTask() {
-      const taskToDelete = this.task;
-      const board = this.$store.getters.currBoard;
+      const taskToDelete = this.task
+      const board = this.$store.getters.currBoard
       // const { boardId, groupId, task } = await this.$store.dispatch({
       //   type: "findTask",
       //   boardId: board._id,
       //   taskId: taskToDelete.id,
       // });
       await this.$store.dispatch({
-        type: "removeTask",
+        type: 'removeTask',
         boardId: board._id,
         groupId: this.group.id,
         task: taskToDelete,
-      });
-      this.$emit("updateTask");
+      })
+      this.$emit('updateTask')
     },
 
     editTaskTitle() {
-      this.focus = true;
-      this.$refs.title.focus();
+      this.focus = true
+      this.$refs.title.focus()
     },
   },
   components: {
@@ -175,7 +170,7 @@ export default {
     taskOptions,
   },
   computed: {},
-};
+}
 </script>
 
 <style></style>

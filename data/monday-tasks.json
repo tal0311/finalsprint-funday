@@ -296,7 +296,7 @@
                         "cols": [
                             {
                                 "type": "status-picker",
-                                "value": ""
+                                "value": null
                             },
                             {
                                 "type": "member-picker",
@@ -314,7 +314,7 @@
                         "cols": [
                             {
                                 "type": "status-picker",
-                                "value": ""
+                                "value": null
                             },
                             {
                                 "type": "member-picker",
@@ -350,7 +350,7 @@
                         "cols": [
                             {
                                 "type": "status-picker",
-                                "value": ""
+                                "value": null
                             },
                             {
                                 "type": "member-picker",
@@ -505,7 +505,7 @@
                         "cols": [
                             {
                                 "type": "status-picker",
-                                "value": ""
+                                "value": null
                             },
                             {
                                 "type": "member-picker",
@@ -554,7 +554,7 @@
                         "cols": [
                             {
                                 "type": "status-picker",
-                                "value": ""
+                                "value": null
                             },
                             {
                                 "type": "member-picker",
@@ -572,7 +572,7 @@
                         "cols": [
                             {
                                 "type": "status-picker",
-                                "value": ""
+                                "value": null
                             },
                             {
                                 "type": "member-picker",
@@ -597,7 +597,7 @@
                         "cols": [
                             {
                                 "type": "status-picker",
-                                "value": ""
+                                "value": null
                             },
                             {
                                 "type": "member-picker",
@@ -621,7 +621,7 @@
                         "cols": [
                             {
                                 "type": "status-picker",
-                                "value": ""
+                                "value": null
                             },
                             {
                                 "type": "member-picker",
@@ -639,7 +639,7 @@
                         "cols": [
                             {
                                 "type": "status-picker",
-                                "value": ""
+                                "value": null
                             },
                             {
                                 "type": "member-picker",
@@ -670,7 +670,7 @@
                         "cols": [
                             {
                                 "type": "status-picker",
-                                "value": ""
+                                "value": null
                             },
                             {
                                 "type": "member-picker",
@@ -695,7 +695,7 @@
                         "cols": [
                             {
                                 "type": "status-picker",
-                                "value": ""
+                                "value": null
                             },
                             {
                                 "type": "member-picker",
@@ -720,7 +720,7 @@
                         "cols": [
                             {
                                 "type": "status-picker",
-                                "value": ""
+                                "value": null
                             },
                             {
                                 "type": "member-picker",
@@ -744,7 +744,7 @@
                         "cols": [
                             {
                                 "type": "status-picker",
-                                "value": ""
+                                "value": null
                             },
                             {
                                 "type": "member-picker",
@@ -762,7 +762,7 @@
                         "cols": [
                             {
                                 "type": "status-picker",
-                                "value": ""
+                                "value": null
                             },
                             {
                                 "type": "member-picker",
@@ -793,7 +793,7 @@
                         "cols": [
                             {
                                 "type": "status-picker",
-                                "value": ""
+                                "value": null
                             },
                             {
                                 "type": "member-picker",

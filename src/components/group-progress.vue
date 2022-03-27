@@ -16,21 +16,10 @@ export default {
   props: {
     tasks: Array,
   },
- 
 
   computed: {
-    setCount() {
-      console.log(this.tasksStatus)
-      return this.tasksStatus.reduce((acc, curr) => {
-        console.log(
-          acc[curr]
-            ? (acc[curr] = acc[curr] + 1)
-            : (acc[curr] = Math.ceil((1 * this.tasksStatus.length) / 100))
-        )
-        return acc
-      }, {})
-    },
     sortStatus() {
+      // this.tasks.map(task=> console.log(task.cols[0]))
       return this.tasks.map((task) => task.cols[0].value).sort()
     },
   },
