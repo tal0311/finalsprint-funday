@@ -24,6 +24,16 @@ hr {
   margin: 0;
 }
 
-a{
+a {
   text-decoration: none;
+}
+
+.smooth-dnd-container {
+  &.vertical {
+    & > {
+      .smooth-dnd-draggable-wrapper {
+        overflow: unset;
+      }
+    }
+  }
 }
