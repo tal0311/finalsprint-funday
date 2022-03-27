@@ -4,7 +4,8 @@ import { storageService } from './async-storage.service'
 // import { userService } from './user-service-local'
 // import { socketService, SOCKET_EVENT_board_ADDED } from './socket-service'
 
-// loadItemsToStorage()
+// !load from storage
+// _loadItemsToStorage()
 console.log('board service')
 const KEY = 'board'
 
@@ -24,6 +25,9 @@ export const boardService = {
 // return axios.get('api/toy/?', {params: {id: 1223, balanse:13}})
 
 async function query(filterBy) {
+  const board = _getBoardStorage()
+  if (board) return board
+
   console.log('query board')
   // var queryStr = (!filterBy) ? '' : `?name=${filterBy.name}&sort=anaAref`
   // return httpService.get(`board${queryStr}`)
@@ -122,6 +126,8 @@ function getEmptyTask() {
   }
 }
 
+
+
 const board = [
   {
     _id: 'b101',
@@ -196,6 +202,12 @@ const board = [
                 value: null,
               },
             ],
+            comments: [
+              { creator: 'Lili Abambi', content: 'can some one help me' },
+              { creator: 'tal amit', content: 'fix problem with bug' },
+              { creator: 'shiarn elad', content: 'i can help' },
+              { creator: 'Guy shimon ', content: 'made that dnd work' },
+            ],
           },
           {
             id: 't102',
@@ -209,10 +221,22 @@ const board = [
                 type: 'member-picker',
                 value: [
                   {
-                    _id: 'fhrf*^%hfdg',
+                    id: 'm303',
                     username: 'Meir',
                     fullname: 'Meir Abambi',
-                    imgUrl: 'https://randomuser.me/api/portraits/women/38.jpg',
+                    imgUrl: 'https://randomuser.me/api/portraits/men/27.jpg',
+                  },
+                  {
+                    id: 'mfdg',
+                    username: 'Momi',
+                    fullname: 'Momi Alfasi',
+                    imgUrl: 'https://randomuser.me/api/portraits/men/22.jpg',
+                  },
+                  {
+                    id: 'm404g',
+                    username: 'Meni',
+                    fullname: 'some men',
+                    imgUrl: 'https://randomuser.me/api/portraits/men/24.jpg',
                   },
                 ],
               },
@@ -226,7 +250,7 @@ const board = [
         groupColor: '#579bfc',
       },
       {
-        id: 'jkjsdf45',
+        id: 'g093',
         title: 'Group 2',
         tasks: [
           {
@@ -241,10 +265,22 @@ const board = [
                 type: 'member-picker',
                 value: [
                   {
-                    _id: 'fhrf*^%hfdg',
+                    id: 'm3748',
                     username: 'meir',
                     fullname: 'Meir Abambi',
-                    imgUrl: 'https://randomuser.me/api/portraits/men/38.jpg',
+                    imgUrl: 'https://randomuser.me/api/portraits/men/55.jpg',
+                  },
+                  {
+                    id: 'm1hfdg',
+                    username: 'meir',
+                    fullname: 'Meir Abambi',
+                    imgUrl: 'https://randomuser.me/api/portraits/men/55.jpg',
+                  },
+                  {
+                    id: 'm304^%hfdg',
+                    username: 'meir',
+                    fullname: 'Meir Abambi',
+                    imgUrl: 'https://randomuser.me/api/portraits/men/55.jpg',
                   },
                 ],
               },
@@ -266,7 +302,7 @@ const board = [
                 type: 'member-picker',
                 value: [
                   {
-                    _id: 'fhrf*^%hfdg',
+                    id: 'fhrhfdg',
                     username: 'Meir',
                     fullname: 'Meir Abambi',
                     imgUrl: 'https://randomuser.me/api/portraits/men/28.jpg',
@@ -291,10 +327,10 @@ const board = [
                 type: 'member-picker',
                 value: [
                   {
-                    _id: 'fhrf*^%hfdg',
-                    username: 'Meir',
+                    id: 'f^%hfdg',
+                    username: 'meir',
                     fullname: 'Meir Abambi',
-                    imgUrl: 'http://some-img.jpg',
+                    imgUrl: 'https://randomuser.me/api/portraits/men/38.jpg',
                   },
                 ],
               },
@@ -323,10 +359,10 @@ const board = [
                 type: 'member-picker',
                 value: [
                   {
-                    _id: 'fhrf*^%hfdg',
-                    username: 'tal',
-                    fullname: 'tal amit',
-                    imgUrl: 'http://some-img.jpg',
+                    id: 'fhrf5093g',
+                    username: 'Meir',
+                    fullname: 'Meir Abambi',
+                    imgUrl: 'https://randomuser.me/api/portraits/men/28.jpg',
                   },
                 ],
               },
@@ -348,7 +384,7 @@ const board = [
                 type: 'member-picker',
                 value: [
                   {
-                    _id: 'fhrf*^%hfdg',
+                    id: 'hfdg',
                     username: 'shiran',
                     fullname: 'shiran elad',
                     imgUrl: 'http://some-img.jpg',
@@ -373,7 +409,7 @@ const board = [
                 type: 'member-picker',
                 value: [
                   {
-                    _id: 'fhrf*^%hfdg',
+                    id: '708fdg',
                     username: 'guy',
                     fullname: 'guy shimon',
                     imgUrl: 'http://some-img.jpg',
@@ -394,7 +430,11 @@ const board = [
   },
 ]
 
-function loadItemsToStorage() {
+function _getBoardStorage() {
+  const board = localStorage.getItem(KEY)
+}
+// _loadItemsToStorage()
+function _loadItemsToStorage() {
   console.log('loading')
   localStorage.setItem('board', JSON.stringify(board))
 }
