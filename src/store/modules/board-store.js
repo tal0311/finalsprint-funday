@@ -90,7 +90,7 @@ export const boardStore = {
         await boardService.remove(_id)
         commit(payload)
       } catch {
-        console.log('couldn\'t remove board')
+        console.log("couldn't remove board")
         commit({
           type: 'setIsError',
           isError: true,
@@ -98,11 +98,10 @@ export const boardStore = {
       }
     },
     async saveBoard({ dispatch, commit }, { board }) {
-
       try {
         await boardService.save(board)
-        dispatch({type: 'loadBoards'})
-        commit({type: 'setCurrBoard', board})
+        dispatch({ type: 'loadBoards' })
+        commit({ type: 'setCurrBoard', board })
       } catch (err) {
         console.log("Couldn't save board", err)
         commit({
@@ -220,21 +219,25 @@ export const boardStore = {
         console.log('error during adding task to board', error)
       }
     },
+    async addTaskInline({ commit }, { value, group }) {
+      console.log('addinlinestore:', value, group)
+
+      board
+    },
 
     async findTask({ commit }, { boardId, taskId }) {
       try {
-        let board = await boardService.getById(boardId);
+        let board = await boardService.getById(boardId)
         board = JSON.parse(JSON.stringify(board))
-        const group = board.groups.find(group =>
-          group.tasks.find(task => task.id === taskId)
-        );
-        const task = group.tasks.find(task => task.id === taskId)
+        const group = board.groups.find((group) =>
+          group.tasks.find((task) => task.id === taskId)
+        )
+        const task = group.tasks.find((task) => task.id === taskId)
         commit({ type: 'setCurrTask', task })
         // console.log('{ boardId: board._id, groupId: group.id, taskId: task.id }',board._id, group.id, task.id);
         return { boardId: board._id, groupId: group.id, task }
-      }
-      catch (err) {
-        console.log('error finding task', err);
+      } catch (err) {
+        console.log('error finding task', err)
       }
     },
 
@@ -244,34 +247,34 @@ export const boardStore = {
         let board = await boardService.getById(boardId)
         // console.log(board)
         // board = JSON.parse(JSON.stringify(board))
-        let gIdx = board.groups.findIndex(dbGroup => dbGroup.id === groupId)
-        const tIdx = board.groups[gIdx].tasks.findIndex(dbTask => dbTask.id === task.id)
+        let gIdx = board.groups.findIndex((dbGroup) => dbGroup.id === groupId)
+        const tIdx = board.groups[gIdx].tasks.findIndex(
+          (dbTask) => dbTask.id === task.id
+        )
         board.groups[gIdx].tasks.splice(tIdx, 1, task)
         await boardService.save(board)
         // console.log('task', task);
         // console.log(board.groups[gIdx].tasks)
         commit({ type: 'setCurrBoard', board })
-      }
-      catch (err) {
+      } catch (err) {
         console.log('Problem with updating task', err)
       }
-
     },
     async removeTask({ commit }, { boardId, groupId, task }) {
       try {
         let board = await boardService.getById(boardId)
         board = JSON.parse(JSON.stringify(board))
-        let gIdx = board.groups.findIndex(dbGroup => dbGroup.id === groupId)
-        const tIdx = board.groups[gIdx].tasks.findIndex(dbTask => dbTask.id === task.id)
+        let gIdx = board.groups.findIndex((dbGroup) => dbGroup.id === groupId)
+        const tIdx = board.groups[gIdx].tasks.findIndex(
+          (dbTask) => dbTask.id === task.id
+        )
         board.groups[gIdx].tasks.splice(tIdx, 1)
         // console.log('gIdx, tIdx', gIdx, tIdx);
         await boardService.save(board)
         commit({ type: 'setCurrBoard', board })
-      }
-      catch (err) {
+      } catch (err) {
         console.log('Problem with removing task', err)
       }
-
     },
 
     async saveTaskUpdate({ dispatch, commit }, { updateText }) {
@@ -288,7 +291,7 @@ export const boardStore = {
     },
 
     async setStatus({ commit }, { status, task }) {
-      task 
+      task
       // task.cols.map(col => )
       try {
         const newStatus = await boardService.save()
