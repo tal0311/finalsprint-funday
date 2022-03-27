@@ -131,7 +131,7 @@ export default {
         const value = event.target.innerText;
         board.description = value;
       }
-      console.log(board);
+      // console.log(board);
       this.$store.dispatch({ type: "saveBoard", board });
     },
     onDrop(dropResult) {
@@ -168,7 +168,7 @@ export default {
   },
   computed: {
     currBoard() {
-      console.log(this.$store.getters.currBoard)
+      // console.log(this.$store.getters.currBoard)
       return this.$store.getters.currBoard;
       // this.board = this.$store.getters.currBoard
       // return this.board

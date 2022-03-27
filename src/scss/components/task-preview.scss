@@ -136,6 +136,7 @@
         flex: 1;
         .dyn-cmp {
             width: 100%;
+            // width: fit-content;
             border-right: $clr8 1px solid;
             .task-col-comp {
                 font-size: toRem(14);

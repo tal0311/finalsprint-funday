@@ -164,7 +164,7 @@ export const boardStore = {
     },
 
     async removeGroup({ dispatch, state, commit }, { groupId }) {
-      console.log('group id :', groupId, 'currBoard:', state.currBoard)
+      // console.log('group id :', groupId, 'currBoard:', state.currBoard)
 
       try {
         const board = await boardService.getById(state.currBoard._id)
@@ -203,7 +203,7 @@ export const boardStore = {
     //TASK
 
     async addTask({ commit }, { board, groupIdx }) {
-      console.log('add task', board, groupIdx)
+      // console.log('add task', board, groupIdx)
       try {
         // update model
         board = JSON.parse(JSON.stringify(board))
@@ -240,16 +240,16 @@ export const boardStore = {
 
     async updateTask({ commit }, { boardId, groupId, task }) {
       try {
-        console.log('boardId, groupId, task', boardId, groupId, task);
+        // console.log('boardId, groupId, task', boardId, groupId, task);
         let board = await boardService.getById(boardId)
-        console.log(board)
+        // console.log(board)
         // board = JSON.parse(JSON.stringify(board))
         let gIdx = board.groups.findIndex(dbGroup => dbGroup.id === groupId)
         const tIdx = board.groups[gIdx].tasks.findIndex(dbTask => dbTask.id === task.id)
         board.groups[gIdx].tasks.splice(tIdx, 1, task)
         await boardService.save(board)
-        console.log('task', task);
-        console.log(board.groups[gIdx].tasks)
+        // console.log('task', task);
+        // console.log(board.groups[gIdx].tasks)
         commit({ type: 'setCurrBoard', board })
       }
       catch (err) {

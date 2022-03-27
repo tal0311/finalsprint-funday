@@ -31,14 +31,14 @@ export default {
   },
   methods: {
     getChildPayloadEltasks(index) {
-      console.log(index);
+      // console.log(index);
       return this.eltasks[index];
     },
     onDrop(dropResult) {
       this.eltasks = this.applyDrag(this.eltasks, dropResult);
     },
     applyDrag(arr, dragResult) {
-      console.log('currBoard:', this.currBoard)
+      // console.log('currBoard:', this.currBoard)
       const { removedIndex, addedIndex, payload } = dragResult;
 
       if (removedIndex === null && addedIndex === null) return arr;
@@ -54,7 +54,7 @@ export default {
       // this.updateGroup(result);
       // console.log(this.currBoard)
       // this.updateBoard(result)
-      console.log(result)
+      // console.log(result)
 
       return result;
     },
@@ -69,7 +69,7 @@ export default {
     updateBoard(result) {
       const newBoard = JSON.parse(JSON.stringify(this.currBoard));
       newBoard.groups = JSON.parse(JSON.stringify(result));
-        console.log('newBoard:', newBoard)
+        // console.log('newBoard:', newBoard)
       this.$store.dispatch({
         type: "saveBoard",
         board: newBoard,
