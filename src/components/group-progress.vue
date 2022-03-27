@@ -13,23 +13,10 @@
 
 export default {
   name: 'group-progress',
-  components: {
-    // chart,
+  props: {
+    tasks: Array,
   },
-  data() {
-    return {
-      tasksStatus: [
-        'done',
-        'stuck',
-        'done',
-        'stuck',
-        'done',
-        'done',
-        'zzz',
-        'working',
-      ],
-    }
-  },
+ 
 
   computed: {
     setCount() {
@@ -44,7 +31,7 @@ export default {
       }, {})
     },
     sortStatus() {
-      return this.tasksStatus.sort()
+      return this.tasks.map((task) => task.cols[0].value).sort()
     },
   },
 }

@@ -30,7 +30,7 @@
       @updateTask="updateGroup(group, $event)"
     ></tasks-list>
   </section>
-  <group-progress :group="group.tasks" />
+  <group-progress :tasks="group.tasks" />
 </template>
 
 <script>
