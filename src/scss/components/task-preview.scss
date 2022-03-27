@@ -94,6 +94,9 @@
                     &.bgc-white {
                         background-color: $clr8;
                     }
+                    &:focus{
+                         outline: 1px solid gray;
+                    }
                 }
                 .edit {
                     margin-left: 8px;
@@ -138,6 +141,7 @@
         height: 100%;
         .dyn-cmp {
             width: 100%;
+            // width: fit-content;
             border-right: $clr8 1px solid;
             .task-col-comp {
                 font-size: toRem(14);

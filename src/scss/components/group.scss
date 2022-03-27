@@ -4,7 +4,7 @@
   .btn-dialog {
     margin-inline-end: toRem(10);
     // background-color: $clrG1;
-    
+
     &.flex {
       align-items: center;
       justify-content: center;
@@ -26,7 +26,9 @@
   .group-title{
     font-size: 1.3em;
     padding: 5px;
-    margin-bottom:5px;
-
+    margin-bottom: 5px;
+    &:focus {
+      outline: 1px solid gray;
+    }
   }
 }
