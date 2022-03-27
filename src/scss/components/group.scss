@@ -1,9 +1,9 @@
 .group-dialog {
- position: relative;
+  position: relative;
   .btn-dialog {
     margin-inline-end: toRem(10);
     // background-color: $clrG1;
-    
+
     &.flex {
       align-items: center;
       justify-content: center;
@@ -22,9 +22,11 @@
     height: 20px;
     width: 20px;
   }
-  .group-title{
+  .group-title {
     padding: 5px;
-    margin-bottom:5px;
-
+    margin-bottom: 5px;
+    &:focus {
+      outline: 1px solid gray;
+    }
   }
 }

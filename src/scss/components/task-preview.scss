@@ -91,6 +91,9 @@
                     &.bgc-white {
                         background-color: $clr8;
                     }
+                    &:focus{
+                         outline: 1px solid gray;
+                    }
                 }
                 .edit {
                     margin-left: 8px;

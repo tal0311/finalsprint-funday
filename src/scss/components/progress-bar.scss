@@ -1,0 +1,29 @@
+.status-bar {
+  padding: 0.3rem;
+  // border: 1px solid black;
+  background-color: $clr10;
+  max-width: 150px;
+
+  ul {
+   width: toRem(140);
+   height: toRem(36);
+    li {
+      width: 20%;
+      
+      .bar {
+        color: red;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  //   width: 100%;
+  //   & > * {
+  //     width: 20px;
+  //   }
+  //   &.null {
+  //     background-color: $clr5;
+  //   }
+  // }
+}

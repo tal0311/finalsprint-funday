@@ -30,10 +30,12 @@
       @updateTask="updateGroup(group, $event)"
     ></tasks-list>
   </section>
+  <group-progress :group="group.tasks" />
 </template>
 
 <script>
 import tasksList from './tasks-list.vue'
+import groupProgress from './group-progress.vue'
 import groupOptions from './group-options.vue'
 export default {
   name: 'group-cmp',
@@ -44,6 +46,7 @@ export default {
   components: {
     tasksList,
     groupOptions,
+    groupProgress,
   },
 
   data() {
