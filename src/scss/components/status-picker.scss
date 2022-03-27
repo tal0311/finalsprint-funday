@@ -2,7 +2,7 @@
     // width: fit-content;
     left:0;
     width: 140px;
-    
+
     .status {
         position: relative;
         transition: border-width 0.3s 0.2s ease;
@@ -28,6 +28,7 @@
         text-align: center;
         border-radius: 4px;
         box-shadow: 0 8px 16px 0px rgb(0 0 0 / 32%);
+        width:inherit;
         > div {
             padding: 0px 10px;
             margin: 10px;

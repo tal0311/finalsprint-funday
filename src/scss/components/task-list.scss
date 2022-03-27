@@ -1,3 +1,17 @@
 .task-list{
     margin-bottom:30px;
 }
+
+.add-task-input{
+    position: sticky;
+    left: 54px;
+    flex: 0 1;
+    border-right: none;
+    flex-basis: 715px;
+}
+
+.side-indicator {
+    flex: 0 0 8px;
+    position: relative;
+    height: 100%;
+}

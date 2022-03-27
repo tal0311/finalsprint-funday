@@ -12,6 +12,13 @@
         :group="group"
       ></task-preview>
     </Draggable>
+  <!-- <div class="task-preview">
+      <div
+        class="side-indicator"
+        :style="{ backgroundColor: group.color }"
+      ></div>
+  <input type="text" class="add-task-input" placeholder="+ Add Task" style="flex-basis: 715px;">
+  </div> -->
   </Container>
 </template>
 
