@@ -1,4 +1,7 @@
 .task-preview {
+    // &:hover {
+    //     background-color: $clr7;
+    // }
     top: 40px;
     color: $clr9;
     height: 36px;
@@ -8,17 +11,15 @@
     border-bottom: 1px solid $clr8;
     justify-content: start;
     width: 100%;
+    flex:1;
     // position:relative;
-    // &:hover{
-    //     // background-color: ;
-    // }
-    
+
     .btn-remove-task {
         background-image: url("../assets/img/icon-delete.png");
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
-        
+
         // left:-30px;
         // position:absolute;
         opacity: 0.4;
@@ -27,7 +28,7 @@
         visibility: visible;
     }
 
-    .btn-remove-task-hidden{
+    .btn-remove-task-hidden {
         visibility: hidden;
     }
 
@@ -37,9 +38,11 @@
         align-items: center;
         height: 100%;
         text-align: left;
-        flex-basis: 400px;
+        // flex-basis: 400px;
+        flex-basis: 800px;
         padding: 0 10px 0 0;
         border-right: 1px solid $clr8;
+
         .side-indicator {
             flex: 0 0 8px;
             position: relative;
@@ -91,6 +94,9 @@
                     &.bgc-white {
                         background-color: $clr8;
                     }
+                    &:focus{
+                         outline: 1px solid gray;
+                    }
                 }
                 .edit {
                     margin-left: 8px;
@@ -128,9 +134,11 @@
     }
 
     .task-columns {
-        width: 100%;
+        // width: 100%;
         background-color: $clr10;
         flex: 1;
+        position: relative;
+        height: 100%;
         .dyn-cmp {
             width: 100%;
             // width: fit-content;
@@ -157,7 +165,7 @@
 
         .right-indicator {
             max-width: 38px;
-            background-color: black;
+            // background-color: black;
             border-right: 8px solid $clr12;
         }
     }

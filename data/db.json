@@ -1,4 +1,4 @@
-[{
+{
   "_id": "b101",
   "title": "Robot dev proj",
   "description": " this board....",
@@ -296,4 +296,4 @@
     }
   ],
   "cmpsOrder": ["status-picker", "member-picker", "date-picker"]
-}]
+}

@@ -1,18 +1,18 @@
 <template>
-        <span class="actual-date">
-        {{ task.cols[2].value?.substr(0, 10)}} 
-        </span>
+  <label for="dp" class="actual-date">
+    {{ task.cols[2].value?.substr(0, 10) }}
+  </label>
   <div class="demo-date-picker">
     <div class="block">
-      <!-- <label> -->
       <el-date-picker
+        id="dp"
         v-model="taskDate"
         type="date"
         placeholder="Pick a day"
+        format="YYYY-MM-DD"
         @change="setDate"
         class="date-input"
       ></el-date-picker>
-      <!-- </label> -->
     </div>
   </div>
 </template>
@@ -70,7 +70,6 @@ export default {
   flex-wrap: wrap;
   /* position: absolute; */
   opacity: 0;
-  
 }
 .demo-date-picker .block {
   text-align: center;
@@ -87,9 +86,7 @@ export default {
   margin-bottom: 20px;
 }
 
-.actual-date{
+.actual-date {
   position: absolute;
 }
-
-
 </style>
