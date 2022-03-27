@@ -38,7 +38,7 @@ export default {
   props: {},
   data() {
     return {
-      task: null,
+      // task: null,
       boardId: null,
       activeTab: 'taskUpdates',
     }

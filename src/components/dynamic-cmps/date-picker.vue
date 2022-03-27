@@ -1,7 +1,7 @@
 <template>
-        <span class="actual-date">
-        {{ task.cols[2].value?.substr(0, 10)}} 
-        </span>
+  <span class="actual-date">
+    {{ task.cols[2]?.value?.substr(0, 10) }}
+  </span>
   <div class="demo-date-picker">
     <div class="block">
       <!-- <label> -->
@@ -18,47 +18,40 @@
 </template>
 <script>
 export default {
-  name: "date-picker",
-  emits: ["updateTask"],
+  name: 'date-picker',
+  emits: ['updateTask'],
   props: {
     task: Object,
     group: Object,
+    value: String,
   },
   data() {
     return {
       taskDate: null,
-    };
+    }
   },
   methods: {
-    // clickDP() {
-    //   console.log(this.$refs.dp);
-    //   document.querySelector("#dp").click();
-    // },
     async setDate() {
-      const board = this.$store.getters.currBoard;
-      // console.log("board");
+      const board = this.$store.getters.currBoard
 
       /* FROM HERE */
-      const currTask = JSON.parse(JSON.stringify(this.task));
-      // console.log('board, this.group.id, this.task', board, this.group.id, currTask);
-      currTask.cols[2].value = this.taskDate;
+      const currTask = JSON.parse(JSON.stringify(this.task))
+
+      currTask.cols[2].value = this.taskDate
       await this.$store.dispatch({
-        type: "updateTask",
+        type: 'updateTask',
         boardId: board._id,
         groupId: this.group.id,
         task: currTask,
-      });
-      this.$emit("updateTask");
+      })
+      this.$emit('updateTask')
     },
   },
-  computed: {},
+
   created() {
-    // console.log("this.task", this.task);
-    // this.taskDate = JSON.parse(JSON.stringify(this.task.cols[2].value))
-    this.taskDate = this.task.cols[2].value;
+    this.taskDate = this.task.cols[2].value
   },
-  components: {},
-};
+}
 </script>
 
 <style scoped>
@@ -70,7 +63,6 @@ export default {
   flex-wrap: wrap;
   /* position: absolute; */
   opacity: 0;
-  
 }
 .demo-date-picker .block {
   text-align: center;
@@ -87,9 +79,7 @@ export default {
   margin-bottom: 20px;
 }
 
-.actual-date{
+.actual-date {
   position: absolute;
 }
-
-
 </style>

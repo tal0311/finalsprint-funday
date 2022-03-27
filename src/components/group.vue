@@ -7,6 +7,7 @@
         :style="{ backgroundColor: group.groupColor }"
       ></button>
       <div
+        v-if="group"
         :style="{ color: group.groupColor }"
         class="group-title"
         @blur="updateGroup(group, $event)"
@@ -23,11 +24,9 @@
     </div>
 
     <tasks-list
-      class="task-list"
       :tasks="group.tasks"
       :group="group"
       :groupColor="group.groupColor"
-      @updateTask="updateGroup(group, $event)"
     ></tasks-list>
   </section>
   <group-progress :tasks="group.tasks" />
@@ -60,7 +59,6 @@ export default {
     },
 
     setGroupUpdate(value) {
-      // console.log('setGroupUpdate', value, this.group.id)
       if (value === 'remove') {
         this.$store.dispatch({ type: 'removeGroup', groupId: this.group.id })
       }
@@ -71,31 +69,23 @@ export default {
         })
       }
       if (value.startsWith('#')) {
-        // console.log(value, this.group)
         const groupToUpdate = JSON.parse(JSON.stringify(this.group))
         groupToUpdate.groupColor = value
         this.$store.dispatch({ type: 'updateGroup', groupToUpdate })
-        this.$emit('updateGroup')
       }
     },
-
-    updateGroup(group, $event) {
+    updateGroup(group, ev) {
       const groupToUpdate = JSON.parse(JSON.stringify(group))
-      if (!$event.target.innerText) return
-      groupToUpdate.title = $event.target.innerText
+      if (!ev.target.innerText) return
+      groupToUpdate.title = ev.target.innerText
       this.$store.dispatch({ type: 'updateGroup', groupToUpdate })
-      this.$emit('updateGroup')
     },
   },
   computed: {
     getTasks() {
       return this.group.tasks
     },
-    // setGroupClr() {
-    //   console.log(this.group.groupColor)
-    //   return { backGroundColor: group.groupColor }
-    // },
-  },
+    },
 }
 </script>
 <style></style>
