@@ -34,16 +34,8 @@ export default {
     //   document.querySelector("#dp").click();
     // },
     async setDate() {
-      // this.$emit('setStatus', status, this.task)
       const board = this.$store.getters.currBoard;
-      console.log("board");
-
-      // console.log('GROUP', this.group())
-      // const { boardId, groupId, task } = await this.$store.dispatch({
-      //   type: "findTask",
-      //   boardId: board._id,
-      //   taskId: this.task.id,
-      // });
+      // console.log("board");
 
       /* FROM HERE */
       const currTask = JSON.parse(JSON.stringify(this.task));
@@ -60,7 +52,7 @@ export default {
   },
   computed: {},
   created() {
-    console.log("this.task", this.task);
+    // console.log("this.task", this.task);
     // this.taskDate = JSON.parse(JSON.stringify(this.task.cols[2].value))
     this.taskDate = this.task.cols[2].value;
   },

@@ -42,7 +42,7 @@ async function add(review) {
     console.log('Storage updated');
     const freshReviews = await storageService.query('review')
     if (freshReviews.length === reviews.length + 1 ){
-      console.log('Review Added - localStorage updated from another browser')
+      console.log('localStorage updated from another browser')
       socketService.emit(SOCKET_EVENT_REVIEW_ADDED, freshReviews[freshReviews.length-1])
     }
     reviews = freshReviews

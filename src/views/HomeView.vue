@@ -47,15 +47,15 @@ export default {
   },
   methods: {
     getChildPayloadboys(index) {
-      console.log(index);
+      // console.log(index);
       return this.boys[index];
     },
     getChildPayloadgirls(index) {
-      console.log(index);
+      // console.log(index);
       return this.girls[index];
     },
     onDrop(dropResult, type) {
-      console.log(dropResult);
+      // console.log(dropResult);
       this[type] = this.applyDrag(this[type], dropResult);
     },
     applyDrag(arr, dragResult) {
@@ -71,8 +71,8 @@ export default {
       if (addedIndex !== null) {
         result.splice(addedIndex, 0, itemToAdd);
       }
-      console.log('boys', this.boys)
-      console.log(result);
+      // console.log('boys', this.boys)
+      // console.log(result);
 
       return result;
     },

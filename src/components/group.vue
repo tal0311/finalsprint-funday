@@ -57,7 +57,7 @@ export default {
     },
 
     setGroupUpdate(value) {
-      console.log('setGroupUpdate', value, this.group.id)
+      // console.log('setGroupUpdate', value, this.group.id)
       if (value === 'remove') {
         this.$store.dispatch({ type: 'removeGroup', groupId: this.group.id })
       }
@@ -68,7 +68,7 @@ export default {
         })
       }
       if (value.startsWith('#')) {
-        console.log(value, this.group)
+        // console.log(value, this.group)
         const groupToUpdate = JSON.parse(JSON.stringify(this.group))
         groupToUpdate.groupColor = value
         this.$store.dispatch({ type: 'updateGroup', groupToUpdate })

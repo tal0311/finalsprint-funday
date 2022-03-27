@@ -131,7 +131,7 @@ export default {
         const value = event.target.innerText;
         board.description = value;
       }
-      console.log(board);
+      // console.log(board);
       this.$store.dispatch({ type: "saveBoard", board });
     },
     onDrop(dropResult) {

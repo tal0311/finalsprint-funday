@@ -33,11 +33,11 @@ export default {
   },
   methods: {
     displayMini() {
-      console.log('displaymini')
+      // console.log('displaymini')
       this.isMiniMember = !this.isMiniMember
     },
     addMember() {
-      console.log('add member')
+      // console.log('add member')
     },
   },
   computed: {

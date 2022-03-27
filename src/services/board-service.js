@@ -6,7 +6,7 @@ import { storageService } from './async-storage.service'
 
 // !load from storage
 // _loadItemsToStorage()
-console.log('board service')
+// console.log('board service')
 const KEY = 'board'
 
 export const boardService = {
@@ -28,7 +28,7 @@ async function query(filterBy) {
   const board = _getBoardStorage()
   if (board) return board
 
-  console.log('query board')
+  // console.log('query board')
   // var queryStr = (!filterBy) ? '' : `?name=${filterBy.name}&sort=anaAref`
   // return httpService.get(`board${queryStr}`)
   return await storageService.query(KEY)
@@ -435,7 +435,7 @@ function _getBoardStorage() {
 }
 // _loadItemsToStorage()
 function _loadItemsToStorage() {
-  console.log('loading')
+  // console.log('loading')
   localStorage.setItem('board', JSON.stringify(board))
 }
 // This IIFE functions for Dev purposes
