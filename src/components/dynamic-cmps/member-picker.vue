@@ -6,9 +6,9 @@
         v-for="member in value"
         :key="member.id"
         class="member"
-        :style="{ backgroundColor: userColor }"
+        :style="{ backgroundColor: member.color }"
       >
-        {{ member.username.substring(0, 1).toUpperCase() }}
+        {{ member.fullname?.charAt(0).toUpperCase() }}
       </li>
     </ul>
     <div class="no-members" v-else @click="addMember"></div>

@@ -1,6 +1,8 @@
 .status-picker {
-    width: fit-content;
+    // width: fit-content;
+    left:0;
     width: 140px;
+    
     .status {
         position: relative;
         transition: border-width 0.3s 0.2s ease;
