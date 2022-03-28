@@ -33,9 +33,9 @@
 </template>
 
 <script>
-import tasksList from './tasks-list.vue'
-import groupProgress from './group-progress.vue'
-import groupOptions from './group-options.vue'
+import tasksList from "./tasks-list.vue";
+import groupProgress from "./group-progress.vue";
+import groupOptions from "./group-options.vue";
 export default {
   name: "group-cmp",
   emits: ["updateGroup"],
@@ -59,8 +59,8 @@ export default {
     },
 
     setGroupUpdate(value) {
-      if (value === 'remove') {
-        this.$store.dispatch({ type: 'removeGroup', groupId: this.group.id })
+      if (value === "remove") {
+        this.$store.dispatch({ type: "removeGroup", groupId: this.group.id });
       }
       if (value === "duplicate") {
         this.$store.dispatch({
@@ -68,24 +68,32 @@ export default {
           groupId: this.group.id,
         });
       }
-      if (value.startsWith('#')) {
-        const groupToUpdate = JSON.parse(JSON.stringify(this.group))
-        groupToUpdate.groupColor = value
-        this.$store.dispatch({ type: 'updateGroup', groupToUpdate })
+      if (value.startsWith("#")) {
+        const groupToUpdate = JSON.parse(JSON.stringify(this.group));
+        groupToUpdate.groupColor = value;
+        this.$store.dispatch({ type: "updateGroup", groupToUpdate });
       }
     },
     updateGroup(group, ev) {
-      const groupToUpdate = JSON.parse(JSON.stringify(group))
-      if (!ev.target.innerText) return
-      groupToUpdate.title = ev.target.innerText
-      this.$store.dispatch({ type: 'updateGroup', groupToUpdate })
+      const groupToUpdate = JSON.parse(JSON.stringify(group));
+      if (!ev.target.innerText) return;
+      groupToUpdate.title = ev.target.innerText;
+      this.$store.dispatch({ type: "updateGroup", groupToUpdate });
+    },
+    upateGroupAfterDnd(newGroup) {
+      const newBoard = JSON.parse(JSON.stringify(this.currBoard));
+      newBoard.groups = JSON.parse(JSON.stringify(newGroup));
+      this.$store.dispatch({
+        type: "saveBoard",
+        board: newBoard,
+      });
     },
   },
   computed: {
     getTasks() {
       return this.group.tasks;
     },
-    },
-}
+  },
+};
 </script>
 <style></style>

@@ -33,14 +33,12 @@ export default {
   },
   methods: {
     getChildPayloadEltasks(index) {
-      // console.log(index);
       return this.eltasks[index]
     },
     onDrop(dropResult) {
       this.eltasks = this.applyDrag(this.eltasks, dropResult)
     },
     applyDrag(arr, dragResult) {
-      // console.log('currBoard:', this.currBoard)
       const { removedIndex, addedIndex, payload } = dragResult
 
       if (removedIndex === null && addedIndex === null) return arr
@@ -55,21 +53,16 @@ export default {
       }
       return result
     },
-    updateGroup(result) {
-      const newGroup = JSON.parse(JSON.stringify(this.group))
-      newGroup.tasks = JSON.parse(JSON.stringify(result))
-      this.$store.dispatch({
-        type: 'updateGroup',
-        groupToUpdate: newGroup,
-      })
-    },
-    updateBoard(result) {
-      const newBoard = JSON.parse(JSON.stringify(this.currBoard))
-      newBoard.groups = JSON.parse(JSON.stringify(result))
-      this.$store.dispatch({
-        type: 'saveBoard',
-        board: newBoard,
-      })
+    // updateGroup(result) {
+    //   const newGroup = JSON.parse(JSON.stringify(this.group))
+    //   newGroup.tasks = JSON.parse(JSON.stringify(result))
+    //   this.$store.dispatch({
+    //     type: 'updateGroup',
+    //     groupToUpdate: newGroup,
+    //   })
+    // },
+    updateBoard(newGroup) {
+      $store.emit('updateBoardAfterDnd', newGroup)
     },
   },
   computed: {
