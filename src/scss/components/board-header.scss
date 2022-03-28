@@ -37,6 +37,9 @@
     &:focus {
       @include hoverToEditTxt;
     }
+    &:empty:before{
+      content: attr(data-placeholder);
+    }
   }
   .board-header-top {
     width: 100%;

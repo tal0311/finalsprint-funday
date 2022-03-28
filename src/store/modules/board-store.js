@@ -85,6 +85,21 @@ export const boardStore = {
         })
       }
     },
+
+    async addBoard({ commit }) {
+      try {
+        // update model
+        // board = JSON.parse(JSON.stringify(board))
+        let boardToAdd = boardService.getEmptyBoard()
+        await boardService.save(boardToAdd)
+        commit({ type: 'setCurrBoard', board })
+      } catch (error) {
+        console.log('error during adding group to board', error)
+      }
+    },
+
+
+
     async removeBoard({ commit }, { _id }) {
       try {
         await boardService.remove(_id)
@@ -132,6 +147,7 @@ export const boardStore = {
         // update model
         board = JSON.parse(JSON.stringify(board))
         let emptyGroup = boardService.getEmptyGroup()
+        emptyGroup.tasks.push(boardService.getEmptyTask())
 
         board.groups.unshift(emptyGroup)
         await boardService.save(board)
