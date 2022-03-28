@@ -22,7 +22,7 @@
       <span
         class="title-chat flex space-between"
         @click="openTaskDetails"
-        @mouseover="[(taskHover = true), (delHover = true)];"
+        @mouseover=";[(taskHover = true), (delHover = true)]"
         @mouseleave="taskHover = false"
       >
         <div class="title-edit">
@@ -87,6 +87,8 @@
           :task="task"
           :value="cmp.value"
           :group="group"
+          @add="addMember"
+          @remove="removeMember"
         />
       </div>
 
@@ -101,15 +103,15 @@
 </template>
 
 <script>
-import memberPicker from "../dynamic-cmps/member-picker.vue";
-import datePicker from "../dynamic-cmps/date-picker.vue";
-import statusPicker from "../dynamic-cmps/status-picker.vue";
-import taskOptions from "./task-options.vue";
-import taskDetails from "../task-details/task-details.vue";
+import memberPicker from '../dynamic-cmps/member-picker.vue'
+import datePicker from '../dynamic-cmps/date-picker.vue'
+import statusPicker from '../dynamic-cmps/status-picker.vue'
+import taskOptions from './task-options.vue'
+import taskDetails from '../task-details/task-details.vue'
 
 export default {
-  name: "task-preview",
-  emits: ["updateTask"],
+  name: 'task-preview',
+  emits: ['updateTask'],
   props: {
     task: Object,
     groupColor: String,
@@ -123,53 +125,60 @@ export default {
       delHover: false,
       focus: false,
       isShowDetails: false,
-    };
+    }
   },
   methods: {
+    addMember() {
+      console.log('add')
+    },
+
+    removeMember() {
+      console.log('remove')
+    },
     setStatus() {
-      this.$emit("updateTask");
+      this.$emit('updateTask')
     },
     setIsOptions() {
-      this.isOptions = !this.isOptions;
+      this.isOptions = !this.isOptions
     },
     async updateTask(newTask, $event) {
-      this.focus = false;
-      newTask = JSON.parse(JSON.stringify(newTask));
-      const board = this.$store.getters.currBoard;
+      this.focus = false
+      newTask = JSON.parse(JSON.stringify(newTask))
+      const board = this.$store.getters.currBoard
       // const { boardId, groupId, task } = await this.$store.dispatch({
       //   type: "findTask",
       //   boardId: board._id,
       //   taskId: newTask.id,
       // });
-      newTask.title = $event.target.innerText;
+      newTask.title = $event.target.innerText
       await this.$store.dispatch({
-        type: "updateTask",
+        type: 'updateTask',
         boardId: board._id,
         groupId: this.group.id,
         task: newTask,
-      });
-      this.$emit("updateTask");
+      })
+      this.$emit('updateTask')
     },
     async removeTask() {
-      const taskToDelete = this.task;
-      const board = this.$store.getters.currBoard;
+      const taskToDelete = this.task
+      const board = this.$store.getters.currBoard
       // const { boardId, groupId, task } = await this.$store.dispatch({
       //   type: "findTask",
       //   boardId: board._id,
       //   taskId: taskToDelete.id,
       // });
       await this.$store.dispatch({
-        type: "removeTask",
+        type: 'removeTask',
         boardId: board._id,
         groupId: this.group.id,
         task: taskToDelete,
-      });
-      this.$emit("updateTask");
+      })
+      this.$emit('updateTask')
     },
 
     editTaskTitle() {
-      this.focus = true;
-      this.$refs.title.focus();
+      this.focus = true
+      this.$refs.title.focus()
     },
     openTaskDetails() {
       if (this.isShowDetails) return
@@ -177,7 +186,7 @@ export default {
     },
     closeTaskDetails() {
       this.isShowDetails = false
-    }
+    },
   },
   components: {
     datePicker,
@@ -186,9 +195,7 @@ export default {
     taskOptions,
     taskDetails,
   },
-  computed: {},
-};
+}
 </script>
 
 <style></style>
-

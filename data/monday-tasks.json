@@ -13,24 +13,28 @@
       {
         "id": "u101",
         "fullname": "Tal Amit",
+        "username": "tal",
         "imgUrl": "",
         "color": "#8338ec"
       },
       {
         "id": "u102",
         "fullname": "Guy Shimon",
+        "username": "guy",
         "imgUrl": "https://randomuser.me/api/portraits/men/27.jpg",
         "color": "#3a86ff"
       },
       {
         "id": "u103",
         "fullname": "Shiran Elad",
+        "username": "shiran",
         "imgUrl": "https://randomuser.me/api/portraits/men/27.jpg",
         "color": "#ff006e"
       },
       {
         "id": "u104",
         "fullname": "Rotem Bublil",
+        "username": "rotem",
         "imgUrl": "https://randomuser.me/api/portraits/men/27.jpg",
         "color": "#ffbe0b"
       }

@@ -2,15 +2,15 @@
   <section class="inline-task">
     <div class="add-task">
       <input
+        type="text"
         @focus="isOnFocus = true"
         @blur="isOnFocus = false"
-        type="text"
         v-model="value"
         placeholder="+ Add task"
       />
-      <button :class="addFocus" @click="addTask">add</button>
+      <button v-if="isOnFocus" @mousedown="add">add</button>
     </div>
-    <button @click="addTask">ok</button>
+    <!-- <button :class="addFocus" @click="addTask">ok</button> -->
   </section>
 </template>
 
@@ -21,11 +21,12 @@ export default {
   data() {
     return {
       value: '',
-      isOnFocus: false,
+      isOnFocus: true,
     }
   },
   methods: {
     add() {
+      this.isOnFocus = false
       console.log('ok')
     },
     addTask() {

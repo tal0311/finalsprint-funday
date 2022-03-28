@@ -15,14 +15,15 @@
       }
     }
     button {
-      transition: 0.3 ease;
       color: #fff;
       //   background-color: #3c3ceb;
-      position: absolute;
-      opacity: 0;
-      right: 0;
+      //   position: absolute;
+      //   opacity: 0;
+      //   right: 0;
 
       &.focused {
+        height: 100px;
+        width: 100px;
         background-color: #3c3ceb;
         position: absolute;
         opacity: 1;

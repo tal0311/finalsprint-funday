@@ -2,7 +2,7 @@
   <div class="member-picker">
     <ul v-if="value.length > 0" class="members-container clean-list flex">
       <li
-        @click="displayMini"
+        @click="updateMemberList"
         v-for="member in value"
         :key="member.id"
         class="member"
@@ -15,36 +15,53 @@
       <div class="no-members"></div>
     </div>
   </div>
+
+  <!-- MEMBERS MODAL CMP -->
+
+  <div v-if="updateMember" class="update-members">
+    <members-modal
+      :task="task"
+      :members="value"
+      @removeMember="removeMember"
+      @addMember="addMember"
+    />
+  </div>
 </template>
 
 <script>
-import { utilService } from '../../services/util-service.js'
 import miniMember from '../mini-member.vue'
+import membersModal from './../members-modal.vue'
 export default {
   name: 'memberPicker',
+  emits: ['add', 'remove'],
   props: {
     value: Array,
+    group: Object,
+    task: Object,
   },
   components: {
     miniMember,
+    membersModal,
   },
   data() {
     return {
       isMiniMember: false,
+      updateMember: false,
     }
   },
   methods: {
     displayMini() {
-      // console.log('displaymini')
       this.isMiniMember = !this.isMiniMember
     },
-    addMember() {
-      // console.log('add member')
+
+    updateMemberList() {
+      this.updateMember = true
     },
-  },
-  computed: {
-    userColor() {
-      return utilService.getRandomColor()
+    removeMember(task, member) {
+      this.$emit('remove', task, member)
+    },
+    addMember(task, memberName) {
+      this.$emit('add', task, memberName)
     },
   },
 }

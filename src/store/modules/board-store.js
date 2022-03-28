@@ -1,3 +1,4 @@
+import { find } from 'lodash'
 import { boardService } from '../../services/board-service.js'
 import { utilService } from '../../services/util-service.js'
 export const boardStore = {
