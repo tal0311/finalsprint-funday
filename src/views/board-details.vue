@@ -171,8 +171,5 @@ export default {
       return this.$store.getters.currBoard
     },
   },
-  watch:{
-    
-  }
 }
 </script>

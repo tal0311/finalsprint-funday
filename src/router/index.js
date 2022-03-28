@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import boardDetails from '../views/board-details.vue'
-import boardList from '../components/board-list.vue'
+// import boardList from '../components/board-list.vue'
 import taskDetails from '../views/task-details.vue'
 
 
