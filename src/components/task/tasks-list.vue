@@ -21,7 +21,7 @@
 
 <script>
 import newInlineTask from './new-inline-task.vue'
-import groupProgress from './group-progress.vue'
+import groupProgress from '../group/group-progress.vue'
 import taskPreview from './task-preview.vue'
 import { Container, Draggable } from 'vue3-smooth-dnd'
 export default {
@@ -41,14 +41,12 @@ export default {
       this.$emit('add-inline', value, this.group)
     },
     getChildPayloadEltasks(index) {
-      // console.log(index);
       return this.eltasks[index]
     },
     onDrop(dropResult) {
       this.eltasks = this.applyDrag(this.eltasks, dropResult)
     },
     applyDrag(arr, dragResult) {
-      // console.log('currBoard:', this.currBoard)
       const { removedIndex, addedIndex, payload } = dragResult
 
       if (removedIndex === null && addedIndex === null) return arr
@@ -63,21 +61,16 @@ export default {
       }
       return result
     },
-    updateGroup(result) {
-      const newGroup = JSON.parse(JSON.stringify(this.group))
-      newGroup.tasks = JSON.parse(JSON.stringify(result))
-      this.$store.dispatch({
-        type: 'updateGroup',
-        groupToUpdate: newGroup,
-      })
-    },
-    updateBoard(result) {
-      const newBoard = JSON.parse(JSON.stringify(this.currBoard))
-      newBoard.groups = JSON.parse(JSON.stringify(result))
-      this.$store.dispatch({
-        type: 'saveBoard',
-        board: newBoard,
-      })
+    // updateGroup(result) {
+    //   const newGroup = JSON.parse(JSON.stringify(this.group))
+    //   newGroup.tasks = JSON.parse(JSON.stringify(result))
+    //   this.$store.dispatch({
+    //     type: 'updateGroup',
+    //     groupToUpdate: newGroup,
+    //   })
+    // },
+    updateBoard(newGroup) {
+      $store.emit('updateBoardAfterDnd', newGroup)
     },
   },
   computed: {

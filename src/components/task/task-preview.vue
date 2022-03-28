@@ -96,9 +96,9 @@
 </template>
 
 <script>
-import memberPicker from './dynamic-cmps/member-picker.vue'
-import datePicker from './dynamic-cmps/date-picker.vue'
-import statusPicker from './dynamic-cmps/status-picker.vue'
+import memberPicker from '../dynamic-cmps/member-picker.vue'
+import datePicker from '../dynamic-cmps/date-picker.vue'
+import statusPicker from '../dynamic-cmps/status-picker.vue'
 import taskOptions from './task-options.vue'
 
 export default {
