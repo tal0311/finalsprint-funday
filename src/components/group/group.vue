@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import tasksList from "./tasks-list.vue";
+import tasksList from "../task/tasks-list.vue";
 import groupProgress from "./group-progress.vue";
 import groupOptions from "./group-options.vue";
 export default {

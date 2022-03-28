@@ -21,7 +21,7 @@
 
 <script>
 import newInlineTask from './new-inline-task.vue'
-import groupProgress from './group-progress.vue'
+import groupProgress from '../group/group-progress.vue'
 import taskPreview from './task-preview.vue'
 import { Container, Draggable } from 'vue3-smooth-dnd'
 export default {

@@ -87,9 +87,9 @@
 </style>
 <script>
 import addGroupTask from '../components/add-group-task.vue'
-import groupCmp from '../components/group.vue'
+import groupCmp from '../components/group/group.vue'
 import { ArrowDown } from '@element-plus/icons-vue'
-import appFilter from '../components/board-filter.vue'
+import appFilter from '../components/board/board-filter.vue'
 import { Container, Draggable } from 'vue3-smooth-dnd'
 
 export default {
