@@ -1,6 +1,7 @@
 <template>
   <section class="task-updates">
-    <input
+    <input type="text" v-model="commentText" placeholder="Write an update..." />
+    <!-- <input
       v-if="!writing"
       @click="writing = true"
       type="text"
@@ -9,14 +10,14 @@
     <input
       type="text"
       v-if="writing"
-      v-model="updateText"
+      v-model="commentText"
       name=""
       id=""
       cols="30"
       rows="10"
-    /><br />
+    /><br /> -->
 
-    <button @click="update">Update</button>
+    <button @click="addTaskComment">Update</button>
     <ul class="update-list clean-list">
       <li v-for="(comment, idx) in task.comments" :key="idx">
         <h4>{{ comment.creator }}</h4>
@@ -28,26 +29,24 @@
 
 <script>
 export default {
-  name: 'task-updates',
+  name: "task-updates",
+  emits: ['addTaskComment'],
   props: {
     task: Object,
   },
   data() {
     return {
-      updateText: null,
+      commentText: null,
       writing: false,
-    }
+    };
   },
   methods: {
-    async update() {
-      await this.$store.dispatch({
-        type: 'saveTaskUpdate',
-        text: this.updateText,
-      })
+    addTaskComment() {
+      this.$emit("addTaskComment", this.commentText);
     },
   },
   computed: {},
   created() {},
   components: {},
-}
+};
 </script>

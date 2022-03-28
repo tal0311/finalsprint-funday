@@ -1,5 +1,5 @@
 <template>
-  <section class="group">
+  <section class="group" @click="setCurrGroup">
     <div class="group-dialog flex">
       <button
         class="btn-dialog flex"
@@ -38,7 +38,7 @@ import groupProgress from "./group-progress.vue";
 import groupOptions from "./group-options.vue";
 export default {
   name: 'group-cmp',
-  emits: ['updateGroup'],
+  emits: ['updateGroup', 'setCurrGroup'],
   props: {
     group: Object,
   },
@@ -92,6 +92,10 @@ export default {
         board: newBoard,
       });
     },
+    setCurrGroup() {
+      console.log(this.group)
+      this.$emit('setCurrGroup', this.group)
+    }
   },
   computed: {
     getTasks() {

@@ -17,7 +17,11 @@
       <hr />
 
       <!-- dynamic component -->
-      <task-updates v-if="activeTab === 'taskUpdates'" :task="task" />
+      <task-updates
+        v-if="activeTab === 'taskUpdates'"
+        :task="task"
+        @addTaskComment="addTaskComment"
+      />
       <task-files v-if="activeTab === 'taskFiles'" />
       <activity-log
         v-if="activeTab === 'activityLog'"
@@ -28,45 +32,52 @@
 </template>
 
 <script>
-import { taskService } from '../services/task-service.js'
-import taskUpdates from '../components/task-details/task-updates.vue'
-import taskFiles from '../components/task-details/task-files.vue'
-import activityLog from '../components/task-details/activity-log.vue'
+import { taskService } from "../services/task-service.js";
+import taskUpdates from "../components/task-details/task-updates.vue";
+import taskFiles from "../components/task-details/task-files.vue";
+import activityLog from "../components/task-details/activity-log.vue";
 
 export default {
-  name: 'task-details',
+  name: "task-details",
   props: {},
   data() {
     return {
       // task: null,
       boardId: null,
-      activeTab: 'taskUpdates',
-    }
+      activeTab: "taskUpdates",
+    };
   },
-  methods: {},
+  methods: {
+    addTaskComment(commentText) {
+      // await this.$store.dispatch({
+      //   type: "saveTaskComment",
+      //   text: commentText,
+      // });
+    },
+  },
   computed: {
     task() {
-      return this.$store.getters.currTask
+      return this.$store.getters.currTask;
     },
     activities() {
-      return this.$store.getters.boards.activities
+      return this.$store.getters.boards.activities;
     },
   },
   created() {
-    const { boardId, taskId } = this.$route.params
-    this.boardId = boardId
-    // console.log(boardId, taskId)
+    const { boardId, taskId } = this.$route.params;
+    this.boardId = boardId;
+
     const task = this.$store.dispatch({
-      type: 'findTask',
+      type: "findTask",
       boardId,
       taskId,
-    })
-    this.$store.commit({ type: 'setCurrTask', task })
+    });
+    this.$store.commit({ type: "setCurrTask", task });
   },
   components: {
     taskUpdates,
     taskFiles,
     activityLog,
   },
-}
+};
 </script>
