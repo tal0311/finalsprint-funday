@@ -40,7 +40,8 @@ export default {
   },
   methods: {
     add(value) {
-      this.$emit('add-inline', value, this.group)
+      console.log('tasklist:', value, this.group)
+      this.$emit('add-inline', value, this.group.id)
     },
     getChildPayloadEltasks(index) {
       return this.eltasks[index]
@@ -63,14 +64,7 @@ export default {
       }
       return result
     },
-    // updateGroup(result) {
-    //   const newGroup = JSON.parse(JSON.stringify(this.group))
-    //   newGroup.tasks = JSON.parse(JSON.stringify(result))
-    //   this.$store.dispatch({
-    //     type: 'updateGroup',
-    //     groupToUpdate: newGroup,
-    //   })
-    // },
+   
     updateBoard(newGroup) {
       $store.emit('updateBoardAfterDnd', newGroup)
     },
@@ -87,10 +81,7 @@ export default {
     groupProgress,
     newInlineTask,
   },
-  created() {
-    // this.currBoard = JSON.parse(JSON.stringify(this.$store.getters.currBoard))
-    // this.eltasks = this.tasks
-  },
+
 }
 </script>
 

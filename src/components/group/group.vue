@@ -55,8 +55,11 @@ export default {
     }
   },
   methods: {
-    addTask(value) {
-     const idx= this.board.groups.findIndex(group => group.id === this.group.id);
+    addTask(value, groupId) {
+      console.log(value)
+      const idx = this.board.groups.findIndex(
+        (group) => group.id === groupId
+      )
       this.$store.dispatch({
         type: 'addTask',
         board: this.board,
@@ -99,9 +102,8 @@ export default {
       })
     },
     setCurrGroup() {
-      console.log(this.group)
       this.$emit('setCurrGroup', this.group)
-    }
+    },
   },
   computed: {
     getTasks() {

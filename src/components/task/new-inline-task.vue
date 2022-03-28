@@ -8,8 +8,9 @@
         v-model="value"
         placeholder="+ Add task"
       />
-      <button :class="addFocus" @click="add">add</button>
+      <button :class="addFocus" @click="addTask">add</button>
     </div>
+    <button @click="addTask">ok</button>
   </section>
 </template>
 
@@ -25,13 +26,15 @@ export default {
   },
   methods: {
     add() {
+      console.log('ok')
+    },
+    addTask() {
       console.log(this.value)
       this.$emit('add-task', this.value)
     },
   },
   computed: {
     addFocus() {
-      console.log(this.isOnFocus)
       return this.isOnFocus ? 'focused' : ''
     },
   },
