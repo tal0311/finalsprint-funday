@@ -22,7 +22,7 @@
       <router-link
         :to="'/board/b101/task/' + task.id"
         class="title-chat flex space-between"
-        @mouseover="[(taskHover = true), (delHover = true)]"
+        @mouseover=";[(taskHover = true), (delHover = true)]"
         @mouseleave="taskHover = false"
       >
         <div class="title-edit">
@@ -80,14 +80,16 @@
     <div class="task-columns flex">
       <div class="dyn-cmp" v-for="(cmp, idx) in task.cols" :key="idx">
         <!-- dynamic components -->
+
         <component
-           v-if="task"
+          v-if="task"
           :is="cmp.type"
           :task="task"
           :value="cmp.value"
           :group="group"
         />
       </div>
+
       <div class="right-indicator"></div>
     </div>
   </div>

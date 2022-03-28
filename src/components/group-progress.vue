@@ -20,7 +20,7 @@ export default {
   computed: {
     sortStatus() {
       // this.tasks.map(task=> console.log(task.cols[0]))
-      return this.tasks.map((task) => task.cols[0].value).sort()
+      return this.tasks.map((task) => task.cols[0].value.toLowerCase()).sort()
     },
   },
 }
