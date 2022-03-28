@@ -5,7 +5,7 @@
         <div class="board-header-top flex">
           <h1 class="board-title" @blur="setBoardTitle" contenteditable="true">
             {{ currBoard.title }}
-          </h1>
+          </h1> 
           <div class="info-star flex">
             <button class="info"></button>
             <button class="star">Star</button>

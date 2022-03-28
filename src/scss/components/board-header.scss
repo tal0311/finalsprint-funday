@@ -1,6 +1,6 @@
 .header {
   padding: toRem(16) toRem(30) 0 toRem(30);
-  // color: red;
+  
   .btn-container {
     & > * {
       @include headerBtn;

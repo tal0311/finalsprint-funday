@@ -89,7 +89,6 @@ export const boardStore = {
     async addBoard({ commit }) {
       try {
         // update model
-        // board = JSON.parse(JSON.stringify(board))
         let boardToAdd = boardService.getEmptyBoard()
         await boardService.save(boardToAdd)
         commit({ type: 'setCurrBoard', board })

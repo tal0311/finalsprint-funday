@@ -818,20 +818,20 @@
                                     }
                                 ]
                             },
-                        {
-                            "type": "date-picker",
-                            "value": null
-                        }
-                    ],
-                    "groupColor": "#2fbc34"
-                }
-            ],
-            "cmpsOrder": [
-                "status-picker",
-                "member-picker",
-                "date-picker"
-            ]
-        }
-    ]
+                            {
+                                "type": "date-picker",
+                                "value": null
+                            }
+                        ],
+                        "groupColor": "#2fbc34"
+                    }
+                ],
+                "cmpsOrder": [
+                    "status-picker",
+                    "member-picker",
+                    "date-picker"
+                ]
+            }
+        ]
     }
-    ]
+]
