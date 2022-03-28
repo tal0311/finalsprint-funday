@@ -20,9 +20,7 @@
     
             }
             .elipsis {
-                &:before {
-                    content: "\f311";
-                }
+                width:15px;
             }
         } 
         .ws-name{
@@ -34,7 +32,11 @@
                 background-color: pink;
                 border-radius: 8px;
                 padding: 5px 10px;
-                
+                position: relative;
+                .house-icon{
+                    position:absolute;
+                    width:15px;
+                }
             }
         }
 
@@ -50,8 +52,6 @@
                 }
             }
         }
-
-
     }
 
 

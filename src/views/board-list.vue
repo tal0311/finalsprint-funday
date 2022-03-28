@@ -3,9 +3,9 @@
     <div class="title-box-container flex col">
       <div class="title-container flex space-between">
         <h1>Workspace</h1>
-        <button class="btn"><i class="ellipsis">...</i></button>
+        <button class="btn"><img src="../assets/img/ellipsis-solid.svg" class="ellipsis" /></button>
       </div>
-      <div class="ws-name"><span class="ws-icon">M</span> Main Workspace</div>
+      <div class="ws-name"><span class="ws-icon">M<img src="../assets/img/workspace-house.png" class="house-icon"/></span> Main Workspace</div>
     </div>
     <div class="menu-buttons flex col">
       <button @click="addBoard" style="color:black" class="bl-btn btn flex justify-start">
