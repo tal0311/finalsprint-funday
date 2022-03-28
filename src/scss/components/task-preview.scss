@@ -65,6 +65,7 @@
         display: flex;
         flex: 1;
         align-items: center;
+
         min-width: 0;
         padding-left: 10px;
         line-height: 23px;
@@ -95,6 +96,21 @@
           &:focus {
             outline: 1px solid gray;
           }
+
+//         height: 100%;
+//         text-align: left;
+//         // flex-basis: 400px;
+//         flex-basis: 40%;
+//         padding: 0 10px 0 0;
+//         border-right: 1px solid $clr8;
+
+//         .side-indicator {
+//             flex: 0 0 8px;
+//             position: relative;
+//             height: 100%;
+//             background-color: rgb(87, 155, 252);
+//             color: rgb(87, 155, 252);
+
         }
         .edit {
           margin-left: 8px;

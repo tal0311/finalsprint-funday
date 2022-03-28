@@ -203,8 +203,6 @@ function getEmptyTask(title='New Task') {
   }
 }
 
-
-
 const board = [
   {
     _id: 'b101',

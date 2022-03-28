@@ -6,19 +6,19 @@
     <div class="block">
       <el-date-picker
         v-model="taskDate"
-        type="date"
-        placeholder="Pick a day"
-        format="YYYY-MM-DD"
-        @change="setDate"
-        class="date-input"
-      ></el-date-picker>
+        type="daterange"
+        range-separator="To"
+        start-placeholder="Start date"
+        end-placeholder="End date"
+      />
     </div>
   </div>
 </template>
+
 <script>
 export default {
-  name: 'date-picker',
-  emits: ['updateTask'],
+  name: "date-picker",
+  emits: ["updateTask"],
   props: {
     task: Object,
     group: Object,
@@ -27,32 +27,34 @@ export default {
   data() {
     return {
       taskDate: null,
-    }
+    };
   },
   methods: {
     async setDate() {
-      const board = this.$store.getters.currBoard
+      const board = this.$store.getters.currBoard;
 
       /* FROM HERE */
-      const currTask = JSON.parse(JSON.stringify(this.task))
+      const currTask = JSON.parse(JSON.stringify(this.task));
 
-      currTask.cols[2].value = this.taskDate
+      currTask.cols[2].value = this.taskDate;
       await this.$store.dispatch({
-        type: 'updateTask',
+        type: "updateTask",
         boardId: board._id,
         groupId: this.group.id,
         task: currTask,
-      })
-      this.$emit('updateTask')
+      });
+      this.$emit("updateTask");
     },
   },
 
   created() {
-    this.taskDate = this.task.cols[2].value
+    console.log('this.task:', this.task)
+    console.log('this.group:', this.group)
+    // console.log('this.value:', this.value)
+    this.taskDate = this.task.cols[2].value;
   },
-}
+};
 </script>
-
 <style scoped>
 .demo-date-picker {
   display: flex;
@@ -61,7 +63,7 @@ export default {
   padding: 0;
   flex-wrap: wrap;
   /* position: absolute; */
-  opacity: 0;
+  /* opacity: 0; */
 }
 .demo-date-picker .block {
   text-align: center;
