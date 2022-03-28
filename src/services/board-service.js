@@ -98,10 +98,12 @@ function getEmptyGroup() {
           },
           {
             type: 'date-picker',
+            value: null,
           },
         ],
       },
     ],
+    groupColor: utilService.getRandomColor()
   }
 }
 

@@ -132,7 +132,7 @@ export const boardStore = {
         board = JSON.parse(JSON.stringify(board))
         let emptyGroup = boardService.getEmptyGroup()
 
-        board.groups.push(emptyGroup)
+        board.groups.unshift(emptyGroup)
         await boardService.save(board)
         commit({ type: 'setCurrBoard', board })
       } catch (error) {
