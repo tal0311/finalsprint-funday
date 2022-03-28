@@ -24,12 +24,12 @@
     </div>
 
     <tasks-list
+      @add-inline="addTask"
       :tasks="group.tasks"
       :group="group"
       :groupColor="group.groupColor"
     ></tasks-list>
   </section>
-  <group-progress :tasks="group.tasks" />
 </template>
 
 <script>
@@ -37,8 +37,8 @@ import tasksList from "./tasks-list.vue";
 import groupProgress from "./group-progress.vue";
 import groupOptions from "./group-options.vue";
 export default {
-  name: "group-cmp",
-  emits: ["updateGroup"],
+  name: 'group-cmp',
+  emits: ['updateGroup'],
   props: {
     group: Object,
   },
@@ -51,22 +51,26 @@ export default {
   data() {
     return {
       isOptions: false,
-    };
+    }
   },
   methods: {
+    addTask(value, group) {
+      console.log('addtask:', value, group)
+    this.$store.dispatch({ type: 'addTaskInline', value, group })
+    },
     setIsOptions() {
-      this.isOptions = !this.isOptions;
+      this.isOptions = !this.isOptions
     },
 
     setGroupUpdate(value) {
       if (value === "remove") {
         this.$store.dispatch({ type: "removeGroup", groupId: this.group.id });
       }
-      if (value === "duplicate") {
+      if (value === 'duplicate') {
         this.$store.dispatch({
-          type: "duplicateGroup",
+          type: 'duplicateGroup',
           groupId: this.group.id,
-        });
+        })
       }
       if (value.startsWith("#")) {
         const groupToUpdate = JSON.parse(JSON.stringify(this.group));

@@ -14,10 +14,14 @@
         ></task-preview>
       </Draggable>
     </Container>
+    <new-inline-task @add-task="add" />
+    <group-Progress :tasks="group.tasks" />
   </section>
 </template>
 
 <script>
+import newInlineTask from './new-inline-task.vue'
+import groupProgress from './group-progress.vue'
 import taskPreview from './task-preview.vue'
 import { Container, Draggable } from 'vue3-smooth-dnd'
 export default {
@@ -26,12 +30,16 @@ export default {
     group: Object,
     groupColor: String,
   },
+  emits: ['add-inline'],
   data() {
     return {
       eltasks: this.tasks,
     }
   },
   methods: {
+    add(value) {
+      this.$emit('add-inline', value, this.group)
+    },
     getChildPayloadEltasks(index) {
       return this.eltasks[index]
     },
@@ -74,6 +82,8 @@ export default {
     taskPreview,
     Container,
     Draggable,
+    groupProgress,
+    newInlineTask,
   },
   created() {
     // this.currBoard = JSON.parse(JSON.stringify(this.$store.getters.currBoard))

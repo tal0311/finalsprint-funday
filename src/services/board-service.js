@@ -16,6 +16,7 @@ export const boardService = {
   getById,
   save,
   // saveGroup,
+  getEmptyBoard,
   getEmptyGroup,
   getEmptyTask,
 }
@@ -79,38 +80,112 @@ async function remove(boardId) {
 //     }
 // }
 
+function getEmptyBoard() {
+  const loggedUser = { _id: 'u105', fullname: 'Guest User', imgUrl: 'http://some-img' } // getLoggedInUser()
+  const newBoard = {
+    // _id: 'b' + utilService.makeId(),
+    _id: '',
+    title: 'New Board',
+    description: '',
+    createdAt: Date.now(),
+    createdBy: {
+      _id: loggedUser._id,
+      fullname: loggedUser.fullname,
+      imgUrl: loggedUser.imgUrl,
+    },
+    members: [
+      {
+        _id: loggedUser._id,
+        fullname: loggedUser.fullname,
+        imgUrl: loggedUser.imgUrl
+      }
+    ],
+    activities: [
+      {
+        id: 'a101',
+        txt: 'Group Title created',
+        createdAt: Date.now(),
+        byMember: {
+          _id: loggedUser._id,
+          fullname: loggedUser.fullname,
+          imgUrl: loggedUser.imgUrl
+        }
+      },
+      {
+        id: 'a102',
+        txt: 'Group Title created',
+        createdAt: Date.now(),
+        byMember: {
+          _id: loggedUser._id,
+          fullname: loggedUser.fullname,
+          imgUrl: loggedUser.imgUrl,
+        },
+      },
+      {
+        task: {
+          id: 't101',
+          title: 'Task 1 assigned to ' + loggedUser.fullname,
+        }
+      }
+    ],
+    groups: [
+      getEmptyGroup(), getEmptyGroup()],
+    cmpsOrder: ['status-picker', 'member-picker', 'date-picker']
+
+  }
+
+  console.log(newBoard)
+
+  newBoard.groups[0].title = 'Group Title'
+  newBoard.groups[0].groupColor = '#579bfc'
+  newBoard.groups[1].title = 'Group Title'
+  newBoard.groups[1].groupColor = '#a25ddc'
+
+  for (var i = 0; i < 5; i++) {
+    const newTask = getEmptyTask(`Item ${i+1}`)
+    if (i < 3)
+      newBoard.groups[0].tasks.push(newTask)
+    else {
+      newBoard.groups[1].tasks.push(newTask)
+    }
+  }
+  return newBoard
+
+}
+
+
 function getEmptyGroup() {
   return {
     id: 'g' + utilService.makeId(),
     title: 'New Group',
     tasks: [
-      {
-        id: 't' + utilService.makeId(),
-        title: 'New Task',
-        cols: [
-          {
-            type: 'status-picker',
-            value: null,
-          },
-          {
-            type: 'member-picker',
-            value: [],
-          },
-          {
-            type: 'date-picker',
-            value: null,
-          },
-        ],
-      },
+      // {
+      //   id: 't' + utilService.makeId(),
+      //   title: 'New Task',
+      //   cols: [
+      //     {
+      //       type: 'status-picker',
+      //       value: null,
+      //     },
+      //     {
+      //       type: 'member-picker',
+      //       value: [],
+      //     },
+      //     {
+      //       type: 'date-picker',
+      //       value: null,
+      //     },
+      //   ],
+      // },
     ],
     groupColor: utilService.getRandomColor()
   }
 }
 
-function getEmptyTask() {
+function getEmptyTask(title='New Task') {
   return {
     id: 't' + utilService.makeId(),
-    title: 'New Task',
+    title,
     cols: [
       {
         type: 'status-picker',
@@ -351,7 +426,7 @@ const board = [
         tasks: [
           {
             id: 't101',
-            title: 'nake it happen',
+            title: 'make it happen',
             cols: [
               {
                 type: 'status-picker',
@@ -376,7 +451,7 @@ const board = [
           },
           {
             id: 't101',
-            title: 'nake it happen',
+            title: 'Make it happen',
             cols: [
               {
                 type: 'status-picker',
@@ -456,3 +531,4 @@ function _loadItemsToStorage() {
 //     boards = freshboards
 //   });
 // })()
+
