@@ -67,7 +67,7 @@
         @drop="onDrop"
       >
         <Draggable v-for="group in currBoard.groups" :key="group.id">
-          <group-cmp :group="group" />
+          <group-cmp :group="group" :board="currBoard"/>
           <br />
         </Draggable>
       </Container>

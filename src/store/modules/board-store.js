@@ -97,8 +97,6 @@ export const boardStore = {
       }
     },
 
-
-
     async removeBoard({ commit }, { _id }) {
       try {
         await boardService.remove(_id)
@@ -216,13 +214,15 @@ export const boardStore = {
     },
     //TASK
 
-    async addTask({ commit }, { board, groupIdx }) {
-      // console.log('add task', board, groupIdx)
+    async addTask({ commit }, { board, groupIdx, value }) {
+      console.log(groupIdx);
+    console.log(board.groups[groupIdx]);
+      console.log('group idx', groupIdx)
       try {
         // update model
         board = JSON.parse(JSON.stringify(board))
         const len = board.groups[groupIdx].tasks.push(
-          boardService.getEmptyTask()
+          boardService.getEmptyTask(value)
         )
         const task = board.groups[groupIdx].tasks[len - 1]
         await boardService.save(board)
