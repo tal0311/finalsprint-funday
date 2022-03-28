@@ -1,12 +1,14 @@
 <template>
   <section class="app-container container">
     <app-sidebar />
+    <border-list />
     <router-view class="main-layout" />
   </section>
 </template>
 
 <script>
 import appSidebar from './components/app-sidebar.vue'
+import borderList from './components/board-list.vue'
 import group from './components/group/group.vue'
 export default {
   name: 'app',
@@ -16,6 +18,7 @@ export default {
   methods: {},
   components: {
     appSidebar,
+    borderList,
     group,
   },
 }
