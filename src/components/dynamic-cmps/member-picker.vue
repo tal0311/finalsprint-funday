@@ -11,7 +11,9 @@
         {{ member.fullname?.charAt(0).toUpperCase() }}
       </li>
     </ul>
-    <div class="no-members" v-else @click="addMember"></div>
+    <div class="no-members-container flex" v-else @click="addMember">
+      <div class="no-members">h</div>
+    </div>
   </div>
 </template>
 

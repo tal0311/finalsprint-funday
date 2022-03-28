@@ -5,14 +5,18 @@
         <div class="board-header-top flex">
           <h1 class="board-title" @blur="setBoardTitle" contenteditable="true">
             {{ currBoard.title }}
-          </h1> 
+          </h1>
           <div class="info-star flex">
             <button class="info"></button>
             <button class="star">Star</button>
           </div>
 
           <div class="board-actions flex">
-            <button class="btn last">Last seen</button>
+            <!-- LAST SEEN CMP -->
+            <div class="last-seen flex">
+              <button class="btn last">Last seen</button>
+              <last-seen :members="currBoard.members" />
+            </div>
             <button class="btn invite">
               Invite / <span>{{ currBoard.members?.length }}</span>
             </button>
@@ -20,7 +24,12 @@
             <button class="btn add">Add to board</button>
           </div>
         </div>
-        <p class="description" @blur="setBoardTitle" contenteditable="true" data-placeholder="Add board description">
+        <p
+          class="description"
+          @blur="setBoardTitle"
+          contenteditable="true"
+          data-placeholder="Add board description"
+        >
           {{ currBoard.description }}
         </p>
 
@@ -62,12 +71,9 @@
 
     <!-- GROUP -->
     <section class="group-list" v-if="currBoard">
-      <Container
-        orientation="vertical"
-        @drop="onDrop"
-      >
+      <Container orientation="vertical" @drop="onDrop">
         <Draggable v-for="group in currBoard.groups" :key="group.id">
-          <group-cmp :group="group" :board="currBoard"/>
+          <group-cmp :group="group" :board="currBoard" />
           <br />
         </Draggable>
       </Container>
@@ -86,6 +92,7 @@
 }
 </style>
 <script>
+import lastSeen from '../components/board/last-seen.vue'
 import addGroupTask from '../components/add-group-task.vue'
 import groupCmp from '../components/group/group.vue'
 import { ArrowDown } from '@element-plus/icons-vue'
@@ -100,6 +107,7 @@ export default {
     appFilter,
     Container,
     Draggable,
+    lastSeen,
   },
   created() {
     let { boardId } = this.$route.params

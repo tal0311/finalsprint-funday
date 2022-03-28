@@ -14,7 +14,9 @@
         ></task-preview>
       </Draggable>
     </Container>
-    <new-inline-task @add-task="add" />
+    <div class="inline">
+      <new-inline-task @add-task="add" />
+    </div>
     <group-Progress :tasks="group.tasks" />
   </section>
 </template>

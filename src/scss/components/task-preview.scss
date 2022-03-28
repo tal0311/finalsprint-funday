@@ -1,172 +1,170 @@
 .task-preview {
-    // &:hover {
-    //     background-color: $clr7;
-    // }
-    top: 40px;
-    color: $clr9;
-    height: 36px;
-    line-height: 36px;
-    padding-inline-start: 30px;
-    cursor: pointer;
-    border-bottom: 1px solid $clr8;
-    justify-content: start;
-    width: 100%;
-    flex:1;
-    // position:relative;
+  // &:hover {
+  //     background-color: $clr7;
+  // }
+  top: 40px;
+  color: $clr9;
+  height: 36px;
+  line-height: 36px;
+  padding-inline-start: 30px;
+  cursor: pointer;
+  border-bottom: 1px solid $clr8;
+  justify-content: start;
+  width: 100%;
+  flex: 1;
+  // position:relative;
 
-    .btn-remove-task {
-        background-image: url("../assets/img/icon-delete.png");
-        background-position: center;
-        background-size: contain;
-        background-repeat: no-repeat;
+  .btn-remove-task {
+    background-image: url('../assets/img/icon-delete.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
 
-        // left:-30px;
-        // position:absolute;
-        opacity: 0.4;
-        // margin-right: 5px;
-        width: 20px;
-        visibility: visible;
+    opacity: 0.4;
+
+    width: 20px;
+    visibility: visible;
+  }
+
+  .btn-remove-task-hidden {
+    visibility: hidden;
+  }
+
+  .task-title-comp {
+    background-color: $clr10;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    text-align: left;
+    // flex-basis: 400px;
+    flex-basis: 40%;
+    padding: 0 10px 0 0;
+    border-right: 1px solid $clr8;
+
+    .side-indicator {
+      flex: 0 0 8px;
+      position: relative;
+      height: 100%;
+      background-color: rgb(87, 155, 252);
+      color: rgb(87, 155, 252);
     }
-
-    .btn-remove-task-hidden {
-        visibility: hidden;
-    }
-
-    .task-title-comp {
-        background-color: $clr10;
+    .title-chat {
+      flex: 1;
+      display: flex;
+      padding: 0px 10px;
+      align-items: center;
+      font-size: 24px;
+      line-height: toRem(36);
+      justify-content: center;
+      min-width: 400px;
+      &:focus {
+        background-color: $clr13;
+      }
+      .title-edit {
+        margin-inline-end: 5px;
         display: flex;
-        align-items: center;
-        height: 100%;
-        text-align: left;
-        // flex-basis: 400px;
-        flex-basis: 800px;
-        padding: 0 10px 0 0;
-        border-right: 1px solid $clr8;
-
-        .side-indicator {
-            flex: 0 0 8px;
-            position: relative;
-            height: 100%;
-            background-color: rgb(87, 155, 252);
-            color: rgb(87, 155, 252);
-        }
-        .title-chat {
-            flex: 1;
-            display: flex;
-            padding: 0px 10px;
-            align-items: center;
-            font-size: 24px;
-            line-height: toRem(36);
-            justify-content: center;
-            min-width: 400px;
-            &:focus {
-                background-color: $clr13;
-            }
-            .title-edit {
-                margin-inline-end: 5px;
-                display: flex;
-                flex: 1;
-                align-items: center;
-                min-width: 0;
-                padding-left: 10px;
-                line-height: 23px;
-                text-decoration: none;
-                color: $clr9;
-                font-weight: 400;
-                font-size: 0.8125rem;
-                .task-title {
-                    padding: 2px 5px;
-                    // margin-inline-end: 5px;
-                    // display: flex;
-                    // // flex: 1;
-                    // align-items: center;
-                    // min-width: 0;
-                    // padding-left: 10px;
-                    // line-height: 23px;
-                    // text-decoration: none;
-                    // color: $clr9;
-                    // font-weight: 400;
-                    // font-size: 0.8125rem;
-                    &.mark-outline {
-                        outline: $clr11 1px solid;
-                        border-radius: 1px;
-                    }
-                    &.bgc-white {
-                        background-color: $clr8;
-                    }
-                    &:focus{
-                         outline: 1px solid gray;
-                    }
-                }
-                .edit {
-                    margin-left: 8px;
-                    cursor: pointer;
-                    height: 24px;
-                    flex: initial;
-                    margin-left: 8px;
-                    padding-left: 8px;
-                    padding-right: 8px;
-                    border-radius: 4px;
-                    line-height: 22px;
-                    padding-top: 2px;
-                    outline: 0;
-                    border: 0;
-                    color: $clr5;
-                    background-color: transparent;
-                    &:hover {
-                        background-color: $clr8;
-                    }
-                }
-            }
-
-            .chat-without-update {
-                color: $clr11;
-                overflow: hidden;
-                position: relative;
-                font-size: 24px;
-                text-align: left;
-                margin-top: 10px;
-                &:hover {
-                    color: $clr16;
-                }
-            }
-        }
-    }
-
-    .task-columns {
-        // width: 100%;
-        background-color: $clr10;
         flex: 1;
-        position: relative;
-        height: 100%;
-        .dyn-cmp {
-            width: 100%;
-            // width: fit-content;
-            border-right: $clr8 1px solid;
-            .task-col-comp {
-                font-size: toRem(14);
-                // width: 140px;
-                margin: 0;
-                padding: 0;
-                // flex-basis: 200px;
-                // position: relative;
-                // margin: 0;
-                // padding: 0;
-                // border: 0;
-                // flex-shrink: 0;
-                // cursor: pointer;
-                // text-align: center;
-                // border-right: $clr8 1px solid;
-                // display: flex;
-                // justify-content: center;
-                // min-width: 200px;
-            }
+        align-items: center;
+        min-width: 0;
+        padding-left: 10px;
+        line-height: 23px;
+        text-decoration: none;
+        color: $clr9;
+        font-weight: 400;
+        font-size: 0.8125rem;
+        .task-title {
+          padding: 2px 5px;
+          // margin-inline-end: 5px;
+          // display: flex;
+          // // flex: 1;
+          // align-items: center;
+          // min-width: 0;
+          // padding-left: 10px;
+          // line-height: 23px;
+          // text-decoration: none;
+          // color: $clr9;
+          // font-weight: 400;
+          // font-size: 0.8125rem;
+          &.mark-outline {
+            outline: $clr11 1px solid;
+            border-radius: 1px;
+          }
+          &.bgc-white {
+            background-color: $clr8;
+          }
+          &:focus {
+            outline: 1px solid gray;
+          }
         }
+        .edit {
+          margin-left: 8px;
+          cursor: pointer;
+          height: 24px;
+          flex: initial;
+          margin-left: 8px;
+          padding-left: 8px;
+          padding-right: 8px;
+          border-radius: 4px;
+          line-height: 22px;
+          padding-top: 2px;
+          outline: 0;
+          border: 0;
+          color: $clr5;
+          background-color: transparent;
+          &:hover {
+            background-color: $clr8;
+          }
+        }
+      }
 
-        .right-indicator {
-            max-width: 38px;
-            // background-color: black;
-            border-right: 8px solid $clr12;
+      .chat-without-update {
+        color: $clr11;
+        overflow: hidden;
+        position: relative;
+        font-size: 24px;
+        text-align: left;
+        margin-top: 10px;
+        &:hover {
+          color: $clr16;
         }
+      }
     }
+  }
+
+  .task-columns {
+    // width: 100%;
+    background-color: $clr10;
+    flex: 1;
+    position: relative;
+    height: 100%;
+    .dyn-cmp {
+      width: 100%;
+      // width: fit-content;
+      border-right: $clr8 1px solid;
+      .task-col-comp {
+        font-size: toRem(14);
+        // width: 140px;
+        margin: 0;
+        padding: 0;
+        // flex-basis: 200px;
+        // position: relative;
+        // margin: 0;
+        // padding: 0;
+        // border: 0;
+        // flex-shrink: 0;
+        // cursor: pointer;
+        // text-align: center;
+        // border-right: $clr8 1px solid;
+        // display: flex;
+        // justify-content: center;
+        // min-width: 200px;
+      }
+    }
+
+    .right-indicator {
+      max-width: 38px;
+      // background-color: black;
+      border-right: 8px solid $clr12;
+    }
+  }
 }
