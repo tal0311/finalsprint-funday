@@ -221,8 +221,6 @@ export const boardStore = {
     },
     async addTaskInline({ commit }, { value, group }) {
       console.log('addinlinestore:', value, group)
-
-      board
     },
 
     async findTask({ commit }, { boardId, taskId }) {
