@@ -1,9 +1,9 @@
 .members-container {
-  width:216px;
+  width: 216px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin:auto;
+  margin: auto;
   // position: absolute;
   // &flex {
   //   flex-direction: row;
@@ -17,13 +17,13 @@
     color: $clr8;
     font-weight: 700;
     border: 2px solid $clr10;
-    width:30px;
-    height:30px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     margin: 0 -4px;
     flex-shrink: 0;
     position: relative;
-    margin-top:3px;
+    margin-top: 3px;
   }
 }
 
@@ -39,8 +39,6 @@
     // background-color: #5c5c5c;
     color: #fff;
     border-radius: 50%;
-    width: 100px;
-    height:100px;
 
     background-image: url('https://cdn.monday.com/icons/dapulse-person-column.svg');
     background-position: center;
@@ -50,9 +48,8 @@
     font-size: 0.8rem;
     font-weight: 700;
     // padding: 0px 0 10px 0;
-    margin:5px auto;
+    margin: 5px auto;
     flex-shrink: 0;
     position: relative;
-
   }
 }

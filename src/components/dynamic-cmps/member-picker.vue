@@ -12,7 +12,7 @@
       </li>
     </ul>
     <div class="no-members-container flex" v-else @click="addMember">
-      <div class="no-members">h</div>
+      <div class="no-members"></div>
     </div>
   </div>
 </template>
