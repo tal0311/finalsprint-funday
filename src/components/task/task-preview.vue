@@ -78,7 +78,7 @@
       </span>
     </div>
     <div class="task-columns flex">
-      <div class="dyn-cmp flex" v-for="(cmp, idx) in task.cols" :key="idx">
+      <div :class="[ cmp.type ,'dyn-cmp flex']"  v-for="(cmp, idx) in task.cols" :key="idx">
         <!-- dynamic components -->
 
         <component
@@ -101,6 +101,7 @@
 import memberPicker from '../dynamic-cmps/member-picker.vue'
 import datePicker from '../dynamic-cmps/date-picker.vue'
 import statusPicker from '../dynamic-cmps/status-picker.vue'
+import testStatus from '../dynamic-cmps/test-status.vue'
 import taskOptions from './task-options.vue'
 
 export default {
@@ -198,8 +199,8 @@ export default {
     memberPicker,
     statusPicker,
     taskOptions,
+    testStatus,
   },
-  computed: {},
 }
 </script>
 
