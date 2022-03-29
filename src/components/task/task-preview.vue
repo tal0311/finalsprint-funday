@@ -44,7 +44,7 @@
               class="edit"
               @mouseover="editHover = true"
               @mouseleave="editHover = false"
-              @click.prevent="editTaskTitle"
+              @click.prevent.stop="editTaskTitle"
               :class="{ 'd-none': !taskHover }"
             >
               Edit
@@ -78,7 +78,7 @@
       </span>
     </div>
     <div class="task-columns flex">
-      <div class="dyn-cmp" v-for="(cmp, idx) in task.cols" :key="idx">
+      <div class="dyn-cmp flex" v-for="(cmp, idx) in task.cols" :key="idx">
         <!-- dynamic components -->
 
         <component
@@ -87,6 +87,8 @@
           :task="task"
           :value="cmp.value"
           :group="group"
+          @add="addMember"
+          @remove="removeMember"
         />
       </div>
 
@@ -103,7 +105,7 @@ import taskOptions from './task-options.vue'
 
 export default {
   name: 'task-preview',
-  emits: ['updateTask'],
+  emits: ['updateTask', 'add', 'remove'],
   props: {
     task: Object,
     groupColor: String,
@@ -119,6 +121,30 @@ export default {
     }
   },
   methods: {
+    addMember(task, memberName) {
+      task = JSON.parse(JSON.stringify(task))
+      const board = this.$store.getters.currBoard
+      const member = board.members.find((curr) => curr.username === memberName)
+      task.cols[1].value.push(member)
+      this.$store.dispatch({
+        type: 'updateTask',
+        boardId:board._id,
+        groupId: this.group.id,
+        task,
+        })
+    },
+    removeMember(task, member) {
+      task = JSON.parse(JSON.stringify(task))
+      const idx = task.cols[1].value.findIndex((curr) => curr.id === member.id)
+      task.cols[1].value.splice(idx, 1)
+     const board = this.$store.getters.currBoard
+      this.$store.dispatch({
+        type: 'updateTask',
+        boardId: board._id,
+        groupId: this.group.id,
+        task,
+      })
+    },
     setStatus() {
       this.$emit('updateTask')
     },
@@ -164,8 +190,8 @@ export default {
       this.$refs.title.focus()
     },
     openTaskDetails() {
-      this.$store.commit({type: 'setTaskToShow', task: this.task})
-    }
+      this.$store.commit({ type: 'setTaskToShow', task: this.task })
+    },
   },
   components: {
     datePicker,

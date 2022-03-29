@@ -1,17 +1,48 @@
-.task-list{
-    margin-bottom:30px;
+// addTask inline
+
+.task-list {
+  margin-bottom: 30px;
+  .inline {
+    padding-inline-start: 60px;
+    width: 100%;
+  }
+  .add-task {
+    width: 100%;
+    input {
+      width: 100%;
+      &:focus {
+        outline: solid #3333 2px;
+      }
+    }
+    button {
+      color: #fff;
+      //   background-color: #3c3ceb;
+      //   position: absolute;
+      //   opacity: 0;
+      //   right: 0;
+
+      &.focused {
+        height: 100px;
+        width: 100px;
+        background-color: #3c3ceb;
+        position: absolute;
+        opacity: 1;
+        transform: translateX(-100%);
+      }
+    }
+  }
 }
 
-.add-task-input{
-    position: sticky;
-    left: 54px;
-    flex: 0 1;
-    border-right: none;
-    flex-basis: 715px;
+.add-task-input {
+  position: sticky;
+  left: 54px;
+  flex: 0 1;
+  border-right: none;
+  flex-basis: 715px;
 }
 
 .side-indicator {
-    flex: 0 0 8px;
-    position: relative;
-    height: 100%;
+  flex: 0 0 8px;
+  position: relative;
+  height: 100%;
 }

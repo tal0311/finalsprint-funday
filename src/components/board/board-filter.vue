@@ -1,6 +1,11 @@
 <template>
   <section class="filter flex">
-    <button class="btn search">Search</button>
+    <label @click="isSearch = true" class="btn search"
+      >Search
+      <div v-if="setSearch">
+        <input @enter="setSearchTerm" type="text" name="search" id="" />
+      </div>
+    </label>
 
     <button class="btn person">Person</button>
 
@@ -13,6 +18,18 @@
 <script>
 export default {
   name: 'board-filter',
+  data() {
+    return {
+      isSearch: false,
+    }
+  },
+  methods: {},
+  computed: {
+    setSearch() {
+      console.log(this.isSearch)
+      return this.isSearch
+    },
+  },
 }
 </script>
 

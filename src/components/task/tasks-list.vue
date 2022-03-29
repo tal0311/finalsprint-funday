@@ -14,7 +14,9 @@
         ></task-preview>
       </Draggable>
     </Container>
-    <new-inline-task @add-task="add" />
+    <div class="inline">
+      <new-inline-task @add-task="add" />
+    </div>
     <group-Progress :tasks="group.tasks" />
   </section>
 </template>
@@ -38,7 +40,8 @@ export default {
   },
   methods: {
     add(value) {
-      this.$emit("add-inline", value, this.group);
+      console.log('tasklist:', value, this.group)
+      this.$emit('add-inline', value, this.group.id)
     },
     getChildPayloadEltasks(index) {
       return this.eltasks[index];
@@ -87,10 +90,8 @@ export default {
     groupProgress,
     newInlineTask,
   },
-  created() {
 
-  },
-};
+}
 </script>
 
 <style></style>

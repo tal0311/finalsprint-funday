@@ -1,9 +1,9 @@
 .members-container {
-  width:216px;
+  width: 216px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin:auto;
+  margin: auto;
   // position: absolute;
   // &flex {
   //   flex-direction: row;
@@ -17,13 +17,13 @@
     color: $clr8;
     font-weight: 700;
     border: 2px solid $clr10;
-    width:30px;
-    height:30px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     margin: 0 -4px;
     flex-shrink: 0;
     position: relative;
-    margin-top:3px;
+    margin-top: 3px;
   }
 }
 
@@ -33,14 +33,56 @@
   }
 }
 
+.member-modal {
+  position: absolute;
+  background-color: red;
+  z-index: 10000;
+  left: 200px;
+  height: 150px;
+  width: 250px;
+  background-color: #fff;
+  border-radius: 0.3em;
+  box-shadow: 0px 0px 20px 2px $clr6;
+
+  ul {
+    list-style: none;
+  }
+  .member-in-modal {
+    font-size: 1rem;
+    background-color: $clr6;
+    width: 80px;
+    border-radius: 2rem;
+    margin-bottom: 2%;
+    .member-name{
+      border-radius: 2rem;
+      width: 50%;
+      text-align: center;
+    }
+    button {
+      background-color:transparent;
+      border: none;
+      border-radius: 50%;
+      font-size: 0.5rem;
+      padding: 0 20%;
+    }
+    &.flex {
+      justify-content: space-between;
+      padding: 0 5%;
+    }
+  }
+}
 .member-picker {
+  position: relative;
+  .update-member {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+  }
   .no-members {
     // padding: 0.5em 0.7em;
     // background-color: #5c5c5c;
     color: #fff;
     border-radius: 50%;
-    width:25px;
-    height:25px;
 
     background-image: url('https://cdn.monday.com/icons/dapulse-person-column.svg');
     background-position: center;
@@ -50,9 +92,8 @@
     font-size: 0.8rem;
     font-weight: 700;
     // padding: 0px 0 10px 0;
-    margin:5px auto;
+    margin: 5px auto;
     flex-shrink: 0;
     position: relative;
-
   }
 }

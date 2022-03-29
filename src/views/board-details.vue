@@ -13,7 +13,11 @@
           </div>
 
           <div class="board-actions flex">
-            <button class="btn last">Last seen</button>
+            <!-- LAST SEEN CMP -->
+            <div class="last-seen flex">
+              <button class="btn last">Last seen</button>
+              <last-seen :members="currBoard.members" />
+            </div>
             <button class="btn invite">
               Invite / <span>{{ currBoard.members?.length }}</span>
             </button>
@@ -71,10 +75,9 @@
       <Container orientation="vertical" @drop="onDrop">
         <Draggable
           v-for="group in currBoard.groups"
-          :key="group.id" 
-          
-        >
-          <group-cmp :group="group" @setCurrGroup="setCurrGroup" />
+          :key="group.id"
+          >
+          <group-cmp :group="group" :board="currBoard" @setCurrGroup="setCurrGroup" />
           <br />
         </Draggable>
       </Container>
@@ -104,8 +107,9 @@
 <script>
 import { ArrowDown } from "@element-plus/icons-vue";
 import { Container, Draggable } from "vue3-smooth-dnd";
+import lastSeen from '../components/board/last-seen.vue'
+import groupCmp from '../components/group/group.vue'
 import addGroupTask from "../components/add-group-task.vue";
-import groupCmp from "../components/group/group.vue";
 import appFilter from "../components/board/board-filter.vue";
 import taskDetails from "../components/task-details/task-details.vue";
 
@@ -117,6 +121,7 @@ export default {
     appFilter,
     Container,
     Draggable,
+    lastSeen,
     taskDetails,
   },
   created() {
@@ -200,5 +205,5 @@ export default {
       return this.currGroup
     },
   },
-};
+}
 </script>

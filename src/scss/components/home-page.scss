@@ -1,0 +1,26 @@
+.main-home {
+  box-shadow: -2px 0px 12px 3px #565656;
+  width: 50vw;
+  height: 50vh;
+  position: fixed;
+  top: 20%;
+  left: 20%;
+  transform: translateX(20%);
+  border-radius: 1em;
+
+
+  .name{
+   color: red;
+  }
+  .subtitle{
+   color: #565656;
+  }
+  &.flex {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  & > * {
+    padding: 2em;
+  }
+}
