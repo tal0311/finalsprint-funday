@@ -1,6 +1,6 @@
 <template>
   <div class="member-picker">
-    <ul v-if="value.length > 0" class="members-container clean-list flex">
+    <ul v-if="value.length" class="members-container clean-list flex">
       <li
         @click="updateMemberList"
         v-for="member in value"
@@ -39,6 +39,9 @@ export default {
     group: Object,
     task: Object,
   },
+  created(){
+    
+  },
   components: {
     miniMember,
     membersModal,
@@ -61,6 +64,7 @@ export default {
       this.$emit('remove', task, member)
     },
     addMember(task, memberName) {
+      console.log('memberName', memberName);
       this.$emit('add', task, memberName)
     },
   },
