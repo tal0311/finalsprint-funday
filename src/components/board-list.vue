@@ -1,10 +1,18 @@
 <template>
-  <section class="board-list flex col" :class="{ 'is-expanded': isExpanded } ">
-      <div disabled="" class="collapse-btn" :class="{ 'is-pinned': isExpanded }" @click="toggleExpanded">
-        <i class="collapse-icon fa fa-angle-right"></i>
-      </div>
-    <div :class="{ all: isExpanded , 'd-none' : !isExpanded}">
-
+  <section
+    :key="boards"
+    class="board-list flex col"
+    :class="{ 'is-expanded': isExpanded }"
+  >
+    <div
+      disabled=""
+      class="collapse-btn"
+      :class="{ 'is-pinned': isExpanded }"
+      @click="toggleExpanded"
+    >
+      <i class="collapse-icon fa fa-angle-right"></i>
+    </div>
+    <div :class="{ all: isExpanded, 'd-none': !isExpanded }">
       <div class="title-box-container flex col">
         <div class="title-container flex col space-between">
           <h1>Workspace</h1>
@@ -57,7 +65,11 @@
       <div class="boards">
         <section class="board-names-list">
           <article v-for="board in boards" :key="board" class="">
-            <router-link :to="'/board/' + board._id" class="bl-btn btn flex" @click="chooseBoard(board)">
+            <router-link
+              :to="'/board/' + board._id"
+              class="bl-btn btn flex"
+              @click="chooseBoard(board)"
+            >
               <svg class="svg-icon" width="19" height="19">
                 <path
                   d="M7.5 4.5H16C16.2761 4.5 16.5 4.72386 16.5 5V15C16.5 15.2761 16.2761 15.5 16 15.5H7.5L7.5 4.5ZM6 4.5H4C3.72386 4.5 3.5 4.72386 3.5 5V15C3.5 15.2761 3.72386 15.5 4 15.5H6L6 4.5ZM2 5C2 3.89543 2.89543 3 4 3H16C17.1046 3 18 3.89543 18 5V15C18 16.1046 17.1046 17 16 17H4C2.89543 17 2 16.1046 2 15V5Z"
@@ -66,7 +78,9 @@
                   clip-rule="evenodd"
                 ></path>
               </svg>
-              <span>{{ board.title }}</span></router-link
+              <span contenteditable="true" @blur.stop="updateBoard(board, $event)">{{
+                board.title
+              }}</span> | <span class="remove-board" @click="removeBoard(board._id)">X</span></router-link
             >
           </article>
         </section>
@@ -76,10 +90,14 @@
 </template>
 
 <script>
+import { ElMessage, ElMessageBox } from "element-plus";
+
 export default {
   // props: [''],
   components: {},
-  created() {},
+  created() {
+    
+  },
   mounted() {},
 
   data() {
@@ -88,14 +106,44 @@ export default {
     };
   },
   methods: {
-    addBoard() {
-      this.$store.dispatch({ type: "addBoard" });
+    async addBoard() {
+      try {
+        const { value } = await ElMessageBox.prompt(
+          "Please enter board name",
+          "Add New Board",
+          {
+            confirmButtonText: "OK",
+            cancelButtonText: "Cancel",
+            draggable: true,
+            "close-on-click-modal": false,
+          }
+        );
+        ElMessage({ type: "success", message: `Board ${value} was created` });
+        if (value)
+          this.$store.dispatch({
+            type: "addBoard",
+            value,
+            boards: this.boards,
+          });
+      } catch (err) {
+        ElMessage({ type: "info", message: "Input canceled" });
+      }
     },
-    chooseBoard(board){
-      this.$store.commit({ type: 'setCurrBoard', board })
+    chooseBoard(board) {
+      this.$store.commit({ type: "setCurrBoard", board });
     },
-    toggleExpanded(){
+    toggleExpanded() {
       this.isExpanded = !this.isExpanded;
+    },
+
+    updateBoard(board, $event) {
+      const newBoard = JSON.parse(JSON.stringify(board));
+      newBoard.title = $event.target.innerText;
+      this.$store.dispatch({ type: "saveBoard", board: newBoard });
+    },
+
+    removeBoard(boardId){
+      this.$store.dispatch({ type: "removeBoard", boardId, boards: this.boards });
     }
   },
   computed: {
