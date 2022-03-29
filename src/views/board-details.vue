@@ -71,7 +71,7 @@
       <Container orientation="vertical" @drop="onDrop">
         <Draggable
           v-for="group in currBoard.groups"
-          :key="group.id"
+          :key="group.id" 
           
         >
           <group-cmp :group="group" @setCurrGroup="setCurrGroup" />

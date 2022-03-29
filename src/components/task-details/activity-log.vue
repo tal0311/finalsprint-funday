@@ -1,10 +1,11 @@
 <template>
   <section class='activity-log'>
+    {{activities}}
       <table>
         <tbody>
           <tr v-for="activity in activities" :key="activity.id">
               <td>{{activity.createdAt}}</td>
-              <td>{{activity.byMember.fullname}}</td>
+              <td>{{activity.byMember}}</td>
               <td>{{activity.txt}}</td>
           </tr>
         </tbody>

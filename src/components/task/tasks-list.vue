@@ -1,10 +1,10 @@
 <template>
   <section class="task-list">
     <Container
-      group-name="eltasks"
+      group-name="eltask"
       :get-child-payload="getChildPayloadEltasks"
       orientation="vertical"
-      @drop="onDrop($event, 'eltasks')"
+      @drop="onDrop($event)"
     >
       <Draggable v-for="eltask in eltasks" :key="eltask.id">
         <task-preview
@@ -20,62 +20,64 @@
 </template>
 
 <script>
-import newInlineTask from './new-inline-task.vue'
-import groupProgress from '../group/group-progress.vue'
-import taskPreview from './task-preview.vue'
-import { Container, Draggable } from 'vue3-smooth-dnd'
+import newInlineTask from "./new-inline-task.vue";
+import groupProgress from "../group/group-progress.vue";
+import taskPreview from "./task-preview.vue";
+import { Container, Draggable } from "vue3-smooth-dnd";
 export default {
   props: {
     tasks: Array,
     group: Object,
     groupColor: String,
   },
-  emits: ['add-inline'],
+  emits: ["add-inline", "updateGroupAfterDnd"],
   data() {
     return {
       eltasks: this.tasks,
-    }
+    };
   },
   methods: {
     add(value) {
-      this.$emit('add-inline', value, this.group)
+      this.$emit("add-inline", value, this.group);
     },
     getChildPayloadEltasks(index) {
-      return this.eltasks[index]
+      return this.eltasks[index];
     },
     onDrop(dropResult) {
+      if (dropResult.addedIndex === null && dropResult.removedIndex === null) return
       this.eltasks = this.applyDrag(this.eltasks, dropResult)
+      this.updateGroup(this.eltasks);
+
+      // if (this.eltasks !== this.applyDrag(this.eltasks, dropResult)) {
+      //   console.log("yay", dropResult);
+      //   this.eltasks = this.applyDrag(this.eltasks, dropResult);
+      //   this.updateGroup(this.eltasks);
+      // }
     },
     applyDrag(arr, dragResult) {
-      const { removedIndex, addedIndex, payload } = dragResult
 
-      if (removedIndex === null && addedIndex === null) return arr
-      const result = [...arr]
-      let taskToAdd = payload
+      const { removedIndex, addedIndex, payload } = dragResult;
+
+      if (removedIndex === null && addedIndex === null) return arr;
+      const result = [...arr];
+      let taskToAdd = payload;
 
       if (removedIndex !== null) {
-        taskToAdd = result.splice(removedIndex, 1)[0]
+        taskToAdd = result.splice(removedIndex, 1)[0];
       }
       if (addedIndex !== null) {
-        result.splice(addedIndex, 0, taskToAdd)
+        result.splice(addedIndex, 0, taskToAdd);
       }
-      return result
+
+      return result;
     },
-    // updateGroup(result) {
-    //   const newGroup = JSON.parse(JSON.stringify(this.group))
-    //   newGroup.tasks = JSON.parse(JSON.stringify(result))
-    //   this.$store.dispatch({
-    //     type: 'updateGroup',
-    //     groupToUpdate: newGroup,
-    //   })
-    // },
-    updateBoard(newGroup) {
-      $store.emit('updateBoardAfterDnd', newGroup)
+    updateGroup(tasksAfterDnd) {
+      this.$emit("updateGroupAfterDnd", tasksAfterDnd);
     },
   },
   computed: {
     currBoard() {
-      return this.$store.getters.currBoard
+      return this.$store.getters.currBoard;
     },
   },
   components: {
@@ -86,10 +88,9 @@ export default {
     newInlineTask,
   },
   created() {
-    // this.currBoard = JSON.parse(JSON.stringify(this.$store.getters.currBoard))
-    // this.eltasks = this.tasks
+
   },
-}
+};
 </script>
 
 <style></style>

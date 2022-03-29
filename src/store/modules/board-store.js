@@ -23,7 +23,7 @@ export const boardStore = {
     taskToShow(state) {
       return JSON.parse(JSON.stringify(state.taskToShow));
     },
-    
+
   },
   mutations: {
     // GROUP
@@ -36,6 +36,10 @@ export const boardStore = {
         (board) => board._id === boardToUpdate._id
       );
       state.boards.splice(idx, 1, boardToUpdate);
+    },
+    updateGroupAfterDnd(state, { updatedGroup }) {
+      const idx = state.currBoard.groups.findIndex(grp => grp.id === updatedGroup.id);
+      state.currBoard.groups.splice(idx, 1, updatedGroup);
     },
     // TASK
     taskFromBoard(state, { taskId }) {
@@ -204,18 +208,19 @@ export const boardStore = {
     },
 
     async updateGroup({ commit, state }, { groupToUpdate }) {
+      const board = JSON.parse(JSON.stringify(state.currBoard));
+      const idx = board.groups.findIndex(
+        (boardGroup) => boardGroup.id === groupToUpdate.id
+      );
+      if (idx === -1) {
+        board.groups.push(groupToUpdate);
+      } else {
+        board.groups.splice(idx, 1, groupToUpdate);
+      }
+      commit({ type: "updateGroupAfterDnd", updatedGroup: groupToUpdate });
       try {
-        const board = JSON.parse(JSON.stringify(state.currBoard));
-        const idx = board.groups.findIndex(
-          (boardGroup) => boardGroup.id === groupToUpdate.id
-        );
-        if (idx === -1) {
-          board.groups.push(groupToUpdate);
-        } else {
-          board.groups.splice(idx, 1, groupToUpdate);
-        }
-        await boardService.save(board);
-        commit({ type: 'setCurrBoard', board });
+        const newBoard = await boardService.save(board);
+        commit({ type: 'setCurrBoard', board: newBoard });
       } catch (err) {
         console.log('Problem with saving group', err);
       }

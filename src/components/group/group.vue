@@ -25,20 +25,20 @@
 
     <tasks-list
       @add-inline="addTask"
+      @updateGroupAfterDnd="updateGroupAfterDnd"
       :tasks="group.tasks"
       :group="group"
       :groupColor="group.groupColor"
     ></tasks-list>
   </section>
 </template>
-
 <script>
 import tasksList from "../task/tasks-list.vue";
 import groupProgress from "./group-progress.vue";
 import groupOptions from "./group-options.vue";
 export default {
-  name: 'group-cmp',
-  emits: ['updateGroup', 'setCurrGroup'],
+  name: "group-cmp",
+  emits: ["updateGroup", "setCurrGroup"],
   props: {
     group: Object,
   },
@@ -51,26 +51,26 @@ export default {
   data() {
     return {
       isOptions: false,
-    }
+    };
   },
   methods: {
     addTask(value, group) {
-      console.log('addtask:', value, group)
-    this.$store.dispatch({ type: 'addTaskInline', value, group })
+      console.log("addtask:", value, group);
+      this.$store.dispatch({ type: "addTaskInline", value, group });
     },
     setIsOptions() {
-      this.isOptions = !this.isOptions
+      this.isOptions = !this.isOptions;
     },
 
     setGroupUpdate(value) {
       if (value === "remove") {
         this.$store.dispatch({ type: "removeGroup", groupId: this.group.id });
       }
-      if (value === 'duplicate') {
+      if (value === "duplicate") {
         this.$store.dispatch({
-          type: 'duplicateGroup',
+          type: "duplicateGroup",
           groupId: this.group.id,
-        })
+        });
       }
       if (value.startsWith("#")) {
         const groupToUpdate = JSON.parse(JSON.stringify(this.group));
@@ -84,22 +84,24 @@ export default {
       groupToUpdate.title = ev.target.innerText;
       this.$store.dispatch({ type: "updateGroup", groupToUpdate });
     },
-    upateGroupAfterDnd(newGroup) {
-      const newBoard = JSON.parse(JSON.stringify(this.currBoard));
-      newBoard.groups = JSON.parse(JSON.stringify(newGroup));
+    async updateGroupAfterDnd(tasksAfterDnd) {
+      this.group.tasks = tasksAfterDnd;
+      // this.$store.commit({ type: "updateGroup", updatedGroup: this.group });
       this.$store.dispatch({
-        type: "saveBoard",
-        board: newBoard,
+        type: "updateGroup",
+        groupToUpdate: JSON.parse(JSON.stringify(this.group)),
       });
     },
     setCurrGroup() {
-      console.log(this.group)
-      this.$emit('setCurrGroup', this.group)
-    }
+      this.$emit("setCurrGroup", this.group);
+    },
   },
   computed: {
     getTasks() {
       return this.group.tasks;
+    },
+    currBoard() {
+      return this.$store.getters.currBoard;
     },
   },
 };

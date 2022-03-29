@@ -13,7 +13,6 @@
       <button @click="activeTab = 'taskFiles'">Task Files</button>
       <button @click="activeTab = 'activityLog'">Activity Log</button>
       <hr />
-
       <task-updates
         v-if="activeTab === 'taskUpdates'"
         :task="task"
@@ -22,7 +21,7 @@
       <task-files v-if="activeTab === 'taskFiles'" />
       <activity-log
         v-if="activeTab === 'activityLog'"
-        :activities="activities"
+        :activities="task.activities"
       />
     </div>
   </section>
@@ -47,11 +46,12 @@ export default {
   },
   methods: {
     addTaskComment(commentText) {
+      this.addActivity(commentText)
       if (!this.task.comments) {
         this.task.comments = []
-        this.task.comments.push({ creator: "Some User", content: commentText });
+        this.task.comments.push({ creator: "Guest", content: commentText });
       } else {
-        this.task.comments.push({ creator: "Some User", content: commentText });
+        this.task.comments.push({ creator: "Guest", content: commentText });
       }
       this.$store.dispatch({
         type: "updateTask",
@@ -63,13 +63,27 @@ export default {
     closeTaskDetails() {
       this.$store.commit({ type: "setTaskToShow", task: null });
     },
+    addActivityArr() {
+      if (!this.task.activities) {
+        this.task.activities = []
+      }
+    },
+    addActivity(commentText) {
+      this.task.activities.push({
+        createdAt: Date.now(),
+        byMember: 'Guest',
+        txt: commentText,
+      })
+    },
   },
   computed: {
     activities() {
       return this.$store.getters.boards.activities;
     },
   },
-  created() {},
+  created() {
+    this.addActivityArr()
+  },
   components: {
     taskUpdates,
     taskFiles,
