@@ -14,15 +14,6 @@
     // animation-delay: 0s;
     padding: 0 16px;
     width:30px;
-    
-
-    // position:sticky;
-    // width: 66px;
-    // height: 100%;
-    // background-color: $clr3;
-    // top: 0;
-    // flex-shrink: 0;
-
 
     @keyframes slideInFromLeft {
         
@@ -31,7 +22,7 @@
         }
         100% {
             width: 255px;
-            transform: translateX(0%);
+            // transform: translateX(0%);
         }
     }
 
@@ -51,14 +42,26 @@
         transition: background-color 100ms ease, padding-left 100ms ease, padding-right 100ms ease,
             border-color 100ms ease, color 100ms ease;
         animation-name: slideInFromLeft;
-        animation-duration: 0.15s;
+        animation-duration: 0.3s;
         animation-timing-function: cubic-bezier(0, 0, 0.35, 1);
         animation-delay: 0s;
         animation-iteration-count: 1;
         animation-direction: normal;
-        transform: rotate(-180deg);
         font-size: 18px;
         transition: transform 100ms ease;
+        transform: rotate(-180deg);
+        
+        &.is-expanded{
+            transition: transform 100ms ease;
+            // transform: rotate(-180deg);
+            animation-name: slideInFromLeft;
+            animation-duration: 0.15s;
+            animation-timing-function: cubic-bezier(0, 0, 0.35, 1);
+            animation-delay: 0s;
+            animation-iteration-count: 1;
+            animation-direction: normal;
+
+        }
         &:hover {
             background-color: $clr15;
             border-color: $clr15;
@@ -86,7 +89,7 @@
         .title-container {
             > h1 {
                 font-size: 0.875rem;
-                font-family: "Roboto 400";
+                font-family: "Roboto 300";
                 margin: 10px 0;
                 color: $clr5;
             }
@@ -95,12 +98,11 @@
             }
         }
         .ws-name {
+            font-family: "Roboto 700";
             border: 1px solid $clr5;
             padding: 10px;
             border-radius: 4px;
-            font-weight: 600;
             .ws-title {
-                font-family: "Roboto 500";
                 margin-left: 10px;
                 color: $clr9;
                 padding-bottom: 4px;
@@ -166,18 +168,12 @@
         > span {
             margin: 0 8px;
             align-items: center;
+            padding: 2px 5px;
         }
     }
 
     &.is-expanded {
-        width: 255px;
+        min-width: 255px;
         padding: 0 16px;
-        animation-name: slideInFromLeft;
-        animation-duration: .1s;
-        animation-timing-function: cubic-bezier(0, 0, 0.35, 1);
-        animation-delay: 0s;
-        animation-iteration-count: 1;
-        animation-direction: normal;
-    
     }
 }

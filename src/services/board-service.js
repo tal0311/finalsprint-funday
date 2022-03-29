@@ -63,7 +63,7 @@ async function save(board) {
 
 async function remove(boardId) {
   // return httpService.delete(`board/${boardId}`)
-  return await storageService.delete(KEY, boardId)
+  return await storageService.remove(KEY, boardId)
 }
 
 // NOT IN USE
