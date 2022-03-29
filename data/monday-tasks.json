@@ -57,6 +57,31 @@
     ],
     "groups": [
       {
+        "id": "g1N8NC",
+        "title": "New Group",
+        "tasks": [
+          {
+            "id": "tPcTIj",
+            "title": "New Task",
+            "cols": [
+              {
+                "type": "status-picker",
+                "value": ""
+              },
+              {
+                "type": "member-picker",
+                "value": []
+              },
+              {
+                "type": "date-picker",
+                "value": null
+              }
+            ]
+          }
+        ],
+        "groupColor": "#3B2CD9"
+      },
+      {
         "id": "gy5LnM",
         "title": "Frontend",
         "tasks": [
@@ -82,6 +107,13 @@
                     "fullname": "Guy Shimon",
                     "imgUrl": "https://www.google.com",
                     "color": "#3a86ff"
+                  },
+                  {
+                    "id": "u103",
+                    "fullname": "Shiran Elad",
+                    "username": "shiran",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/27.jpg",
+                    "color": "#ff006e"
                   }
                 ]
               },
@@ -125,12 +157,6 @@
                     "fullname": "Tal Amit",
                     "imgUrl": "https://www.google.com",
                     "color": "#8338ec"
-                  },
-                  {
-                    "id": "u104",
-                    "fullname": "Rotem Bublil",
-                    "imgUrl": "https://www.google.com",
-                    "color": "#ffbe0b"
                   }
                 ]
               },
@@ -300,7 +326,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": null
+                "value": ""
               },
               {
                 "type": "member-picker",
@@ -318,7 +344,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": null
+                "value": ""
               },
               {
                 "type": "member-picker",
@@ -354,7 +380,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": null
+                "value": ""
               },
               {
                 "type": "member-picker",
@@ -373,6 +399,24 @@
               {
                 "type": "status-picker",
                 "value": "Working on it"
+              },
+              {
+                "type": "member-picker",
+                "value": []
+              },
+              {
+                "type": "date-picker",
+                "value": null
+              }
+            ]
+          },
+          {
+            "id": "tmpXX1",
+            "title": "New Task",
+            "cols": [
+              {
+                "type": "status-picker",
+                "value": ""
               },
               {
                 "type": "member-picker",
@@ -509,7 +553,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": null
+                "value": ""
               },
               {
                 "type": "member-picker",
@@ -558,7 +602,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": null
+                "value": ""
               },
               {
                 "type": "member-picker",
@@ -576,7 +620,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": null
+                "value": ""
               },
               {
                 "type": "member-picker",
@@ -601,7 +645,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": null
+                "value": ""
               },
               {
                 "type": "member-picker",
@@ -625,7 +669,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": null
+                "value": ""
               },
               {
                 "type": "member-picker",
@@ -643,7 +687,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": null
+                "value": ""
               },
               {
                 "type": "member-picker",
@@ -674,7 +718,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": null
+                "value": ""
               },
               {
                 "type": "member-picker",
@@ -699,7 +743,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": null
+                "value": ""
               },
               {
                 "type": "member-picker",
@@ -724,7 +768,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": null
+                "value": ""
               },
               {
                 "type": "member-picker",
@@ -748,7 +792,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": null
+                "value": ""
               },
               {
                 "type": "member-picker",
@@ -766,7 +810,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": null
+                "value": ""
               },
               {
                 "type": "member-picker",
@@ -797,7 +841,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": null
+                "value": ""
               },
               {
                 "type": "member-picker",
@@ -830,8 +874,169 @@
             "groupColor": "#2fbc34"
           }
         ],
-        "cmpsOrder": ["status-picker", "member-picker", "date-picker"]
+        "cmpsOrder": [
+          "status-picker",
+          "member-picker",
+          "date-picker"
+        ]
       }
+    ]
+  },
+  {
+    "_id": "8cEcw",
+    "title": "New board for testing",
+    "description": "",
+    "createdAt": 1648543606937,
+    "createdBy": {
+      "_id": "u105",
+      "fullname": "Guest User",
+      "imgUrl": "http://some-img"
+    },
+    "members": [
+      {
+        "_id": "u105",
+        "fullname": "Guest User",
+        "imgUrl": "http://some-img"
+      }
+    ],
+    "activities": [
+      {
+        "id": "a101",
+        "txt": "Group Title created",
+        "createdAt": 1648543606937,
+        "byMember": {
+          "_id": "u105",
+          "fullname": "Guest User",
+          "imgUrl": "http://some-img"
+        }
+      },
+      {
+        "id": "a102",
+        "txt": "Group Title created",
+        "createdAt": 1648543606937,
+        "byMember": {
+          "_id": "u105",
+          "fullname": "Guest User",
+          "imgUrl": "http://some-img"
+        }
+      },
+      {
+        "task": {
+          "id": "t101",
+          "title": "Task 1 assigned to Guest User"
+        }
+      }
+    ],
+    "groups": [
+      {
+        "id": "gcPKxP",
+        "title": "Group Title",
+        "tasks": [
+          {
+            "id": "t7Aup8",
+            "title": "Item 1",
+            "cols": [
+              {
+                "type": "status-picker",
+                "value": null
+              },
+              {
+                "type": "member-picker",
+                "value": []
+              },
+              {
+                "type": "date-picker",
+                "value": null
+              }
+            ]
+          },
+          {
+            "id": "tJIJYe",
+            "title": "Item 2",
+            "cols": [
+              {
+                "type": "status-picker",
+                "value": null
+              },
+              {
+                "type": "member-picker",
+                "value": []
+              },
+              {
+                "type": "date-picker",
+                "value": null
+              }
+            ]
+          },
+          {
+            "id": "tydBUS",
+            "title": "Item 3",
+            "cols": [
+              {
+                "type": "status-picker",
+                "value": null
+              },
+              {
+                "type": "member-picker",
+                "value": []
+              },
+              {
+                "type": "date-picker",
+                "value": null
+              }
+            ]
+          }
+        ],
+        "groupColor": "#579bfc"
+      },
+      {
+        "id": "gJ3Lag",
+        "title": "Group Title",
+        "tasks": [
+          {
+            "id": "tkZKfU",
+            "title": "Item 4",
+            "cols": [
+              {
+                "type": "status-picker",
+                "value": null
+              },
+              {
+                "type": "member-picker",
+                "value": []
+              },
+              {
+                "type": "date-picker",
+                "value": null
+              }
+            ]
+          },
+          {
+            "id": "tMtX2x",
+            "title": "Item 5",
+            "cols": [
+              {
+                "type": "status-picker",
+                "value": null
+              },
+              {
+                "type": "member-picker",
+                "value": []
+              },
+              {
+                "type": "date-picker",
+                "value": null
+              }
+            ]
+          }
+        ],
+        "groupColor": "#a25ddc"
+      }
+    ],
+    "cmpsOrder": [
+      "status-picker",
+      "member-picker",
+      "date-picker"
     ]
   }
 ]
