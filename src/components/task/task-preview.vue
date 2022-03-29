@@ -128,16 +128,16 @@ export default {
       task.cols[1].value.push(member)
       this.$store.dispatch({
         type: 'updateTask',
-        boardId:board._id,
+        boardId: board._id,
         groupId: this.group.id,
         task,
-        })
+      })
     },
     removeMember(task, member) {
       task = JSON.parse(JSON.stringify(task))
       const idx = task.cols[1].value.findIndex((curr) => curr.id === member.id)
       task.cols[1].value.splice(idx, 1)
-     const board = this.$store.getters.currBoard
+      const board = this.$store.getters.currBoard
       this.$store.dispatch({
         type: 'updateTask',
         boardId: board._id,

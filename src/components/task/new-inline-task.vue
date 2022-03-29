@@ -8,7 +8,7 @@
         v-model="value"
         placeholder="+ Add task"
       />
-      <button v-if="isOnFocus" @mousedown="add">add</button>
+      <button v-if="isOnFocus" @mousedown="addTask">add</button>
     </div>
     <!-- <button :class="addFocus" @click="addTask">ok</button> -->
   </section>
