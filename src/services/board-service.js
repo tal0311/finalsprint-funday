@@ -202,6 +202,10 @@ function getEmptyTask(title = 'New Task') {
         type: 'date-picker',
         value: null,
       },
+      {
+        type: 'test-status',
+        value: null,
+      },
     ],
   }
 }

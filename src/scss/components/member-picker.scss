@@ -33,28 +33,31 @@
   }
 }
 
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
 .member-modal {
   position: absolute;
-  background-color: red;
   z-index: 10000;
-  left: 200px;
+  left: 0;
+  top: toRem(45);
   height: fit-content;
-  width: 250px;
+  width: 100%;
   background-color: #fff;
   border-radius: 0.3em;
-  box-shadow: 0px 0px 20px 2px $clr6;
+  @include modalShadow;
+  padding: 2%;
 
-  input {
-    border-radius: 2rem;
-  }
-
-  ul {
-    list-style: none;
-  }
   .member-in-modal {
-    font-size: 1rem;
+    font-size: 0.8rem;
+    color: #fff;
     background-color: $clr6;
-    width: 80px;
+    height: 30px;
+    width: 60px;
     border-radius: 2rem;
     margin-bottom: 2%;
     .member-name {
@@ -63,6 +66,7 @@
       text-align: center;
     }
     button {
+      color: #fff;
       background-color: transparent;
       border: none;
       border-radius: 50%;
@@ -72,6 +76,19 @@
     &.flex {
       justify-content: space-around;
       padding: 0 5%;
+      align-items: center;
+    }
+  }
+  .member-input {
+    &.flex {
+      flex-direction: row-reverse;
+
+      .add {
+        @include headerBtn;
+        &:hover {
+          @include hoverHeader;
+        }
+      }
     }
   }
 }
@@ -80,15 +97,15 @@
   width: 100%;
   .update-member {
     position: absolute;
-    height: 100px;
-    width: 100px;
+    height: toRem(100);
+    width: toRem(100);
   }
 
   .no-member-container {
     &.flex {
+      margin-top: 3px;
       width: 100%;
-      width: 216px;
-      display: flex;
+      width: toRem(216);
       justify-content: center;
       align-items: center;
       .no-member {

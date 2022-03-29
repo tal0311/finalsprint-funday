@@ -1,6 +1,6 @@
 <template>
   <div class="member-modal flex">
-    <ul>
+    <ul class="clean-list">
       <li
         class="member-in-modal flex"
         v-for="(member, index) in members"
@@ -12,7 +12,7 @@
         </div>
         <button @click="removeMember(member)" class="remove">X</button>
       </li>
-      <div>
+      <div class="member-input">
         <button @click="addMember" class="add">+</button>
         <input type="text" v-model="memberName" />
       </div>

@@ -5,10 +5,13 @@
         type="text"
         @focus="isOnFocus = true"
         @blur="isOnFocus = false"
+        @keydown.enter="addTask"
         v-model="value"
         placeholder="+ Add task"
       />
-      <button v-if="isOnFocus" @mousedown="addTask">add</button>
+      <!-- <button v-show="isOnFocus" :class="addFocus" @mousedown="addTask">
+        add
+      </button> -->
     </div>
     <!-- <button :class="addFocus" @click="addTask">ok</button> -->
   </section>
@@ -32,6 +35,7 @@ export default {
     addTask() {
       console.log(this.value)
       this.$emit('add-task', this.value)
+      this.isOnFocus=false
     },
   },
   computed: {

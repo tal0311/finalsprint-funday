@@ -707,7 +707,11 @@
               {
                 "type": "date-picker",
                 "value": null
-              }
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           },
           {
