@@ -60,7 +60,6 @@ export default {
       const idx = this.board.groups.findIndex((group) => group.id === groupId)
       this.$store.dispatch({
         type: 'addTask',
-        board: this.board,
         groupIdx: idx,
         value,
       })

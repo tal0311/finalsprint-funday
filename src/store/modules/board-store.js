@@ -285,17 +285,17 @@ export const boardStore = {
     },
     //TASK
     // !here
-    async addTask({ commit }, { board, groupIdx, value }) {
+    async addTask({ commit, state }, { groupIdx, value }) {
+      const board= JSON.parse(JSON.stringify(state.currBoard))
+      const len = board.groups[groupIdx].tasks.push(
+        boardService.getEmptyTask(value)
+      )
+      const task = board.groups[groupIdx].tasks[len - 1]
       try {
         // update model
-        board = JSON.parse(JSON.stringify(board))
-        const len = board.groups[groupIdx].tasks.push(
-          boardService.getEmptyTask(value)
-        )
-        const task = board.groups[groupIdx].tasks[len - 1]
-        await boardService.save(board)
-        commit({ type: 'setCurrBoard', board })
-        commit({ type: 'setCurrTask', task })
+        const boardToUpdate= await boardService.save(board)
+        commit({ type: 'setCurrBoard', board: boardToUpdate })
+        // commit({ type: 'setCurrTask', task }) //!what is it for?
         // state.currTask = task
         // console.log(state.currTask)
       } catch (error) {
