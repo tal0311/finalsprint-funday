@@ -145,7 +145,7 @@ export default {
       });
     },
     addGroup() {
-      this.$store.dispatch({ type: "addGroup", board: this.currBoard });
+      this.$store.dispatch({ type: "addGroup"});
     },
     setBoardTitle(event) {
       const board = JSON.parse(JSON.stringify(this.currBoard));
@@ -188,7 +188,7 @@ export default {
       this.$store.dispatch({
         type: "saveBoard",
         board: updatedBoard,
-      });
+      })
     },
     setCurrGroup(group) {
       JSON.parse(JSON.stringify(group));

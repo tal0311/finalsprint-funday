@@ -24,8 +24,6 @@ export default {
       this.isOptions = !this.isOptions
     },
     addGroup() {
-      // console.log('add group')
-      // this.$store.dispatch({ type: 'addGroup', boardId: this.boardId })
       this.$emit('addGroup')
       this.openOptions()
     },
