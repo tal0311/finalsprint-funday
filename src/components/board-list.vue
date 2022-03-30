@@ -78,16 +78,18 @@
                   clip-rule="evenodd"
                 ></path>
               </svg>
-              <span contenteditable="true" @blur.stop="updateBoard(board, $event)">{{
-                board.title
-              }}</span> | <span class="remove-board" @click="removeBoard(board._id)">X</span></router-link
+              <span
+                contenteditable="true"
+                @blur.stop="updateBoard($event)"
+                >{{ board.title }}</span
+              >
+              |
+              <span class="remove-board" @click="removeBoard(board._id)"
+                >X</span
+              ></router-link
             >
 
-<board-options
-        @update="setBoardUpdate"
-        v-if="isOptions"
-      />
-
+            <board-options @update="setBoardUpdate" v-if="isOptions" />
           </article>
         </section>
       </div>
@@ -101,9 +103,7 @@ import { ElMessage, ElMessageBox } from "element-plus";
 export default {
   // props: [''],
   components: {},
-  created() {
-    
-  },
+  created() {},
   mounted() {},
 
   data() {
@@ -112,6 +112,7 @@ export default {
     };
   },
   methods: {
+    //addBoard includes element ui message box
     async addBoard() {
       try {
         const { value } = await ElMessageBox.prompt(
@@ -126,11 +127,11 @@ export default {
         );
         ElMessage({ type: "success", message: `Board ${value} was created` });
         if (value)
-          this.$store.dispatch({
+          await this.$store.dispatch({
             type: "addBoard",
             value,
-            boards: this.boards,
           });
+        this.$router.push("/board/" + this.currBoard._id);
       } catch (err) {
         ElMessage({ type: "info", message: "Input canceled" });
       }
@@ -142,36 +143,59 @@ export default {
       this.isExpanded = !this.isExpanded;
     },
 
-setBoardUpdate(){
-
-       if (value === 'remove') {
-        this.$store.dispatch({ type: 'removeBoard', boardId: this.board._id })
+    async setBoardUpdate() {
+      // if (value === "rename") {
+      //   updateBoard()
+      // }
+      if (value === "remove") {
+        await this.$store.dispatch({ type: "removeBoard", boardId: this.board._id });
       }
       if (value === "duplicate") {
-        this.$store.dispatch({
-          type: "duplicateBoard",
-          boardId: this.board._id,
-        });
+          await this.$store.dispatch({
+            type: "addBoard",
+            value: 'Duplicate of ' + this.board.title,
+          });
       }
-      if (value.startsWith('#')) {
-        const groupToUpdate = JSON.parse(JSON.stringify(this.group))
-        groupToUpdate.groupColor = value
-        this.$store.dispatch({ type: 'updateGroup', groupToUpdate })
+      if (value.startsWith("#")) {
+        const groupToUpdate = JSON.parse(JSON.stringify(this.group));
+        groupToUpdate.groupColor = value;
+        this.$store.dispatch({ type: "updateGroup", groupToUpdate });
       }
     },
-    updateBoard(board, $event) {
-      const newBoard = JSON.parse(JSON.stringify(board));
-      newBoard.title = $event.target.innerText;
-      this.$store.dispatch({ type: "saveBoard", board: newBoard });
+    async updateBoard($event) {
+      console.log($event)
+      var title = $event.target.innerText
+      await this.$store.dispatch({ type: "saveBoard", title});
     },
 
-    removeBoard(boardId){
-      this.$store.dispatch({ type: "removeBoard", boardId, boards: this.boards });
-    }
+    async removeBoard(boardId) {
+      try {
+
+      
+      await this.$store.dispatch({
+        type: "removeBoard",
+        boardId,
+        boards: this.boards,
+      });
+      // const idx = this.boards.findIndex((board) => board._id === boardId);
+      // console.log('idx', idx);
+      // if (idx === -1) {
+        //   this.$store.commit({ type: "setCurrBoard", board: this.boards[0] });
+          console.log("/board/" + this.currBoard._id)
+        
+        this.$router.push(`'/board/'${this.currBoard._id}`);
+      } catch(err){
+        console.log(err)
+      }
+              // }
+    },
   },
   computed: {
     boards() {
       return this.$store.getters.boards;
+    },
+    currBoard() {
+      return this.$store.getters.currBoard;
     },
   },
   unmounted() {},

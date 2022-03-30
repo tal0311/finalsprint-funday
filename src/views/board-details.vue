@@ -1,10 +1,14 @@
 <template>
-
   <section v-if="currBoard" class="board-details" :key="currBoard">
     <div class="header">
       <div class="">
         <div class="board-header-top flex">
-          <h1 class="board-title" @keydown.enter="setBoardTitle" @blur="setBoardTitle" contenteditable="true">
+          <h1
+            class="board-title"
+            @keydown.enter="setBoardTitle"
+            @blur="setBoardTitle"
+            contenteditable="true"
+          >
             {{ currBoard.title }}
           </h1>
           <div class="info-star flex">
@@ -74,11 +78,12 @@
     <!-- GROUP -->
     <section class="group-list" v-if="currBoard">
       <Container orientation="vertical" @drop="onDrop">
-        <Draggable
-          v-for="group in currBoard.groups"
-          :key="group.id"
-          >
-          <group-cmp :group="group" :board="currBoard" @setCurrGroup="setCurrGroup" />
+        <Draggable v-for="group in currBoard.groups" :key="group.id">
+          <group-cmp
+            :group="group"
+            :board="currBoard"
+            @setCurrGroup="setCurrGroup"
+          />
           <br />
         </Draggable>
       </Container>
@@ -106,16 +111,16 @@
 }
 </style>
 <script>
-import { ArrowDown } from "@element-plus/icons-vue";
-import { Container, Draggable } from "vue3-smooth-dnd";
+import { ArrowDown } from '@element-plus/icons-vue'
+import { Container, Draggable } from 'vue3-smooth-dnd'
 import lastSeen from '../components/board/last-seen.vue'
 import groupCmp from '../components/group/group.vue'
-import addGroupTask from "../components/add-group-task.vue";
-import appFilter from "../components/board/board-filter.vue";
-import taskDetails from "../components/task-details/task-details.vue";
+import addGroupTask from '../components/add-group-task.vue'
+import appFilter from '../components/board/board-filter.vue'
+import taskDetails from '../components/task-details/task-details.vue'
 
 export default {
-  name: "board-details",
+  name: 'board-details',
   components: {
     groupCmp,
     addGroupTask,
@@ -126,81 +131,77 @@ export default {
     taskDetails,
   },
   created() {
-    let { boardId } = this.$route.params;
-    const board = this.$store.dispatch({ type: "getBoardById", boardId });
-    this.$store.commit({ type: "setCurrBoard", board });
+    let { boardId } = this.$route.params
+    const board = this.$store.dispatch({ type: 'getBoardById', boardId })
+    this.$store.commit({ type: 'setCurrBoard', board })
   },
   data() {
     return {
       board: null,
       currGroup: null,
-    };
+    }
   },
   methods: {
     addNewTask() {
       this.$store.dispatch({
-        type: "addTask",
-        board: this.currBoard,
+        type: 'addTask',
         groupIdx: 0,
-      });
+      })
     },
     addGroup() {
       this.$store.dispatch({ type: "addGroup"});
     },
     setBoardTitle(event) {
-      const board = JSON.parse(JSON.stringify(this.currBoard));
-      if (event.target.nodeName === "H1") {
-        const value = event.target.innerText;
-        board.title = value;
+      if (event.target.nodeName === 'H1') {
+        var title = event.target.innerText
       }
-      if (event.target.nodeName === "P") {
-        const value = event.target.innerText;
-        board.description = value;
+      if (event.target.nodeName === 'P') {
+        var description = event.target.innerText
       }
-
-      this.$store.dispatch({ type: "saveBoard", board });
+      console.log('title, description', title, description);
+      this.$store.dispatch({ type: 'saveBoard', title, description})
     },
     onDrop(dropResult) {
-      const board = JSON.parse(JSON.stringify(this.currBoard));
-      board.groups = this.applyDrag(board.groups, dropResult);
+      const board = JSON.parse(JSON.stringify(this.currBoard))
+      board.groups = this.applyDrag(board.groups, dropResult)
     },
     applyDrag(arr, dragResult) {
-      const { removedIndex, addedIndex, payload } = dragResult;
+      const { removedIndex, addedIndex, payload } = dragResult
 
-      if (removedIndex === null && addedIndex === null) return arr;
-      const result = [...arr];
-      let taskToAdd = payload;
+      if (removedIndex === null && addedIndex === null) return arr
+      const result = [...arr]
+      let taskToAdd = payload
 
       if (removedIndex !== null) {
-        taskToAdd = result.splice(removedIndex, 1)[0];
+        taskToAdd = result.splice(removedIndex, 1)[0]
       }
       if (addedIndex !== null) {
-        result.splice(addedIndex, 0, taskToAdd);
+        result.splice(addedIndex, 0, taskToAdd)
       }
 
-      this.updateBoard(result);
+      this.updateBoard(result)
 
-      return result;
+      return result
     },
     updateBoard(result) {
-      const updatedBoard = JSON.parse(JSON.stringify(this.currBoard));
-      updatedBoard.groups = JSON.parse(JSON.stringify(result));
+      const updatedBoard = JSON.parse(JSON.stringify(this.currBoard))
+      updatedBoard.groups = JSON.parse(JSON.stringify(result))
       this.$store.dispatch({
-        type: "saveBoard",
+        type: 'saveBoard',
         board: updatedBoard,
       })
     },
     setCurrGroup(group) {
-      JSON.parse(JSON.stringify(group));
+      JSON.parse(JSON.stringify(group))
       this.currGroup = group
     },
   },
   computed: {
     currBoard() {
-      return this.$store.getters.currBoard;
+      return this.$store.getters.currBoard
     },
     taskToShow() {
-      return this.$store.getters.taskToShow;
+      return this.$store.getters.taskToShow
     },
     currgroup() {
       return this.currGroup

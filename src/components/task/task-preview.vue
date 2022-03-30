@@ -160,20 +160,14 @@ export default {
       console.log('updateTask:', newTask)
       this.focus = false
       const task = JSON.parse(JSON.stringify(newTask))
-      // const board = this.$store.getters.currBoard
-      // const { boardId, groupId, task } = await this.$store.dispatch({
-      //   type: "findTask",
-      //   boardId: board._id,
-      //   taskId: newTask.id,
-      // });
-      task.title = $event.target.innerText
+     task.title = $event.target.innerText
       console.log('updateTask:', task)
       await this.$store.dispatch({
         type: 'updateTask',
-        group: this.group,
+        groupId: this.group.id,
         task,
       })
-      this.$emit('updateTask')
+      
     },
     async removeTask() {
       const taskToDelete = this.task
