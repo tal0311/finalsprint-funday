@@ -36,7 +36,7 @@ export default {
 
   methods: {
     removeMember(member) {
-      console.log('remove')
+      // console.log('remove')
       this.$emit('removeMember', this.task, member)
     },
     addMember() {

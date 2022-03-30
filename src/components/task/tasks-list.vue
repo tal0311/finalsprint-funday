@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     add(value) {
-      console.log('tasklist:', value, this.group)
+      // console.log('tasklist:', value, this.group)
       this.$emit('add-inline', value, this.group.id)
     },
     getChildPayloadEltasks(index) {

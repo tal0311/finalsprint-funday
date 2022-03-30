@@ -109,7 +109,7 @@ function getEmptyBoard() {
     cmpsOrder: ['status-picker', 'member-picker', 'date-picker'],
   }
 
-  console.log(newBoard)
+  // console.log(newBoard)
 
   newBoard.groups[0].title = 'Group Title'
   newBoard.groups[0].groupColor = '#579bfc'

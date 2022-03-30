@@ -158,11 +158,11 @@ export default {
       this.isOptions = !this.isOptions
     },
     async updateTask(newTask, $event) {
-      console.log('updateTask:', newTask)
+      // console.log('updateTask:', newTask)
       this.focus = false
       const task = JSON.parse(JSON.stringify(newTask))
-      task.title = $event.target.innerText
-      console.log('updateTask:', task)
+     task.title = $event.target.innerText
+      // console.log('updateTask:', task)
       await this.$store.dispatch({
         type: 'updateTask',
         groupId: this.group.id,

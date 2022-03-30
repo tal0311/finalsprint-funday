@@ -161,8 +161,8 @@ export default {
       if (event.target.nodeName === "P") {
         var description = event.target.innerText;
       }
-      console.log("title, description", title, description);
-      this.$store.dispatch({ type: "saveBoard", title, description });
+      console.log('title, description', title, description);
+      this.$store.dispatch({ type: 'saveBoard', title, description, boardId: this.currBoard._id})
     },
     onDrop(dropResult) {
       const board = JSON.parse(JSON.stringify(this.currBoard));

@@ -30,10 +30,10 @@ export default {
   methods: {
     add() {
       this.isOnFocus = false
-      console.log('ok')
+      // console.log('ok')
     },
     addTask() {
-      console.log(this.value)
+      // console.log(this.value)
       this.$emit('add-task', this.value)
       this.isOnFocus=false
     },

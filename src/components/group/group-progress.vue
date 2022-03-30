@@ -21,9 +21,7 @@ export default {
   props: {
     tasks: Array,
   },
-  created() {
-    // console.log(this.tasks)
-  },
+  
   computed: {
     sortStatus() {
       return this.tasks.map((task) => task.cols[0].value.toLowerCase()).sort()

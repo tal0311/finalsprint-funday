@@ -52,18 +52,18 @@ export const boardStore = {
   mutations: {
     // GROUP
     updateBoard({ currBoard }, { group, task }) {
-      console.log('update Board:', task);
+      // console.log('update Board:', task);
       var newGroup = JSON.parse(JSON.stringify(group));
       const groupIdx = currBoard.groups.findIndex((g) => g.id === group.id);
 
       if (group && !task) {
-        console.log('updating group');
+        // console.log('updating group');
 
         currBoard.groups.splice(groupIdx, 1, newGroup);
         //  setCurrBoardboard
       }
       if (task) {
-        console.log('updating task');
+        // console.log('updating task');
         const taskIdx = newGroup.tasks.findIndex((t) => t.id == task.id);
         newGroup.tasks.splice(taskIdx, 1, task);
         console.log(group.tasks);
@@ -121,7 +121,7 @@ export const boardStore = {
     },
     setCurrBoard(state, { board }) {
       state.currBoard = board;
-      console.log('currBoard set');
+      // console.log('yay')
     },
     setCurrTask(state, { task }) {
       state.currTask = task;
@@ -168,25 +168,27 @@ export const boardStore = {
     },
     async removeBoard({ dispatch, commit, state }, { boardId }) {
       try {
-        await boardService.remove(boardId);
-        console.log('first board', state.boards[0]);
-        commit({ type: 'removeBoard', boardId });
-        if (boardId === state.currBoard._id) commit({ type: 'setCurrBoard', board: state.boards[0] });
-        console.log(state.currBoard);
-        dispatch({ type: 'loadBoards' })
+        await boardService.remove(boardId)
+        // console.log('first board' , state.boards[0])
+        commit({ type: 'removeBoard', boardId })
+        if(boardId === state.currBoard._id) commit({ type: 'setCurrBoard', board: state.boards[0] })
+        // console.log(state.currBoard)
+        // dispatch({ type: 'loadBoards' })
       } catch (err) {
         console.log('error during removing board', err);
       }
     },
-    async saveBoard({ dispatch, commit, state }, { title, description }) {
+    // !here
+    async saveBoard({ dispatch, commit, state }, { title , description, boardId}) {
       // console.log('title, description from store', title, description);
-      const board = JSON.parse(JSON.stringify(state.currBoard));
-      board.title = (!title) ? board.title : title;
-      board.description = (!description) ? board.description : description;
+      const board = state.boards.find(b => b._id === boardId)
+      // const board = JSON.parse(JSON.stringify(state.currBoard))
+      board.title = (!title) ? board.title : title
+      board.description = (!description) ? board.description : description
       try {
         const boardToUpdate = await boardService.save(board);
         dispatch({ type: 'loadBoards' });
-        commit({ type: 'setCurrBoard', board: boardToUpdate });
+        // commit({ type: 'setCurrBoard', board: boardToUpdate });
       } catch (err) {
         console.log("Couldn't save board", err);
         commit({

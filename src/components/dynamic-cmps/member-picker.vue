@@ -65,7 +65,7 @@ export default {
       this.$emit('remove', task, member)
     },
     addMember(task, memberName) {
-      console.log('memberName', memberName);
+      // console.log('memberName', memberName);
       this.$emit('add', task, memberName)
     },
   },
