@@ -165,7 +165,6 @@ export const boardStore = {
       }
     },
 
-
     /*** */
     async duplicateBoard({ dispatch, state, commit }, { boardId }) {
       try {
@@ -189,7 +188,6 @@ export const boardStore = {
     },
 
     /**** */
-
 
     async getBoardById({ commit }, { boardId }) {
       try {
@@ -286,18 +284,12 @@ export const boardStore = {
     //TASK
     // !here
     async addTask({ commit, state }, { groupIdx, value }) {
-      const board= JSON.parse(JSON.stringify(state.currBoard))
-      const len = board.groups[groupIdx].tasks.push(
-        boardService.getEmptyTask(value)
-      )
-      const task = board.groups[groupIdx].tasks[len - 1]
+      const board = JSON.parse(JSON.stringify(state.currBoard))
+      board.groups[groupIdx].tasks.push(boardService.getEmptyTask(value))
       try {
         // update model
-        const boardToUpdate= await boardService.save(board)
+        const boardToUpdate = await boardService.save(board)
         commit({ type: 'setCurrBoard', board: boardToUpdate })
-        // commit({ type: 'setCurrTask', task }) //!what is it for?
-        // state.currTask = task
-        // console.log(state.currTask)
       } catch (error) {
         console.log('error during adding task to board', error)
       }
@@ -321,50 +313,22 @@ export const boardStore = {
         console.log('error finding task', err)
       }
     },
-    // !here
-    async updateTask({ commit }, { boardId, groupId, task }) {
-      try {
-        // console.log('boardId, groupId, task', boardId, groupId, task);
-        // ! state.currBoard
+    async updateTask({ commit, state }, { groupId, task }) {
+      const board = JSON.parse(JSON.stringify(state.currBoard))
+      let gIdx = board.groups.findIndex((dbGroup) => dbGroup.id === groupId)
 
-        let board = await boardService.getById(boardId)
-        // console.log(board)
-        // board = JSON.parse(JSON.stringify(board))
-        let gIdx = board.groups.findIndex((dbGroup) => dbGroup.id === groupId)
-        const tIdx = board.groups[gIdx].tasks.findIndex(
-          (dbTask) => dbTask.id === task.id
-        )
-        board.groups[gIdx].tasks.splice(tIdx, 1, task)
+      console.log(gIdx)
+      const tIdx = board.groups[gIdx].tasks.findIndex(
+        (dbTask) => dbTask.id === task.id
+      )
+      board.groups[gIdx].tasks.splice(tIdx, 1, task)
+      try {
         await boardService.save(board)
-        // console.log('task', task);
-        // console.log(board.groups[gIdx].tasks)
+
         commit({ type: 'setCurrBoard', board })
       } catch (err) {
         console.log('Problem with updating task', err)
       }
-      // async updateTask({ commit, state }, { group, task }) {
-      //   console.log(state.currBoard)
-      //   try {
-      //     // var taskToUpdate = group.tasks.find((t) => t.id === task.id)
-      //     // taskToUpdate = JSON.parse(JSON.stringify(taskToUpdate))
-      //     // taskToUpdate = task
-      //     const updatedBoard = JSON.parse(JSON.stringify(state.currBoard))
-      //     const updatedGrp = updatedBoard.groups.find(
-      //       (grp) => grp.id === group.id
-      //     )
-      //     const idx = updatedGrp.tasks.findIndex((t) => t.id === task.id)
-      //     updatedGrp.tasks.splice(idx, 1, task)
-      //     const newBoard = await boardService.save(updatedBoard)
-      //     /// commit to update this specific board in our borad array in the state, and perhaps to update currBoard aswell
-      //     console.log('taskToUpdate:', taskToUpdate, 'task:', task)
-
-      //     // updateBoard({ state }, { group, task })
-      //     commit({ type: 'updateBoard', group, task: taskToUpdate })
-
-      //     // console.log(state.currBoard)
-      //   } catch (err) {
-      //     console.log('Problem with updating task', err)
-      //   }
     },
     // !here
     async removeTask({ commit }, { boardId, groupId, task }) {

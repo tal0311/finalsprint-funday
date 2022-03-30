@@ -50,22 +50,7 @@ async function remove(boardId) {
   return await storageService.remove(KEY, boardId)
 }
 
-// NOT IN USE
-// async function saveGroup(board, group){
-//     // const board = await getById(boardId)
-//     const idx = board.groups.findIndex(boardGroup => boardGroup.id === group.id)
-//     if (idx === -1) {
-//       board.groups.push(group)
-//       return storageService.post(KEY, board)
-//     }
-//     else {
-//       board.groups.splice(idx, 1, group)
-//         return storageService.put(KEY, board)
-//     }
-// }
 
-// add username
-// add dyno cmps
 function getEmptyBoard() {
   const loggedUser = {
     _id: 'u105',
