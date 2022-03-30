@@ -16,9 +16,7 @@
   <img class="no-member" src="https://cdn.monday.com/icons/dapulse-person-column.svg" alt="no member">
 </div>
 
-    <!-- <div  class="no-members-container flex" v-else @click="addMember">
-      <div class="no-members">member</div>
-    </div> -->
+   
   </div>
 
   <!-- MEMBERS MODAL CMP -->
@@ -38,15 +36,13 @@ import miniMember from '../mini-member.vue'
 import membersModal from './../members-modal.vue'
 export default {
   name: 'memberPicker',
-  emits: ['add', 'remove'],
+  emits: ['add', 'remove','update-priority', 'update-date'],
   props: {
     value: Array,
     group: Object,
     task: Object,
   },
-  created(){
-    
-  },
+  
   components: {
     miniMember,
     membersModal,

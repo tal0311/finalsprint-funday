@@ -19,7 +19,7 @@
 <script>
 export default {
   name: 'status-picker',
-  emits: ['updateTask', 'add', 'remove'],
+  emits: ['updateTask', 'add', 'remove', 'update-date','update-priority' ],
   props: {
     task: Object,
     group: Object,

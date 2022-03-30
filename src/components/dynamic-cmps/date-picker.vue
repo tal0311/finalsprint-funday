@@ -18,7 +18,7 @@
 <script>
 export default {
   name: 'date-picker',
-  emits: [ 'add', 'remove', 'update-date'],
+  emits: ['add', 'remove', 'update-date', 'update-priority'],
   props: {
     task: Object,
     group: Object,
@@ -30,10 +30,10 @@ export default {
     }
   },
   methods: {
-     setDate() {
-    const currTask = JSON.parse(JSON.stringify(this.task))
-    currTask.cols[2].value = this.taskDate
-    this.$emit('update-date', currTask)
+    setDate() {
+      const currTask = JSON.parse(JSON.stringify(this.task))
+      currTask.cols[2].value = this.taskDate
+      this.$emit('update-date', currTask)
     },
   },
 
