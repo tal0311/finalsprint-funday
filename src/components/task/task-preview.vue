@@ -78,7 +78,11 @@
       </span>
     </div>
     <div class="task-columns flex">
-      <div class="dyn-cmp flex" v-for="(cmp, idx) in task.cols" :key="idx">
+      <div
+        :class="[cmp.type, 'dyn-cmp flex']"
+        v-for="(cmp, idx) in task.cols"
+        :key="idx"
+      >
         <!-- dynamic components -->
 
         <component
@@ -101,6 +105,7 @@
 import memberPicker from '../dynamic-cmps/member-picker.vue'
 import datePicker from '../dynamic-cmps/date-picker.vue'
 import statusPicker from '../dynamic-cmps/status-picker.vue'
+import testStatus from '../dynamic-cmps/test-status.vue'
 import taskOptions from './task-options.vue'
 
 export default {
@@ -128,16 +133,16 @@ export default {
       task.cols[1].value.push(member)
       this.$store.dispatch({
         type: 'updateTask',
-        boardId:board._id,
+        boardId: board._id,
         groupId: this.group.id,
         task,
-        })
+      })
     },
     removeMember(task, member) {
       task = JSON.parse(JSON.stringify(task))
       const idx = task.cols[1].value.findIndex((curr) => curr.id === member.id)
       task.cols[1].value.splice(idx, 1)
-     const board = this.$store.getters.currBoard
+      const board = this.$store.getters.currBoard
       this.$store.dispatch({
         type: 'updateTask',
         boardId: board._id,
@@ -152,20 +157,21 @@ export default {
       this.isOptions = !this.isOptions
     },
     async updateTask(newTask, $event) {
+      console.log('updateTask:', newTask)
       this.focus = false
-      newTask = JSON.parse(JSON.stringify(newTask))
-      const board = this.$store.getters.currBoard
+      const task = JSON.parse(JSON.stringify(newTask))
+      // const board = this.$store.getters.currBoard
       // const { boardId, groupId, task } = await this.$store.dispatch({
       //   type: "findTask",
       //   boardId: board._id,
       //   taskId: newTask.id,
       // });
-      newTask.title = $event.target.innerText
+      task.title = $event.target.innerText
+      console.log('updateTask:', task)
       await this.$store.dispatch({
         type: 'updateTask',
-        boardId: board._id,
-        groupId: this.group.id,
-        task: newTask,
+        group: this.group,
+        task,
       })
       this.$emit('updateTask')
     },
@@ -198,8 +204,8 @@ export default {
     memberPicker,
     statusPicker,
     taskOptions,
+    testStatus,
   },
-  computed: {},
 }
 </script>
 

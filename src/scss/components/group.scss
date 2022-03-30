@@ -1,29 +1,28 @@
 .group-dialog {
- position: relative;
- align-items: center;
+  position: relative;
+  align-items: center;
   .btn-dialog {
     margin-inline-end: toRem(10);
     // background-color: $clrG1;
 
+    i {
+      color: #fff;
+      transform: translateY(-20%);
+    }
     &.flex {
       align-items: center;
       justify-content: center;
     }
-    &::after {
-      content: '\f106';
-      color: $clr9;
 
-      padding-top: 60%;
-      font-family: 'IconFont';
-      font-style: 'normal';
-    }
+   
+   
 
     border: none;
     border-radius: 50%;
     height: 20px;
     width: 20px;
   }
-  .group-title{
+  .group-title {
     font-size: 1.3em;
     padding: 5px;
     margin-bottom: 5px;

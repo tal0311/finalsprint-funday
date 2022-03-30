@@ -1,35 +1,23 @@
 // addTask inline
 
 .task-list {
-  margin-bottom: 30px;
+  // margin-bottom: 30px;
   .inline {
-    padding-inline-start: 60px;
-    width: 100%;
+    padding-inline-start: 45px;
+    width: 99%;
   }
   .add-task {
     width: 100%;
     input {
+      line-height: toRem(30);
       width: 100%;
+      border: solid $clr12 2px;
       &:focus {
-        outline: solid #3333 2px;
+        border: solid rgba(214, 6, 6, 0.2) 2px;
+        outline: none;
       }
     }
-    button {
-      color: #fff;
-      //   background-color: #3c3ceb;
-      //   position: absolute;
-      //   opacity: 0;
-      //   right: 0;
-
-      &.focused {
-        height: 100px;
-        width: 100px;
-        background-color: #3c3ceb;
-        position: absolute;
-        opacity: 1;
-        transform: translateX(-100%);
-      }
-    }
+    
   }
 }
 
@@ -46,3 +34,21 @@
   position: relative;
   height: 100%;
 }
+
+
+// button {
+//       color: #fff;
+//       background-color: #409eff;
+//       position: absolute;
+//       opacity: 0;
+//       right: 100px;
+//       height: 35px;
+//       width: 4rem;
+//       border: none;
+//       border-radius: 0.2rem;
+//       &.focused {
+//         background-color: rgb(170, 79, 79);
+//         transition: 0.5s ease;
+//         opacity: 1;
+//       }
+//     }

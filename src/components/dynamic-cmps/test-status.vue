@@ -1,16 +1,15 @@
 <template>
-<!-- this is a priority picker do not delete -->
   <section @click="toggleShow" :class="statusClass" class="status-picker">
     <div class="status">
-      {{ task.cols[0].value === '' ? '&nbsp;' : task.cols[0].value }}
+      {{ task.cols[3].value === '' ? '&nbsp;' : task.cols[3].value }}
     </div>
     <div v-if="menuOpen" class="picker-box">
       <!-- TODO - change back to working on it -->
-      <div @click="setStatus('Working on it')" class="working">
-        Working on it
+      <div @click="setStatus('Medium')" class="medium">
+        medium
       </div>
-      <div @click="setStatus('Stuck')" class="stuck">Stuck</div>
-      <div @click="setStatus('Done')" class="done">Done</div>
+      <div @click="setStatus('High')" class="high">high</div>
+      <div @click="setStatus('Low')" class="low">low</div>
       <div @click="setStatus('&nbsp;')" class="null">&nbsp;</div>
     </div>
   </section>
@@ -42,7 +41,7 @@ export default {
       //   boardId: board._id,
       //   taskId: this.task.id,
       // });
-      this.task.cols[0].value = status
+      this.task.cols[3].value = status
       await this.$store.dispatch({
         type: 'updateTask',
         boardId: board._id,
@@ -54,15 +53,14 @@ export default {
   },
   computed: {
     statusClass() {
-      if (this.task.cols[0].value === 'Working on it') return 'working'
-      if (this.task.cols[0].value === '&nbsp;') return 'null'
+      if (this.task.cols[3].value === 'Working on it') return 'medium'
+      if (this.task.cols[3].value === '&nbsp;') return 'null'
       // if(this.task.cols[0].value === 'null') return 'null'
-      return this.task.cols[0].value.toLowerCase()
+      return this.task.cols[3].value.toLowerCase()
     },
   },
   created() {
-    if (!this.task.cols[0].value) this.task.cols[0].value = ''
+    if (!this.task.cols[3].value) this.task.cols[3].value = ''
   },
-  components: {},
 }
 </script>

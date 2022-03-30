@@ -14,7 +14,7 @@
         "id": "u101",
         "fullname": "Tal Amit",
         "username": "tal",
-        "imgUrl": "",
+        "imgUrl": "https://randomuser.me/api/portraits/men/39.jpg",
         "color": "#8338ec"
       },
       {
@@ -28,14 +28,14 @@
         "id": "u103",
         "fullname": "Shiran Elad",
         "username": "shiran",
-        "imgUrl": "https://randomuser.me/api/portraits/men/27.jpg",
+        "imgUrl": "https://randomuser.me/api/portraits/women/24.jpg",
         "color": "#ff006e"
       },
       {
         "id": "u104",
         "fullname": "Rotem Bublil",
         "username": "rotem",
-        "imgUrl": "https://randomuser.me/api/portraits/men/27.jpg",
+        "imgUrl": "https://randomuser.me/api/portraits/men/52.jpg",
         "color": "#ffbe0b"
       }
     ],
@@ -120,6 +120,10 @@
               {
                 "type": "date-picker",
                 "value": "2022-03-28T21:00:00.000Z"
+              },
+              {
+                "type": "test-status",
+                "value": "high"
               }
             ],
             "comments": [
@@ -162,7 +166,11 @@
               },
               {
                 "type": "date-picker",
-                "value": "2022-03-08T22:00:00.000Z"
+                "value": "2022-03-08"
+              },
+              {
+                "type": "test-status",
+                "value": "low"
               }
             ]
           },
@@ -199,7 +207,11 @@
               },
               {
                 "type": "date-picker",
-                "value": "2022-03-10T22:00:00.000Z"
+                "value": "2022-03-10T22"
+              },
+              {
+                "type": "test-status",
+                "value": null
               }
             ]
           },
@@ -230,7 +242,11 @@
               },
               {
                 "type": "date-picker",
-                "value": "2022-03-21T22:00:00.000Z"
+                "value": "2022-03-21"
+              },
+              {
+                "type": "test-status",
+                "value": "low"
               }
             ]
           },
@@ -248,8 +264,12 @@
               },
               {
                 "type": "date-picker",
-                "value": "2022-03-02T22:00:00.000Z"
-              }
+                "value": "2022-03-02T22"
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           },
           {
@@ -285,7 +305,11 @@
               },
               {
                 "type": "date-picker",
-                "value": "2022-03-31T21:00:00.000Z"
+                "value": "2022-03-31"
+              },
+              {
+                "type": "test-status",
+                "value": "low"
               }
             ]
           },
@@ -316,7 +340,11 @@
               },
               {
                 "type": "date-picker",
-                "value": "2022-03-11T22:00:00.000Z"
+                "value": "2022-03-11T22"
+              },
+              {
+                "type": "test-status",
+                "value": "low"
               }
             ]
           },
@@ -335,8 +363,12 @@
               {
                 "type": "date-picker",
                 "value": "2022-03-16T22:00:00.000Z"
-              }
-            ]
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
+                        ]
           },
           {
             "id": "twJ3I8",
@@ -353,6 +385,10 @@
               {
                 "type": "date-picker",
                 "value": "2022-03-15T22:00:00.000Z"
+              },
+              {
+                "type": "test-status",
+                "value": "low"
               }
             ]
           },
@@ -371,7 +407,11 @@
               {
                 "type": "date-picker",
                 "value": "2022-03-29T21:00:00.000Z"
-              }
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           },
           {
@@ -389,6 +429,10 @@
               {
                 "type": "date-picker",
                 "value": null
+              },
+              {
+                "type": "test-status",
+                "value": "low"
               }
             ]
           },
@@ -407,6 +451,10 @@
               {
                 "type": "date-picker",
                 "value": null
+              },
+              {
+                "type": "test-status",
+                "value": "low"
               }
             ]
           },
@@ -447,7 +495,12 @@
                 "value": []
               },
               {
-                "type": "date-picker"
+                "type": "date-picker",
+                "value": null
+              },
+              {
+                "type": "test-status",
+                "value": "low"
               }
             ]
           },
@@ -466,6 +519,10 @@
               {
                 "type": "date-picker",
                 "value": "2022-03-29"
+              },
+              {
+                "type": "test-status",
+                "value": "low"
               }
             ]
           },
@@ -484,6 +541,10 @@
               {
                 "type": "date-picker",
                 "value": null
+              },
+              {
+                "type": "test-status",
+                "value": "low"
               }
             ]
           }
@@ -507,8 +568,13 @@
                 "value": []
               },
               {
-                "type": "date-picker"
-              }
+                "type": "date-picker",
+                "value": null
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           },
           {
@@ -526,7 +592,11 @@
               {
                 "type": "date-picker",
                 "value": null
-              }
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           },
           {
@@ -544,7 +614,11 @@
               {
                 "type": "date-picker",
                 "value": null
-              }
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           },
           {
@@ -562,7 +636,11 @@
               {
                 "type": "date-picker",
                 "value": null
-              }
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           },
           {
@@ -593,7 +671,11 @@
               {
                 "type": "date-picker",
                 "value": null
-              }
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           },
           {
@@ -611,7 +693,11 @@
               {
                 "type": "date-picker",
                 "value": null
-              }
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           },
           {
@@ -629,7 +715,11 @@
               {
                 "type": "date-picker",
                 "value": null
-              }
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           }
         ],
@@ -659,8 +749,13 @@
                 ]
               },
               {
-                "type": "date-picker"
-              }
+                "type": "date-picker",
+                "value": null
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           },
           {
@@ -678,7 +773,11 @@
               {
                 "type": "date-picker",
                 "value": null
-              }
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           },
           {
@@ -709,7 +808,11 @@
               {
                 "type": "date-picker",
                 "value": null
-              }
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           },
           {
@@ -734,7 +837,11 @@
               {
                 "type": "date-picker",
                 "value": null
-              }
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           },
           {
@@ -752,7 +859,11 @@
               {
                 "type": "date-picker",
                 "value": null
-              }
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           }
         ],
@@ -782,8 +893,13 @@
                 ]
               },
               {
-                "type": "date-picker"
-              }
+                "type": "date-picker",
+                "value": null
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           },
           {
@@ -801,7 +917,11 @@
               {
                 "type": "date-picker",
                 "value": null
-              }
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           },
           {
@@ -832,7 +952,11 @@
               {
                 "type": "date-picker",
                 "value": null
-              }
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           },
           {
@@ -869,7 +993,11 @@
               {
                 "type": "date-picker",
                 "value": null
-              }
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ],
             "groupColor": "#2fbc34"
           }

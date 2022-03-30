@@ -51,13 +51,13 @@
         }
     }
 }
-.working {
+.working, .medium {
     background-color: $stClrWorking;
 }
-.stuck {
+.stuck, .high {
     background-color: $stClrStuck;
 }
-.done {
+.done, .low {
     color: $clr8;
     background-color: $stClrDone;
 }
@@ -66,3 +66,9 @@
     background-color: rgb(187, 187, 187);
 }
 
+.status-picker {
+  width: 100%;
+  .picker-box {
+    width: 20%;
+  }
+}

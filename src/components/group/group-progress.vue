@@ -2,7 +2,12 @@
   <section class="status-bar">
     <ul class="clean-list flex">
       <li v-for="(status, idx) in sortStatus" :key="idx">
-        <div :class="[status, 'bar']">&nbsp;</div>
+        <div
+          :style="{ width: (1 / sortStatus.length) * 100+'px' }"
+          :class="[status, 'bar']"
+        >
+          &nbsp;
+        </div>
       </li>
     </ul>
   </section>
