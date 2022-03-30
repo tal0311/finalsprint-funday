@@ -93,6 +93,8 @@
           :group="group"
           @add="addMember"
           @remove="removeMember"
+          @update-date="setDate" 
+          @update-priority="setPriority"
         />
       </div>
 
@@ -104,8 +106,8 @@
 <script>
 import memberPicker from '../dynamic-cmps/member-picker.vue'
 import datePicker from '../dynamic-cmps/date-picker.vue'
-import statusPicker from '../dynamic-cmps/status-picker.vue'
-import testStatus from '../dynamic-cmps/test-status.vue'
+import statusPicker from './../dynamic-cmps/status-picker.vue'
+import priorityPicker from '../dynamic-cmps/priority-picker.vue'
 import taskOptions from './task-options.vue'
 
 export default {
@@ -126,6 +128,8 @@ export default {
     }
   },
   methods: {
+
+    
     addMember(task, memberName) {
       task = JSON.parse(JSON.stringify(task))
       const board = this.$store.getters.currBoard
@@ -133,7 +137,6 @@ export default {
       task.cols[1].value.push(member)
       this.$store.dispatch({
         type: 'updateTask',
-        boardId: board._id,
         groupId: this.group.id,
         task,
       })
@@ -142,10 +145,8 @@ export default {
       task = JSON.parse(JSON.stringify(task))
       const idx = task.cols[1].value.findIndex((curr) => curr.id === member.id)
       task.cols[1].value.splice(idx, 1)
-      const board = this.$store.getters.currBoard
       this.$store.dispatch({
         type: 'updateTask',
-        boardId: board._id,
         groupId: this.group.id,
         task,
       })
@@ -167,7 +168,6 @@ export default {
         groupId: this.group.id,
         task,
       })
-      
     },
     async removeTask() {
       const taskToDelete = this.task
@@ -192,13 +192,28 @@ export default {
     openTaskDetails() {
       this.$store.commit({ type: 'setTaskToShow', task: this.task })
     },
+
+    setDate(currTask){
+        this.$store.dispatch({
+        type: 'updateTask',
+        groupId: this.group.id,
+        task: currTask,
+      })
+    },
+    setPriority(task, groupId){
+       this.$store.dispatch({
+        type: 'updateTask',
+        groupId,
+        task
+      })
+    }
   },
   components: {
     datePicker,
     memberPicker,
     statusPicker,
     taskOptions,
-    testStatus,
+    priorityPicker,
   },
 }
 </script>

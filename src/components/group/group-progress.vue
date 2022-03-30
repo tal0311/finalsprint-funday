@@ -3,7 +3,7 @@
     <ul class="clean-list flex">
       <li v-for="(status, idx) in sortStatus" :key="idx">
         <div
-          :style="{ width: (1 / sortStatus.length) * 100+'px' }"
+          :style="{ width: (1 / sortStatus.length) * 100 + 'px' }"
           :class="[status, 'bar']"
         >
           &nbsp;
@@ -21,10 +21,9 @@ export default {
   props: {
     tasks: Array,
   },
-
+  
   computed: {
     sortStatus() {
-      // this.tasks.map(task=> console.log(task.cols[0]))
       return this.tasks.map((task) => task.cols[0].value.toLowerCase()).sort()
     },
   },

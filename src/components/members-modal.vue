@@ -12,7 +12,7 @@
         </div>
         <button @click="removeMember(member)" class="remove">X</button>
       </li>
-      <div class="member-input">
+      <div class="member-input flex">
         <button @click="addMember" class="add">+</button>
         <input type="text" v-model="memberName" />
       </div>

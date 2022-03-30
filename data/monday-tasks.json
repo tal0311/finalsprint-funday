@@ -66,7 +66,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": ""
+                "value": null
               },
               {
                 "type": "member-picker",
@@ -75,7 +75,11 @@
               {
                 "type": "date-picker",
                 "value": null
-              }
+              },
+               {
+                 "type": "priority-picker",
+                 "value": "low"
+               }
             ]
           }
         ],
@@ -122,7 +126,7 @@
                 "value": "2022-03-28T21:00:00.000Z"
               },
               {
-                "type": "test-status",
+                "type": "priority-picker",
                 "value": "high"
               }
             ],
@@ -169,7 +173,7 @@
                 "value": "2022-03-08"
               },
               {
-                "type": "test-status",
+                "type": "priority-picker",
                 "value": "low"
               }
             ]
@@ -210,7 +214,7 @@
                 "value": "2022-03-10T22"
               },
               {
-                "type": "test-status",
+                "type": "priority-picker",
                 "value": null
               }
             ]
@@ -245,7 +249,7 @@
                 "value": "2022-03-21"
               },
               {
-                "type": "test-status",
+                "type": "priority-picker",
                 "value": "low"
               }
             ]
@@ -267,7 +271,7 @@
                 "value": "2022-03-02T22"
               },
                {
-                 "type": "test-status",
+                 "type": "priority-picker",
                  "value": "low"
                }
             ]
@@ -308,7 +312,7 @@
                 "value": "2022-03-31"
               },
               {
-                "type": "test-status",
+                "type": "priority-picker",
                 "value": "low"
               }
             ]
@@ -343,7 +347,7 @@
                 "value": "2022-03-11T22"
               },
               {
-                "type": "test-status",
+                "type": "priority-picker",
                 "value": "low"
               }
             ]
@@ -354,7 +358,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": ""
+                "value": null
               },
               {
                 "type": "member-picker",
@@ -365,7 +369,7 @@
                 "value": "2022-03-16T22:00:00.000Z"
               },
                {
-                 "type": "test-status",
+                 "type": "priority-picker",
                  "value": "low"
                }
                         ]
@@ -376,7 +380,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": ""
+                "value": null
               },
               {
                 "type": "member-picker",
@@ -387,7 +391,7 @@
                 "value": "2022-03-15T22:00:00.000Z"
               },
               {
-                "type": "test-status",
+                "type": "priority-picker",
                 "value": "low"
               }
             ]
@@ -409,7 +413,7 @@
                 "value": "2022-03-29T21:00:00.000Z"
               },
                {
-                 "type": "test-status",
+                 "type": "priority-picker",
                  "value": "low"
                }
             ]
@@ -420,7 +424,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": ""
+                "value": null
               },
               {
                 "type": "member-picker",
@@ -431,7 +435,7 @@
                 "value": null
               },
               {
-                "type": "test-status",
+                "type": "priority-picker",
                 "value": "low"
               }
             ]
@@ -453,7 +457,7 @@
                 "value": null
               },
               {
-                "type": "test-status",
+                "type": "priority-picker",
                 "value": "low"
               }
             ]
@@ -464,7 +468,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": ""
+                "value": null
               },
               {
                 "type": "member-picker",
@@ -473,7 +477,11 @@
               {
                 "type": "date-picker",
                 "value": null
-              }
+              },
+               {
+                 "type": "priority-picker",
+                 "value": "low"
+               }
             ]
           }
         ]
@@ -499,7 +507,7 @@
                 "value": null
               },
               {
-                "type": "test-status",
+                "type": "priority-picker",
                 "value": "low"
               }
             ]
@@ -521,7 +529,7 @@
                 "value": "2022-03-29"
               },
               {
-                "type": "test-status",
+                "type": "priority-picker",
                 "value": "low"
               }
             ]
@@ -543,7 +551,7 @@
                 "value": null
               },
               {
-                "type": "test-status",
+                "type": "priority-picker",
                 "value": "low"
               }
             ]
@@ -572,7 +580,7 @@
                 "value": null
               },
                {
-                 "type": "test-status",
+                 "type": "priority-picker",
                  "value": "low"
                }
             ]
@@ -594,7 +602,7 @@
                 "value": null
               },
                {
-                 "type": "test-status",
+                 "type": "priority-picker",
                  "value": "low"
                }
             ]
@@ -616,7 +624,7 @@
                 "value": null
               },
                {
-                 "type": "test-status",
+                 "type": "priority-picker",
                  "value": "low"
                }
             ]
@@ -627,7 +635,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": ""
+                "value": null
               },
               {
                 "type": "member-picker",
@@ -638,7 +646,7 @@
                 "value": null
               },
                {
-                 "type": "test-status",
+                 "type": "priority-picker",
                  "value": "low"
                }
             ]
@@ -673,7 +681,7 @@
                 "value": null
               },
                {
-                 "type": "test-status",
+                 "type": "priority-picker",
                  "value": "low"
                }
             ]
@@ -684,7 +692,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": ""
+                "value": null
               },
               {
                 "type": "member-picker",
@@ -695,7 +703,7 @@
                 "value": null
               },
                {
-                 "type": "test-status",
+                 "type": "priority-picker",
                  "value": "low"
                }
             ]
@@ -706,7 +714,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": ""
+                "value": null
               },
               {
                 "type": "member-picker",
@@ -717,7 +725,7 @@
                 "value": null
               },
                {
-                 "type": "test-status",
+                 "type": "priority-picker",
                  "value": "low"
                }
             ]
@@ -735,7 +743,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": ""
+                "value": null
               },
               {
                 "type": "member-picker",
@@ -753,7 +761,7 @@
                 "value": null
               },
                {
-                 "type": "test-status",
+                 "type": "priority-picker",
                  "value": "low"
                }
             ]
@@ -764,7 +772,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": ""
+                "value": null
               },
               {
                 "type": "member-picker",
@@ -775,7 +783,7 @@
                 "value": null
               },
                {
-                 "type": "test-status",
+                 "type": "priority-picker",
                  "value": "low"
                }
             ]
@@ -786,7 +794,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": ""
+                "value": null
               },
               {
                 "type": "member-picker",
@@ -810,7 +818,7 @@
                 "value": null
               },
                {
-                 "type": "test-status",
+                 "type": "priority-picker",
                  "value": "low"
                }
             ]
@@ -821,7 +829,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": ""
+                "value": null
               },
               {
                 "type": "member-picker",
@@ -839,7 +847,7 @@
                 "value": null
               },
                {
-                 "type": "test-status",
+                 "type": "priority-picker",
                  "value": "low"
                }
             ]
@@ -850,7 +858,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": ""
+                "value": null
               },
               {
                 "type": "member-picker",
@@ -861,7 +869,7 @@
                 "value": null
               },
                {
-                 "type": "test-status",
+                 "type": "priority-picker",
                  "value": "low"
                }
             ]
@@ -879,7 +887,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": ""
+                "value": null
               },
               {
                 "type": "member-picker",
@@ -897,7 +905,7 @@
                 "value": null
               },
                {
-                 "type": "test-status",
+                 "type": "priority-picker",
                  "value": "low"
                }
             ]
@@ -908,7 +916,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": ""
+                "value": null
               },
               {
                 "type": "member-picker",
@@ -919,7 +927,7 @@
                 "value": null
               },
                {
-                 "type": "test-status",
+                 "type": "priority-picker",
                  "value": "low"
                }
             ]
@@ -930,7 +938,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": ""
+                "value": null
               },
               {
                 "type": "member-picker",
@@ -954,7 +962,7 @@
                 "value": null
               },
                {
-                 "type": "test-status",
+                 "type": "priority-picker",
                  "value": "low"
                }
             ]
@@ -965,7 +973,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": ""
+                "value": null
               },
               {
                 "type": "member-picker",
@@ -995,7 +1003,7 @@
                 "value": null
               },
                {
-                 "type": "test-status",
+                 "type": "priority-picker",
                  "value": "low"
                }
             ],
