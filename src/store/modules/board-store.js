@@ -158,7 +158,6 @@ export const boardStore = {
       board.description = !description ? board.description : description
       try {
         const boardToUpdate = await boardService.save(board)
-        // !
         dispatch({ type: 'loadBoards' })
         commit({ type: 'setCurrBoard', board: boardToUpdate })
       } catch (err) {
@@ -170,7 +169,6 @@ export const boardStore = {
       }
     },
 
-    /*** */
     async duplicateBoard({ dispatch, state, commit }, { boardId }) {
       try {
         var toDuplicate = board.groups.find((group) => group.id === groupId);
