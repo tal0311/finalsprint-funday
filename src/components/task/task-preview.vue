@@ -50,6 +50,7 @@
               Edit
             </button>
           </span>
+  
         </div>
 
         <span class="chat">
@@ -76,6 +77,7 @@
           </svg>
         </span>
       </span>
+       
     </div>
     <div class="task-columns flex">
       <div
@@ -84,7 +86,6 @@
         :key="idx"
       >
         <!-- dynamic components -->
-
         <component
           v-if="task"
           :is="cmp.type"
@@ -93,7 +94,7 @@
           :group="group"
           @add="addMember"
           @remove="removeMember"
-          @update-date="setDate" 
+          @update-date="setDate"
           @update-priority="setPriority"
         />
       </div>
@@ -128,8 +129,6 @@ export default {
     }
   },
   methods: {
-
-    
     addMember(task, memberName) {
       task = JSON.parse(JSON.stringify(task))
       const board = this.$store.getters.currBoard
@@ -161,7 +160,7 @@ export default {
       // console.log('updateTask:', newTask)
       this.focus = false
       const task = JSON.parse(JSON.stringify(newTask))
-     task.title = $event.target.innerText
+      task.title = $event.target.innerText
       // console.log('updateTask:', task)
       await this.$store.dispatch({
         type: 'updateTask',
@@ -193,20 +192,20 @@ export default {
       this.$store.commit({ type: 'setTaskToShow', task: this.task })
     },
 
-    setDate(currTask){
-        this.$store.dispatch({
+    setDate(currTask) {
+      this.$store.dispatch({
         type: 'updateTask',
         groupId: this.group.id,
         task: currTask,
       })
     },
-    setPriority(task, groupId){
-       this.$store.dispatch({
+    setPriority(task, groupId) {
+      this.$store.dispatch({
         type: 'updateTask',
         groupId,
-        task
+        task,
       })
-    }
+    },
   },
   components: {
     datePicker,

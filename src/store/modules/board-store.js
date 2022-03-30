@@ -144,7 +144,6 @@ export const boardStore = {
         console.log('error during removing board', err);
       }
     },
-    // !here
     async saveBoard({ dispatch, commit, state }, { title , description}) {
       // console.log('title, description from store', title, description);
       const board = JSON.parse(JSON.stringify(state.currBoard))
@@ -311,6 +310,7 @@ export const boardStore = {
       try {
         const boardToUpdate = await boardService.save(board);
         commit({ type: 'setCurrBoard', board: boardToUpdate });
+        // commit({ type: 'updateTask', task });
       } catch (err) {
         console.log('Problem with updating task', err);
       }

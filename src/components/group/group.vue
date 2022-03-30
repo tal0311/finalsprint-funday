@@ -5,7 +5,9 @@
         class="btn-dialog flex"
         @click="setIsOptions"
         :style="{ backgroundColor: group.groupColor }"
-       ><i class="fa-solid fa-sort-down"></i></button>
+      >
+        <i class="fa-solid fa-sort-down"></i>
+      </button>
       <div
         v-if="group"
         :style="{ color: group.groupColor }"
@@ -16,13 +18,13 @@
         {{ group.title }}
       </div>
 
+  <group-labels />
       <group-options
         @update="setGroupUpdate"
         v-if="isOptions"
         :groupColor="group.groupColor"
       />
     </div>
-
     <tasks-list
       @add-inline="addTask"
       @updateGroupAfterDnd="updateGroupAfterDnd"
@@ -36,6 +38,7 @@
 import tasksList from '../task/tasks-list.vue'
 import groupProgress from './group-progress.vue'
 import groupOptions from './group-options.vue'
+import groupLabels from '../group/group-labels.vue'
 export default {
   name: 'group-cmp',
   emits: ['updateGroup', 'setCurrGroup'],
@@ -47,6 +50,7 @@ export default {
     tasksList,
     groupOptions,
     groupProgress,
+    groupLabels,
   },
 
   data() {

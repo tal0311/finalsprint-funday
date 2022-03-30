@@ -2,17 +2,19 @@
 * {
   box-sizing: border-box;
 
-
   // font-family: 'Roboto', sans-serif;
 }
 body {
   margin: 0;
-  
 }
 
 html {
   color: $clr9;
   font-family: 'Roboto 300';
+
+  @media (max-width: 1300px) {
+    font-size: smaller;
+  }
 }
 
 h1,

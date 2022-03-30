@@ -22,21 +22,22 @@
 </template>
 
 <script>
-import newInlineTask from "./new-inline-task.vue";
-import groupProgress from "../group/group-progress.vue";
-import taskPreview from "./task-preview.vue";
-import { Container, Draggable } from "vue3-smooth-dnd";
+import newInlineTask from './new-inline-task.vue'
+import groupProgress from '../group/group-progress.vue'
+import taskPreview from './task-preview.vue'
+import { Container, Draggable } from 'vue3-smooth-dnd'
+
 export default {
   props: {
     tasks: Array,
     group: Object,
     groupColor: String,
   },
-  emits: ["add-inline", "updateGroupAfterDnd"],
+  emits: ['add-inline', 'updateGroupAfterDnd'],
   data() {
     return {
       eltasks: this.tasks,
-    };
+    }
   },
   methods: {
     add(value) {
@@ -44,12 +45,13 @@ export default {
       this.$emit('add-inline', value, this.group.id)
     },
     getChildPayloadEltasks(index) {
-      return this.eltasks[index];
+      return this.eltasks[index]
     },
     onDrop(dropResult) {
-      if (dropResult.addedIndex === null && dropResult.removedIndex === null) return
+      if (dropResult.addedIndex === null && dropResult.removedIndex === null)
+        return
       this.eltasks = this.applyDrag(this.eltasks, dropResult)
-      this.updateGroup(this.eltasks);
+      this.updateGroup(this.eltasks)
 
       // if (this.eltasks !== this.applyDrag(this.eltasks, dropResult)) {
       //   console.log("yay", dropResult);
@@ -58,33 +60,29 @@ export default {
       // }
     },
     applyDrag(arr, dragResult) {
+      const { removedIndex, addedIndex, payload } = dragResult
 
-      const { removedIndex, addedIndex, payload } = dragResult;
-
-      if (removedIndex === null && addedIndex === null) return arr;
-      const result = [...arr];
-      let taskToAdd = payload;
+      if (removedIndex === null && addedIndex === null) return arr
+      const result = [...arr]
+      let taskToAdd = payload
 
       if (removedIndex !== null) {
-        taskToAdd = result.splice(removedIndex, 1)[0];
+        taskToAdd = result.splice(removedIndex, 1)[0]
       }
       if (addedIndex !== null) {
-        result.splice(addedIndex, 0, taskToAdd);
+        result.splice(addedIndex, 0, taskToAdd)
       }
 
-      return result;
+      return result
     },
     updateGroup(tasksAfterDnd) {
-      this.$emit("updateGroupAfterDnd", tasksAfterDnd);
+      this.$emit('updateGroupAfterDnd', tasksAfterDnd)
     },
   },
   computed: {
     currBoard() {
-      return this.$store.getters.currBoard;
+      return this.$store.getters.currBoard
     },
-  },
-  created(){
-this.tasks
   },
   components: {
     taskPreview,
@@ -93,7 +91,6 @@ this.tasks
     groupProgress,
     newInlineTask,
   },
-
 }
 </script>
 

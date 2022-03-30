@@ -5,7 +5,7 @@
         @click="updateMemberList"
         v-for="member in value"
         :key="member.id"
-        class="member"
+        class="member flex"
         :style="{ backgroundColor: member.color }"
       >
         {{ member.fullname?.charAt(0).toUpperCase() }}

@@ -1,19 +1,12 @@
 .members-container {
-  width: 216px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: auto;
-  // position: absolute;
-  // &flex {
-  //   flex-direction: row;
 
-  // }
   .member {
-    // padding: 0.5em 0.65em;
     text-align: center;
     font-size: 0.8rem;
-    padding: 0px 0 10px 0;
     color: $clr8;
     font-weight: 700;
     border: 2px solid $clr10;
@@ -24,6 +17,11 @@
     flex-shrink: 0;
     position: relative;
     margin-top: 3px;
+
+    &.flex {
+      justify-content: center;
+      align-items: center;
+    }
   }
 }
 
@@ -98,14 +96,12 @@ ul {
   .update-member {
     position: absolute;
     height: toRem(100);
-    width: toRem(100);
   }
 
   .no-member-container {
     &.flex {
-      margin-top: 3px;
-      width: 100%;
-      width: toRem(216);
+      margin-top: 6px;
+      max-width: auto;
       justify-content: center;
       align-items: center;
       .no-member {

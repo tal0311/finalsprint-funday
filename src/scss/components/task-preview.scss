@@ -1,7 +1,4 @@
 .task-preview {
-  // &:hover {
-  //     background-color: $clr7;
-  // }
   top: 40px;
   color: $clr9;
   height: 36px;
@@ -36,17 +33,13 @@
     align-items: center;
     height: 100%;
     text-align: start;
-    // flex-basis: 350px;
-    flex:0.5;
+    flex: 0.5;
     padding: 0 10px 0 0;
     border-right: 1px solid $clr8;
 
     .side-indicator {
       flex: 0 0 8px;
-      position: relative;
-      height: 100%;
-      background-color: rgb(87, 155, 252);
-      color: rgb(87, 155, 252);
+    
     }
     .title-chat {
       flex: 1;
@@ -147,38 +140,22 @@
   }
 
   .task-columns {
-    // width: 100%;
     background-color: $clr10;
     flex: 1;
     position: relative;
     height: 100%;
     .dyn-cmp {
       width: 100%;
-      // width: fit-content;
       border-right: $clr8 1px solid;
       .task-col-comp {
         font-size: toRem(14);
-        // width: 140px;
         margin: 0;
         padding: 0;
-        // flex-basis: 200px;
-        // position: relative;
-        // margin: 0;
-        // padding: 0;
-        // border: 0;
-        // flex-shrink: 0;
-        // cursor: pointer;
-        // text-align: center;
-        // border-right: $clr8 1px solid;
-        // display: flex;
-        // justify-content: center;
-        // min-width: 200px;
       }
     }
 
     .right-indicator {
       max-width: 38px;
-      // background-color: black;
       border-right: 8px solid $clr12;
     }
   }
