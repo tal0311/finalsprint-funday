@@ -14,7 +14,7 @@
         "id": "u101",
         "fullname": "Tal Amit",
         "username": "tal",
-        "imgUrl": "",
+        "imgUrl": "https://randomuser.me/api/portraits/men/39.jpg",
         "color": "#8338ec"
       },
       {
@@ -28,14 +28,14 @@
         "id": "u103",
         "fullname": "Shiran Elad",
         "username": "shiran",
-        "imgUrl": "https://randomuser.me/api/portraits/men/27.jpg",
+        "imgUrl": "https://randomuser.me/api/portraits/women/24.jpg",
         "color": "#ff006e"
       },
       {
         "id": "u104",
         "fullname": "Rotem Bublil",
         "username": "rotem",
-        "imgUrl": "https://randomuser.me/api/portraits/men/27.jpg",
+        "imgUrl": "https://randomuser.me/api/portraits/men/52.jpg",
         "color": "#ffbe0b"
       }
     ],
@@ -56,6 +56,31 @@
       }
     ],
     "groups": [
+      {
+        "id": "g1N8NC",
+        "title": "New Group",
+        "tasks": [
+          {
+            "id": "tPcTIj",
+            "title": "New Task",
+            "cols": [
+              {
+                "type": "status-picker",
+                "value": ""
+              },
+              {
+                "type": "member-picker",
+                "value": []
+              },
+              {
+                "type": "date-picker",
+                "value": null
+              }
+            ]
+          }
+        ],
+        "groupColor": "#3B2CD9"
+      },
       {
         "id": "gy5LnM",
         "title": "Frontend",
@@ -82,12 +107,23 @@
                     "fullname": "Guy Shimon",
                     "imgUrl": "https://www.google.com",
                     "color": "#3a86ff"
+                  },
+                  {
+                    "id": "u103",
+                    "fullname": "Shiran Elad",
+                    "username": "shiran",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/27.jpg",
+                    "color": "#ff006e"
                   }
                 ]
               },
               {
                 "type": "date-picker",
                 "value": "2022-03-28T21:00:00.000Z"
+              },
+              {
+                "type": "test-status",
+                "value": "high"
               }
             ],
             "comments": [
@@ -125,18 +161,16 @@
                     "fullname": "Tal Amit",
                     "imgUrl": "https://www.google.com",
                     "color": "#8338ec"
-                  },
-                  {
-                    "id": "u104",
-                    "fullname": "Rotem Bublil",
-                    "imgUrl": "https://www.google.com",
-                    "color": "#ffbe0b"
                   }
                 ]
               },
               {
                 "type": "date-picker",
-                "value": "2022-03-08T22:00:00.000Z"
+                "value": "2022-03-08"
+              },
+              {
+                "type": "test-status",
+                "value": "low"
               }
             ]
           },
@@ -173,7 +207,11 @@
               },
               {
                 "type": "date-picker",
-                "value": "2022-03-10T22:00:00.000Z"
+                "value": "2022-03-10T22"
+              },
+              {
+                "type": "test-status",
+                "value": null
               }
             ]
           },
@@ -204,7 +242,11 @@
               },
               {
                 "type": "date-picker",
-                "value": "2022-03-21T22:00:00.000Z"
+                "value": "2022-03-21"
+              },
+              {
+                "type": "test-status",
+                "value": "low"
               }
             ]
           },
@@ -222,8 +264,12 @@
               },
               {
                 "type": "date-picker",
-                "value": "2022-03-02T22:00:00.000Z"
-              }
+                "value": "2022-03-02T22"
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           },
           {
@@ -259,7 +305,11 @@
               },
               {
                 "type": "date-picker",
-                "value": "2022-03-31T21:00:00.000Z"
+                "value": "2022-03-31"
+              },
+              {
+                "type": "test-status",
+                "value": "low"
               }
             ]
           },
@@ -290,7 +340,11 @@
               },
               {
                 "type": "date-picker",
-                "value": "2022-03-11T22:00:00.000Z"
+                "value": "2022-03-11T22"
+              },
+              {
+                "type": "test-status",
+                "value": "low"
               }
             ]
           },
@@ -300,7 +354,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": null
+                "value": ""
               },
               {
                 "type": "member-picker",
@@ -309,8 +363,12 @@
               {
                 "type": "date-picker",
                 "value": "2022-03-16T22:00:00.000Z"
-              }
-            ]
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
+                        ]
           },
           {
             "id": "twJ3I8",
@@ -318,7 +376,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": null
+                "value": ""
               },
               {
                 "type": "member-picker",
@@ -327,6 +385,10 @@
               {
                 "type": "date-picker",
                 "value": "2022-03-15T22:00:00.000Z"
+              },
+              {
+                "type": "test-status",
+                "value": "low"
               }
             ]
           },
@@ -345,7 +407,11 @@
               {
                 "type": "date-picker",
                 "value": "2022-03-29T21:00:00.000Z"
-              }
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           },
           {
@@ -354,7 +420,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": null
+                "value": ""
               },
               {
                 "type": "member-picker",
@@ -363,6 +429,10 @@
               {
                 "type": "date-picker",
                 "value": null
+              },
+              {
+                "type": "test-status",
+                "value": "low"
               }
             ]
           },
@@ -373,6 +443,28 @@
               {
                 "type": "status-picker",
                 "value": "Working on it"
+              },
+              {
+                "type": "member-picker",
+                "value": []
+              },
+              {
+                "type": "date-picker",
+                "value": null
+              },
+              {
+                "type": "test-status",
+                "value": "low"
+              }
+            ]
+          },
+          {
+            "id": "tmpXX1",
+            "title": "New Task",
+            "cols": [
+              {
+                "type": "status-picker",
+                "value": ""
               },
               {
                 "type": "member-picker",
@@ -403,7 +495,12 @@
                 "value": []
               },
               {
-                "type": "date-picker"
+                "type": "date-picker",
+                "value": null
+              },
+              {
+                "type": "test-status",
+                "value": "low"
               }
             ]
           },
@@ -422,6 +519,10 @@
               {
                 "type": "date-picker",
                 "value": "2022-03-29"
+              },
+              {
+                "type": "test-status",
+                "value": "low"
               }
             ]
           },
@@ -440,6 +541,10 @@
               {
                 "type": "date-picker",
                 "value": null
+              },
+              {
+                "type": "test-status",
+                "value": "low"
               }
             ]
           }
@@ -463,8 +568,13 @@
                 "value": []
               },
               {
-                "type": "date-picker"
-              }
+                "type": "date-picker",
+                "value": null
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           },
           {
@@ -482,7 +592,11 @@
               {
                 "type": "date-picker",
                 "value": null
-              }
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           },
           {
@@ -500,7 +614,11 @@
               {
                 "type": "date-picker",
                 "value": null
-              }
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           },
           {
@@ -509,7 +627,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": null
+                "value": ""
               },
               {
                 "type": "member-picker",
@@ -518,7 +636,11 @@
               {
                 "type": "date-picker",
                 "value": null
-              }
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           },
           {
@@ -549,7 +671,11 @@
               {
                 "type": "date-picker",
                 "value": null
-              }
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           },
           {
@@ -558,7 +684,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": null
+                "value": ""
               },
               {
                 "type": "member-picker",
@@ -567,7 +693,11 @@
               {
                 "type": "date-picker",
                 "value": null
-              }
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           },
           {
@@ -576,7 +706,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": null
+                "value": ""
               },
               {
                 "type": "member-picker",
@@ -585,7 +715,11 @@
               {
                 "type": "date-picker",
                 "value": null
-              }
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           }
         ],
@@ -601,7 +735,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": null
+                "value": ""
               },
               {
                 "type": "member-picker",
@@ -615,8 +749,13 @@
                 ]
               },
               {
-                "type": "date-picker"
-              }
+                "type": "date-picker",
+                "value": null
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           },
           {
@@ -625,7 +764,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": null
+                "value": ""
               },
               {
                 "type": "member-picker",
@@ -634,7 +773,11 @@
               {
                 "type": "date-picker",
                 "value": null
-              }
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           },
           {
@@ -643,7 +786,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": null
+                "value": ""
               },
               {
                 "type": "member-picker",
@@ -665,7 +808,11 @@
               {
                 "type": "date-picker",
                 "value": null
-              }
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           },
           {
@@ -674,7 +821,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": null
+                "value": ""
               },
               {
                 "type": "member-picker",
@@ -690,7 +837,11 @@
               {
                 "type": "date-picker",
                 "value": null
-              }
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           },
           {
@@ -699,7 +850,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": null
+                "value": ""
               },
               {
                 "type": "member-picker",
@@ -708,7 +859,11 @@
               {
                 "type": "date-picker",
                 "value": null
-              }
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           }
         ],
@@ -724,7 +879,7 @@
             "cols": [
               {
                 "type": "status-picker",
-                "value": null
+                "value": ""
               },
               {
                 "type": "member-picker",
@@ -738,13 +893,176 @@
                 ]
               },
               {
-                "type": "date-picker"
-              }
+                "type": "date-picker",
+                "value": null
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
             ]
           },
           {
             "id": "tsTwIo",
             "title": "Create Design Document",
+            "cols": [
+              {
+                "type": "status-picker",
+                "value": ""
+              },
+              {
+                "type": "member-picker",
+                "value": []
+              },
+              {
+                "type": "date-picker",
+                "value": null
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
+            ]
+          },
+          {
+            "id": "tAOGVd",
+            "title": "Create git repository with collaboration",
+            "cols": [
+              {
+                "type": "status-picker",
+                "value": ""
+              },
+              {
+                "type": "member-picker",
+                "value": [
+                  {
+                    "id": "u101",
+                    "fullname": "Tal Amit",
+                    "imgUrl": "https://www.google.com",
+                    "color": "#8338ec"
+                  },
+                  {
+                    "id": "u102",
+                    "fullname": "Guy Shimon",
+                    "imgUrl": "https://www.google.com",
+                    "color": "#3a86ff"
+                  }
+                ]
+              },
+              {
+                "type": "date-picker",
+                "value": null
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
+            ]
+          },
+          {
+            "id": "tmuMhT",
+            "title": "Upload to Hiroku",
+            "cols": [
+              {
+                "type": "status-picker",
+                "value": ""
+              },
+              {
+                "type": "member-picker",
+                "value": [
+                  {
+                    "id": "u101",
+                    "fullname": "Tal Amit",
+                    "imgUrl": "https://www.google.com",
+                    "color": "#8338ec"
+                  },
+                  {
+                    "id": "u102",
+                    "fullname": "Guy Shimon",
+                    "imgUrl": "https://www.google.com",
+                    "color": "#3a86ff"
+                  },
+                  {
+                    "id": "u103",
+                    "fullname": "Shiran Elad",
+                    "imgUrl": "https://www.google.com",
+                    "color": "#ff006e"
+                  }
+                ]
+              },
+              {
+                "type": "date-picker",
+                "value": null
+              },
+               {
+                 "type": "test-status",
+                 "value": "low"
+               }
+            ],
+            "groupColor": "#2fbc34"
+          }
+        ],
+        "cmpsOrder": [
+          "status-picker",
+          "member-picker",
+          "date-picker"
+        ]
+      }
+    ]
+  },
+  {
+    "_id": "8cEcw",
+    "title": "New board for testing",
+    "description": "",
+    "createdAt": 1648543606937,
+    "createdBy": {
+      "_id": "u105",
+      "fullname": "Guest User",
+      "imgUrl": "http://some-img"
+    },
+    "members": [
+      {
+        "_id": "u105",
+        "fullname": "Guest User",
+        "imgUrl": "http://some-img"
+      }
+    ],
+    "activities": [
+      {
+        "id": "a101",
+        "txt": "Group Title created",
+        "createdAt": 1648543606937,
+        "byMember": {
+          "_id": "u105",
+          "fullname": "Guest User",
+          "imgUrl": "http://some-img"
+        }
+      },
+      {
+        "id": "a102",
+        "txt": "Group Title created",
+        "createdAt": 1648543606937,
+        "byMember": {
+          "_id": "u105",
+          "fullname": "Guest User",
+          "imgUrl": "http://some-img"
+        }
+      },
+      {
+        "task": {
+          "id": "t101",
+          "title": "Task 1 assigned to Guest User"
+        }
+      }
+    ],
+    "groups": [
+      {
+        "id": "gcPKxP",
+        "title": "Group Title",
+        "tasks": [
+          {
+            "id": "t7Aup8",
+            "title": "Item 1",
             "cols": [
               {
                 "type": "status-picker",
@@ -761,8 +1079,8 @@
             ]
           },
           {
-            "id": "tAOGVd",
-            "title": "Create git repository with collaboration",
+            "id": "tJIJYe",
+            "title": "Item 2",
             "cols": [
               {
                 "type": "status-picker",
@@ -770,20 +1088,7 @@
               },
               {
                 "type": "member-picker",
-                "value": [
-                  {
-                    "id": "u101",
-                    "fullname": "Tal Amit",
-                    "imgUrl": "https://www.google.com",
-                    "color": "#8338ec"
-                  },
-                  {
-                    "id": "u102",
-                    "fullname": "Guy Shimon",
-                    "imgUrl": "https://www.google.com",
-                    "color": "#3a86ff"
-                  }
-                ]
+                "value": []
               },
               {
                 "type": "date-picker",
@@ -792,8 +1097,8 @@
             ]
           },
           {
-            "id": "tmuMhT",
-            "title": "Upload to Hiroku",
+            "id": "tydBUS",
+            "title": "Item 3",
             "cols": [
               {
                 "type": "status-picker",
@@ -801,37 +1106,65 @@
               },
               {
                 "type": "member-picker",
-                "value": [
-                  {
-                    "id": "u101",
-                    "fullname": "Tal Amit",
-                    "imgUrl": "https://www.google.com",
-                    "color": "#8338ec"
-                  },
-                  {
-                    "id": "u102",
-                    "fullname": "Guy Shimon",
-                    "imgUrl": "https://www.google.com",
-                    "color": "#3a86ff"
-                  },
-                  {
-                    "id": "u103",
-                    "fullname": "Shiran Elad",
-                    "imgUrl": "https://www.google.com",
-                    "color": "#ff006e"
-                  }
-                ]
+                "value": []
               },
               {
                 "type": "date-picker",
                 "value": null
               }
-            ],
-            "groupColor": "#2fbc34"
+            ]
           }
         ],
-        "cmpsOrder": ["status-picker", "member-picker", "date-picker"]
+        "groupColor": "#579bfc"
+      },
+      {
+        "id": "gJ3Lag",
+        "title": "Group Title",
+        "tasks": [
+          {
+            "id": "tkZKfU",
+            "title": "Item 4",
+            "cols": [
+              {
+                "type": "status-picker",
+                "value": null
+              },
+              {
+                "type": "member-picker",
+                "value": []
+              },
+              {
+                "type": "date-picker",
+                "value": null
+              }
+            ]
+          },
+          {
+            "id": "tMtX2x",
+            "title": "Item 5",
+            "cols": [
+              {
+                "type": "status-picker",
+                "value": null
+              },
+              {
+                "type": "member-picker",
+                "value": []
+              },
+              {
+                "type": "date-picker",
+                "value": null
+              }
+            ]
+          }
+        ],
+        "groupColor": "#a25ddc"
       }
+    ],
+    "cmpsOrder": [
+      "status-picker",
+      "member-picker",
+      "date-picker"
     ]
   }
 ]

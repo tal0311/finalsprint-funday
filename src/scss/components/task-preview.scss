@@ -6,7 +6,7 @@
   color: $clr9;
   height: 36px;
   line-height: 36px;
-  padding-inline-start: 30px;
+  padding-inline-start: 15px;
   cursor: pointer;
   border-bottom: 1px solid $clr8;
   justify-content: start;
@@ -35,9 +35,9 @@
     display: flex;
     align-items: center;
     height: 100%;
-    text-align: left;
-    // flex-basis: 400px;
-    flex-basis: 40%;
+    text-align: start;
+    // flex-basis: 350px;
+    flex:0.5;
     padding: 0 10px 0 0;
     border-right: 1px solid $clr8;
 
@@ -97,20 +97,19 @@
             outline: 1px solid gray;
           }
 
-//         height: 100%;
-//         text-align: left;
-//         // flex-basis: 400px;
-//         flex-basis: 40%;
-//         padding: 0 10px 0 0;
-//         border-right: 1px solid $clr8;
+          //         height: 100%;
+          //         text-align: left;
+          //         // flex-basis: 400px;
+          //         flex-basis: 40%;
+          //         padding: 0 10px 0 0;
+          //         border-right: 1px solid $clr8;
 
-//         .side-indicator {
-//             flex: 0 0 8px;
-//             position: relative;
-//             height: 100%;
-//             background-color: rgb(87, 155, 252);
-//             color: rgb(87, 155, 252);
-
+          //         .side-indicator {
+          //             flex: 0 0 8px;
+          //             position: relative;
+          //             height: 100%;
+          //             background-color: rgb(87, 155, 252);
+          //             color: rgb(87, 155, 252);
         }
         .edit {
           margin-left: 8px;

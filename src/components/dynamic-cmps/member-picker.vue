@@ -11,9 +11,14 @@
         {{ member.fullname?.charAt(0).toUpperCase() }}
       </li>
     </ul>
-    <div class="no-members-container flex" v-else @click="addMember">
-      <div class="no-members"></div>
-    </div>
+
+<div v-else @click="updateMemberList" class="no-member-container flex">
+  <img class="no-member" src="https://cdn.monday.com/icons/dapulse-person-column.svg" alt="no member">
+</div>
+
+    <!-- <div  class="no-members-container flex" v-else @click="addMember">
+      <div class="no-members">member</div>
+    </div> -->
   </div>
 
   <!-- MEMBERS MODAL CMP -->

@@ -4,7 +4,7 @@
     <div class="header">
       <div class="">
         <div class="board-header-top flex">
-          <h1 class="board-title" @blur="setBoardTitle" contenteditable="true">
+          <h1 class="board-title" @keydown.enter="setBoardTitle" @blur="setBoardTitle" contenteditable="true">
             {{ currBoard.title }}
           </h1>
           <div class="info-star flex">
@@ -28,6 +28,7 @@
         <p
           class="description"
           @blur="setBoardTitle"
+          @keydown.enter="setBoardTitle"
           contenteditable="true"
           data-placeholder="Add board description"
         >
