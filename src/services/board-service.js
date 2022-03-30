@@ -10,12 +10,10 @@ import { storageService } from './async-storage.service'
 const KEY = 'board'
 
 export const boardService = {
-  add,
   query,
   remove,
   getById,
   save,
-  // saveGroup,
   getEmptyBoard,
   getEmptyGroup,
   getEmptyTask,
@@ -40,20 +38,6 @@ async function getById(boardId) {
   // const user = await httpService.get(`user/${userId}`)
   // gWatchedUser = user;
   return group
-}
-
-async function add(board) {
-  if (board._id) {
-    const updatedBoard = await storageService.put('board', board)
-    return updatedBoard
-  }
-  // const addedboard = await httpService.post(`board`, board)
-
-  // board.byUser = userService.getLoggedinUser()
-  // board.aboutUser = await userService.getById(board.aboutUserId)
-  const addedboard = await storageService.post(KEY, board)
-
-  return addedboard
 }
 
 async function save(board) {
