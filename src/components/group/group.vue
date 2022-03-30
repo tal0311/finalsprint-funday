@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     addTask(value, groupId) {
-      console.log(value)
+      // console.log(value)
       const idx = this.board.groups.findIndex((group) => group.id === groupId)
       this.$store.dispatch({
         type: 'addTask',

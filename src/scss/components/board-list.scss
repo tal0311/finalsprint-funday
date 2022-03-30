@@ -149,10 +149,19 @@
   .board-names-list {
     line-height: toRem(24);
     padding-top: toRem(16);
+    
+    .remove-board {
+      // margin: 0 8px;
+      align-items: center;
+      justify-content: center;
+      // padding: 2px 5px;
+      cursor:pointer;
+    }
   }
 
   .bl-btn {
     // border: 1px solid black;
+    display: flex;
     padding: 0 3px 0 6px;
     font-size: 0.875rem;
     color: $clr9;
@@ -167,12 +176,14 @@
     }
     .svg-icon {
       margin-bottom: 3px;
+      align-items: center;
     }
     > span {
       margin: 0 8px;
       align-items: center;
       padding: 2px 5px;
     }
+    
   }
 
   &.is-expanded {

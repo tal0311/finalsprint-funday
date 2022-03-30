@@ -63,8 +63,8 @@
       </div>
       <div class="spacer"></div>
       <div class="boards">
-        <section class="board-names-list">
-          <article v-for="board in boards" :key="board" class="">
+        <section class="board-names-list" >
+          <article v-for="board in boards" :key="board" class="flex">
             <router-link
               :to="'/board/' + board._id"
               class="bl-btn btn flex"
@@ -81,13 +81,10 @@
               <span
                 contenteditable="true"
                 @blur.stop="updateBoard($event)"
-                >{{ board.title }}</span
-              >
-              |
+                >{{board.title}}</span>
+              </router-link>
               <span class="remove-board" @click="removeBoard(board._id)"
-                >X</span
-              ></router-link
-            >
+                >X</span>
 
             <board-options @update="setBoardUpdate" v-if="isOptions" />
           </article>
@@ -170,23 +167,15 @@ export default {
 
     async removeBoard(boardId) {
       try {
-
-      
       await this.$store.dispatch({
         type: "removeBoard",
-        boardId,
-        boards: this.boards,
+        boardId
       });
-      // const idx = this.boards.findIndex((board) => board._id === boardId);
-      // console.log('idx', idx);
-      // if (idx === -1) {
-        //   this.$store.commit({ type: "setCurrBoard", board: this.boards[0] });
-          console.log("/board/" + this.currBoard._id)
-        
-        this.$router.push(`'/board/'${this.currBoard._id}`);
+          // console.log("/board/" + this.currBoard._id)
       } catch(err){
         console.log(err)
       }
+        this.$router.push(`/board/${this.currBoard._id}`);
               // }
     },
   },
