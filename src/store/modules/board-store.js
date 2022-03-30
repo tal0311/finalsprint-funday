@@ -139,6 +139,33 @@ export const boardStore = {
         })
       }
     },
+
+
+    /*** */
+    async duplicateBoard({ dispatch, state, commit }, { boardId }) {
+      try {
+        var toDuplicate = board.groups.find((group) => group.id === groupId)
+        const idx = board.groups.findIndex((group) => group.id === groupId)
+        var emptyGroup = boardService.getEmptyGroup()
+        emptyGroup = JSON.parse(JSON.stringify(toDuplicate))
+        emptyGroup.id = utilService.makeId()
+        emptyGroup.title = 'Duplicate of ' + emptyGroup.title
+        board.groups.splice(idx, 0, emptyGroup)
+
+        const updatedBoard = await boardService.save(board)
+        dispatch({
+          type: 'saveBoard',
+          board: JSON.parse(JSON.stringify(updatedBoard)),
+        })
+        commit({ type: 'setCurrBoard', board: updatedBoard })
+      } catch (error) {
+        console.log('problem with duplicating board', error)
+      }
+    },
+
+    /**** */
+
+
     async getBoardById({ commit }, { boardId }) {
       try {
         let board = await boardService.getById(boardId)
@@ -188,7 +215,7 @@ export const boardStore = {
         })
         commit({ type: 'setCurrBoard', board: updatedBoard })
       } catch (error) {
-        console.log('problem with duplicating board', error)
+        console.log('problem with duplicating group', error)
       }
     },
 

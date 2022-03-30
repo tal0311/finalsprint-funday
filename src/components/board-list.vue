@@ -82,6 +82,12 @@
                 board.title
               }}</span> | <span class="remove-board" @click="removeBoard(board._id)">X</span></router-link
             >
+
+<board-options
+        @update="setBoardUpdate"
+        v-if="isOptions"
+      />
+
           </article>
         </section>
       </div>
@@ -136,6 +142,23 @@ export default {
       this.isExpanded = !this.isExpanded;
     },
 
+setBoardUpdate(){
+
+       if (value === 'remove') {
+        this.$store.dispatch({ type: 'removeBoard', boardId: this.board._id })
+      }
+      if (value === "duplicate") {
+        this.$store.dispatch({
+          type: "duplicateBoard",
+          boardId: this.board._id,
+        });
+      }
+      if (value.startsWith('#')) {
+        const groupToUpdate = JSON.parse(JSON.stringify(this.group))
+        groupToUpdate.groupColor = value
+        this.$store.dispatch({ type: 'updateGroup', groupToUpdate })
+      }
+    },
     updateBoard(board, $event) {
       const newBoard = JSON.parse(JSON.stringify(board));
       newBoard.title = $event.target.innerText;
