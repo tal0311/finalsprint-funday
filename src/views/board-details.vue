@@ -149,7 +149,7 @@ export default {
       })
     },
     addGroup() {
-      this.$store.dispatch({ type: 'addGroup', board: this.currBoard })
+      this.$store.dispatch({ type: "addGroup"});
     },
     setBoardTitle(event) {
       if (event.target.nodeName === 'H1') {
