@@ -135,13 +135,14 @@ export const boardStore = {
         console.log('error during adding board', err)
       }
     },
-    // !here
+    
     async removeBoard({ dispatch, commit, state }, { boardId }) {
       try {
         await boardService.remove(boardId)
-        console.log('first board' , state.boards[0])
+        console.log('first board', state.boards[0])
         commit({ type: 'removeBoard', boardId })
-        if(boardId === state.currBoard._id) commit({ type: 'setCurrBoard', board: state.boards[0] })
+        if (boardId === state.currBoard._id)
+          commit({ type: 'setCurrBoard', board: state.boards[0] })
         console.log(state.currBoard)
         // dispatch({ type: 'loadBoards' })
       } catch (err) {
@@ -149,11 +150,11 @@ export const boardStore = {
       }
     },
     // !here
-    async saveBoard({ dispatch, commit, state }, { title , description}) {
-      console.log('title, description from store', title, description);
+    async saveBoard({ dispatch, commit, state }, { title, description }) {
+      console.log('title, description from store', title, description)
       const board = JSON.parse(JSON.stringify(state.currBoard))
-      board.title = (!title) ? board.title : title
-      board.description = (!description) ? board.description : description
+      board.title = !title ? board.title : title
+      board.description = !description ? board.description : description
       try {
         const boardToUpdate = await boardService.save(board)
         // !
@@ -326,7 +327,7 @@ export const boardStore = {
       )
       board.groups[gIdx].tasks.splice(tIdx, 1, task)
       try {
-        await boardService.save(board)
+         await boardService.save(board)
 
         commit({ type: 'setCurrBoard', board })
       } catch (err) {
