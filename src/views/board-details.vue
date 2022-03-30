@@ -152,17 +152,14 @@ export default {
       this.$store.dispatch({ type: 'addGroup', board: this.currBoard })
     },
     setBoardTitle(event) {
-      const board = JSON.parse(JSON.stringify(this.currBoard))
       if (event.target.nodeName === 'H1') {
-        const value = event.target.innerText
-        board.title = value
+        var title = event.target.innerText
       }
       if (event.target.nodeName === 'P') {
-        const value = event.target.innerText
-        board.description = value
+        var description = event.target.innerText
       }
-
-      this.$store.dispatch({ type: 'saveBoard', board })
+      console.log('title, description', title, description);
+      this.$store.dispatch({ type: 'saveBoard', title, description})
     },
     onDrop(dropResult) {
       const board = JSON.parse(JSON.stringify(this.currBoard))

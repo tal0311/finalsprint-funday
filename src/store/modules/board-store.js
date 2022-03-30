@@ -149,9 +149,11 @@ export const boardStore = {
       }
     },
     // !here
-    async saveBoard({ dispatch, commit, state }, { value }) {
+    async saveBoard({ dispatch, commit, state }, { title , description}) {
+      console.log('title, description from store', title, description);
       const board = JSON.parse(JSON.stringify(state.currBoard))
-      board.title = value
+      board.title = (!title) ? board.title : title
+      board.description = (!description) ? board.description : description
       try {
         const boardToUpdate = await boardService.save(board)
         // !

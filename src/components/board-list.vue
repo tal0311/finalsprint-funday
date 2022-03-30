@@ -163,7 +163,9 @@ export default {
       }
     },
     async updateBoard($event) {
-      await this.$store.dispatch({ type: "saveBoard", value: $event.target.innerText });
+      console.log($event)
+      var title = $event.target.innerText
+      await this.$store.dispatch({ type: "saveBoard", title});
     },
 
     async removeBoard(boardId) {
