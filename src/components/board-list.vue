@@ -162,7 +162,7 @@ export default {
       if (value === "remove") {
         await this.$store.dispatch({
           type: "removeBoard",
-          boardId: board._Id,
+          boardId: board._id,
         });
       }
       if (value === "duplicate") {
@@ -180,7 +180,11 @@ export default {
     async updateBoard(title, board) {
       // console.log($event)
       // var title = $event.target.innerText
-      await this.$store.dispatch({ type: "saveBoard", title, boardId: board._id });
+      await this.$store.dispatch({
+        type: "saveBoard",
+        title,
+        boardId: board._id,
+      });
     },
 
     async removeBoard(boardId) {
@@ -189,11 +193,11 @@ export default {
           type: "removeBoard",
           boardId,
         });
+        this.$router.push(`/board/${this.currBoard._id}`);
         // console.log("/board/" + this.currBoard._id)
       } catch (err) {
         console.log(err);
       }
-      this.$router.push(`/board/${this.currBoard._id}`);
       // }
     },
   },

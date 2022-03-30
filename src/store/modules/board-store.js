@@ -1,7 +1,7 @@
 import { boardService } from '../../services/board-service.js';
 import { utilService } from '../../services/util-service.js';
 export const boardStore = {
-  
+
   strict: true,
 
   state: {
@@ -137,7 +137,7 @@ export const boardStore = {
         await boardService.remove(boardId)
         // console.log('first board' , state.boards[0])
         commit({ type: 'removeBoard', boardId })
-        if(boardId === state.currBoard._id) commit({ type: 'setCurrBoard', board: state.boards[0] })
+        if (boardId === state.currBoard._id) commit({ type: 'setCurrBoard', board: state.boards[0] })
         // console.log(state.currBoard)
         // dispatch({ type: 'loadBoards' })
       } catch (err) {
@@ -145,7 +145,7 @@ export const boardStore = {
       }
     },
     // !here
-    async saveBoard({ dispatch, commit, state }, { title , description, boardId}) {
+    async saveBoard({ dispatch, commit, state }, { title, description, boardId }) {
       // console.log('title, description from store', title, description);
       const board = state.boards.find(b => b._id === boardId)
       // const board = JSON.parse(JSON.stringify(state.currBoard))
@@ -153,7 +153,9 @@ export const boardStore = {
       board.description = (!description) ? board.description : description
       try {
         const boardToUpdate = await boardService.save(board);
-        dispatch({ type: 'loadBoards' });
+        console.log(boardToUpdate)
+        commit({ type: 'saveBoard', board: boardToUpdate })
+        // dispatch({ type: 'loadBoards' });
         // commit({ type: 'setCurrBoard', board: boardToUpdate });
       } catch (err) {
         console.log("Couldn't save board", err);
