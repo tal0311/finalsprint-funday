@@ -178,17 +178,18 @@ export default {
       if (addedIndex !== null) {
         result.splice(addedIndex, 0, taskToAdd)
       }
-
-      this.updateBoard(result)
+      this.updateGroupsOrder(result)
 
       return result
     },
-    updateBoard(result) {
-      const updatedBoard = JSON.parse(JSON.stringify(this.currBoard))
-      updatedBoard.groups = JSON.parse(JSON.stringify(result))
+    updateGroupsOrder(result) {
+      // const savedBoard = JSON.parse(JSON.stringify(this.currBoard))
+      // savedBoard.groups = JSON.parse(JSON.stringify(groupsAfterDnd))
+      const groupsAfterDnd = JSON.parse(JSON.stringify(result))
+      console.log('result', groupsAfterDnd)
       this.$store.dispatch({
-        type: 'saveBoard',
-        board: updatedBoard,
+        type: 'updateGroupsOrder',
+        newGroups: groupsAfterDnd,
       })
     },
     setCurrGroup(group) {
