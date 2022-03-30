@@ -1,6 +1,5 @@
 <template>
   <section class='activity-log'>
-    {{activities}}
       <table>
         <tbody>
           <tr v-for="activity in activities" :key="activity.id">
