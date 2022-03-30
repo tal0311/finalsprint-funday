@@ -102,9 +102,7 @@ import { ElMessage, ElMessageBox } from "element-plus";
 
 export default {
   // props: [''],
-  components: {},
-  created() {},
-  mounted() {},
+ 
 
   data() {
     return {

@@ -83,6 +83,9 @@ export default {
       return this.$store.getters.currBoard;
     },
   },
+  created(){
+this.tasks
+  },
   components: {
     taskPreview,
     Container,
