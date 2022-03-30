@@ -145,15 +145,16 @@ export const boardStore = {
       }
     },
     // !here
-    async saveBoard({ dispatch, commit, state }, { title , description}) {
+    async saveBoard({ dispatch, commit, state }, { title , description, boardId}) {
       // console.log('title, description from store', title, description);
-      const board = JSON.parse(JSON.stringify(state.currBoard))
+      const board = state.boards.find(b => b._id === boardId)
+      // const board = JSON.parse(JSON.stringify(state.currBoard))
       board.title = (!title) ? board.title : title
       board.description = (!description) ? board.description : description
       try {
         const boardToUpdate = await boardService.save(board);
         dispatch({ type: 'loadBoards' });
-        commit({ type: 'setCurrBoard', board: boardToUpdate });
+        // commit({ type: 'setCurrBoard', board: boardToUpdate });
       } catch (err) {
         console.log("Couldn't save board", err);
         commit({

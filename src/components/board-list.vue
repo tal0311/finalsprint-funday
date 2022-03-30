@@ -63,8 +63,17 @@
       </div>
       <div class="spacer"></div>
       <div class="boards">
-        <section class="board-names-list" >
-          <article v-for="board in boards" :key="board" class="flex">
+        <section class="board-names-list">
+          <board-preview
+            v-for="board in boards"
+            :key="board"
+            :board="board"
+            @chooseBoard="chooseBoard"
+            @setBoardUpdate="setBoardUpdate"
+            @updateBoard="updateBoard"
+          ></board-preview>
+          <!-- <article v-for="board in boards" :key="board" class="flex space-between relative">
+            <div>
             <router-link
               :to="'/board/' + board._id"
               class="bl-btn btn flex"
@@ -83,11 +92,13 @@
                 @blur.stop="updateBoard($event)"
                 >{{board.title}}</span>
               </router-link>
+              </div>
               <span class="remove-board" @click="removeBoard(board._id)"
                 >X</span>
-
-            <board-options @update="setBoardUpdate" v-if="isOptions" />
-          </article>
+                <span class="flex align-center"><img src="../assets/img/ellipsis-solid.svg" alt=""  class="elipsis-board absolute"
+                 @click="isOptions = !isOptions"> </span>
+            <board-options @update="setBoardUpdate" v-if="isOptions"/>
+          </article> -->
         </section>
       </div>
     </div>
@@ -96,10 +107,15 @@
 
 <script>
 import { ElMessage, ElMessageBox } from "element-plus";
+// import boardOptions from '../components/board/board-options.vue'
+import boardPreview from "../components/board-preview.vue";
 
 export default {
   // props: [''],
- 
+
+  components: {
+    boardPreview,
+  },
 
   data() {
     return {
@@ -108,6 +124,7 @@ export default {
   },
   methods: {
     //addBoard includes element ui message box
+
     async addBoard() {
       try {
         const { value } = await ElMessageBox.prompt(
@@ -138,43 +155,46 @@ export default {
       this.isExpanded = !this.isExpanded;
     },
 
-    async setBoardUpdate() {
+    async setBoardUpdate(value, board) {
       // if (value === "rename") {
       //   updateBoard()
       // }
       if (value === "remove") {
-        await this.$store.dispatch({ type: "removeBoard", boardId: this.board._id });
+        await this.$store.dispatch({
+          type: "removeBoard",
+          boardId: board._Id,
+        });
       }
       if (value === "duplicate") {
-          await this.$store.dispatch({
-            type: "addBoard",
-            value: 'Duplicate of ' + this.board.title,
-          });
-      }
-      if (value.startsWith("#")) {
-        const groupToUpdate = JSON.parse(JSON.stringify(this.group));
-        groupToUpdate.groupColor = value;
-        this.$store.dispatch({ type: "updateGroup", groupToUpdate });
+        await this.$store.dispatch({
+          type: "addBoard",
+          value: "Duplicate of " + board.title,
+        });
       }
     },
-    async updateBoard($event) {
-      console.log($event)
-      var title = $event.target.innerText
-      await this.$store.dispatch({ type: "saveBoard", title});
+    // async updateBoard($event) {
+    //   console.log($event)
+    //   var title = $event.target.innerText
+    //   await this.$store.dispatch({ type: "saveBoard", title});
+    // },
+    async updateBoard(title, board) {
+      // console.log($event)
+      // var title = $event.target.innerText
+      await this.$store.dispatch({ type: "saveBoard", title, boardId: board._id });
     },
 
     async removeBoard(boardId) {
       try {
-      await this.$store.dispatch({
-        type: "removeBoard",
-        boardId
-      });
-          // console.log("/board/" + this.currBoard._id)
-      } catch(err){
-        console.log(err)
+        await this.$store.dispatch({
+          type: "removeBoard",
+          boardId,
+        });
+        // console.log("/board/" + this.currBoard._id)
+      } catch (err) {
+        console.log(err);
       }
-        this.$router.push(`/board/${this.currBoard._id}`);
-              // }
+      this.$router.push(`/board/${this.currBoard._id}`);
+      // }
     },
   },
   computed: {

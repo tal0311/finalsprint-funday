@@ -15,7 +15,8 @@ export default defineConfig({
     }
   },
   build: {
-    outDir: '../backend/public',
-    emptyOutDir: true
+    outDir: '../BACKEND-finalsprint-funday/public',
+    emptyOutDir: true,
+    chunkSizeWarningLimit: 1600
   }
 })
