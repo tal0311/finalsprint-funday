@@ -143,7 +143,7 @@ export const boardStore = {
         commit({ type: 'removeBoard', boardId })
         if(boardId === state.currBoard._id) commit({ type: 'setCurrBoard', board: state.boards[0] })
         console.log(state.currBoard)
-        dispatch({ type: 'loadBoards' })
+        // dispatch({ type: 'loadBoards' })
       } catch (err) {
         console.log('error during removing board', err)
       }
