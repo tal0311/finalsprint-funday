@@ -162,7 +162,7 @@ export default {
       if (value === "remove") {
         await this.$store.dispatch({
           type: "removeBoard",
-          boardId: board._Id,
+          boardId: board._id,
         });
       }
       if (value === "duplicate") {
@@ -180,7 +180,11 @@ export default {
     async updateBoard(title, board) {
       // console.log($event)
       // var title = $event.target.innerText
-      await this.$store.dispatch({ type: "saveBoard", title, boardId: board._id });
+      await this.$store.dispatch({
+        type: "saveBoard",
+        title,
+        boardId: board._id,
+      });
     },
 
     async removeBoard(boardId) {
