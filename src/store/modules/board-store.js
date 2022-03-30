@@ -318,7 +318,6 @@ export const boardStore = {
         console.log('Problem with updating task', err);
       }
     },
-    // !here
     async removeTask({ commit }, { boardId, groupId, task }) {
       try {
         let board = await boardService.getById(boardId);

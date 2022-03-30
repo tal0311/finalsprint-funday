@@ -18,7 +18,7 @@
 <script>
 export default {
   name: 'date-picker',
-  emits: ['updateTask', 'add', 'remove'],
+  emits: [ 'add', 'remove', 'update-date'],
   props: {
     task: Object,
     group: Object,
@@ -30,20 +30,10 @@ export default {
     }
   },
   methods: {
-    async setDate() {
-      const board = this.$store.getters.currBoard
-
-      /* FROM HERE */
-      const currTask = JSON.parse(JSON.stringify(this.task))
-
-      currTask.cols[2].value = this.taskDate
-      await this.$store.dispatch({
-        type: 'updateTask',
-        boardId: board._id,
-        groupId: this.group.id,
-        task: currTask,
-      })
-      this.$emit('updateTask')
+     setDate() {
+    const currTask = JSON.parse(JSON.stringify(this.task))
+    currTask.cols[2].value = this.taskDate
+    this.$emit('update-date', currTask)
     },
   },
 
