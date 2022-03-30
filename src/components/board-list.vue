@@ -78,11 +78,9 @@
                   clip-rule="evenodd"
                 ></path>
               </svg>
-              <span
-                contenteditable="true"
-                @blur.stop="updateBoard($event)"
-                >{{ board.title }}</span
-              >
+              <span contenteditable="true" @blur.stop="updateBoard($event)">{{
+                board.title
+              }}</span>
               |
               <span class="remove-board" @click="removeBoard(board._id)"
                 >X</span
@@ -99,10 +97,12 @@
 
 <script>
 import { ElMessage, ElMessageBox } from "element-plus";
-
+import boardOptions from "../components/board/board-options.vue";
 export default {
   // props: [''],
- 
+  components: {
+    boardOptions,
+  },
 
   data() {
     return {
@@ -146,13 +146,16 @@ export default {
       //   updateBoard()
       // }
       if (value === "remove") {
-        await this.$store.dispatch({ type: "removeBoard", boardId: this.board._id });
+        await this.$store.dispatch({
+          type: "removeBoard",
+          boardId: this.board._id,
+        });
       }
       if (value === "duplicate") {
-          await this.$store.dispatch({
-            type: "addBoard",
-            value: 'Duplicate of ' + this.board.title,
-          });
+        await this.$store.dispatch({
+          type: "addBoard",
+          value: "Duplicate of " + this.board.title,
+        });
       }
       if (value.startsWith("#")) {
         const groupToUpdate = JSON.parse(JSON.stringify(this.group));
@@ -161,31 +164,29 @@ export default {
       }
     },
     async updateBoard($event) {
-      console.log($event)
-      var title = $event.target.innerText
-      await this.$store.dispatch({ type: "saveBoard", title});
+      console.log($event);
+      var title = $event.target.innerText;
+      await this.$store.dispatch({ type: "saveBoard", title });
     },
 
     async removeBoard(boardId) {
       try {
-
-      
-      await this.$store.dispatch({
-        type: "removeBoard",
-        boardId,
-        boards: this.boards,
-      });
-      // const idx = this.boards.findIndex((board) => board._id === boardId);
-      // console.log('idx', idx);
-      // if (idx === -1) {
+        await this.$store.dispatch({
+          type: "removeBoard",
+          boardId,
+          boards: this.boards,
+        });
+        // const idx = this.boards.findIndex((board) => board._id === boardId);
+        // console.log('idx', idx);
+        // if (idx === -1) {
         //   this.$store.commit({ type: "setCurrBoard", board: this.boards[0] });
-          console.log("/board/" + this.currBoard._id)
-        
+        console.log("/board/" + this.currBoard._id);
+
         this.$router.push(`'/board/'${this.currBoard._id}`);
-      } catch(err){
-        console.log(err)
+      } catch (err) {
+        console.log(err);
       }
-              // }
+      // }
     },
   },
   computed: {

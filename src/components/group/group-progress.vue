@@ -22,7 +22,7 @@ export default {
     tasks: Array,
   },
   created() {
-    console.log(this.tasks)
+    // console.log(this.tasks)
   },
   computed: {
     sortStatus() {

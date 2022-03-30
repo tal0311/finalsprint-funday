@@ -1,7 +1,7 @@
 import { boardService } from '../../services/board-service.js';
 import { utilService } from '../../services/util-service.js';
 export const boardStore = {
-  
+
   strict: true,
 
   state: {
@@ -10,6 +10,8 @@ export const boardStore = {
     currGroup: {},
     currTask: {},
     taskToShow: null,
+    filterBy: null,
+    filteredBoard: null,
   },
 
   getters: {
@@ -18,6 +20,27 @@ export const boardStore = {
     },
     currBoard(state) {
       return JSON.parse(JSON.stringify(state.currBoard));
+    },
+    boardToDisplay(state) {
+      return JSON.parse(JSON.stringify(state.filteredBoard));
+      
+      
+      // const regex = new RegExp(state.filterBy, 'i');
+      // // console.log('currBoard in the store', state.currBoard);
+      // var displayedBoard = JSON.parse(JSON.stringify(state.currBoard));
+      // console.log('board', displayedBoard.groups);
+      // if (!displayedBoard.groups) return displayedBoard;
+      // const filteredGroups = displayedBoard.groups.map(group => {
+      //   console.log(group);
+      //   group.tasks = group.tasks.filter(task => {
+      //     // console.log(task);
+      //     return regex.test(task.title);
+      //   });
+      //   return group;
+      // });
+      // displayedBoard.groups = filteredGroups;
+      // console.log(displayedBoard);
+      // return displayedBoard;
     },
     currTask(state) {
       return JSON.parse(JSON.stringify(state.currTask));
@@ -28,7 +51,6 @@ export const boardStore = {
   },
   mutations: {
     // GROUP
-
     updateBoard({ currBoard }, { group, task }) {
       console.log('update Board:', task);
       var newGroup = JSON.parse(JSON.stringify(group));
@@ -63,8 +85,22 @@ export const boardStore = {
     taskFromBoard(state, { taskId }) {
       return state.currBoard.groups.tasks.filter((task) => task.id === taskId);
     },
-
     // BOARD
+    setFilter(state, { filterBy }) {
+      state.filterBy = filterBy;
+      console.log(state.filterBy)
+      if (!filterBy) {
+        state.filteredBoard =  JSON.parse(JSON.stringify(state.currBoard))
+      } else {
+        state.filteredBoard =  JSON.parse(JSON.stringify(state.currBoard))
+        const regex = new RegExp(filterBy, 'i');
+        state.filteredBoard.groups.map(group => {
+          group.tasks = group.tasks.filter(task => regex.test(task.title));
+        });
+      }
+      console.log('state.filteredBoard:', state.filteredBoard)
+      console.log(state.filteredBoard.groups)
+    },
     addBoard(state, { board }) {
       state.boards.push(board);
     },
@@ -76,7 +112,6 @@ export const boardStore = {
       const idx = state.boards.findIndex((board) => board._id === boardId);
       state.boards.splice(idx, 1);
     },
-
     saveBoard(state, { savedBoard }) {
       const idx = state.boards.findIndex(
         (board) => board._id === savedBoard._id
@@ -88,7 +123,6 @@ export const boardStore = {
       state.currBoard = board;
       console.log('currBoard set');
     },
-
     setCurrTask(state, { task }) {
       state.currTask = task;
       // console.log(state.currTask)
@@ -139,7 +173,7 @@ export const boardStore = {
         commit({ type: 'removeBoard', boardId });
         if (boardId === state.currBoard._id) commit({ type: 'setCurrBoard', board: state.boards[0] });
         console.log(state.currBoard);
-        // dispatch({ type: 'loadBoards' })
+        dispatch({ type: 'loadBoards' })
       } catch (err) {
         console.log('error during removing board', err);
       }
