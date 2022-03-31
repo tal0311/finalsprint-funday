@@ -8,19 +8,22 @@
       >
         <i class="fa-solid fa-sort-down"></i>
       </button>
-      <div
-        v-if="group"
-        :style="{ color: group.groupColor }"
-        class="group-title"
-        @blur="updateGroup(group, $event)"
-        contenteditable="true"
-      >
-        {{ group.title }}
-        <div class="col-headers">
-          <div>1</div>
-          <div>2</div>
-          <div>3</div>
-          <div>4</div>
+      <div class=" title-wrapper flex">
+        <p
+          contenteditable="true"
+          v-if="group"
+          :style="{ color: group.groupColor }"
+          class="group-title"
+          @blur="updateGroup(group, $event)"
+        >
+          {{ group.title }}
+        </p>
+
+        <div class="col-headers flex">
+          <div class="label">status</div>
+          <div class="label">person</div>
+          <div class="label">date</div>
+          <div class="label">priority</div>
         </div>
       </div>
 
@@ -41,13 +44,13 @@
   </section>
 </template>
 <script>
-import tasksList from "../task/tasks-list.vue";
-import groupProgress from "./group-progress.vue";
-import groupOptions from "./group-options.vue";
-import groupLabels from "../group/group-labels.vue";
+import tasksList from '../task/tasks-list.vue'
+import groupProgress from './group-progress.vue'
+import groupOptions from './group-options.vue'
+import groupLabels from '../group/group-labels.vue'
 export default {
-  name: "group-cmp",
-  emits: ["updateGroup", "setCurrGroup"],
+  name: 'group-cmp',
+  emits: ['updateGroup', 'setCurrGroup'],
   props: {
     group: Object,
     board: Object,
@@ -62,64 +65,64 @@ export default {
   data() {
     return {
       isOptions: false,
-    };
+    }
   },
   methods: {
     addTask(value, groupId) {
       // console.log(value)
-      const idx = this.board.groups.findIndex((group) => group.id === groupId);
+      const idx = this.board.groups.findIndex((group) => group.id === groupId)
       this.$store.dispatch({
-        type: "addTask",
+        type: 'addTask',
         groupIdx: idx,
         value,
-      });
+      })
     },
     setIsOptions() {
-      this.isOptions = !this.isOptions;
+      this.isOptions = !this.isOptions
     },
 
     setGroupUpdate(value) {
-      if (value === "remove") {
-        this.$store.dispatch({ type: "removeGroup", groupId: this.group.id });
+      if (value === 'remove') {
+        this.$store.dispatch({ type: 'removeGroup', groupId: this.group.id })
       }
-      if (value === "duplicate") {
+      if (value === 'duplicate') {
         this.$store.dispatch({
-          type: "duplicateGroup",
+          type: 'duplicateGroup',
           groupId: this.group.id,
-        });
+        })
       }
-      if (value.startsWith("#")) {
-        const groupToUpdate = JSON.parse(JSON.stringify(this.group));
-        groupToUpdate.groupColor = value;
-        this.$store.dispatch({ type: "updateGroup", groupToUpdate });
+      if (value.startsWith('#')) {
+        const groupToUpdate = JSON.parse(JSON.stringify(this.group))
+        groupToUpdate.groupColor = value
+        this.$store.dispatch({ type: 'updateGroup', groupToUpdate })
       }
     },
     updateGroup(group, ev) {
-      const groupToUpdate = JSON.parse(JSON.stringify(group));
-      if (!ev.target.innerText) return;
-      groupToUpdate.title = ev.target.innerText;
-      this.$store.dispatch({ type: "updateGroup", groupToUpdate });
+      const groupToUpdate = JSON.parse(JSON.stringify(group))
+      if (!ev.target.innerText) return
+      groupToUpdate.title = ev.target.innerText
+      this.$store.dispatch({ type: 'updateGroup', groupToUpdate })
     },
     async updateGroupAfterDnd(tasksAfterDnd) {
-      this.group.tasks = tasksAfterDnd;
+      this.group.tasks = tasksAfterDnd
       // this.$store.commit({ type: "updateGroup", updatedGroup: this.group });
       this.$store.dispatch({
-        type: "updateGroup",
+        type: 'updateGroup',
         groupToUpdate: JSON.parse(JSON.stringify(this.group)),
-      });
+      })
     },
     setCurrGroup() {
-      this.$emit("setCurrGroup", this.group);
+      this.$emit('setCurrGroup', this.group)
     },
   },
   computed: {
     getTasks() {
-      return this.group.tasks;
+      return this.group.tasks
     },
     currBoard() {
-      return this.$store.getters.currBoard;
+      return this.$store.getters.currBoard
     },
   },
-};
+}
 </script>
 <style></style>
