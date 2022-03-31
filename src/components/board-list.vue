@@ -209,6 +209,5 @@ export default {
       return this.$store.getters.currBoard;
     },
   },
-  unmounted() {},
 };
 </script>
