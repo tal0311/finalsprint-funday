@@ -7,7 +7,8 @@
   .el-input__inner {
     text-align: center;
     background-color: transparent;
-    outline: none;
+    box-shadow: none;
+    font-family: 'Roboto 300';
   }
   .el-icon.el-input__icon svg {
     display: none;
