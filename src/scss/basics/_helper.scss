@@ -64,7 +64,13 @@
 }
 
 .btn{
-  background-color: transparent;
   cursor: pointer;
+  background-color: transparent;
+  color: $clr9;
+
   border: 0;
+  &:hover {
+    background-color: $clr7;
+    border-radius: 4px;
+  }
 }

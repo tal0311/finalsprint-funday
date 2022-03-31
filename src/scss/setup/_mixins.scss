@@ -18,11 +18,10 @@
 @mixin hoverToEditTxt {
   outline: solid $clr18 1px;
   border-radius: 4px;
-  // padding: 0 3px ;
 }
 
 @mixin headerBtn {
-  padding: toRem(7) toRem(15);
+  // padding: toRem(7) toRem(15);
   background-color: transparent;
   border: none;
   border: 1px solid transparent;

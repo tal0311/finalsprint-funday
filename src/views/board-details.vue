@@ -2,35 +2,41 @@
   <section v-if="currBoard" class="board-details" :key="currBoard">
     <div class="header">
       <div class="">
-        <div class="board-header-top flex">
-          <h1
-            class="board-title"
-            @keydown.enter="setBoardTitle"
-            @blur="setBoardTitle"
-            contenteditable="true">
-            {{ currBoard.title }}
-          </h1>
-          <div class="info-star flex">
-            <button class="info" @click="toggleDesc = !toggleDesc"></button>
-            <button class="star">Star</button>
-          </div>
-
-          <div class="board-actions flex">
-            <!-- LAST SEEN CMP -->
-            <div class="last-seen flex">
-              <button class="btn last">Last seen</button>
-              <last-seen :members="currBoard.members" />
+        <div class="board-header-top">
+          <div class="board-header-left flex space-evenly">
+            <h1
+              class="board-title"
+              @keydown.enter="setBoardTitle"
+              @blur="setBoardTitle"
+              contenteditable="true"
+            >
+              {{ currBoard.title }}
+            </h1>
+            <div class="info-star flex">
+              <button class="btn-hover" @click="toggleDesc = !toggleDesc">
+                <span class="info"></span>
+              </button>
+              <button class="btn-hover" @click="isFavorite = !isFavorite"><span class="star" 
+              :class="{'is-on' : isFavorite, 'is-off': !isFavorite}">
+                </span></button>
             </div>
-            <button class="btn invite">
-              Invite / <span>{{ currBoard.members?.length }}</span>
-            </button>
-            <button class="btn activity">Activity</button>
-            <button class="btn add">Add to board</button>
           </div>
-        </div>
+          <div class="board-header-right flex">
+              <!-- LAST SEEN CMP -->
+              <div class="last-seen flex">
+                <button class="btn last">Last seen</button>
+                <last-seen :members="currBoard.members" />
+              </div>
+              <button class="btn invite flex">
+                Invite / <span>{{ currBoard.members?.length }}</span>
+              </button>
+              <button class="btn activity flex">Activity</button>
+              <button class="btn add">Add to board</button>
+            </div>
+          </div>
         <p
           class="description"
-          :class="{ 'd-none' : toggleDesc}"
+          :class="{ 'd-none': toggleDesc }"
           @blur="setBoardTitle"
           @keydown.enter="setBoardTitle"
           contenteditable="true"
@@ -140,6 +146,7 @@ export default {
       board: null,
       currGroup: null,
       toggleDesc: false,
+      isFavorite: false,
     };
   },
   methods: {
@@ -162,8 +169,13 @@ export default {
       if (event.target.nodeName === "P") {
         var description = event.target.innerText;
       }
-      console.log('title, description', title, description);
-     this.$store.dispatch({ type: 'saveBoard', title, description, boardId: this.currBoard._id})
+      console.log("title, description", title, description);
+      this.$store.dispatch({
+        type: "saveBoard",
+        title,
+        description,
+        boardId: this.currBoard._id,
+      });
     },
     onDrop(dropResult) {
       const board = JSON.parse(JSON.stringify(this.currBoard));
