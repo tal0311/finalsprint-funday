@@ -14,20 +14,40 @@
       justify-content: center;
     }
 
-   
-   
-
     border: none;
     border-radius: 50%;
     height: 20px;
     width: 20px;
   }
+
+  .title-wrapper {
+    width: 100%;
+    &.flex {
+      .col-headers {
+        &.flex {
+          flex: 1;
+          .label {
+            padding: 5px;
+            text-transform: capitalize;
+            width: 25%;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
   .group-title {
+    margin: 0;
     font-size: 1.3em;
-    padding: 5px;
-    margin-bottom: 5px;
+    min-width: 410px;
+    // padding: 5px;
+    // margin-bottom: 5px;
     &:focus {
       outline: 1px solid gray;
     }
   }
+}
+
+.group{
+  padding-bottom: 2%;
 }
