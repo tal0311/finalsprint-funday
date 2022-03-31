@@ -67,15 +67,24 @@
 
     .board-title {
       line-height: toRem(40);
-      font-size: 2rem;
+      font-size: toRem(32);
       font-weight: 100;
       width: 100%;
+      max-height: toRem(40);
       text-transform: capitalize;
       white-space: nowrap;
       text-overflow: ellipsis;
+      padding: 0 3px ;
 
+      @media (max-width: 1450px) {
+        font-size: toRem(24);
+      }
+      
       &:hover {
-        outline: solid #3333 1px;
+        outline: solid $clr18 1px;
+        cursor:text;
+        border-radius: 4px;
+        // padding: 3px ;
       }
     }
 

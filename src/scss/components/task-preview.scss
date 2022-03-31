@@ -20,20 +20,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
     position: absolute;
     width: 30px;
     left: 0px;
     height: 100%;
 
-    margin-top:7px;
+    margin-top: 7px;
     cursor: pointer;
     background-color: $clr18;
 
-
-    
-
-    height:18px;
+    height: 18px;
     width: 18px;
     font-size: 15px;
 
@@ -56,7 +53,6 @@
 
     .side-indicator {
       flex: 0 0 8px;
-    
     }
     .title-chat {
       flex: 1;
@@ -75,7 +71,7 @@
         display: flex;
         flex: 1;
         align-items: center;
-
+        
         min-width: 0;
         padding-left: 10px;
         line-height: 23px;
@@ -85,6 +81,8 @@
         font-size: 0.8125rem;
         .task-title {
           padding: 2px 5px;
+          text-overflow: ellipsis;
+          overflow: hidden;
           // margin-inline-end: 5px;
           // display: flex;
           // // flex: 1;
@@ -102,7 +100,7 @@
           }
           &.bgc-white {
             background-color: $clr8;
-            width:100%;
+            width: 100%;
           }
           &:focus {
             outline: 1px solid gray;

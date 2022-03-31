@@ -7,8 +7,7 @@
             class="board-title"
             @keydown.enter="setBoardTitle"
             @blur="setBoardTitle"
-            contenteditable="true"
-          >
+            contenteditable="true">
             {{ currBoard.title }}
           </h1>
           <div class="info-star flex">
