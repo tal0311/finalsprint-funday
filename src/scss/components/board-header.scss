@@ -1,8 +1,8 @@
 .header {
-  padding: toRem(16) toRem(30) 0 toRem(30);
+  padding: 30px 30px 0 30px;
 
   .btn-container {
-    margin-top:20px;
+    margin-top: 20px;
     & > * {
       @include headerBtn;
       &:hover {
@@ -10,22 +10,22 @@
       }
     }
     .main {
-      @include mkIcon('\f420');
+      @include mkIcon("\f420");
     }
     .timeline {
-      @include mkIcon('\f211');
+      @include mkIcon("\f211");
     }
     .more {
       &::after {
-        content: '\f106';
+        content: "\f106";
 
         padding: 0 5px;
-        font-family: 'IconFont';
-        font-style: 'normal';
+        font-family: "IconFont";
+        font-style: "normal";
       }
     }
     .add {
-      @include mkIcon('\f47b');
+      @include mkIcon("\f47b");
     }
   }
 
@@ -45,47 +45,89 @@
   }
   .board-header-top {
     width: 100%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
 
-    .info-star {
-      margin-inline-start: -20%;
-      z-index: 1;
+    .board-header-left{
+      max-width: 60%;
 
-      .info {
-        color: $clr5;
-        @include headerBtn;
-        @include mkIcon('\f345');
-      }
-      .star {
-        @include headerBtn;
-        @include mkIcon('\f3dc');
-      }
-      .flex {
-        justify-content: start;
-        align-items: center;
+    .btn-hover {
+      width: 32px;
+      height: 32px;
+      text-align: center;
+      display: flex;
+      flex-direction: row;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      border: 0;
+      border-radius: 4px;
+      background-color: transparent;
+      &:hover {
+        background-color: $clr7;
       }
     }
+    // .info-star {
+    //   z-index: 1;
+
+    .info {
+      // padding: 0 8px;
+      color: $clr5;
+      z-index: 1;
+      // @include headerBtn;
+      text-decoration: none !important;
+      text-align: center;
+      width: toRem(24);
+      font-size: toRem(16);
+      @include mkIcon("\f345");
+      padding-top: 1px;
+    }
+    .star {
+      padding: 0 4px;
+      z-index: 1;
+      &.is-off {
+        // @include headerBtn;
+        @include mkIcon("\f3dc");
+      }
+      &.is-on{
+        @include mkIcon("\f3db");
+        color: #ffcb00;
+        transform: scale(1.2);
+        text-decoration-style: solid;
+        padding: 0;
+      }
+    }
+    .flex {
+      justify-content: start;
+      align-items: center;
+    }
+    // }
 
     .board-title {
       line-height: toRem(40);
       font-size: toRem(32);
       font-weight: 100;
-      width: 100%;
+      flex-basis: 100%;
       max-height: toRem(40);
-      text-transform: capitalize;
       white-space: nowrap;
       text-overflow: ellipsis;
-      padding: 0 3px ;
+      overflow: hidden;
+      padding: 0 3px;
 
       @media (max-width: 1450px) {
         font-size: toRem(24);
       }
-      
+
       &:hover {
         outline: solid $clr18 1px;
-        cursor:text;
+        cursor: text;
         border-radius: 4px;
-        // padding: 3px ;
       }
+      &:focus {
+        @include hoverToEditTxt;
+      }
+
     }
 
     &.flex {
@@ -97,26 +139,27 @@
           justify-content: space-between;
         }
         .invite {
-          @include mkIcon('\f3fb');
+          @include mkIcon("\f3fb");
         }
         .activity {
-          @include mkIcon('\f468');
+          @include mkIcon("\f468");
         }
         .add {
-          @include mkIcon('\f47b');
+          @include mkIcon("\f47b");
           border: 1px solid #bdbdbd;
           border-radius: 0.3em;
         }
       }
-      .board-title {
-        flex-basis: 30%;
-        text-overflow: ellipsis;
-        overflow: hidden;
+      // .board-title {
+      //   // flex-basis: 30%;
+      //   text-overflow: ellipsis;
+      //   overflow: hidden;
 
-        &:focus {
-          @include hoverToEditTxt;
-        }
-      }
+      //   &:focus {
+      //     @include hoverToEditTxt;
+      //   }
+      // }
     }
+  }
   }
 }
