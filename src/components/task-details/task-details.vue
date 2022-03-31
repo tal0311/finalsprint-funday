@@ -11,9 +11,11 @@
       <h2 >{{ task.title }}</h2>
       <br />
       <br />
-      <button @click="activeTab = 'taskUpdates'">Task Updates</button>
-      <button @click="activeTab = 'taskFiles'">Task Files</button>
-      <button @click="activeTab = 'activityLog'">Activity Log</button>
+      <div class="task-actions-container">
+        <button @click="activeTab = 'taskUpdates'">Task Updates</button>
+        <button @click="activeTab = 'taskFiles'">Task Files</button>
+        <button @click="activeTab = 'activityLog'">Activity Log</button>
+      </div>
       <hr />
       <task-updates
         v-if="activeTab === 'taskUpdates'"

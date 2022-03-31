@@ -1,40 +1,24 @@
 <template>
-  <section class='activity-log'>
-      <table>
-        <tbody>
-          <tr v-for="activity in activities" :key="activity.id">
-              <td>{{activity.createdAt}}</td>
-              <td>{{activity.byMember}}</td>
-              <td>{{activity.txt}}</td>
-          </tr>
-        </tbody>
-      </table>
+  <section class="activity-log-wrapper">
+    <ul class="activity-log clean-list">
+      <li class="activity flex" v-for="activity in activities" :key="activity.id">
+        <small>{{ activity.createdAt.substring(0,10) }}</small>
+        <h4> <span>{{ activity.byMember.substring(0,1) }}</span></h4>
+        <p>{{ activity.txt }}</p>
+      </li>
+    </ul>
   </section>
 </template>
 
 <script>
-// import { carService } from '../services/car-service.js'
-// import carFilter from '../components/car-filter.vue'
-
 export default {
   name: 'activity-log',
   props: {
     activities: Array,
   },
-  data() {
-      return {
-         
-      };
+  created() {
+    console.log(this.activities)
   },
-  methods: {
-
-  },
-  computed: {
-
-  },
-  created() {},
-  components: {
-
-  },
+ 
 }
 </script>

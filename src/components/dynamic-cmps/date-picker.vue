@@ -7,22 +7,6 @@
       @change="setDate"
     />
   </div>
-
-  <!-- <span class="actual-date">
-    {{ task.cols[2]?.value?.substr(0, 10) }}
-  </span>
-  <div class="demo-date-picker">
-    <div class="block">
-      <el-date-picker
-        v-model="taskDate"
-        type="date"
-        placeholder="Pick a day"
-        format="YYYY-MM-DD"
-        @change="setDate"
-        class="date-input"
-      ></el-date-picker>
-    </div>
-  </div> -->
 </template>
 <script>
 export default {
@@ -76,7 +60,7 @@ export default {
 .el-date-editor.el-input,
 .el-date-editor.el-input__inner {
   width: unset !important;
-  border:none !important;
+  border: none !important;
 }
 </style>
 

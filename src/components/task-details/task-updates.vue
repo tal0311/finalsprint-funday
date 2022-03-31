@@ -4,31 +4,16 @@
       type="text"
       v-model="commentText"
       placeholder="Write an update..."
+      @keydown.enter="addTaskComment"
     />
-    <!-- <input
-      v-if="!writing"
-      @click="writing = true"
-      type="text"
-      placeholder="Write an update..."
-    />
-    <input
-      type="text"
-      v-if="writing"
-      v-model="commentText"
-      name=""
-      id=""
-      cols="30"
-      rows="10"
-    /><br /> -->
 
-    <button @keydown.enter="addTaskComment" @click="addTaskComment">
-      Update
-    </button>
+    <div class="activity-action-container flex">
+      <button class="update" @click="addTaskComment">Update</button>
+    </div>
     <ul class="update-list clean-list">
       <li v-for="(comment, idx) in task.comments" :key="idx">
         <h4 class="comment-title">{{ comment.creator }}</h4>
         <p>{{ comment.content }}</p>
-        
       </li>
     </ul>
   </section>
