@@ -20,10 +20,10 @@
         </p>
 
         <div class="col-headers flex">
-          <div class="label">status</div>
-          <div class="label">person</div>
-          <div class="label">date</div>
-          <div class="label">priority</div>
+          <div class="label">Status</div>
+          <div class="label">Person</div>
+          <div class="label">Date</div>
+          <div class="label">Priority</div>
         </div>
       </div>
 
@@ -40,6 +40,7 @@
       :tasks="group.tasks"
       :group="group"
       :groupColor="group.groupColor"
+      style="margin-top:15px"
     ></tasks-list>
   </section>
 </template>

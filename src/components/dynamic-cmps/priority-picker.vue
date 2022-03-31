@@ -5,9 +5,9 @@
     </div>
     <div v-if="menuOpen" class="picker-box">
       <!-- TODO - change back to working on it -->
-      <div @click="setPriority('Medium')" class="medium">medium</div>
-      <div @click="setPriority('High')" class="high">high</div>
-      <div @click="setPriority('Low')" class="low">low</div>
+      <div @click="setPriority('Medium')" class="medium">Medium</div>
+      <div @click="setPriority('High')" class="high">High</div>
+      <div @click="setPriority('Low')" class="low">Low</div>
       <div @click="setPriority('&nbsp;')" class="null">&nbsp;</div>
     </div>
   </section>
