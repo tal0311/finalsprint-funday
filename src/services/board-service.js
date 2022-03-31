@@ -40,7 +40,7 @@ async function getById(boardId) {
 }
 
 async function save(board) {
-  console.log('boardId in Srv', board._id)
+  console.log('boardId in Srv', board)
   return board._id
     ? await httpService.put(`${ENDPOINT}/${board._id}`, board)
     : await httpService.post(ENDPOINT, board)
@@ -65,7 +65,6 @@ function getEmptyBoard() {
   } // getLoggedInUser()
   const newBoard = {
     // _id: 'b' + utilService.makeId(),
-    _id: '',
     title: 'New Board',
     description: '',
     createdAt: Date.now(),
@@ -128,11 +127,11 @@ function getEmptyBoard() {
       newBoard.groups[1].tasks.push(newTask)
     }
   }
-  return Promise.resolve(newBoard)
+  return newBoard
 }
 
 function getEmptyGroup() {
-  return Promise.resolve({
+  return {
     id: 'g' + utilService.makeId(),
     title: 'New Group',
     tasks: [
@@ -156,11 +155,11 @@ function getEmptyGroup() {
       // },
     ],
     groupColor: utilService.getRandomColor(),
-  })
+  }
 }
 
 function getEmptyTask(title = 'New Task') {
-  return Promise.resolve({
+  return {
     id: 't' + utilService.makeId(),
     title,
     cols: [
@@ -177,11 +176,11 @@ function getEmptyTask(title = 'New Task') {
         value: null,
       },
       {
-        type: 'test-status',
+        type: 'priority-picker',
         value: null,
       },
     ],
-  })
+  }
 }
 
 // const board = [

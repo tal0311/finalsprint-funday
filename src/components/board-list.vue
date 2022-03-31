@@ -137,12 +137,12 @@ export default {
             "close-on-click-modal": false,
           }
         );
-        ElMessage({ type: "success", message: `Board ${value} was created` });
         if (value)
           await this.$store.dispatch({
             type: "addBoard",
             value,
           });
+        ElMessage({ type: "success", message: `Board ${value} was created` });
         this.$router.push("/board/" + this.currBoard._id);
       } catch (err) {
         ElMessage({ type: "info", message: "Input canceled" });

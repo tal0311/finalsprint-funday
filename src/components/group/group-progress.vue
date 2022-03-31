@@ -17,17 +17,22 @@
 // import chart from './chart.vue'
 
 export default {
-  name: 'group-progress',
+  name: "group-progress",
   props: {
     tasks: Array,
   },
-  
+
   computed: {
     sortStatus() {
-      return this.tasks.map((task) => task.cols[0].value.toLowerCase()).sort()
+      return this.tasks
+        .map((task) => {
+          console.log(task.cols);
+          return task.cols[0].value.toLowerCase();
+        })
+        .sort();
     },
   },
-}
+};
 </script>
 
 <style></style>

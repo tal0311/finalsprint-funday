@@ -23,8 +23,8 @@ export const boardStore = {
     },
     boardToDisplay(state) {
       return JSON.parse(JSON.stringify(state.filteredBoard));
-      
-      
+
+
       // const regex = new RegExp(state.filterBy, 'i');
       // // console.log('currBoard in the store', state.currBoard);
       // var displayedBoard = JSON.parse(JSON.stringify(state.currBoard));
@@ -90,9 +90,9 @@ export const boardStore = {
       state.filterBy = filterBy;
       console.log(state.filterBy)
       if (!filterBy) {
-        state.filteredBoard =  JSON.parse(JSON.stringify(state.currBoard))
+        state.filteredBoard = JSON.parse(JSON.stringify(state.currBoard))
       } else {
-        state.filteredBoard =  JSON.parse(JSON.stringify(state.currBoard))
+        state.filteredBoard = JSON.parse(JSON.stringify(state.currBoard))
         const regex = new RegExp(filterBy, 'i');
         state.filteredBoard.groups.map(group => {
           group.tasks = group.tasks.filter(task => regex.test(task.title));
@@ -156,10 +156,14 @@ export const boardStore = {
       }
     },
     async addBoard({ commit }, { value }) {
+      console.log(value)
       let boardToAdd = boardService.getEmptyBoard();
+      console.log(boardToAdd)
       boardToAdd.title = value;
+      console.log('boardToAdd', boardToAdd)
       try {
         const addedBoard = await boardService.save(boardToAdd);
+        console.log(addedBoard)
         commit({ type: 'addBoard', board: addedBoard });
         commit({ type: 'setCurrBoard', board: addedBoard });
       } catch (err) {
