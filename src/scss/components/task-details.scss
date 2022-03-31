@@ -5,7 +5,7 @@
   border-left: 1px solid $clr9;
   position: fixed;
   height: 100vh;
-  width: 50%;
+  width: 33%;
   top: 0%;
   right: 0%;
   padding: 1em;
@@ -14,8 +14,16 @@
   //   text-transform: capitalize;
   // }
 
+
+  .title{
+    h2{
+      font-family: 'Roboto 300'
+    }
+  }
   button {
     @include headerBtn;
+    color: #777777;
+    padding: 7px 9px 5px 9px;
 
     &:hover {
       @include hoverHeader;
@@ -27,22 +35,32 @@
   .update-list {
     li {
       width: 100%;
-      border: 1px solid grey;
+      border:1px solid $clr11;
       margin-bottom: 5px;
-      border-radius: 0.2rem;
-      padding: 1em;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      margin-bottom: 1rem;
       h4 {
         height: toRem(50);
         text-transform: capitalize;
+         font-family: 'Roboto 300'
+       
       }
     }
   }
-  input[type='text'] {
+  textarea[type='text'] {
     width: 100%;
     padding: 1rem;
-    border-radius: 0.5rem;
-    border: 1px solid blue;
+    display: flex;
+    align-items: center;
 
+    border-radius: 0.5rem;
+    border: 1px solid rgb(93, 93, 233);
+    resize: none;
+    font-family: 'Roboto 300';
+    &::placeholder {
+      font-family: 'Roboto 300';
+    }
     &:focus {
       outline: 1px solid blue;
       height: 20vh;
@@ -52,7 +70,6 @@
 
 .activity-log {
   td {
-    // border: 1px solid black;
     padding-right: 1em;
   }
 }

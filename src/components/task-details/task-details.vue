@@ -1,12 +1,14 @@
 <template>
   <section class="task-details">
     <br />
-    <button @click="closeTaskDetails">x</button>
+    <button  @click="closeTaskDetails">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
     <br />
     <br />
 
     <div class="title">
-      <h3>{{ task.title }}</h3>
+      <h2 >{{ task.title }}</h2>
       <br />
       <br />
       <button @click="activeTab = 'taskUpdates'">Task Updates</button>
@@ -28,12 +30,12 @@
 </template>
 
 <script>
-import taskUpdates from "./task-updates.vue";
-import taskFiles from "./task-files.vue";
-import activityLog from "./activity-log.vue";
+import taskUpdates from './task-updates.vue'
+import taskFiles from './task-files.vue'
+import activityLog from './activity-log.vue'
 
 export default {
-  name: "task-details",
+  name: 'task-details',
   props: {
     task: Object,
     group: Object,
@@ -41,27 +43,27 @@ export default {
   },
   data() {
     return {
-      activeTab: "taskUpdates",
-    };
+      activeTab: 'taskUpdates',
+    }
   },
   methods: {
     addTaskComment(commentText) {
       this.addActivity(commentText)
       if (!this.task.comments) {
         this.task.comments = []
-        this.task.comments.push({ creator: "Guest", content: commentText });
+        this.task.comments.push({ creator: 'Guest', content: commentText })
       } else {
-        this.task.comments.push({ creator: "Guest", content: commentText });
+        this.task.comments.push({ creator: 'Guest', content: commentText })
       }
       this.$store.dispatch({
-        type: "updateTask",
+        type: 'updateTask',
         boardId: this.boardId,
-        groupId: this.group.id,        
+        groupId: this.group.id,
         task: JSON.parse(JSON.stringify(this.task)),
-      });
+      })
     },
     closeTaskDetails() {
-      this.$store.commit({ type: "setTaskToShow", task: null });
+      this.$store.commit({ type: 'setTaskToShow', task: null })
     },
     addActivityArr() {
       if (!this.task.activities) {
@@ -78,7 +80,7 @@ export default {
   },
   computed: {
     activities() {
-      return this.$store.getters.boards.activities;
+      return this.$store.getters.boards.activities
     },
   },
   created() {
@@ -89,5 +91,5 @@ export default {
     taskFiles,
     activityLog,
   },
-};
+}
 </script>
