@@ -1,6 +1,10 @@
 <template>
   <section class="task-updates">
-    <input type="text" v-model="commentText" placeholder="Write an update..." />
+    <textarea
+      type="text"
+      v-model="commentText"
+      placeholder="Write an update..."
+    />
     <!-- <input
       v-if="!writing"
       @click="writing = true"
@@ -17,11 +21,14 @@
       rows="10"
     /><br /> -->
 
-    <button @click="addTaskComment">Update</button>
+    <button @keydown.enter="addTaskComment" @click="addTaskComment">
+      Update
+    </button>
     <ul class="update-list clean-list">
       <li v-for="(comment, idx) in task.comments" :key="idx">
-        <h4>{{ comment.creator }}</h4>
+        <h4 class="comment-title">{{ comment.creator }}</h4>
         <p>{{ comment.content }}</p>
+        
       </li>
     </ul>
   </section>
@@ -29,7 +36,7 @@
 
 <script>
 export default {
-  name: "task-updates",
+  name: 'task-updates',
   emits: ['addTaskComment'],
   props: {
     task: Object,
@@ -38,15 +45,12 @@ export default {
     return {
       commentText: null,
       writing: false,
-    };
+    }
   },
   methods: {
     addTaskComment() {
-      this.$emit("addTaskComment", this.commentText);
+      this.$emit('addTaskComment', this.commentText)
     },
   },
-  computed: {},
-  created() {},
-  components: {},
-};
+}
 </script>
