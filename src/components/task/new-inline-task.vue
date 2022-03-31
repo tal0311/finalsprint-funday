@@ -19,31 +19,32 @@
 
 <script>
 export default {
-  name: 'newInlineTask',
-  emits: ['add-task'],
+  name: "newInlineTask",
+  emits: ["add-task"],
+  props: { groupColor: String },
   data() {
     return {
-      value: '',
+      value: "",
       isOnFocus: true,
-    }
+    };
   },
   methods: {
     add() {
-      this.isOnFocus = false
+      this.isOnFocus = false;
       // console.log('ok')
     },
     addTask() {
       // console.log(this.value)
-      this.$emit('add-task', this.value)
-      this.isOnFocus=false
+      this.$emit("add-task", this.value);
+      this.isOnFocus = false;
     },
   },
   computed: {
     addFocus() {
-      return this.isOnFocus ? 'focused' : ''
+      return this.isOnFocus ? "focused" : "";
     },
   },
-}
+};
 </script>
 
 <style></style>

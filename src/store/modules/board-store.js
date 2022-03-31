@@ -179,16 +179,16 @@ export const boardStore = {
       }
     },
     // !here
-    async saveBoard({ dispatch, commit, state }, { title, description, boardId }) {
+    async saveBoard({ commit, state }, { title, description, boardId }) {
       // console.log('title, description from store', title, description);
-      const board = state.boards.find(b => b._id === boardId)
-      // const board = JSON.parse(JSON.stringify(state.currBoard))
+      const boardFound = state.boards.find(board => board._id === boardId)
+      const board = JSON.parse(JSON.stringify(boardFound))
       board.title = (!title) ? board.title : title
       board.description = (!description) ? board.description : description
       try {
-        const boardToUpdate = await boardService.save(board);
-        console.log(boardToUpdate)
-        commit({ type: 'saveBoard', board: boardToUpdate })
+        const savedBoard = await boardService.save(board);
+        console.log(savedBoard)
+        commit({ type: 'saveBoard', savedBoard })
         // dispatch({ type: 'loadBoards' });
         // commit({ type: 'setCurrBoard', board: boardToUpdate });
       } catch (err) {

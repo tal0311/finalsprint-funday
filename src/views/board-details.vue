@@ -12,7 +12,7 @@
             {{ currBoard.title }}
           </h1>
           <div class="info-star flex">
-            <button class="info"></button>
+            <button class="info" @click="toggleDesc = !toggleDesc"></button>
             <button class="star">Star</button>
           </div>
 
@@ -31,6 +31,7 @@
         </div>
         <p
           class="description"
+          :class="{ 'd-none' : toggleDesc}"
           @blur="setBoardTitle"
           @keydown.enter="setBoardTitle"
           contenteditable="true"
@@ -105,7 +106,7 @@
 }
 .example-showcase .el-dropdown-link {
   cursor: pointer;
-  color: var(--el-color-primary);
+  color: #323338;
   display: flex;
   align-items: center;
 }
@@ -139,6 +140,7 @@ export default {
     return {
       board: null,
       currGroup: null,
+      toggleDesc: false,
     };
   },
   methods: {
@@ -162,7 +164,7 @@ export default {
         var description = event.target.innerText;
       }
       console.log('title, description', title, description);
-      this.$store.dispatch({ type: 'saveBoard', title, description, boardId: this.currBoard._id})
+     this.$store.dispatch({ type: 'saveBoard', title, description, boardId: this.currBoard._id})
     },
     onDrop(dropResult) {
       const board = JSON.parse(JSON.stringify(this.currBoard));

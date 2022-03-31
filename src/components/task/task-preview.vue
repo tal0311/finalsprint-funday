@@ -11,7 +11,7 @@
         'btn-remove-task': delHover,
         'btn-remove-task-hidden': !delHover,
       }"
-    ></div>
+    ><i class="fa fa-caret-down"></i></div>
 
     <div class="task-title-comp">
       <div

@@ -7,6 +7,20 @@
       @drop="onDrop($event)"
     >
       <Draggable v-for="eltask in eltasks" :key="eltask.id">
+        <!-- <div
+          class="side-indicator"
+          @click="setIsOptions"
+          style="
+            flex: 0 0 8px;
+            position: relative;
+            background-color: rgb(59, 44, 217);
+            color: rgb(87, 155, 252);
+            height: 36px;
+            width: 8px;
+            display: inline;
+          "
+          :style="{ backgroundColor: groupColor }"
+        ></div> -->
         <task-preview
           :task="eltask"
           :groupColor="groupColor"
@@ -14,8 +28,21 @@
         ></task-preview>
       </Draggable>
     </Container>
+    <!-- <div
+      style="
+        flex: 0 0 8px;
+        position: relative;
+        background-color: rgb(59, 44, 217);
+        color: rgb(87, 155, 252);
+        height: 36px;
+        width: 8px;
+        display: inline-block;
+      "
+      class="side-indicator"
+      :style="{ backgroundColor: groupColor }"
+    ></div> -->
     <div class="inline">
-      <new-inline-task @add-task="add" />
+      <new-inline-task @add-task="add" :groupColor="group.color" />
     </div>
     <group-Progress :tasks="group.tasks" />
   </section>
@@ -41,14 +68,15 @@ export default {
   methods: {
     add(value) {
       // console.log('tasklist:', value, this.group)
-      this.$emit('add-inline', value, this.group.id)
+      this.$emit("add-inline", value, this.group.id);
     },
     getChildPayloadEltasks(index) {
       return this.eltasks[index];
     },
     onDrop(dropResult) {
-      if (dropResult.addedIndex === null && dropResult.removedIndex === null) return
-      this.eltasks = this.applyDrag(this.eltasks, dropResult)
+      if (dropResult.addedIndex === null && dropResult.removedIndex === null)
+        return;
+      this.eltasks = this.applyDrag(this.eltasks, dropResult);
       this.updateGroup(this.eltasks);
 
       // if (this.eltasks !== this.applyDrag(this.eltasks, dropResult)) {
@@ -58,7 +86,6 @@ export default {
       // }
     },
     applyDrag(arr, dragResult) {
-
       const { removedIndex, addedIndex, payload } = dragResult;
 
       if (removedIndex === null && addedIndex === null) return arr;
@@ -83,8 +110,8 @@ export default {
       return this.$store.getters.currBoard;
     },
   },
-  created(){
-this.tasks
+  created() {
+    this.tasks;
   },
   components: {
     taskPreview,
@@ -93,8 +120,7 @@ this.tasks
     groupProgress,
     newInlineTask,
   },
-
-}
+};
 </script>
 
 <style></style>

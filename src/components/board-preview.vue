@@ -1,11 +1,11 @@
 <template>
-  <article class="flex space-between relative">
-    <div>
-      <router-link
-        :to="'/board/' + board._id"
-        class="bl-btn btn flex"
-        @click="chooseBoard(board)"
-      >
+  <article class="flex relative">
+      <div class="flex align-center">
+    <router-link
+      :to="'/board/' + board._id"
+      class="bl-btn btn flex space-between align-center"
+      @click.stop="chooseBoard(board)"
+    >
         <svg class="svg-icon" width="19" height="19">
           <path
             d="M7.5 4.5H16C16.2761 4.5 16.5 4.72386 16.5 5V15C16.5 15.2761 16.2761 15.5 16 15.5H7.5L7.5 4.5ZM6 4.5H4C3.72386 4.5 3.5 4.72386 3.5 5V15C3.5 15.2761 3.72386 15.5 4 15.5H6L6 4.5ZM2 5C2 3.89543 2.89543 3 4 3H16C17.1046 3 18 3.89543 18 5V15C18 16.1046 17.1046 17 16 17H4C2.89543 17 2 16.1046 2 15V5Z"
@@ -14,19 +14,20 @@
             clip-rule="evenodd"
           ></path>
         </svg>
-        <span contenteditable="true" @blur.stop="updateBoard($event, board)">{{
+        <!-- <span contenteditable="true" @blur.stop="updateBoard($event, board)">{{
           board.title
-        }}</span>
-      </router-link>
-    </div>
-    <span class="flex align-center"
-      ><img
-        src="../assets/img/ellipsis-solid.svg"
-        alt=""
-        class="elipsis-board absolute"
-        @click="isOptions = !isOptions"
-      />
-    </span>
+        }}</span> -->
+        <span>{{ board.title }}</span>
+    </router-link>
+      <span class="flex align-center"
+        ><img
+          src="../assets/img/ellipsis-solid.svg"
+          alt=""
+          class="elipsis-board absolute"
+          @click="isOptions = !isOptions"
+        />
+      </span>
+      </div>
     <board-options @setBoardUpdate="setBoardUpdate" v-if="isOptions" />
   </article>
 </template>

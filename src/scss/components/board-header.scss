@@ -2,6 +2,7 @@
   padding: toRem(16) toRem(30) 0 toRem(30);
   
   .btn-container {
+    margin-top:20px;
     & > * {
       @include headerBtn;
       &:hover {
@@ -30,6 +31,7 @@
 
   .description {
     padding: 2px;
+    margin-top: 20px;
     width: 70%;
     &:hover {
       @include hoverToEditTxt;

@@ -1,7 +1,7 @@
 <template>
   <section class="task-options">
       <select>
-          <option >Rename Task</option>
+          <option>Rename Task</option>
           <option>Copy</option>
           <option>Delete</option>
       </select>
