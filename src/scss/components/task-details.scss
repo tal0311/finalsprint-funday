@@ -2,17 +2,17 @@
   z-index: 10;
   transition: 0.2 ease;
   background-color: #ffffff;
-  border-left: 1px solid black;
+  border-left: 1px solid $clr9;
   position: fixed;
   height: 100vh;
   width: 50%;
   top: 0%;
   right: 0%;
   padding: 1em;
-  box-shadow: 5px 5px 12px 2px #000000;
-  .title {
-    text-transform: capitalize;
-  }
+  box-shadow: 5px 5px 12px 2px $clr9;
+  // .title {
+  //   text-transform: capitalize;
+  // }
 
   button {
     @include headerBtn;

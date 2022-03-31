@@ -49,17 +49,17 @@
     animation-direction: normal;
     font-size: 18px;
     transition: transform 100ms ease;
-    transform: rotate(-180deg);
+    // transform: rotate(-180deg);
 
     &.is-expanded {
-      transition: transform 100ms ease;
-      // transform: rotate(-180deg);
-      animation-name: slideInFromLeft;
-      animation-duration: 0.15s;
-      animation-timing-function: cubic-bezier(0, 0, 0.35, 1);
-      animation-delay: 0s;
-      animation-iteration-count: 1;
-      animation-direction: normal;
+      // transition: transform 100ms ease;
+      transform: rotate(-180deg);
+      // animation-name: slideInFromLeft;
+      // animation-duration: 0.15s;
+      // animation-timing-function: cubic-bezier(0, 0, 0.35, 1);
+      // animation-delay: 0s;
+      // animation-iteration-count: 1;
+      // animation-direction: normal;
 
       &.fa-angle-right{
           transform: rotate(180deg);

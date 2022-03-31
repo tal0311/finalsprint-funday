@@ -7,7 +7,7 @@
     <div
       disabled=""
       class="collapse-btn"
-      :class="{ 'is-pinned': isExpanded }"
+      :class="{ 'is-pinned': isExpanded, 'is-expanded' : isExpanded }"
       @click="toggleExpanded"
     >
       <i class="collapse-icon fa fa-angle-right"></i>
