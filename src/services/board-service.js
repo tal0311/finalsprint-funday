@@ -75,11 +75,39 @@ function getEmptyBoard() {
       imgUrl: loggedUser.imgUrl,
     },
     members: [
+      // {
+      //   _id: loggedUser._id,
+      //   fullname: loggedUser.fullname,
+      //   imgUrl: loggedUser.imgUrl,
+      // },
       {
-        _id: loggedUser._id,
-        fullname: loggedUser.fullname,
-        imgUrl: loggedUser.imgUrl,
+        "id": "u101",
+        "fullname": "Tal Amit",
+        "username": "tal",
+        "imgUrl": "https://randomuser.me/api/portraits/men/39.jpg",
+        "color": "#8338ec"
       },
+      {
+        "id": "u102",
+        "fullname": "Guy Shimon",
+        "username": "guy",
+        "imgUrl": "https://randomuser.me/api/portraits/men/27.jpg",
+        "color": "#3a86ff"
+      },
+      {
+        "id": "u103",
+        "fullname": "Shiran Elad",
+        "username": "shiran",
+        "imgUrl": "https://randomuser.me/api/portraits/women/24.jpg",
+        "color": "#ff006e"
+      },
+      {
+        "id": "u104",
+        "fullname": "Rotem Bublil",
+        "username": "rotem",
+        "imgUrl": "https://randomuser.me/api/portraits/men/52.jpg",
+        "color": "#ffbe0b"
+      }
     ],
     activities: [
       {
@@ -109,7 +137,7 @@ function getEmptyBoard() {
         },
       },
     ],
-    groups: [getEmptyGroup(), getEmptyGroup()],
+    groups: [getEmptyGroup(false), getEmptyGroup(false)],
     cmpsOrder: ['status-picker', 'member-picker', 'date-picker'],
   }
 
@@ -130,30 +158,15 @@ function getEmptyBoard() {
   return newBoard
 }
 
-function getEmptyGroup() {
+function getEmptyGroup(withTask=true) {
+  const tasks = []
+  if(withTask){
+    tasks.push(getEmptyTask())
+  }
   return {
     id: 'g' + utilService.makeId(),
     title: 'New Group',
-    tasks: [
-      // {
-      //   id: 't' + utilService.makeId(),
-      //   title: 'New Task',
-      //   cols: [
-      //     {
-      //       type: 'status-picker',
-      //       value: null,
-      //     },
-      //     {
-      //       type: 'member-picker',
-      //       value: [],
-      //     },
-      //     {
-      //       type: 'date-picker',
-      //       value: null,
-      //     },
-      //   ],
-      // },
-    ],
+    tasks,
     groupColor: utilService.getRandomColor(),
   }
 }

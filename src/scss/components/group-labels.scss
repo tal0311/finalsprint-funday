@@ -1,5 +1,6 @@
 .group-labels {
   position: absolute;
+  z-index: -1;
 
   width: calc(100% - 35px);
   margin-inline-start: 35px;
