@@ -70,7 +70,7 @@ export default {
     },
     addActivity(commentText) {
       this.task.activities.push({
-        createdAt: Date.now(),
+        createdAt: Date(),
         byMember: 'Guest',
         txt: commentText,
       })

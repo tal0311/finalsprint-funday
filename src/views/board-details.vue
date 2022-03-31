@@ -12,7 +12,7 @@
             {{ currBoard.title }}
           </h1>
           <div class="info-star flex">
-            <button class="info"></button>
+            <button class="info" @click="toggleDesc = !toggleDesc"></button>
             <button class="star">Star</button>
           </div>
 
@@ -31,6 +31,7 @@
         </div>
         <p
           class="description"
+          :class="{ 'd-none' : toggleDesc}"
           @blur="setBoardTitle"
           @keydown.enter="setBoardTitle"
           contenteditable="true"
@@ -66,7 +67,7 @@
             </el-dropdown-menu>
           </template>
         </el-dropdown>
-        <app-filter />
+        <app-filter @filter="onFilter" />
       </div>
 
       <add-group-task
@@ -105,22 +106,22 @@
 }
 .example-showcase .el-dropdown-link {
   cursor: pointer;
-  color: var(--el-color-primary);
+  color: #323338;
   display: flex;
   align-items: center;
 }
 </style>
 <script>
-import { ArrowDown } from '@element-plus/icons-vue'
-import { Container, Draggable } from 'vue3-smooth-dnd'
-import lastSeen from '../components/board/last-seen.vue'
-import groupCmp from '../components/group/group.vue'
-import addGroupTask from '../components/add-group-task.vue'
-import appFilter from '../components/board/board-filter.vue'
-import taskDetails from '../components/task-details/task-details.vue'
+import { ArrowDown } from "@element-plus/icons-vue";
+import { Container, Draggable } from "vue3-smooth-dnd";
+import lastSeen from "../components/board/last-seen.vue";
+import groupCmp from "../components/group/group.vue";
+import addGroupTask from "../components/add-group-task.vue";
+import appFilter from "../components/board/board-filter.vue";
+import taskDetails from "../components/task-details/task-details.vue";
 
 export default {
-  name: 'board-details',
+  name: "board-details",
   components: {
     groupCmp,
     addGroupTask,
@@ -131,82 +132,90 @@ export default {
     taskDetails,
   },
   created() {
-    let { boardId } = this.$route.params
-    const board = this.$store.dispatch({ type: 'getBoardById', boardId })
-    this.$store.commit({ type: 'setCurrBoard', board })
+    let { boardId } = this.$route.params;
+    const board = this.$store.dispatch({ type: "getBoardById", boardId });
+    this.$store.commit({ type: "setCurrBoard", board });
   },
   data() {
     return {
       board: null,
       currGroup: null,
-    }
+      toggleDesc: false,
+    };
   },
   methods: {
+    onFilter(filterBy) {
+      this.$store.commit({ type: "setFilter", filterBy });
+    },
     addNewTask() {
       this.$store.dispatch({
-        type: 'addTask',
+        type: "addTask",
         groupIdx: 0,
-      })
+      });
     },
     addGroup() {
-      this.$store.dispatch({ type: "addGroup"});
+      this.$store.dispatch({ type: "addGroup" });
     },
     setBoardTitle(event) {
-      if (event.target.nodeName === 'H1') {
-        var title = event.target.innerText
+      if (event.target.nodeName === "H1") {
+        var title = event.target.innerText;
       }
-      if (event.target.nodeName === 'P') {
-        var description = event.target.innerText
+      if (event.target.nodeName === "P") {
+        var description = event.target.innerText;
       }
       console.log('title, description', title, description);
-      this.$store.dispatch({ type: 'saveBoard', title, description})
+     this.$store.dispatch({ type: 'saveBoard', title, description, boardId: this.currBoard._id})
     },
     onDrop(dropResult) {
-      const board = JSON.parse(JSON.stringify(this.currBoard))
-      board.groups = this.applyDrag(board.groups, dropResult)
+      const board = JSON.parse(JSON.stringify(this.currBoard));
+      board.groups = this.applyDrag(board.groups, dropResult);
     },
     applyDrag(arr, dragResult) {
-      const { removedIndex, addedIndex, payload } = dragResult
+      const { removedIndex, addedIndex, payload } = dragResult;
 
-      if (removedIndex === null && addedIndex === null) return arr
-      const result = [...arr]
-      let taskToAdd = payload
+      if (removedIndex === null && addedIndex === null) return arr;
+      const result = [...arr];
+      let taskToAdd = payload;
 
       if (removedIndex !== null) {
-        taskToAdd = result.splice(removedIndex, 1)[0]
+        taskToAdd = result.splice(removedIndex, 1)[0];
       }
       if (addedIndex !== null) {
-        result.splice(addedIndex, 0, taskToAdd)
+        result.splice(addedIndex, 0, taskToAdd);
       }
-      this.updateGroupsOrder(result)
+      this.updateGroupsOrder(result);
 
-      return result
+      return result;
     },
     updateGroupsOrder(result) {
-      // const savedBoard = JSON.parse(JSON.stringify(this.currBoard))
-      // savedBoard.groups = JSON.parse(JSON.stringify(groupsAfterDnd))
-      const groupsAfterDnd = JSON.parse(JSON.stringify(result))
-      console.log('result', groupsAfterDnd)
+      const groupsAfterDnd = JSON.parse(JSON.stringify(result));
+      console.log("result", groupsAfterDnd);
       this.$store.dispatch({
-        type: 'updateGroupsOrder',
+        type: "updateGroupsOrder",
         newGroups: groupsAfterDnd,
-      })
+      });
     },
     setCurrGroup(group) {
-      JSON.parse(JSON.stringify(group))
-      this.currGroup = group
+      JSON.parse(JSON.stringify(group));
+      this.currGroup = group;
     },
   },
   computed: {
     currBoard() {
-      return this.$store.getters.currBoard
+      return this.$store.getters.currBoard;
+      // return this.$store.getters.currBoard;
+    },
+    boardToDisplay() {
+      // return this.$store.getters.currBoard;
+      console.log(this.$store.getters.boardToDisplay);
+      return this.$store.getters.boardToDisplay;
     },
     taskToShow() {
-      return this.$store.getters.taskToShow
+      return this.$store.getters.taskToShow;
     },
     currgroup() {
-      return this.currGroup
+      return this.currGroup;
     },
   },
-}
+};
 </script>

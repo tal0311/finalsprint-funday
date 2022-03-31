@@ -3,7 +3,7 @@
   color: $clr9;
   height: 36px;
   line-height: 36px;
-  padding-inline-start: 15px;
+  padding-inline-start: 30px;
   cursor: pointer;
   border-bottom: 1px solid $clr8;
   justify-content: start;
@@ -12,14 +12,31 @@
   // position:relative;
 
   .btn-remove-task {
-    background-image: url('../assets/img/icon-delete.png');
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
+    // background-image: url('../assets/img/icon-delete.png');
+    // background-position: center;
+    // background-size: contain;
+    // background-repeat: no-repeat;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    position: absolute;
+    width: 30px;
+    left: 0px;
+    height: 100%;
 
-    opacity: 0.4;
+    margin-top:7px;
+    cursor: pointer;
+    background-color: $clr18;
 
-    width: 20px;
+
+    // opacity: 0.4;
+
+    height:18px;
+    width: 18px;
+    font-size: 15px;
+
     visibility: visible;
   }
 
@@ -85,6 +102,7 @@
           }
           &.bgc-white {
             background-color: $clr8;
+            width:100%;
           }
           &:focus {
             outline: 1px solid gray;
