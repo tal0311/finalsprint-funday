@@ -14,7 +14,7 @@
       </li>
       <div class="member-input flex">
         <button @click="addMember" class="add">+</button>
-        <input type="text" v-model="memberName" />
+        <input type="text" v-model="memberName" placeholder="Member name" />
       </div>
     </ul>
   </div>
