@@ -42,7 +42,7 @@
       :style="{ backgroundColor: groupColor }"
     ></div> -->
     <div class="inline">
-      <new-inline-task @add-task="add" :groupColor="group.color" />
+      <new-inline-task @add-task="add" :groupColor="group.groupColor" />
     </div>
     <group-Progress :tasks="group.tasks" />
   </section>
