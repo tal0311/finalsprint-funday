@@ -110,9 +110,7 @@
       font-weight: 100;
       flex-basis: 100%;
       max-height: toRem(40);
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
+      @include ellipsis;
       padding: 0 3px;
 
       @media (max-width: 1450px) {

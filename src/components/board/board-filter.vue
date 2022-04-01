@@ -1,12 +1,14 @@
 <template>
   <section class="filter flex">
-    <!-- <label @click="isSearch = true" class="btn search"
+    <button @click="isSearch = !isSearch" class="btn search" 
+    :class="{'d-none': isSearch}"
       >Search
       <div v-if="setSearch">
-        <input @enter="setSearchTerm" type="text" name="search" id="" />
+        <input @enter="setSearchTerm"  @blur="isSearch = false" type="text" name="search" id="" />
       </div>
-    </label> -->
-    <input type="text" v-model="filterBy" @input="onFilter" />
+    </button>
+    <input type="text" class="search" v-model="filterBy" @input="onFilter" placeholder="Search..."
+    :class="{'d-none': !isSearch}"/>
     <button class="btn person">Person</button>
 
     <button class="btn filter">Filter</button>

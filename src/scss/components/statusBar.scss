@@ -1,6 +1,16 @@
 .status-bar {
-  width: 300px;
+  display: flex;
+  .left-side{
+    min-width: 640px;
+  }
+  .right-side{
+    > ul {
+      width: 140px;
+      height:toRem(40);
+      background-color: $clr10;
+    }
+  }
 
-  margin: auto;
-  margin-top: 30px;
+  // margin: auto;
+  // margin-top: 30px;
 }

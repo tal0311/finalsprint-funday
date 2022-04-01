@@ -1,15 +1,18 @@
 <template>
   <section class="status-bar">
-    <ul class="clean-list flex">
-      <li v-for="(status, idx) in sortStatus" :key="idx">
-        <div
-          :style="{ width: (1 / sortStatus.length) * 100 + 'px' }"
-          :class="[status, 'bar']"
-        >
-          &nbsp;
-        </div>
-      </li>
-    </ul>
+    <div class="left-side"></div>
+    <div class="right-side">
+      <ul class="clean-list flex">
+        <li v-for="(status, idx) in sortStatus" :key="idx">
+          <div
+            :style="{ width: (1 / sortStatus.length) * 100 + 'px' , height:'30px'}"
+            :class="[status, 'bar']"
+          >
+            &nbsp;
+          </div>
+        </li>
+      </ul>
+    </div>
   </section>
 </template>
 

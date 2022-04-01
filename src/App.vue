@@ -2,7 +2,7 @@
   <section class="app-container container">
     <app-sidebar />
     <border-list />
-    <router-view class="main-layout" />
+    <router-view />
   </section>
 </template>
 

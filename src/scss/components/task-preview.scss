@@ -9,6 +9,7 @@
   justify-content: start;
   width: 100%;
   flex: 1;
+
   // position:relative;
 
   .btn-remove-task {
@@ -51,6 +52,13 @@
     padding: 0 10px 0 0;
     border-right: 1px solid $clr8;
 
+    // &.sticky {
+    //   position:sticky;
+    //   left:350px;
+    //   z-index:2000;
+    // }
+
+
     .side-indicator {
       flex: 0 0 8px;
     }
@@ -62,7 +70,11 @@
       font-size: 24px;
       line-height: toRem(36);
       justify-content: center;
-      min-width: 400px;
+      position: relative;
+      flex-basis: 100%;    
+      min-width: 600px;
+      // max-width: 800px;
+      flex-basis:100%;
       &:focus {
         background-color: $clr13;
       }
@@ -183,6 +195,7 @@
     flex: 1;
     position: relative;
     height: 100%;
+    width: 100%;
     .dyn-cmp {
       width: 100%;
       border-right: $clr8 1px solid;
@@ -195,6 +208,7 @@
 
     .right-indicator {
       max-width: 38px;
+      min-width: 38px;
       border-right: 8px solid $clr12;
     }
   }

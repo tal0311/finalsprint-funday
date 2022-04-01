@@ -15,7 +15,7 @@
       <i class="fa fa-caret-down"></i>
     </div>
 
-    <div class="task-title-comp">
+    <div class="task-title-comp sticky">
       <div
         class="side-indicator"
         @click="setIsOptions"

@@ -1,3 +1,6 @@
+.priority-picker {
+  @include colPicker;
+}
 .low {
   background-color: #93bd3a;
 }

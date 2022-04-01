@@ -21,6 +21,8 @@
   }
 
   .title-wrapper {
+    flex-basis: 100%;
+    min-width: 600px;
     width: 100%;
     &.flex {
       .col-headers {
@@ -29,8 +31,16 @@
           .label {
             padding: 5px;
             text-transform: capitalize;
-            width: 25%;
             text-align: center;
+            // width: 25%;F
+            &.status-picker,
+            &.date-picker,
+            &.priority-picker {
+              @include colPicker;
+            }
+            &.member-picker {
+              @include memberPicker;
+            }
           }
         }
       }
@@ -39,12 +49,18 @@
   .group-title {
     margin: 0;
     font-size: 1.3em;
-    min-width: 410px;
+    min-width: 610px;
     // padding: 5px;
     // margin-bottom: 5px;
     &:focus {
       outline: 1px solid gray;
     }
+    // &.sticky {
+    //   position:sticky;
+    //   left:350px;
+    //   z-index:2000;
+    // }
+
   }
 }
 
