@@ -204,29 +204,23 @@ export const boardStore = {
     },
     async duplicateBoard({ dispatch, state, commit }, { boardId }) {
       try {
-        var toDuplicate = board.groups.find((group) => group.id === groupId);
-        const idx = board.groups.findIndex((group) => group.id === groupId);
-        var emptyGroup = boardService.getEmptyGroup();
-        emptyGroup = JSON.parse(JSON.stringify(toDuplicate));
-        emptyGroup.id = utilService.makeId();
-        emptyGroup.title = 'Duplicate of ' + emptyGroup.title;
-        board.groups.splice(idx, 0, emptyGroup);
-
-        const updatedBoard = await boardService.save(board);
-        dispatch({
-          type: 'saveBoard',
-          board: JSON.parse(JSON.stringify(updatedBoard)),
-        });
-        commit({ type: 'setCurrBoard', board: updatedBoard });
-      } catch (error) {
-        console.log('problem with duplicating board', error);
+        var boardToDuplicate = await dispatch({type: 'getBoardById', boardId})
+        console.log('BOARD' + boardToDuplicate)
+        // boardToDuplicate.title = 'Duplicate of ' + boardToDuplicate.title;
+        // console.log('boardToDuplicate', boardToDuplicate);
+        // const addedBoard = await boardService.save(boardToDuplicate);
+        // commit({ type: 'addBoard', board: addedBoard });
+        // commit({ type: 'setCurrBoard', board: addedBoard });
+      } catch (err) {
+        console.log('error during duplicating board', err);
       }
     },
     async getBoardById({ commit }, { boardId }) {
       try {
-        let board = await boardService.getById(boardId);
-        board = JSON.parse(JSON.stringify(board));
+        let dbBoard = await boardService.getById(boardId);
+        var board = JSON.parse(JSON.stringify(dbBoard));
         commit({ type: 'setCurrBoard', board });
+        return board
       } catch (err) {
         console.log('', err);
         commit({

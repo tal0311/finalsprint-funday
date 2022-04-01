@@ -167,8 +167,8 @@ export default {
       }
       if (value === "duplicate") {
         await this.$store.dispatch({
-          type: "addBoard",
-          value: "Duplicate of " + board.title,
+          type: "duplicateBoard",
+          boardId: board._id,
         });
       }
     },

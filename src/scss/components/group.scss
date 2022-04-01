@@ -37,6 +37,10 @@
             padding: 5px;
             text-transform: capitalize;
             text-align: center;
+            color: $clr5;
+            font-family: 'Roboto 400';
+            list-style: 21px;
+            font-size:toRem(14);
             // width: 25%;F
             &.status-picker,
             &.date-picker,
