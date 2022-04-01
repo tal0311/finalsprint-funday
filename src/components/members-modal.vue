@@ -7,9 +7,12 @@
         :key="index"
         :style="{ backgroundColor: member.color }"
       >
-        <div class="member-name">
+        <img v-if="member.imgUrl" class="member-img" :src="member.imgUrl" :alt="member.fullname" />
+
+        <div v-else class="member-name">
           {{ member.fullname.split(' ')[0] }}
         </div>
+        
         <button @click="removeMember(member)" class="remove">X</button>
       </li>
       <div class="member-input flex">

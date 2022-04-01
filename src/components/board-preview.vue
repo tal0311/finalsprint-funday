@@ -17,8 +17,7 @@
         <!-- <span contenteditable="true" @blur.stop="updateBoard($event, board)">{{
           board.title
         }}</span> -->
-        <span>{{ board.title }}</span>
-    </router-link>
+        <span class="ellipsis">{{ board.title }}</span>
       <span class="flex align-center"
         ><img
           src="../assets/img/ellipsis-solid.svg"
@@ -27,6 +26,7 @@
           @click="isOptions = !isOptions"
         />
       </span>
+    </router-link>
       </div>
     <board-options @setBoardUpdate="setBoardUpdate" v-if="isOptions" />
   </article>

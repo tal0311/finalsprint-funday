@@ -73,6 +73,9 @@ export default {
       }
     },
     addActivity(commentText) {
+       if (!this.task.activities) {
+        this.task.activities = []
+      }
       this.task.activities.push({
         createdAt: Date(),
         byMember: 'Guest',

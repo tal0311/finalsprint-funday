@@ -9,13 +9,10 @@
   justify-content: start;
   width: 100%;
   flex: 1;
-  // position:relative;
+  // font-family: 'Roboto 400';
+  
 
   .btn-remove-task {
-    // background-image: url('../assets/img/icon-delete.png');
-    // background-position: center;
-    // background-size: contain;
-    // background-repeat: no-repeat;
     border-radius: 4px;
     display: flex;
     justify-content: center;
@@ -41,9 +38,10 @@
     visibility: hidden;
   }
 
-  .task-title-comp {
+  .task-left-side {
     background-color: $clr10;
     display: flex;
+    flex: 1;
     align-items: center;
     height: 100%;
     text-align: start;
@@ -62,7 +60,10 @@
       font-size: 24px;
       line-height: toRem(36);
       justify-content: center;
+      position: relative;
+      // flex-basis: 100%;    
       min-width: 400px;
+      // max-width: 800px;
       &:focus {
         background-color: $clr13;
       }
@@ -83,17 +84,6 @@
           padding: 2px 5px;
           text-overflow: ellipsis;
           overflow: hidden;
-          // margin-inline-end: 5px;
-          // display: flex;
-          // // flex: 1;
-          // align-items: center;
-          // min-width: 0;
-          // padding-left: 10px;
-          // line-height: 23px;
-          // text-decoration: none;
-          // color: $clr9;
-          // font-weight: 400;
-          // font-size: 0.8125rem;
           &.mark-outline {
             outline: $clr11 1px solid;
             border-radius: 1px;
@@ -105,20 +95,6 @@
           &:focus {
             outline: 1px solid gray;
           }
-
-          //         height: 100%;
-          //         text-align: left;
-          //         // flex-basis: 400px;
-          //         flex-basis: 40%;
-          //         padding: 0 10px 0 0;
-          //         border-right: 1px solid $clr8;
-
-          //         .side-indicator {
-          //             flex: 0 0 8px;
-          //             position: relative;
-          //             height: 100%;
-          //             background-color: rgb(87, 155, 252);
-          //             color: rgb(87, 155, 252);
         }
         .edit {
           margin-left: 8px;
@@ -143,8 +119,6 @@
 
       .chat {
         position: relative;
-
-     
           .comments-indicator {
             position: absolute;
             font-size: toRem(8);
@@ -178,11 +152,14 @@
     }
   }
 
-  .task-columns {
+  .task-right-side {
     background-color: $clr10;
-    flex: 1;
+    // flex: 1;
+    max-width:620px;
+    display:flex;
     position: relative;
     height: 100%;
+    width: 100%;
     .dyn-cmp {
       width: 100%;
       border-right: $clr8 1px solid;
@@ -195,6 +172,7 @@
 
     .right-indicator {
       max-width: 38px;
+      min-width: 38px;
       border-right: 8px solid $clr12;
     }
   }

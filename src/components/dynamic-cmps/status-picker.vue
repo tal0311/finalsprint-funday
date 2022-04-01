@@ -2,7 +2,7 @@
 <!-- this is a priority picker do not delete -->
   <section @click="toggleShow" :class="statusClass" class="status-picker">
     <div class="status">
-      {{ task.cols[0].value === '' ? '&nbsp;' : task.cols[0].value }}
+      {{ task.cols[0].value === 'empty' ? '&nbsp;' : task.cols[0].value }}
     </div>
     <div v-if="menuOpen" class="picker-box">
       <!-- TODO - change back to working on it -->
@@ -11,7 +11,7 @@
       </div>
       <div @click="setStatus('Stuck')" class="stuck">Stuck</div>
       <div @click="setStatus('Done')" class="done">Done</div>
-      <div @click="setStatus('&nbsp;')" class="null">&nbsp;</div>
+      <div @click="setStatus('empty')" class="empty">&nbsp;</div>
     </div>
   </section>
 </template>
@@ -55,8 +55,9 @@ export default {
   computed: {
     statusClass() {
       if (this.task.cols[0].value === 'Working on it') return 'working'
-      if (this.task.cols[0].value === '&nbsp;') return 'null'
-      // if(this.task.cols[0].value === 'null') return 'null'
+      if (this.task.cols[0].value === '&nbsp;') return 'empty'
+      if (this.task.cols[0].value === null) return 'empty'
+      if (this.task.cols[0].value === '') return 'empty'
       return this.task.cols[0].value.toLowerCase()
     },
   },

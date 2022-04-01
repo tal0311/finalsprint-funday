@@ -2,12 +2,8 @@
   <div class="member-picker">
     <ul class="members-container clean-list flex">
       <li v-for="member in members" :key="member.id" class="member">
-        <div v-if="member.imgUrl" class="member-img">
-          <img :src="member.imgUrl" alt="" />
-        </div>
-        <div v-else :style="{ backgroundColor: member.color }" class="member">
-          {{ member.fullname[0] }}
-        </div>
+         <img  class="member-img" :src="member.imgUrl" :alt="member.fullname" />
+      
       </li>
     </ul>
   </div>

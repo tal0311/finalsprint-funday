@@ -13,17 +13,17 @@
           contenteditable="true"
           v-if="group"
           :style="{ color: group.groupColor }"
-          class="group-title"
+          class="group-title sticky"
           @blur="updateGroup(group, $event)"
         >
           {{ group.title }}
         </p>
 
         <div class="col-headers flex">
-          <div class="label">Status</div>
-          <div class="label">Person</div>
-          <div class="label">Date</div>
-          <div class="label">Priority</div>
+          <div class="label status-picker">Status</div>
+          <div class="label member-picker">Person</div>
+          <div class="label date-picker">Date</div>
+          <div class="label priority-picker">Priority</div>
         </div>
       </div>
 

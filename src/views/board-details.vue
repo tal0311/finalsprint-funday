@@ -82,6 +82,7 @@
     </div>
 
     <!-- GROUP -->
+    <div class="bottom-board">
     <section class="group-list" v-if="currBoard">
       <Container orientation="vertical" @drop="onDrop">
         <Draggable v-for="group in currBoard.groups" :key="group.id">
@@ -102,6 +103,7 @@
       :group="currGroup"
       :boardId="currBoard._id"
     />
+</div>
   </section>
 </template>
 

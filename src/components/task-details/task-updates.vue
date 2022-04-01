@@ -34,6 +34,7 @@ export default {
   },
   methods: {
     addTaskComment() {
+      console.log(this.commentText)
       this.$emit('addTaskComment', this.commentText)
     },
   },

@@ -19,12 +19,18 @@
         box-sizing: content-box;
         padding-bottom: 40px;
         padding-top: 18px;
-        padding-left: 16px;
+        // padding-left: 16px;
+        // padding-right: 30px;
         vertical-align: baseline;
         height: 100%;
         width: 100%; 
         border-color: black;
         // min-width: 964px;
         // height: 1972px;
+    }
+
+    .bottom-board{
+        padding-right: 30px;
+        padding-left: 25px;
     }
 }

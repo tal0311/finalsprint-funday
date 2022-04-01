@@ -8,15 +8,21 @@
         class="member flex"
         :style="{ backgroundColor: member.color }"
       >
-        {{ member.fullname?.charAt(0).toUpperCase() }}
+         <img class="member-img" :src="member.imgUrl" :alt="member.fullname" />
+        
+        <!-- <div v-else class="member-name">
+          {{ member.fullname.split(' ')[0] }}
+        </div> -->
       </li>
     </ul>
 
-<div v-else @click="updateMemberList" class="no-member-container flex">
-  <img class="no-member" src="https://cdn.monday.com/icons/dapulse-person-column.svg" alt="no member">
-</div>
-
-   
+    <div v-else @click="updateMemberList" class="no-member-container flex">
+      <img
+        class="no-member"
+        src="https://cdn.monday.com/icons/dapulse-person-column.svg"
+        alt="no member"
+      />
+    </div>
   </div>
 
   <!-- MEMBERS MODAL CMP -->
@@ -36,13 +42,13 @@ import miniMember from '../mini-member.vue'
 import membersModal from './../members-modal.vue'
 export default {
   name: 'memberPicker',
-  emits: ['add', 'remove','update-priority', 'update-date'],
+  emits: ['add', 'remove', 'update-priority', 'update-date'],
   props: {
     value: Array,
     group: Object,
     task: Object,
   },
-  
+
   components: {
     miniMember,
     membersModal,

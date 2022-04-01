@@ -22,6 +22,10 @@
       justify-content: center;
       align-items: center;
     }
+    .member-img {
+      object-fit: cover;
+      border-radius: 50%;
+    }
   }
 }
 
@@ -63,6 +67,9 @@ ul {
       width: 100%;
       text-align: center;
     }
+    .member-img{
+      border-radius: 50%;
+    }
     button {
       color: #fff;
       background-color: transparent;
@@ -100,6 +107,7 @@ ul {
 .member-picker {
   position: relative;
   width: 100%;
+  @include memberPicker;
   .update-member {
     position: absolute;
     height: toRem(100);
