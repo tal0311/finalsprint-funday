@@ -3,9 +3,24 @@
 .task-list {
   // margin-bottom: 30px;
   .inline {
-    padding-inline-start: 39px;
-    width: 99%;
+    padding-inline-start: 30px;
+    // width: 99.3%;
   }
+
+  .inline-task {
+    &.flex {
+      .si-right {
+        background-color: #d0d4e4;
+        color: transparent;
+        max-width: 6px;
+      }
+      .si-left{
+          color: transparent;
+          max-width: 8px;
+      }
+    }
+  }
+
   .add-task {
     width: 100%;
     input {

@@ -1,5 +1,6 @@
 <template>
-  <section class="inline-task">
+  <section class="inline-task flex">
+    <div class="si-left sticky" :style="{ backgroundColor: groupColor }">1</div>
     <div class="add-task">
       <input
         type="text"
@@ -13,38 +14,43 @@
         add
       </button> -->
     </div>
+    <div class="si-right">2</div>
+
     <!-- <button :class="addFocus" @click="addTask">ok</button> -->
   </section>
 </template>
 
 <script>
 export default {
-  name: "newInlineTask",
-  emits: ["add-task"],
+  name: 'newInlineTask',
+  emits: ['add-task'],
   props: { groupColor: String },
+  created() {
+    console.log(this.groupColor)
+  },
   data() {
     return {
-      value: "",
+      value: '',
       isOnFocus: true,
-    };
+    }
   },
   methods: {
     add() {
-      this.isOnFocus = false;
+      this.isOnFocus = false
       // console.log('ok')
     },
     addTask() {
       // console.log(this.value)
-      this.$emit("add-task", this.value);
-      this.isOnFocus = false;
+      this.$emit('add-task', this.value)
+      this.isOnFocus = false
     },
   },
   computed: {
     addFocus() {
-      return this.isOnFocus ? "focused" : "";
+      return this.isOnFocus ? 'focused' : ''
     },
   },
-};
+}
 </script>
 
 <style></style>
