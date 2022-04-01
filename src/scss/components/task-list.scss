@@ -25,6 +25,7 @@
     width: 100%;
     input {
       line-height: toRem(30);
+      padding-inline-start: toRem(20);
       width: 100%;
       border: solid $clr12 2px;
       &:focus {
