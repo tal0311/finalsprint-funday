@@ -4,10 +4,14 @@
     min-width: 640px;
   }
   .right-side{
-    > ul {
-      width: 140px;
-      height:toRem(40);
+    .status-container {
       background-color: $clr10;
+      width:140px;
+      // height:toRem(40);
+      > ul {
+        width: 100%;
+        height:toRem(40);
+      }
     }
   }
 
