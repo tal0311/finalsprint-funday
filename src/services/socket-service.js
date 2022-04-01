@@ -7,13 +7,14 @@ export const SOCKET_EVENT_REVIEW_ABOUT_YOU = 'review-about-you';
 
 
 const baseUrl = (process.env.NODE_ENV === 'production')? '' : '//localhost:3030'
-export const socketService = createSocketService()
-// export const socketService = createDummySocketService()
+// export const socketService = createSocketService()
+export const socketService = createDummySocketService()
 
 // For DEBUG:
 window.socketService = socketService
 
-socketService.setup()
+// socketService.setup() //!real sockets
+// !before activation make sure events names are correct
 
 
 function createSocketService() {

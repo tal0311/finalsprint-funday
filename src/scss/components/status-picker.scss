@@ -53,6 +53,7 @@
         }
     }
 }
+
 .working {
     background-color: $stClrWorking;
 }
@@ -63,8 +64,27 @@
     color: $clr8;
     background-color: $stClrDone;
 }
-.empty {
+.empty{
     background-color: $stClrEmpty;
+}
+
+
+.bar {
+    background-color: $stClrEmpty;
+    &.working {
+        background-color: $stClrWorking;
+    }
+    &.stuck {
+        background-color: $stClrStuck;
+    }
+    &.done {
+        color: $clr8;
+        background-color: $stClrDone;
+    }
+    &.empty {
+        background-color: $stClrEmpty;
+    }
+    
 }
 
 .status-picker {

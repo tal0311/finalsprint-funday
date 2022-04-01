@@ -1,11 +1,13 @@
 .task-preview {
   top: 40px;
+  margin-bottom:1px;
   color: $clr9;
-  height: 36px;
-  line-height: 36px;
+  height: 35px;
+  line-height: 35px;
   padding-inline-start: 30px;
   cursor: pointer;
-  border-bottom: 1px solid $clr8;
+  // border-bottom: 1px solid $clr7;
+  // margin-bottom:1px;
   justify-content: start;
   width: 100%;
   flex: 1;
@@ -39,6 +41,7 @@
   }
 
   .task-left-side {
+    border-bottom: 1px solid $clr7;
     background-color: $clr10;
     display: flex;
     flex: 1;
@@ -153,6 +156,7 @@
   }
 
   .task-right-side {
+    border-bottom: 1px solid $clr7;
     background-color: $clr10;
     // flex: 1;
     max-width:620px;
