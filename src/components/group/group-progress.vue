@@ -34,7 +34,7 @@ export default {
     sortStatus() {
       return this.tasks
         .map((task) => {
-          console.log(task.cols);
+         
           return task.cols[0].value.toLowerCase();
         })
         .sort();

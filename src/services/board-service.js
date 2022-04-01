@@ -62,9 +62,9 @@ function getEmptyBoard() {
 
     fullname: 'Guest User',
     imgUrl: 'http://some-img',
-  } // getLoggedInUser()
-  const newBoard = {
-    // _id: 'b' + utilService.makeId(),
+  } 
+ // getLoggedInUser()
+ const newBoard = {
     title: 'New Board',
     description: '',
     createdAt: Date.now(),
@@ -75,40 +75,36 @@ function getEmptyBoard() {
       imgUrl: loggedUser.imgUrl,
     },
     members: [
-      // {
-      //   _id: loggedUser._id,
-      //   fullname: loggedUser.fullname,
-      //   imgUrl: loggedUser.imgUrl,
-      // },
-      {
-        "id": "u101",
-        "fullname": "Tal Amit",
-        "username": "tal",
-        "imgUrl": "https://randomuser.me/api/portraits/men/39.jpg",
-        "color": "#8338ec"
+     {
+        id: "u101",
+      fullname: "Tal Amit",
+        username: "tal",
+        imgUrl: "src/assets/img/members/tal.jpg",
+        color: "#8338ec"
       },
       {
-        "id": "u102",
-        "fullname": "Guy Shimon",
-        "username": "guy",
-        "imgUrl": "https://randomuser.me/api/portraits/men/27.jpg",
-        "color": "#3a86ff"
+        id: "u102",
+        fullname: "Guy Shimon",
+        username: "guy",
+        imgUrl: "src/assets/img/members/guy.png",
+        color: "#3a86ff"
       },
       {
-        "id": "u103",
-        "fullname": "Shiran Elad",
-        "username": "shiran",
-        "imgUrl": "https://randomuser.me/api/portraits/women/24.jpg",
-        "color": "#ff006e"
+        id: "u103",
+        fullname: "Shiran Elad",
+        username: "shiran",
+        imgUrl: "src/assets/img/members/shiran.jpeg",
+        color: "#ff006e"
       },
       {
-        "id": "u104",
-        "fullname": "Rotem Bublil",
-        "username": "rotem",
-        "imgUrl": "https://randomuser.me/api/portraits/men/52.jpg",
-        "color": "#ffbe0b"
+        id: "u104",
+        fullname: "Rotem Bublil",
+        username: "rotem",
+        imgUrl: "src/assets/img/members/rotem.png",
+        color: "#ffbe0b"
       }
     ],
+   
     activities: [
       {
         id: 'a101',
