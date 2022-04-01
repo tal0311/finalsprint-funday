@@ -105,9 +105,9 @@ ul {
   }
 }
 .member-picker {
-  @include memberPicker;
   position: relative;
   width: 100%;
+  @include memberPicker;
   .update-member {
     position: absolute;
     height: toRem(100);
