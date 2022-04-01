@@ -26,7 +26,7 @@ export default {
   emits: ['add-task'],
   props: { groupColor: String },
   created() {
-    console.log(this.groupColor)
+    
   },
   data() {
     return {
