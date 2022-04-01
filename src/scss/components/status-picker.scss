@@ -3,6 +3,7 @@
     left: 0;
     @include colPicker;
 
+
     .status {
         position: relative;
         transition: border-width 0.3s 0.2s ease;
@@ -62,8 +63,8 @@
     color: $clr8;
     background-color: $stClrDone;
 }
-.null {
-    background-color: rgb(128, 128, 128);
+.empty {
+    background-color: $stClrEmpty;
 }
 
 .status-picker {
