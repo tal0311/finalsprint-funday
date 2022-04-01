@@ -8,11 +8,11 @@
         class="member flex"
         :style="{ backgroundColor: member.color }"
       >
-         <img v-if="member.imgUrl" class="member-img" :src="member.img" :alt="member.fullname" />
+         <img class="member-img" :src="member.imgUrl" :alt="member.fullname" />
         
-        <div v-else class="member-name">
+        <!-- <div v-else class="member-name">
           {{ member.fullname.split(' ')[0] }}
-        </div>
+        </div> -->
       </li>
     </ul>
 

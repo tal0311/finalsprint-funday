@@ -1,24 +1,22 @@
 .status-bar {
   display: flex;
   flex: 1;
-  .left-side{
-    min-width: 640px;
+  .left-side {
+    min-width: 400px;
     flex-basis: 100%;
   }
-  .right-side{
-    min-width:620px;
+  .right-side {
+    min-width: 620px;
     .status-container {
       background-color: $clr10;
-      width:140px;
-      height:toRem(40);
+      width: 140px;
+      height: toRem(40);
       > ul {
-        
         // margin: 0 8px;
         // margin-left:10px;
         // min-width: 100%;
-        >li > div {
+        > li > div {
           margin-top: 4px;
-
         }
       }
     }
