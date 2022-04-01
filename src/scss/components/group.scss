@@ -54,10 +54,11 @@
   .group-title {
     margin: 0;
     min-width: 400px;
-    flex-basis: 100%;;
+    flex-basis: 100%;
 // border:1px solid black;
     // flex: 1;
-    // padding: 5px;
+    font-size: 1.3rem;
+    padding: 5px;
     // margin-bottom: 5px;
     &:focus {
       outline: 1px solid gray;
