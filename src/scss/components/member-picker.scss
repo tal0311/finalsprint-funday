@@ -4,7 +4,6 @@
   align-items: center;
   margin: auto;
 
-  
   .member {
     text-align: center;
     font-size: 0.8rem;
@@ -18,10 +17,14 @@
     flex-shrink: 0;
     position: relative;
     margin-top: 3px;
-    
+
     &.flex {
       justify-content: center;
       align-items: center;
+    }
+    .member-img {
+      object-fit: cover;
+      border-radius: 50%;
     }
   }
 }
@@ -50,7 +53,7 @@ ul {
   border-radius: 0.3em;
   @include modalShadow;
   padding: 2%;
-  
+
   .member-in-modal {
     font-size: 0.8rem;
     color: #fff;
@@ -63,6 +66,9 @@ ul {
       border-radius: 2rem;
       width: 100%;
       text-align: center;
+    }
+    .member-img{
+      border-radius: 50%;
     }
     button {
       color: #fff;
@@ -84,13 +90,13 @@ ul {
       &:focus {
         transition: 0.3s ease-in-out;
       }
-      
+
       .add {
         @include headerBtn;
         border: 1px solid $clr6;
         border-left: none;
         font-size: 1.2rem;
-        
+
         &:hover {
           @include hoverHeader;
         }

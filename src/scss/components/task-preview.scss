@@ -9,6 +9,8 @@
   justify-content: start;
   width: 100%;
   flex: 1;
+  // font-family: 'Roboto 400';
+  
 
   // position:relative;
 
@@ -58,7 +60,6 @@
     //   z-index:2000;
     // }
 
-
     .side-indicator {
       flex: 0 0 8px;
     }
@@ -71,10 +72,10 @@
       line-height: toRem(36);
       justify-content: center;
       position: relative;
-      flex-basis: 100%;    
+      flex-basis: 100%;
       min-width: 600px;
       // max-width: 800px;
-      flex-basis:100%;
+      flex-basis: 100%;
       &:focus {
         background-color: $clr13;
       }
@@ -156,24 +157,23 @@
       .chat {
         position: relative;
 
-     
-          .comments-indicator {
-            position: absolute;
-            font-size: toRem(8);
-            padding: toRem(2) toRem(5);
-            top: 50%;
-            left: 50%;
-            z-index: 3;
-            background-color: $clr16;
-            color: #fff;
-            border-radius: 3rem;
-            line-height: normal;
-            font-family: 'Roboto 500';
-          }
-       
-          .on{
-            color:$clr16
-          }
+        .comments-indicator {
+          position: absolute;
+          font-size: toRem(8);
+          padding: toRem(2) toRem(5);
+          top: 50%;
+          left: 50%;
+          z-index: 3;
+          background-color: $clr16;
+          color: #fff;
+          border-radius: 3rem;
+          line-height: normal;
+          font-family: 'Roboto 500';
+        }
+
+        .on {
+          color: $clr16;
+        }
       }
 
       .chat-without-update {
