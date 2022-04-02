@@ -207,7 +207,7 @@ export const boardStore = {
         let newBoard = boardService.getEmptyBoard()
         delete boarsToDup._id
         newBoard = boarsToDup
-        newBoard.title = 'Duplicate of' + boarsToDup.title
+        newBoard.title = 'Duplicate of ' + boarsToDup.title
         const duplicatedBoard = await boardService.save(newBoard)
         commit({ type: 'addBoard', board: duplicatedBoard })
         console.log(state.boards)

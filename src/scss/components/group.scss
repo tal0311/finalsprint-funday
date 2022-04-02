@@ -57,8 +57,10 @@
     }
   }
   .group-title {
+    @include stickyContent;
+    
     margin: 0;
-    min-width: 400px;
+    min-width: 410px;
     flex-basis: 100%;
 // border:1px solid black;
     // flex: 1;

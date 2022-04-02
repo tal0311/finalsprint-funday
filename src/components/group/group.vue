@@ -20,10 +20,10 @@
         </p>
 
         <div class="col-headers flex">
-          <div class="label status-picker" @click="sortTasks('status')">Status</div>
+          <div class="label status-picker" @click="sortTasks('status-picker')">Status</div>
           <div class="label member-picker" @click="sortTasks('member-picker')">Person</div>
           <div class="label date-picker" @click="sortTasks('date-picker')">Date</div>
-          <div class="label priority-picker" @click="sortTasks('priority')">Priority</div>
+          <div class="label priority-picker" @click="sortTasks('priority-picker')">Priority</div>
         </div>
       </div>
 
@@ -70,14 +70,17 @@ export default {
     }
   },
   methods: {
-    sortTasks(col){
-      // let idx ;
-      // if(col==='status') idx = 0
-      // // if(col==='status') idx = 0
+    // sortTasks(col){
+    //   this.$store.commit({type: 'setCurrBoard', sortBy: {type: col} })
+      // if(col==='status-picker') idx = 0
+      // if(col==='member-picker') idx = 1
+      // if(col==='date-picker') idx = 2
+      // if(col==='priority-picker') idx = 3
       // this.group.tasks = this.group.tasks.sort((t1,t2) => ((t1.cols[idx].value > t2.cols[idx].value) * this.ascDesc))
       // this.ascDesc *= -1;
-      console.log(this.group.tasks)
-    },
+      // console.log(this.ascDesc)
+      // console.log(this.group.tasks)
+    // },
     addTask(value, groupId) {
       // console.log(value)
       const idx = this.board.groups.findIndex((group) => group.id === groupId)

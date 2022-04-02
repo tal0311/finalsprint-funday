@@ -41,6 +41,8 @@
   }
 
   .task-left-side {
+@include stickyContent;
+  
     border-bottom: 1px solid $clr7;
     background-color: $clr10;
     display: flex;

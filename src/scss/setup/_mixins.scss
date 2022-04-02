@@ -25,6 +25,12 @@
   background-color: transparent;
   border: none;
   border: 1px solid transparent;
+  font-size: toRem(14);
+  line-height: 24px;
+  height: 40px;
+  padding: 7px 16px;
+  // min-width: 100px;
+  max-width: 180px;
 }
 
 @mixin mkIcon($content) {
@@ -45,7 +51,7 @@
   // min-width: 200px;
   // max-width: 200px;
   // width: 100%;
-  &:hover{
+  &:hover {
     background-color: $clr18;
     cursor: pointer;
     border-radius: 4px;
@@ -55,7 +61,7 @@
 @mixin colPicker {
   min-width: 140px;
   max-width: 140px;
-  &:hover{
+  &:hover {
     background-color: $clr18;
     cursor: pointer;
     border-radius: 4px;
@@ -65,5 +71,11 @@
 @mixin ellipsis {
   text-overflow: ellipsis;
   overflow: hidden;
-  white-space:nowrap;
+  white-space: nowrap;
+}
+
+@mixin stickyContent {
+  // position: sticky;
+  // left: 350px;
+  // z-index: 2000;
 }
