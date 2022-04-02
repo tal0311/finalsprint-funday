@@ -27,7 +27,7 @@
         </div>
       </div>
 
-      <!-- <group-labels /> -->
+     
       <group-options
         @update="setGroupUpdate"
         v-if="isOptions"
