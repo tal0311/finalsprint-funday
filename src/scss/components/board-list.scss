@@ -2,6 +2,7 @@
   // font-family: 'Roboto 500';
   color: $clr9;
   position: sticky;
+  z-index:10;
   left: 66px;
   background-color: $clr4;
   height: 100vh;
@@ -164,6 +165,8 @@
     display: flex;
     padding: 0 3px 0 6px;
     font-size: 0.875rem;
+    min-width:225px;
+    
     color: $clr9;
     // border: 1px solid black;
     height: toRem(34);

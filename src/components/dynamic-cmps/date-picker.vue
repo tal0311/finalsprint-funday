@@ -3,7 +3,6 @@
     <el-date-picker
       v-model="taskDate"
       type="date"
-      placeholder="Pick a day"
       @change="setDate"
     />
   </div>

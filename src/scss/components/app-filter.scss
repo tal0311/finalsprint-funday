@@ -1,5 +1,6 @@
 .board-filter {
   padding: toRem(16) 0;
+  border-top: $clr18 1px solid;
 
   > el-dropdown {
     background-color: $clr15;
@@ -11,6 +12,9 @@
 
     & > * {
       @include headerBtn;
+      height: 32px;
+     padding: 0 16px;
+
       // font-size: toRem(15);
       // font-weight:300;
       // height:toRem(28);

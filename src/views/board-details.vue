@@ -13,30 +13,37 @@
               {{ currBoard.title }}
             </h1>
             <div class="info-star flex">
-              <button class="btn-hover" @click="toggleDesc = !toggleDesc">
-                <span class="info"></span>
+              <button class="btn-hover" @click="isShown = !isShown">
+                <span
+                  class="info"
+                  :class="{ 'is-full': !isShown, 'is-empty': isShown }"
+                ></span>
               </button>
-              <button class="btn-hover" @click="isFavorite = !isFavorite"><span class="star" 
-              :class="{'is-on' : isFavorite, 'is-off': !isFavorite}">
-                </span></button>
+              <button class="btn-hover" @click="isFavorite = !isFavorite">
+                <span
+                  class="star"
+                  :class="{ 'is-on': isFavorite, 'is-off': !isFavorite }"
+                >
+                </span>
+              </button>
             </div>
           </div>
-          <div class="board-header-right flex">
-              <!-- LAST SEEN CMP -->
-              <div class="last-seen flex">
-                <button class="btn last">Last seen</button>
-                <last-seen :members="currBoard.members" />
-              </div>
-              <button class="btn invite flex">
-                Invite / <span>{{ currBoard.members?.length }}</span>
-              </button>
-              <button class="btn activity flex">Activity</button>
-              <button class="btn add">Add to board</button>
+          <div class="board-header-right flex align-center">
+            <!-- LAST SEEN CMP -->
+            <div class="last-seen flex">
+              <button class="btn last h-btn">Last seen</button>
+              <last-seen :members="currBoard.members" />
             </div>
+            <button class="btn invite flex h-btn">
+              Invite / <span>{{ currBoard.members?.length }}</span>
+            </button>
+            <button class="btn activity flex h-btn">Activity</button>
+            <button class="btn add flex h-btn">Add to board</button>
           </div>
+        </div>
         <p
           class="description"
-          :class="{ 'd-none': toggleDesc }"
+          :class="{ 'd-none': isShown }"
           @blur="setBoardTitle"
           @keydown.enter="setBoardTitle"
           contenteditable="true"
@@ -46,15 +53,15 @@
         </p>
 
         <div class="btn-container">
-          <button class="main">Main Table</button>
-          <button class="timeline">Timeline</button>
-          <button class="more">More</button>
-          <button class="add">Add View</button>
+          <button class="main h-btn">Main Table</button>
+          <button class="timeline h-btn">Timeline</button>
+          <!-- <button class="more h-btn">More</button> -->
+          <button class="add h-btn" @click="isChart = !isChart">Add View</button>
         </div>
       </div>
-      <hr />
+      <!-- <hr /> -->
 
-      <div class="board-filter flex flex-wrap items-center">
+      <div class="board-filter flex flex-wrap items-center" v-if="!isChart">
         <el-dropdown
           class="btn-new-task"
           split-button
@@ -63,11 +70,11 @@
           height="32px"
           @click="addNewTask"
         >
-          New Task
+          New Item
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item @click="addGroup"
-                >New group of Tasks</el-dropdown-item
+                >New group of Items</el-dropdown-item
               >
             </el-dropdown-menu>
           </template>
@@ -81,29 +88,30 @@
       ></add-group-task>
     </div>
 
-    <!-- GROUP -->
     <div class="bottom-board">
-    <section class="group-list" v-if="currBoard">
-      <Container orientation="vertical" @drop="onDrop">
-        <Draggable v-for="group in currBoard.groups" :key="group.id">
-          <group-cmp
-            :group="group"
-            :board="currBoard"
-            @setCurrGroup="setCurrGroup"
-          />
-          <br />
-        </Draggable>
-      </Container>
-    </section>
+      <chart v-if="currBoard && isChart" :board="currBoard"></chart>
+    <!-- GROUP  -->
+      <section class="group-list" v-if="currBoard && !isChart">
+        <Container orientation="vertical" @drop="onDrop">
+          <Draggable v-for="group in currBoard.groups" :key="group.id">
+            <group-cmp
+              :group="group"
+              :board="currBoard"
+              @setCurrGroup="setCurrGroup"
+            />
+            <br />
+          </Draggable>
+        </Container>
+      </section>
 
-    <!-- TASK DETAILS -->
-    <task-details
-      v-if="taskToShow"
-      :task="taskToShow"
-      :group="currGroup"
-      :boardId="currBoard._id"
-    />
-</div>
+      <!-- TASK DETAILS -->
+      <task-details
+        v-if="taskToShow"
+        :task="taskToShow"
+        :group="currGroup"
+        :boardId="currBoard._id"
+      />
+    </div>
   </section>
 </template>
 
@@ -147,8 +155,9 @@ export default {
     return {
       board: null,
       currGroup: null,
-      toggleDesc: false,
+      isShown: false,
       isFavorite: false,
+      isChart: false,
     };
   },
   methods: {

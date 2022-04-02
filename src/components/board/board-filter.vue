@@ -29,7 +29,7 @@ export default {
   methods: {
     onFilter() {
       console.log(this.filterBy);
-      return this.$emit("filter", this.filterBy);
+      this.$emit("filter", this.filterBy);
     },
   },
   computed: {
