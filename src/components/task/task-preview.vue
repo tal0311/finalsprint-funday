@@ -1,7 +1,6 @@
 <template>
-  <!-- task title -->
+  <!-- TASK-PREVIEW COMPONENT -->
   <div class="task-preview flex" @mouseleave="delHover = false">
-    <!-- <task-options v-if="isOptions"></task-options> -->
     <div
       class="btn-remove-task btn"
       @mouseover="delHover = true"
@@ -87,12 +86,13 @@
       </span>
     </div>
     <div class="task-right-side flex">
-      <div
+
+      <!-- DYNAMIC COMPONENT -->
+       <div
         :class="[cmp.type, 'dyn-cmp flex']"
         v-for="(cmp, idx) in task.cols"
         :key="idx"
       >
-        <!-- dynamic components -->
         <component
           v-if="task"
           :is="cmp.type"
@@ -105,7 +105,7 @@
           @update-priority="setPriority"
         />
       </div>
-
+     
       <div class="right-indicator"></div>
     </div>
   </div>
@@ -125,6 +125,13 @@ export default {
     task: Object,
     groupColor: String,
     group: Object,
+  },
+  components: {
+    datePicker,
+    memberPicker,
+    statusPicker,
+    taskOptions,
+    priorityPicker,
   },
 
   data() {
@@ -214,13 +221,6 @@ export default {
         task,
       })
     },
-  },
-  components: {
-    datePicker,
-    memberPicker,
-    statusPicker,
-    taskOptions,
-    priorityPicker,
   },
 }
 </script>

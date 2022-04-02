@@ -15,13 +15,13 @@ export const boardStore = {
 
   getters: {
     boards(state) {
-      return JSON.parse(JSON.stringify(state.boards))
+      return state.boards
     },
     currBoard(state) {
-      return JSON.parse(JSON.stringify(state.currBoard))
+      return state.currBoard
     },
     boardToDisplay(state) {
-      return JSON.parse(JSON.stringify(state.filteredBoard))
+      return state.filteredBoard
 
       // const regex = new RegExp(state.filterBy, 'i');
       // // console.log('currBoard in the store', state.currBoard);
@@ -41,10 +41,10 @@ export const boardStore = {
       // return displayedBoard;
     },
     currTask(state) {
-      return JSON.parse(JSON.stringify(state.currTask))
+      return state.currTask
     },
     taskToShow(state) {
-      return JSON.parse(JSON.stringify(state.taskToShow))
+      return state.taskToShow
     },
   },
   mutations: {
