@@ -89,7 +89,7 @@
     </div>
 
     <div class="bottom-board">
-      <chart v-if="currBoard && isChart" :board="currBoard"></chart>
+      <dashboard v-if="currBoard && isChart" :board="currBoard"></dashboard>
     <!-- GROUP  -->
       <section class="group-list" v-if="currBoard && !isChart">
         <Container orientation="vertical" @drop="onDrop">
@@ -134,6 +134,7 @@ import groupCmp from "../components/group/group.vue";
 import addGroupTask from "../components/add-group-task.vue";
 import appFilter from "../components/board/board-filter.vue";
 import taskDetails from "../components/task-details/task-details.vue";
+import dashboard from '../components/dashboard.vue'
 
 export default {
   name: "board-details",
@@ -145,6 +146,7 @@ export default {
     Draggable,
     lastSeen,
     taskDetails,
+    dashboard,
   },
   created() {
     let { boardId } = this.$route.params;
