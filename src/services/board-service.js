@@ -10,7 +10,6 @@ import { utilService } from './util-service'
 // const KEY = 'board'
 const ENDPOINT = 'board'
 
-
 export const boardService = {
   query,
   remove,
@@ -55,16 +54,15 @@ async function remove(boardId) {
   // return await storageService.remove(KEY, boardId)
 }
 
-
 function getEmptyBoard() {
   const loggedUser = {
     _id: 'u105',
 
     fullname: 'Guest User',
     imgUrl: 'http://some-img',
-  } // getLoggedInUser()
+  }
+  // getLoggedInUser()
   const newBoard = {
-    // _id: 'b' + utilService.makeId(),
     title: 'New Board',
     description: '',
     createdAt: Date.now(),
@@ -75,43 +73,39 @@ function getEmptyBoard() {
       imgUrl: loggedUser.imgUrl,
     },
     members: [
-      // {
-      //   _id: loggedUser._id,
-      //   fullname: loggedUser.fullname,
-      //   imgUrl: loggedUser.imgUrl,
-      // },
       {
-        "id": "u101",
-        "fullname": "Tal Amit",
-        "username": "tal",
-        "imgUrl": "https://randomuser.me/api/portraits/men/39.jpg",
-        "color": "#8338ec"
+        id: 'u' + utilService.makeId(),
+        fullname: 'Tal Amit',
+        username: 'tal',
+        imgUrl: 'src/assets/img/members/tal.jpg',
+        color: '#8338ec',
       },
       {
-        "id": "u102",
-        "fullname": "Guy Shimon",
-        "username": "guy",
-        "imgUrl": "https://randomuser.me/api/portraits/men/27.jpg",
-        "color": "#3a86ff"
+        id: 'u' + utilService.makeId(),
+        fullname: 'Guy Shimon',
+        username: 'guy',
+        imgUrl: 'src/assets/img/members/guy.png',
+        color: '#3a86ff',
       },
       {
-        "id": "u103",
-        "fullname": "Shiran Elad",
-        "username": "shiran",
-        "imgUrl": "https://randomuser.me/api/portraits/women/24.jpg",
-        "color": "#ff006e"
+        id: 'u' + utilService.makeId(),
+        fullname: 'Shiran Elad',
+        username: 'shiran',
+        imgUrl: 'src/assets/img/members/shiran.jpeg',
+        color: '#ff006e',
       },
       {
-        "id": "u104",
-        "fullname": "Rotem Bublil",
-        "username": "rotem",
-        "imgUrl": "https://randomuser.me/api/portraits/men/52.jpg",
-        "color": "#ffbe0b"
-      }
+        id: 'u' + utilService.makeId(),
+        fullname: 'Rotem Bublil',
+        username: 'rotem',
+        imgUrl: 'src/assets/img/members/rotem.png',
+        color: '#ffbe0b',
+      },
     ],
+
     activities: [
       {
-        id: 'a101',
+        id: 'a' + utilService.makeId(),
         txt: 'Group Title created',
         createdAt: Date.now(),
         byMember: {
@@ -121,7 +115,7 @@ function getEmptyBoard() {
         },
       },
       {
-        id: 'a102',
+        id: 'a' + utilService.makeId(),
         txt: 'Group Title created',
         createdAt: Date.now(),
         byMember: {
@@ -132,7 +126,7 @@ function getEmptyBoard() {
       },
       {
         task: {
-          id: 't101',
+          id: 't' + utilService.makeId(),
           title: 'Task 1 assigned to ' + loggedUser.fullname,
         },
       },
@@ -158,9 +152,9 @@ function getEmptyBoard() {
   return newBoard
 }
 
-function getEmptyGroup(withTask=true) {
+function getEmptyGroup(withTask = true) {
   const tasks = []
-  if(withTask){
+  if (withTask) {
     tasks.push(getEmptyTask())
   }
   return {
@@ -505,13 +499,6 @@ function getEmptyTask(title = 'New Task') {
 //   // console.log('loading')
 //   localStorage.setItem('board', JSON.stringify(board))
 // }
-
-
-
-
-
-
-
 
 // _loadItemsToStorage()
 // This IIFE functions for Dev purposes
