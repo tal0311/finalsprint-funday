@@ -53,10 +53,10 @@
         </p>
 
         <div class="btn-container">
-          <button class="main h-btn">Main Table</button>
+          <button class="main h-btn" @click="isChart = false">Main Table</button>
           <button class="timeline h-btn">Timeline</button>
           <!-- <button class="more h-btn">More</button> -->
-          <button class="add h-btn" @click="isChart = !isChart">Add View</button>
+          <button class="add h-btn" @click="isChart = true">Add View</button>
         </div>
       </div>
       <!-- <hr /> -->
