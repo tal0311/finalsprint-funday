@@ -60,7 +60,6 @@ export default {
       this.$emit("chooseBoard", board);
     },
   },
-  computed: {},
-  unmounted() {},
+ 
 };
 </script>

@@ -1,21 +1,38 @@
 <template>
-  <section>
-    <h2 class="dash-header">Open/Closed/Overdue tasks per team member</h2>
-    <chart-tasks-per-member :data="testData"></chart-tasks-per-member>
-    <!-- <h2 class="dash-header">Inventory by Category (%)</h2>
-    <toy-chart-inv :data="invData"></toy-chart-inv> -->
+  <section class="dashboard flex space-between">
+    <article class="bar-tasks-per-member">
+    <h3 class="dash-header">Open/Closed/Overdue tasks per team member</h3>
+    <chart-tasks-per-member
+      :members="members"
+      :membersData="getData"
+      :doneTasks="doneTasks"
+      :openTasks="openTasks"
+      :overdueTasks="overdueTasks"
+    ></chart-tasks-per-member>
+</article>
+  <article class="bar-tasks-per-member">
+    <h3 class="dash-header">High Risk Tasks</h3>
+    <chart-high-risk
+      :members="members"
+      :membersData="getData"
+      :doneTasks="doneTasks"
+      :openTasks="openTasks"
+      :overdueTasks="overdueTasks"
+    ></chart-high-risk>
+    </article>
   </section>
 </template>
 
 <script>
 import chartTasksPerMember from "../components/chart-tasks-per-member.vue";
-// import toyChartInv from "../components/toy-chart-inv.vue";
+import chartHighRisk from "../components/chart-high-risk.vue";
 
 export default {
-  // props: [''],
+  props: { board: Object },
+  name: "dashboard",
   components: {
     chartTasksPerMember,
-    // toyChartInv,
+    chartHighRisk,
   },
   created() {
     // this.getLabelsPrices();
@@ -23,110 +40,62 @@ export default {
   },
   data() {
     return {
-      testData: {
-        // labels: ["On wheels", "Box game", "Art", "Baby", "Doll", "Puzzle", "Outdoor"],
-        labels: [],
-        datasets: [
-          {
-            data: [0],
-            backgroundColor: [
-              "#77CEFF",
-              "#0079AF",
-              "#123E6B",
-              "#97B0C4",
-              "#A5C8ED",
-            ],
-          },
-        ],
-      },
-      invData: {
-        // labels: ["On wheels", "Box game", "Art", "Baby", "Doll", "Puzzle", "Outdoor"],
-        labels: [],
-        datasets: [
-          {
-            data: [0],
-            backgroundColor: [
-              "#77CEFF",
-              "#0079AF",
-              "#123E6B",
-              "#97B0C4",
-              "#A5C8ED",
-            ],
-          },
-        ],
-      },
+      doneTasks: [],
+      openTasks: [],
+      overdueTasks: [],
     };
   },
-  methods: {
-    getLabelsPrices() {
-      const toys = JSON.parse(JSON.stringify(this.$store.getters.toys));
-      var accToys = toys.reduce((acc, toy) => {
-        toy.labels.forEach((label) => {
-          if (!acc[label]) {
-            this.testData.datasets[0].data.push(0);
-            this.testData.labels.push(label);
-            acc[label] = {
-              totalPrice: toy.price,
-              qty: 1,
-            };
-          } else {
-            acc[label].totalPrice += toy.price;
-            acc[label].qty++;
-          }
-        });
-        return acc;
-      }, {});
+  methods: {},
 
-      // console.log("accToys", accToys);
-
-      for(var label in accToys){
-        let idx = this.testData.labels.indexOf(label);
-        // console.log('label, idx', label, idx)
-        this.testData.datasets[0].data[idx] =
-          accToys[label].totalPrice / accToys[label].qty;
-      }
+  computed: {
+    getData() {
+      const memberCount = []; // [{member: 'Shiran Elad', done: 20, open: 10, overdue: 2 }, {}]
+      console.log(this.members);
+      this.members.map((m) =>
+        memberCount.push({
+          member: m,
+          doneTasks: 0,
+          openTasks: 0,
+          overdueTasks: 0,
+        })
+      );
+      console.log(memberCount);
+      memberCount.map((member) =>
+        this.board.groups.map((group) =>
+          group.tasks.map((task) => {
+            task.cols[1].value.map((person) => {
+              if (
+                person.fullname === member.member &&
+                task.cols[0].value.toLowerCase() === "done"
+              ) {
+                // console.log(task.title, person.fullname)
+                member["doneTasks"]++;
+              }
+              if (
+                person.fullname === member.member &&
+                task.cols[0].value.toLowerCase() !== "done"
+              )
+                member["openTasks"]++;
+              if (
+                person.fullname === member.member &&
+                task.cols[0].value.toLowerCase() !== "done" &&
+                new Date(task.cols[2].value) < Date.now()
+              )
+                member["overdueTasks"]++;
+            });
+          })
+        )
+      );
+      // DO NOT TOUCH //
+      this.doneTasks = memberCount.map((m) => m.doneTasks);
+      this.openTasks = memberCount.map((m) => m.openTasks);
+      this.overdueTasks = memberCount.map((m) => m.overdueTasks);
     },
 
-    getLabelsInv() {
-      const toys = JSON.parse(JSON.stringify(this.$store.getters.toys));
-      const labels = {}
-      let toysLen = toys.length
-      let countToysNotInStock = 0
-      /* NOT IN STOCK */
-      toys.forEach(toy => {
-        if(toy.inStock) return
-        countToysNotInStock++
-        if(!this.invData.labels.includes('Not in Stock')){
-          this.invData.labels.push('Not in Stock')
-        } 
-      })
-      // console.log('countToysNotInStock',countToysNotInStock);
-      this.invData.datasets[0].data[0] = countToysNotInStock * 100.0 / toysLen
-
-
-      var toysInStock = toys.map(toy => {
-        if(!toy.inStock) return
-        toy.labels.forEach(label => {
-          if(!labels[label]){
-            labels[label] = 1
-            this.invData.labels.push(label)
-            this.invData.datasets[0].data.push(0)
-          }
-          else {
-            labels[label]++
-          }
-        })
-      })
-        for(var label in labels){
-          let idx = this.invData.labels.indexOf(label);
-            this.invData.datasets[0].data[idx] = ((labels[label] / toysInStock.length) ) * (countToysNotInStock * 100.0 / toysLen)
-        }
-      // console.log(toysInStock)
-},     
-
-
-    computed: {},
-    unmounted() {},
+    members() {
+      return this.board.members.map((member) => member.fullname);
+    },
   },
+  unmounted() {},
 };
 </script>

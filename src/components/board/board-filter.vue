@@ -1,14 +1,28 @@
 <template>
   <section class="filter flex">
-    <button @click="isSearch = !isSearch" class="btn search" 
-    :class="{'d-none': isSearch}"
-      >Search
+    <button
+      @click="isSearch = !isSearch"
+      class="btn search"
+      :class="{ 'd-none': isSearch }"
+    >
+      Search
       <div v-if="setSearch">
-        <input @enter="setSearchTerm"  @blur="isSearch = false" type="text" name="search" id="" />
+        <input
+          @enter="setSearchTerm"
+          @blur="isSearch = false"
+          type="text"
+          name="search"
+        />
       </div>
     </button>
-    <input type="text" class="search" v-model="filterBy" @input="onFilter" placeholder="Search..."
-    :class="{'d-none': !isSearch}"/>
+    <input
+      type="text"
+      class="search"
+      v-model="filterBy"
+      @input="onFilter"
+      placeholder="Search..."
+      :class="{ 'd-none': !isSearch }"
+    />
     <button class="btn person">Person</button>
 
     <button class="btn filter">Filter</button>
@@ -19,12 +33,12 @@
 
 <script>
 export default {
-  name: "board-filter",
+  name: 'board-filter',
   data() {
     return {
       isSearch: false,
-      filterBy: "",
-    };
+      filterBy: '',
+    }
   },
   methods: {
     onFilter() {
@@ -38,7 +52,7 @@ export default {
     //   return this.isSearch
     // },
   },
-};
+}
 </script>
 
 <style></style>

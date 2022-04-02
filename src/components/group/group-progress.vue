@@ -50,7 +50,7 @@ export default {
       return this.tasks
         .map((task) => {
          
-          // return task.cols[0].value.toLowerCase();
+          return task.cols[0].value.toLowerCase();
         })
         .sort();
     },
@@ -58,7 +58,7 @@ export default {
       return this.tasks
         .map((task) => {
           // console.log(task.cols);
-          // return task.cols[3].value.toLowerCase();
+          return task.cols[3].value.toLowerCase();
         })
         .sort();
     },
