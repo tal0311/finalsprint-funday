@@ -204,7 +204,7 @@ export const boardStore = {
     },
     async duplicateBoard({ dispatch, state, commit }, { boardId }) {
       try {
-        var boardToDuplicate = await dispatch({type: 'getBoardById', boardId})
+        var boardToDuplicate = await dispatch({ type: 'getBoardById', boardId })
         console.log('BOARD' + boardToDuplicate)
         // boardToDuplicate.title = 'Duplicate of ' + boardToDuplicate.title;
         // console.log('boardToDuplicate', boardToDuplicate);
