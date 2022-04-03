@@ -71,12 +71,12 @@ export default {
           {
             label: "Stuck",
             data: this.stuckTasks,
-            backgroundColor: "#f62b54",
+            backgroundColor: "#ffcc00",
           },
           {
             label: "Overdue",
             data: this.overdueGroupTasks,
-            backgroundColor: "#ffcc00",
+            backgroundColor: "#f62b54",
           },
         ],
       },

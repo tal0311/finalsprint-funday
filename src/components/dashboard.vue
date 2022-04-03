@@ -101,53 +101,48 @@ export default {
       board.groups.map((g) => {
         // console.log(board, groupCount);
         // console.log(g);
-        groupCount.push({ group: g.title , emptyTasks: 0, stuckTasks: 0, overdueGroupTasks: 0});
+        var emptyTasks = 0;
+        var stuckTasks = 0;
+        var overdueGroupTasks = 0;
         g.tasks.map((task) => {
           if (
             task.cols[3].value?.toLowerCase() === "high" &&
             (task.cols[0].value?.toLowerCase() === "empty" ||
               !task.cols[0].value)
           ) {
-            console.log(task.cols[0].value, task.cols[3].value)
-            // groupCount[emptyTasks]++;
+            emptyTasks++;
           }
-        })
-      });
-      // console.log(groupCount);
 
-      
-      // board.groups.map((group) => {  
-      //     if (
-      //       task.cols[3].value?.toLowerCase() === "high" &&
-      //       task.cols[0].value?.toLowerCase() !== "stuck"
-      //     ) {
-      //       groupCount['stuckTasks']++;
-      //     }
-      //     if (
-      //       task.cols[3].value?.toLowerCase() === "high" &&
-      //       task.cols[0].value?.toLowerCase() !== "done" &&
-      //       new Date(task.cols[2].value) < Date.now()
-      //     ){
-      //       groupCount[overdueGroupTasks]++;
-      //     }
-      //   });
-      // });
+          if (
+            task.cols[3].value?.toLowerCase() === "high" &&
+            task.cols[0].value?.toLowerCase() !== "stuck"
+          ) {
+            stuckTasks++;
+          }
+          if (
+            task.cols[3].value?.toLowerCase() === "high" &&
+            task.cols[0].value?.toLowerCase() !== "done" &&
+            new Date(task.cols[2].value) < Date.now()
+          ) {
+            overdueGroupTasks++;
+          }
+          });
+          groupCount.push({
+            group: g.title,
+            emptyTasks,
+            stuckTasks,
+            overdueGroupTasks,
+        });
+      });
 
       console.log(groupCount);
-      //   emptyTasks: 0,
-      //   stuckTasks: 0,
-      //   overdueGroupTasks: 0,
-      // });
-      // })
-      // });
+  
 
       // // DO NOT TOUCH //
 
       this.emptyTasks = groupCount.map((g) => g.emptyTasks);
       this.stuckTasks = groupCount.map((g) => g.stuckTasks);
-      // console.log(this.stuckTasks);
       this.overdueGroupTasks = groupCount.map((g) => g.overdueGroupTasks);
-      // console.log(this.emptyTasks, this.stuckTasks, this.overdueGroupTasks);
     },
 
     members() {
