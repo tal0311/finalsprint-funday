@@ -1,5 +1,5 @@
 .priority-picker {
-  @include colPicker;
+  @include colStat;
 }
 .low {
   background-color: #93bd3a;
@@ -10,6 +10,6 @@
 .medium {
   background-color: #68a1bd;
 }
-.empty{
+.empty {
   background-color: $stClrEmpty;
 }

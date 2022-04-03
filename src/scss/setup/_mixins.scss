@@ -38,8 +38,8 @@
     content: $content;
 
     padding: 0 5px;
-    font-family: "IconFont";
-    font-style: "normal";
+    font-family: 'IconFont';
+    font-style: 'normal';
   }
 }
 
@@ -63,6 +63,16 @@
   max-width: 140px;
   &:hover {
     background-color: $clr18;
+
+    cursor: pointer;
+    border-radius: 4px;
+  }
+}
+@mixin colStat {
+  min-width: 140px;
+  max-width: 140px;
+  &:hover {
+    opacity: 0.8;
     cursor: pointer;
     border-radius: 4px;
   }
