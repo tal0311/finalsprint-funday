@@ -86,9 +86,8 @@
       </span>
     </div>
     <div class="task-right-side flex">
-
       <!-- DYNAMIC COMPONENT -->
-       <div
+      <div
         :class="[cmp.type, 'dyn-cmp flex']"
         v-for="(cmp, idx) in task.cols"
         :key="idx"
@@ -99,13 +98,14 @@
           :task="task"
           :value="cmp.value"
           :group="group"
+          :boardMembers="currBoardMembers"
           @add="addMember"
           @remove="removeMember"
           @update-date="setDate"
           @update-priority="setPriority"
         />
       </div>
-     
+
       <div class="right-indicator"></div>
     </div>
   </div>
@@ -144,10 +144,10 @@ export default {
     }
   },
   methods: {
-    addMember(task, memberName) {
+    addMember(task, memberToAdd) {
       task = JSON.parse(JSON.stringify(task))
       const board = this.$store.getters.currBoard
-      const member = board.members.find((curr) => curr.username === memberName)
+      const member = board.members.find((curr) => curr.id === memberToAdd.id)
       task.cols[1].value.push(member)
       this.$store.dispatch({
         type: 'updateTask',
@@ -220,6 +220,11 @@ export default {
         groupId,
         task,
       })
+    },
+  },
+  computed: {
+    currBoardMembers() {
+      return this.$store.getters.currBoard.members
     },
   },
 }
