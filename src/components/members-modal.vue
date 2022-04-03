@@ -1,5 +1,5 @@
 <template>
-  <div class="member-modal" >
+  <div class="member-modal">
     <button @click="closeModal" class="close-btn">X</button>
     <div class="members-at-task">
       <ul class="clean-list">
@@ -35,13 +35,13 @@
             v-for="(boardMember, idx) in setMembers"
             class="member-in-modal flex"
             :key="idx"
+            @click="addMember(boardMember)"
           >
             <img
               v-if="boardMember.imgUrl"
               class="member-img"
               :src="boardMember.imgUrl"
               :alt="boardMember.fullname"
-              @click="addMember(boardMember)"
             />
             <p>{{ boardMember.username }}</p>
           </li>
