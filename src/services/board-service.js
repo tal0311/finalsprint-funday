@@ -1,5 +1,6 @@
-import { httpService } from './http-service.js'
-import { utilService } from './util-service'
+import { httpService } from './http-service.js';
+import { utilService } from './util-service';
+import { socketService } from './socket-service';
 // import { storageService } from './async-storage.service'
 // import { userService } from './user-service-local'
 // import { socketService, SOCKET_EVENT_board_ADDED } from './socket-service'
@@ -8,7 +9,7 @@ import { utilService } from './util-service'
 // _loadItemsToStorage()
 // console.log('board service')
 // const KEY = 'board'
-const ENDPOINT = 'board'
+const ENDPOINT = 'board';
 
 export const boardService = {
   query,
@@ -18,14 +19,14 @@ export const boardService = {
   getEmptyBoard,
   getEmptyGroup,
   getEmptyTask,
-}
+};
 
 // More ways to send query params:
 // return axios.get('api/toy/?id=1223&balance=13')
 // return axios.get('api/toy/?', {params: {id: 1223, balanse:13}})
 
 async function query(filterBy) {
-  return await httpService.get(ENDPOINT, filterBy)
+  return await httpService.get(ENDPOINT, filterBy);
 
   // const board = _getBoardStorage()
   // if (board) return board
@@ -33,24 +34,34 @@ async function query(filterBy) {
 }
 
 async function getById(boardId) {
-  return await httpService.get(`${ENDPOINT}/${boardId}`)
+  return await httpService.get(`${ENDPOINT}/${boardId}`);
   // const group = await storageService.get(KEY, boardId)
   // return group
 }
 
 async function save(board) {
-  console.log('boardId in Srv', board)
-  return board._id
-    ? await httpService.put(`${ENDPOINT}/${board._id}`, board)
-    : await httpService.post(ENDPOINT, board)
-
+  socketService.emit('board saved', board._id)
+  
+  // return board._id
+  // ? await httpService.put(`${ENDPOINT}/${board._id}`, board)
+  // : await httpService.post(ENDPOINT, board);
+  
+  if (board._id) {
+    const savedBoard = await httpService.put(`${ENDPOINT}/${board._id}`, board)
+    socketService.emit('board saved', savedBoard._id)
+    return savedBoard
+  } else {
+    const savedBoard = await  httpService.post(ENDPOINT, board)
+    socketService.emit('board saved', savedBoard._id)
+    return savedBoard
+  }
   // if (board._id) return storageService.put(KEY, board)
   // return await storageService.post(KEY, board)
 }
 
 async function remove(boardId) {
-  console.log(boardId)
-  return await httpService.delete(`${ENDPOINT}/${boardId}`)
+  console.log(boardId);
+  return await httpService.delete(`${ENDPOINT}/${boardId}`);
   // return await storageService.remove(KEY, boardId)
 }
 
@@ -60,7 +71,7 @@ function getEmptyBoard() {
 
     fullname: 'Guest User',
     imgUrl: 'http://some-img',
-  }
+  };
   // getLoggedInUser()
   const newBoard = {
     title: 'New Board',
@@ -133,36 +144,36 @@ function getEmptyBoard() {
     ],
     groups: [getEmptyGroup(false), getEmptyGroup(false)],
     cmpsOrder: ['status-picker', 'member-picker', 'date-picker'],
-  }
+  };
 
   // console.log(newBoard)
 
-  newBoard.groups[0].title = 'Group Title'
-  newBoard.groups[0].groupColor = '#579bfc'
-  newBoard.groups[1].title = 'Group Title'
-  newBoard.groups[1].groupColor = '#a25ddc'
+  newBoard.groups[0].title = 'Group Title';
+  newBoard.groups[0].groupColor = '#579bfc';
+  newBoard.groups[1].title = 'Group Title';
+  newBoard.groups[1].groupColor = '#a25ddc';
 
   for (var i = 0; i < 5; i++) {
-    const newTask = getEmptyTask(`Item ${i + 1}`)
-    if (i < 3) newBoard.groups[0].tasks.push(newTask)
+    const newTask = getEmptyTask(`Item ${i + 1}`);
+    if (i < 3) newBoard.groups[0].tasks.push(newTask);
     else {
-      newBoard.groups[1].tasks.push(newTask)
+      newBoard.groups[1].tasks.push(newTask);
     }
   }
-  return newBoard
+  return newBoard;
 }
 
 function getEmptyGroup(withTask = true) {
-  const tasks = []
+  const tasks = [];
   if (withTask) {
-    tasks.push(getEmptyTask())
+    tasks.push(getEmptyTask());
   }
   return {
     id: 'g' + utilService.makeId(),
     title: 'New Group',
     tasks,
     groupColor: utilService.getRandomColor(),
-  }
+  };
 }
 
 function getEmptyTask(title = 'New Task') {
@@ -187,7 +198,7 @@ function getEmptyTask(title = 'New Task') {
         value: null,
       },
     ],
-  }
+  };
 }
 
 // const board = [

@@ -1,4 +1,5 @@
 <template>
+<!-- MEMBER PICKER COMPONENT -->
   <div class="member-picker">
     <ul v-if="value.length" class="members-container clean-list flex">
       <li
@@ -8,11 +9,7 @@
         class="member flex"
         :style="{ backgroundColor: member.color }"
       >
-         <img class="member-img" :src="member.imgUrl" :alt="member.fullname" />
-        
-        <!-- <div v-else class="member-name">
-          {{ member.fullname.split(' ')[0] }}
-        </div> -->
+        <img class="member-img" :src="member.imgUrl" :alt="member.fullname" />
       </li>
     </ul>
 
@@ -25,19 +22,22 @@
     </div>
   </div>
 
-  <!-- MEMBERS MODAL CMP -->
+
 
   <div v-if="updateMember" class="update-members">
     <members-modal
       :task="task"
       :members="value"
+      :boardMembers="boardMembers"
       @removeMember="removeMember"
       @addMember="addMember"
+      @close="updateMemberList"
     />
   </div>
 </template>
 
 <script>
+
 import miniMember from '../mini-member.vue'
 import membersModal from './../members-modal.vue'
 export default {
@@ -47,6 +47,7 @@ export default {
     value: Array,
     group: Object,
     task: Object,
+    boardMembers: Array
   },
 
   components: {
@@ -65,14 +66,14 @@ export default {
     },
 
     updateMemberList() {
-      this.updateMember = true
+      this.updateMember = !this.updateMember
     },
     removeMember(task, member) {
       this.$emit('remove', task, member)
     },
-    addMember(task, memberName) {
+    addMember(task, member) {
       // console.log('memberName', memberName);
-      this.$emit('add', task, memberName)
+      this.$emit('add', task, member)
     },
   },
 }

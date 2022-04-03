@@ -67,14 +67,18 @@ export default {
 
       this.updates.unshift({ creator: "Tal", content: commentText });
 
+      this.taskToSave.comments = JSON.parse(JSON.stringify(this.updates));
+      this.$store.dispatch({
+        type: "updateTask",
+        boardId: this.boardId,
+        groupId: this.group.id,
+        task: this.taskToSave,
+      });
+      this.$store.dispatch({
+        type: "getBoardById",
+        boardId: this.boardId,
+      });
       if (this.isSender) {
-        this.taskToSave.comments = JSON.parse(JSON.stringify(this.updates));
-        this.$store.dispatch({
-          type: "updateTaskAfterComment",
-          boardId: this.boardId,
-          groupId: this.group.id,
-          task: this.taskToSave,
-        });
       }
       this.isSender = false;
     },

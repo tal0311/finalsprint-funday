@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     addTaskComment() {
-      this.$emit("updateToSocket", this.commentText);
+      this.$emit("addTaskComment", this.commentText);
     },
   },
 };

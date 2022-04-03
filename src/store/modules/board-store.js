@@ -16,40 +16,18 @@ export const boardStore = {
   getters: {
     boards(state) {
       return  JSON.parse(JSON.stringify(state.boards))
-      
     },
     currBoard(state) {
       return  JSON.parse(JSON.stringify(state.currBoard))
-      
     },
     boardToDisplay(state) {
       return  JSON.parse(JSON.stringify(state.filteredBoard))
-      
-      
-      // const regex = new RegExp(state.filterBy, 'i');
-      // // console.log('currBoard in the store', state.currBoard);
-      // var displayedBoard = JSON.parse(JSON.stringify(state.currBoard));
-      // console.log('board', displayedBoard.groups);
-      // if (!displayedBoard.groups) return displayedBoard;
-      // const filteredGroups = displayedBoard.groups.map(group => {
-      //   console.log(group);
-      //   group.tasks = group.tasks.filter(task => {
-      //     // console.log(task);
-      //     return regex.test(task.title);
-      //   });
-      //   return group;
-      // });
-      // displayedBoard.groups = filteredGroups;
-      // console.log(displayedBoard);
-      // return displayedBoard;
     },
     currTask(state) {
       return  JSON.parse(JSON.stringify(state.currTask))
-      
     },
     taskToShow(state) {
       return  JSON.parse(JSON.stringify(state.taskToShow))
-      
     },
   },
   mutations: {
@@ -195,6 +173,8 @@ export const boardStore = {
       try {
         const savedBoard = await boardService.save(board)
         console.log(savedBoard)
+        socketService.emit('board saved', board._id)
+
         commit({ type: 'saveBoard', savedBoard })
         // dispatch({ type: 'loadBoards' });
         // commit({ type: 'setCurrBoard', board: boardToUpdate });
@@ -343,7 +323,7 @@ export const boardStore = {
       const board = JSON.parse(JSON.stringify(state.currBoard))
       let gIdx = board.groups.findIndex((dbGroup) => dbGroup.id === groupId)
 
-      console.log(gIdx)
+      // console.log(gIdx)
       const tIdx = board.groups[gIdx].tasks.findIndex(
         (dbTask) => dbTask.id === task.id
       )

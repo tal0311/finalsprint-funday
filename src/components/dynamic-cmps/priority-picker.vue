@@ -20,6 +20,7 @@ export default {
   props: {
     task: Object,
     group: Object,
+    boardMembers: Object
   },
   data() {
     return {
