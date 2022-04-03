@@ -51,6 +51,7 @@ export default {
     return {
       activeTab: "taskUpdates",
       updates: [],
+      taskToSave: {},
       commentText: null,
       isSender: false,
     };
@@ -59,7 +60,6 @@ export default {
     updateToSocket(commentText) {
       this.isSender = true;
       this.commentText = commentText;
-      // console.log("emmiting update To Socket", this)
       socketService.emit("update added", commentText);
     },
     addTaskComment(commentText) {
@@ -68,14 +68,14 @@ export default {
       this.updates.unshift({ creator: "Guest", content: commentText });
 
       if (this.isSender) {
-        this.task.comments = JSON.parse(JSON.stringify(this.updates));
+        this.taskToSave.comments = JSON.parse(JSON.stringify(this.updates));
         this.$store.dispatch({
-          type: "updateTask",
+          type: "updateTaskAfterComment",
           boardId: this.boardId,
           groupId: this.group.id,
-          task: JSON.parse(JSON.stringify(this.task)),
+          task: this.taskToSave,
         });
-      } 
+      }
       this.isSender = false;
     },
     closeTaskDetails() {
@@ -83,14 +83,12 @@ export default {
       this.$store.commit({ type: "setTaskToShow", task: null });
       this.$store.dispatch({
         type: "getBoardById",
-       boardId: this.boardId,
+        boardId: this.boardId,
       });
     },
     addActivity(commentText) {
-      if (!this.task.activities) {
-        this.task.activities = [];
-      }
-      this.task.activities.unshift({
+      if (!this.taskToSave.activities) this.taskToSave.activities = [];
+      this.taskToSave.activities.unshift({
         createdAt: Date(),
         byMember: "Guest",
         txt: commentText,
@@ -106,6 +104,7 @@ export default {
     },
   },
   created() {
+    this.taskToSave = JSON.parse(JSON.stringify(this.task));
     socketService.on("push updated", this.addTaskComment);
     if (!this.task.comments) this.updates = [];
     else this.updates = [...this.task.comments];

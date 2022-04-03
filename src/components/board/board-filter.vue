@@ -1,6 +1,6 @@
 <template>
   <section class="filter flex">
-    <button
+    <!-- <button
       @click="isSearch = !isSearch"
       class="btn search"
       :class="{ 'd-none': isSearch }"
@@ -22,7 +22,7 @@
       @input="onFilter"
       placeholder="Search..."
       :class="{ 'd-none': !isSearch }"
-    />
+    /> -->
     <button class="btn person">Person</button>
 
     <button class="btn filter">Filter</button>
