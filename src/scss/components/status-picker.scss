@@ -1,7 +1,7 @@
 .status-picker {
   // width: fit-content;
   left: 0;
-  @include colStat;
+  @include colPicker;
 
   .status {
     position: relative;
