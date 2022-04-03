@@ -53,7 +53,9 @@
         </p>
 
         <div class="btn-container">
-          <button class="main h-btn" @click="isChart = false">Main Table</button>
+          <button class="main h-btn" @click="isChart = false">
+            Main Table
+          </button>
           <button class="timeline h-btn">Timeline</button>
           <!-- <button class="more h-btn">More</button> -->
           <button class="add h-btn" @click="isChart = true">Add View</button>
@@ -90,7 +92,7 @@
 
     <div class="bottom-board">
       <dashboard v-if="currBoard && isChart" :board="currBoard"></dashboard>
-    <!-- GROUP  -->
+      <!-- GROUP  -->
       <section class="group-list" v-if="currBoard && !isChart">
         <Container orientation="vertical" @drop="onDrop">
           <Draggable v-for="group in currBoard.groups" :key="group.id">
@@ -129,12 +131,13 @@
 <script>
 import { ArrowDown } from "@element-plus/icons-vue";
 import { Container, Draggable } from "vue3-smooth-dnd";
+import { socketService } from "../services/socket-service.js";
 import lastSeen from "../components/board/last-seen.vue";
 import groupCmp from "../components/group/group.vue";
 import addGroupTask from "../components/add-group-task.vue";
 import appFilter from "../components/board/board-filter.vue";
 import taskDetails from "../components/task-details/task-details.vue";
-import dashboard from '../components/dashboard.vue'
+import dashboard from "../components/dashboard.vue";
 
 export default {
   name: "board-details",
@@ -152,6 +155,10 @@ export default {
     let { boardId } = this.$route.params;
     const board = this.$store.dispatch({ type: "getBoardById", boardId });
     this.$store.commit({ type: "setCurrBoard", board });
+    socketService.on("board updated", this.refreshBoard);
+  },
+  unmounted() {
+    socketService.off("board updated", this.refreshBoard);
   },
   data() {
     return {
@@ -208,7 +215,6 @@ export default {
         result.splice(addedIndex, 0, taskToAdd);
       }
       this.updateGroupsOrder(result);
-
       return result;
     },
     updateGroupsOrder(result) {
@@ -222,6 +228,12 @@ export default {
     setCurrGroup(group) {
       JSON.parse(JSON.stringify(group));
       this.currGroup = group;
+    },
+    refreshBoard() {
+      this.$store.dispatch({
+        type: "getBoardById",
+        boardId: this.currBoard._id,
+      });
     },
   },
   computed: {
