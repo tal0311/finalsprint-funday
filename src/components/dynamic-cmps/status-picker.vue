@@ -1,11 +1,11 @@
 <template>
-<!-- this is a priority picker do not delete -->
+<!-- STATUS PICKER COMPONENT -->
   <section @click="toggleShow" :class="statusClass" class="status-picker">
     <div class="status">
       {{ task.cols[0].value === 'empty' ? '&nbsp;' : task.cols[0].value }}
     </div>
     <div v-if="menuOpen" class="picker-box">
-      <!-- TODO - change back to working on it -->
+      
       <div @click="setStatus('Working on it')" class="working">
         Working on it
       </div>
@@ -23,6 +23,7 @@ export default {
   props: {
     task: Object,
     group: Object,
+    boardMembers: Object
   },
   data() {
     return {
@@ -34,7 +35,7 @@ export default {
     toggleShow() {
       this.menuOpen = !this.menuOpen
     },
-    async setStatus(status) {
+     setStatus(status) {
       // this.$emit('setStatus', status, this.task)
       const board = this.$store.getters.currBoard
       // const { boardId, groupId, task } = await this.$store.dispatch({
@@ -43,9 +44,8 @@ export default {
       //   taskId: this.task.id,
       // });
       this.task.cols[0].value = status
-      await this.$store.dispatch({
+       this.$store.dispatch({
         type: 'updateTask',
-        boardId: board._id,
         groupId: this.group.id,
         task: this.task,
       })

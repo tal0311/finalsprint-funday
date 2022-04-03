@@ -15,6 +15,7 @@ export default {
     task: Object,
     group: Object,
     value: String,
+    boardMembers: Object
   },
   data() {
     return {
