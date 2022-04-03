@@ -10,7 +10,7 @@
 <script>
 export default {
   name: 'date-picker',
-  emits: ['add', 'remove', 'update-date', 'update-priority'],
+  emits: ['add', 'remove', 'update-date', 'update-priority', 'updateTask'],
   props: {
     task: Object,
     group: Object,

@@ -42,7 +42,7 @@ import miniMember from '../mini-member.vue'
 import membersModal from './../members-modal.vue'
 export default {
   name: 'memberPicker',
-  emits: ['add', 'remove', 'update-priority', 'update-date'],
+  emits: ['add', 'remove', 'update-priority', 'update-date','updateTask'],
   props: {
     value: Array,
     group: Object,
