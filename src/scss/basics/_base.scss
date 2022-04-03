@@ -40,7 +40,7 @@ a {
   &.vertical {
     & > {
       .smooth-dnd-draggable-wrapper {
-        overflow: unset;
+        overflow: unset !important;
       }
     }
   }

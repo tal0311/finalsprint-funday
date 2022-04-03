@@ -65,7 +65,7 @@ export default {
     addTaskComment(commentText) {
       this.addActivity(commentText);
 
-      this.updates.unshift({ creator: "Guest", content: commentText });
+      this.updates.unshift({ creator: "Tal", content: commentText });
 
       if (this.isSender) {
         this.taskToSave.comments = JSON.parse(JSON.stringify(this.updates));
@@ -90,7 +90,7 @@ export default {
       if (!this.taskToSave.activities) this.taskToSave.activities = [];
       this.taskToSave.activities.unshift({
         createdAt: Date(),
-        byMember: "Guest",
+        byMember: "Tal",
         txt: commentText,
       });
     },

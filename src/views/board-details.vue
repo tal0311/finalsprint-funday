@@ -56,7 +56,7 @@
           <button class="main h-btn" @click="isChart = false">Main Table</button>
           <button class="timeline h-btn">Timeline</button>
           <!-- <button class="more h-btn">More</button> -->
-          <button class="add h-btn" @click="isChart = true">Add View</button>
+          <button class="dash h-btn" @click="isChart = true">Dashboard</button>
         </div>
       </div>
       <!-- <hr /> -->
