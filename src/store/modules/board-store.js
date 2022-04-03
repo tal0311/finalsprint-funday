@@ -15,14 +15,17 @@ export const boardStore = {
 
   getters: {
     boards(state) {
-      return JSON.parse(JSON.stringify(state.boards))
+      return  JSON.parse(JSON.stringify(state.boards))
+      
     },
     currBoard(state) {
-      return JSON.parse(JSON.stringify(state.currBoard))
+      return  JSON.parse(JSON.stringify(state.currBoard))
+      
     },
     boardToDisplay(state) {
-      return JSON.parse(JSON.stringify(state.filteredBoard))
-
+      return  JSON.parse(JSON.stringify(state.filteredBoard))
+      
+      
       // const regex = new RegExp(state.filterBy, 'i');
       // // console.log('currBoard in the store', state.currBoard);
       // var displayedBoard = JSON.parse(JSON.stringify(state.currBoard));
@@ -41,10 +44,12 @@ export const boardStore = {
       // return displayedBoard;
     },
     currTask(state) {
-      return JSON.parse(JSON.stringify(state.currTask))
+      return  JSON.parse(JSON.stringify(state.currTask))
+      
     },
     taskToShow(state) {
-      return JSON.parse(JSON.stringify(state.taskToShow))
+      return  JSON.parse(JSON.stringify(state.taskToShow))
+      
     },
   },
   mutations: {
@@ -281,7 +286,7 @@ export const boardStore = {
       } else {
         board.groups.splice(idx, 1, groupToUpdate)
       }
-      // solution to sync problem:
+      // rotem's solution to sync problem:
       commit({ type: 'updateGroupAfterDnd', updatedGroup: groupToUpdate })
       try {
         const updatedBoard = await boardService.save(board)
@@ -346,6 +351,23 @@ export const boardStore = {
       try {
         const boardToUpdate = await boardService.save(board)
         commit({ type: 'setCurrBoard', board: boardToUpdate })
+        // commit({ type: 'updateTask', task });
+      } catch (err) {
+        console.log('Problem with updating task', err)
+      }
+    },
+    async updateTaskAfterComment({ commit, state }, { groupId, task }) {
+      const board = JSON.parse(JSON.stringify(state.currBoard))
+      let gIdx = board.groups.findIndex((dbGroup) => dbGroup.id === groupId)
+
+      console.log(gIdx)
+      const tIdx = board.groups[gIdx].tasks.findIndex(
+        (dbTask) => dbTask.id === task.id
+      )
+      board.groups[gIdx].tasks.splice(tIdx, 1, task)
+      try {
+        const boardToUpdate = await boardService.save(board)
+        // commit({ type: 'setCurrBoard', board: boardToUpdate })
         // commit({ type: 'updateTask', task });
       } catch (err) {
         console.log('Problem with updating task', err)

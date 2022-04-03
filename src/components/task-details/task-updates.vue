@@ -11,9 +11,9 @@
       <button class="update" @click="addTaskComment">Update</button>
     </div>
     <ul class="update-list clean-list">
-      <li v-for="(comment, idx) in task.comments" :key="idx">
-        <h4 class="comment-title">{{ comment.creator }}</h4>
-        <p>{{ comment.content }}</p>
+      <li v-for="(msg, idx) in msgs" :key="idx">
+        <h4 class="comment-title">{{ msg.creator }}</h4>
+        <p>{{ msg.content }}</p>
       </li>
     </ul>
   </section>
@@ -21,22 +21,21 @@
 
 <script>
 export default {
-  name: 'task-updates',
-  emits: ['addTaskComment'],
+  name: "task-updates",
+  emits: ["addTaskComment", "updateToSocket"],
   props: {
-    task: Object,
+    msgs: Object,
   },
   data() {
     return {
       commentText: null,
       writing: false,
-    }
+    };
   },
   methods: {
     addTaskComment() {
-      console.log(this.commentText)
-      this.$emit('addTaskComment', this.commentText)
+      this.$emit("updateToSocket", this.commentText);
     },
   },
-}
+};
 </script>

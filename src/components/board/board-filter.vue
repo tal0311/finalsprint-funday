@@ -1,6 +1,6 @@
 <template>
   <section class="filter flex">
-    <button
+    <!-- <button
       @click="isSearch = !isSearch"
       class="btn search"
       :class="{ 'd-none': isSearch }"
@@ -22,7 +22,7 @@
       @input="onFilter"
       placeholder="Search..."
       :class="{ 'd-none': !isSearch }"
-    />
+    /> -->
     <button class="btn person">Person</button>
 
     <button class="btn filter">Filter</button>
@@ -43,9 +43,8 @@ export default {
   },
   methods: {
     onFilter() {
-      debugger
-      console.log(this.filterBy)
-      return this.$emit('filter', this.filterBy)
+      console.log(this.filterBy);
+      this.$emit("filter", this.filterBy);
     },
   },
   computed: {
