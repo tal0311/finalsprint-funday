@@ -1,24 +1,52 @@
 <template>
-  <DoughnutChart
+  <Bar
     :chart-options="chartOptions"
     :chart-data="chartData"
+    :chart-id="chartId"
+    :dataset-id-key="datasetIdKey"
     :width="width"
     :height="height"
   />
 </template>
 
 <script>
-import { DoughnutChart } from 'vue-chart-3';
-import { Chart, registerables } from "chart.js";
+import { Bar } from "vue-chartjs";
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+} from "chart.js";
 
-Chart.register(...registerables);
+ChartJS.register(
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale
+);
 
 export default {
-  name: "high-risk-chart",
-  components: { DoughnutChart },
+  name: "tasks-per-member-chart",
+  components: { Bar },
   props: {
-    chartData : Object,
-    
+    groups: Array,
+    groupsData: Object,
+    emptyTasks: Array,
+    stuckTasks: Array,
+    overdueGroupTasks: Array,
+    chartId: {
+      type: String,
+      default: "task-per-group",
+    },
+    datasetIdKey: {
+      type: String,
+      default: "label",
+    },
     width: {
       type: Number,
       default: 400,
@@ -28,27 +56,45 @@ export default {
       default: 400,
     },
   },
-  created() {
-  },
+  created() {},
 
   data() {
     return {
       chartData: {
-        labels: ['Stuck', 'Working on it', 'Not started', 'Overdue'],
+        labels: this.groups,
         datasets: [
           {
-            label: "Done",
-            data: this.chartData,
-            backgroundColor: ["#f62b54","#00ca72",'gray', 'maroon']
+            label: "Not started",
+            data: this.emptyTasks,
+            backgroundColor: "#00ca72",
+          },
+          {
+            label: "Stuck",
+            data: this.stuckTasks,
+            backgroundColor: "#f62b54",
+          },
+          {
+            label: "Overdue",
+            data: this.overdueGroupTasks,
+            backgroundColor: "#ffcc00",
           },
         ],
       },
-     
+      chartOptions: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            stacked: true,
+          },
+          y: {
+            stacked: true,
+          },
+        },
+      },
     };
   },
-  methods: {
-    
-  },
+  methods: {},
 
   computed: {
     board() {

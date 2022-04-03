@@ -41,7 +41,7 @@ openTasks: Array,
 overdueTasks: Array,
     chartId: {
       type: String,
-      default: "bar-chart",
+      default: "task-per-member",
     },
     datasetIdKey: {
       type: String,

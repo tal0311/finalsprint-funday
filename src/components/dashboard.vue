@@ -1,24 +1,24 @@
 <template>
-  <section class="dashboard flex space-between">
+  <section class="dashboard flex space-between justify-center">
     <article class="bar-tasks-per-member">
-    <h3 class="dash-header">Open/Closed/Overdue tasks per team member</h3>
-    <chart-tasks-per-member
-      :members="members"
-      :membersData="getData"
-      :doneTasks="doneTasks"
-      :openTasks="openTasks"
-      :overdueTasks="overdueTasks"
-    ></chart-tasks-per-member>
-</article>
-  <article class="bar-tasks-per-member">
-    <h3 class="dash-header">High Risk Tasks</h3>
-    <chart-high-risk
-      :members="members"
-      :membersData="getData"
-      :doneTasks="doneTasks"
-      :openTasks="openTasks"
-      :overdueTasks="overdueTasks"
-    ></chart-high-risk>
+      <h3 class="dash-header">Open/Closed/Overdue tasks per team member</h3>
+      <chart-tasks-per-member
+        :members="members"
+        :membersData="getPerMemberData"
+        :doneTasks="doneTasks"
+        :openTasks="openTasks"
+        :overdueTasks="overdueTasks"
+      ></chart-tasks-per-member>
+    </article>
+    <article class="bar-tasks-per-group">
+      <h3 class="dash-header">High Risk Tasks</h3>
+      <chart-high-risk
+        :groups="groups"
+        :groupDate="getPerGroupData"
+        :emptyTasks="emptyTasks"
+        :stuckTasks="stuckTasks"
+        :overdueGroupTasks="overdueGroupTasks"
+      ></chart-high-risk>
     </article>
   </section>
 </template>
@@ -43,14 +43,17 @@ export default {
       doneTasks: [],
       openTasks: [],
       overdueTasks: [],
+      emptyTasks: [],
+      stuckTasks: [],
+      overdueGroupTasks: [],
     };
   },
   methods: {},
 
   computed: {
-    getData() {
+    getPerMemberData() {
       const memberCount = []; // [{member: 'Shiran Elad', done: 20, open: 10, overdue: 2 }, {}]
-      console.log(this.members);
+      // console.log(this.members);
       this.members.map((m) =>
         memberCount.push({
           member: m,
@@ -59,7 +62,7 @@ export default {
           overdueTasks: 0,
         })
       );
-      console.log(memberCount);
+      // console.log(memberCount);
       memberCount.map((member) =>
         this.board.groups.map((group) =>
           group.tasks.map((task) => {
@@ -92,8 +95,66 @@ export default {
       this.overdueTasks = memberCount.map((m) => m.overdueTasks);
     },
 
+    getPerGroupData() {
+      var groupCount = [];
+      const board = JSON.parse(JSON.stringify(this.board));
+      board.groups.map((g) => {
+        // console.log(board, groupCount);
+        // console.log(g);
+        groupCount.push({ group: g.title , emptyTasks: 0, stuckTasks: 0, overdueGroupTasks: 0});
+        g.tasks.map((task) => {
+          if (
+            task.cols[3].value?.toLowerCase() === "high" &&
+            (task.cols[0].value?.toLowerCase() === "empty" ||
+              !task.cols[0].value)
+          ) {
+            console.log(task.cols[0].value, task.cols[3].value)
+            // groupCount[emptyTasks]++;
+          }
+        })
+      });
+      // console.log(groupCount);
+
+      
+      // board.groups.map((group) => {  
+      //     if (
+      //       task.cols[3].value?.toLowerCase() === "high" &&
+      //       task.cols[0].value?.toLowerCase() !== "stuck"
+      //     ) {
+      //       groupCount['stuckTasks']++;
+      //     }
+      //     if (
+      //       task.cols[3].value?.toLowerCase() === "high" &&
+      //       task.cols[0].value?.toLowerCase() !== "done" &&
+      //       new Date(task.cols[2].value) < Date.now()
+      //     ){
+      //       groupCount[overdueGroupTasks]++;
+      //     }
+      //   });
+      // });
+
+      console.log(groupCount);
+      //   emptyTasks: 0,
+      //   stuckTasks: 0,
+      //   overdueGroupTasks: 0,
+      // });
+      // })
+      // });
+
+      // // DO NOT TOUCH //
+
+      this.emptyTasks = groupCount.map((g) => g.emptyTasks);
+      this.stuckTasks = groupCount.map((g) => g.stuckTasks);
+      // console.log(this.stuckTasks);
+      this.overdueGroupTasks = groupCount.map((g) => g.overdueGroupTasks);
+      // console.log(this.emptyTasks, this.stuckTasks, this.overdueGroupTasks);
+    },
+
     members() {
       return this.board.members.map((member) => member.fullname);
+    },
+    groups() {
+      return this.board.groups.map((group) => group.title);
     },
   },
   unmounted() {},

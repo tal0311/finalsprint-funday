@@ -38,6 +38,7 @@ export default {
     return {
       isSearch: false,
       filterBy: '',
+      setSearch: false,
     }
   },
   methods: {

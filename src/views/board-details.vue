@@ -35,7 +35,7 @@
               <last-seen :members="currBoard.members" />
             </div>
             <button class="btn invite flex h-btn">
-              Invite / <span>{{ currBoard.members?.length }}</span>
+              Invite / <span> {{ currBoard.members?.length }}</span>
             </button>
             <button class="btn activity flex h-btn">Activity</button>
             <button class="btn add flex h-btn">Add to board</button>

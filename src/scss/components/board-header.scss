@@ -1,7 +1,6 @@
 .header {
   padding: 30px 30px 0 30px;
 
-  
   .el-button--primary {
     height: 32px;
     width: 75.5px;
@@ -25,7 +24,7 @@
       }
     }
 
-    .h-btn{
+    .h-btn {
       color: $clr9;
     }
 
@@ -166,26 +165,6 @@
             padding: 2px;
             justify-content: space-between;
           }
-          &.invite {
-            @include headerBtn;
-            &::before {
-              @include mkIcon("\f3fb");
-              // margin:500px;
-            }
-          }
-          &.activity {
-            @include headerBtn;
-            &::before {
-              @include mkIcon("\f468");
-            }
-          }
-          &.btn .add {
-            border: 1px solid #bdbdbd;
-            border-radius: 0.3em;
-            &::before {
-              @include mkIcon("\f47b");
-            }
-          }
         }
         // .board-title {
         //   // flex-basis: 30%;
@@ -206,9 +185,10 @@
       // width: 30rem;
       > * {
         font-size: toRem(14);
-      line-height: 24px;
-      height:32px;
-
+        line-height: 24px;
+        height: 32px;
+        padding: 4px 8px;
+        align-items: center;
       }
       flex: 0 0 auto;
       .last-seen {
@@ -216,12 +196,51 @@
           font-size: toRem(14);
           line-height: 24px;
           height: 32px;
+
           min-width: 100px;
           padding: 4px 8px;
           white-space: nowrap;
           > * {
-            padding-right:10px;
+            padding-right: 10px;
           }
+        }
+      }
+      .invite {
+        @include headerBtn;
+        line-height: 24px;
+        height: 32px;
+        padding-left: 4px;
+
+        &::before {
+          @include mkIcon("\f3fb");
+          // margin:500px;
+        }
+
+        &:hover {
+          background-color: $clr7;
+        }
+
+      }
+      .activity {
+        @include headerBtn;
+        line-height: 24px;
+        height: 32px;
+
+        &::before {
+          @include mkIcon("\f468");
+        }
+        &:hover {
+          background-color: $clr7;
+        }
+      }
+      .add {
+        border: 1px solid #bdbdbd;
+        border-radius: 0.3em;
+        &::before {
+          @include mkIcon("\f47b");
+        }
+        &:hover {
+          background-color: $clr7;
         }
       }
     }
