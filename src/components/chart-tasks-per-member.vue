@@ -1,43 +1,109 @@
 <template>
-  <DoughnutChart :chartData="testData" />
+  <Bar
+    :chart-options="chartOptions"
+    :chart-data="chartData"
+    :chart-id="chartId"
+    :dataset-id-key="datasetIdKey"
+    :width="width"
+    :height="height"
+  />
 </template>
 
 <script>
-import { DoughnutChart, BarChart, useBarChart } from 'vue-chart-3'
-import { Chart, registerables } from 'chart.js'
-import { ref, computed, defineComponent } from '@vue/composition-api';
-import { shuffle } from 'lodash';
+import { Bar } from "vue-chartjs";
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+} from "chart.js";
 
-
-Chart.register(...registerables)
+ChartJS.register(
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale
+);
 
 export default {
-  name: 'chart',
+  name: "tasks-per-member-chart",
+  components: { Bar },
   props: {
-    data: Object,
+    members: Array,
+membersData: Object,
+doneTasks: Array,
+openTasks: Array,
+overdueTasks: Array,
+    chartId: {
+      type: String,
+      default: "bar-chart",
+    },
+    datasetIdKey: {
+      type: String,
+      default: "label",
+    },
+    width: {
+      type: Number,
+      default: 400,
+    },
+    height: {
+      type: Number,
+      default: 400,
+    },
   },
-  components: { BarChart},
-  created() {
-    console.log(this.board.members)
+  created(){
+    
   },
+
   data() {
     return {
-      testData: {
-      labels: ['Paris', 'Nîmes', 'Toulon', 'Perpignan', 'Autre'],
+      chartData: {
+        labels: this.members,
         datasets: [
           {
-            data: ref([30,40,60,7,5]),
-            backgroundColor: [
-              '#77CEFF',
-              '#0079AF',
-              '#123E6B',
-              '#97B0C4',
-              '#A5C8ED',
-            ],
+            label: "Done",
+            data: this.doneTasks, 
+            backgroundColor: "#00ca72",
+          },
+          {
+            label: "Open",
+            data:  this.openTasks, 
+            backgroundColor: "#ffcc00",
+          },
+          {
+            label: "Overdue",
+            data: this.overdueTasks, 
+            backgroundColor: "#f62b54",
           },
         ],
       },
-    }
+      chartOptions: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            stacked: true,
+          },
+          y: {
+            stacked: true,
+          },
+        },
+      },
+    };
   },
-}
+  methods: {
+ 
+  },
+
+  computed: {
+    board() {
+      return this.$store.getters.currBoard;
+    },
+  },
+};
 </script>
