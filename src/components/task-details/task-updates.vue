@@ -6,7 +6,6 @@
       placeholder="Write an update..."
       @keydown.enter="addTaskComment"
     />
-
     <div class="activity-action-container flex">
       <button class="update" @click="addTaskComment">Update</button>
     </div>
@@ -35,6 +34,7 @@ export default {
   methods: {
     addTaskComment() {
       this.$emit("updateToSocket", this.commentText);
+      this.commentText = null
     },
   },
 };
