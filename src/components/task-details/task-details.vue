@@ -14,6 +14,8 @@
       <task-updates
         v-if="activeTab === 'taskUpdates'"
         :msgs="msgs"
+        :boardMembers="boardMembers"
+        :task="task"
         @addTaskComment="addTaskComment"
         @updateToSocket="updateToSocket"
       />
@@ -102,17 +104,23 @@ export default {
     activities() {
       return this.$store.getters.boards.activities;
     },
+    boardMembers(){
+     return this.$store.getters.currBoard.members
+    }
   },
   created() {
-    this.taskToSave = JSON.parse(JSON.stringify(this.task));
-    socketService.on("push updated", this.addTaskComment);
-    if (!this.task.comments) this.updates = [];
-    else this.updates = [...this.task.comments];
+    this.taskToSave = JSON.parse(JSON.stringify(this.task))
+    socketService.on('push updated', this.addTaskComment)
+    if (!this.task.comments) this.updates = []
+    else this.updates = [...this.task.comments]
+
+    
   },
   components: {
     taskUpdates,
     taskFiles,
     activityLog,
   },
-};
+
+}
 </script>
