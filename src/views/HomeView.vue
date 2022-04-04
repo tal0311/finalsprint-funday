@@ -3,7 +3,7 @@
     <div class="main-board">
       <div class="title">A platform built for a new way of working</div>
       <p class="description">What would you like to manage with Planday?</p>
-      <button class="demo-btn">
+      <button class="demo-btn" @click="lastBoard">
         See Demo
         <span class="arrow">
           <svg
@@ -23,7 +23,7 @@
     </div>
     <!-- <picture class="jsx-4212101279 picture-component"> -->
     
-      <img
+      <img @click="lastBoard"
         alt="image"
         class="jsx-4212101279 main-image regular-asset-image"
         src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/Generator_featured images/Home Page - 2022 Rebrand/first_fold/image.png"
@@ -40,7 +40,18 @@ export default {
   data() {
     return {};
   },
-  computed: {},
+
+  methods: {
+    lastBoard(){
+      this.$router.push(`/board/${this.boards[this.boards.length-1]._id}/`)
+    }
+  },
+  computed: {
+        boards(){
+      return this.$store.getters.boards;
+    }
+
+  },
 };
 </script>
 
