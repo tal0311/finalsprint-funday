@@ -1,72 +1,69 @@
-.home-wrapper {
-  .welcome {
-    z-index: 10;
-    color: #565656;
-    background-color: rgba(255, 255, 255, 0.636);
-    box-shadow: 0px 0px 30px 3px #565656;
-    width: 50vw;
-    height: 50vh;
-    position: fixed;
-    top: 20%;
-    left: 20%;
-    transform: translateX(12%);
-    border-radius: 1em;
-
-    .links-container {
-      width: 50%;
-      &.flex {
-        justify-content: space-between;
-        .go-to {
-          text-decoration: overline;
-          color: #00ca72;
+.main-hp {
+  color: $clr8;
+  background: linear-gradient(#101049 0%, #101049 100%);
+  padding-top: 64px;
+  height: 100vh;
+  width: 100vw;
+  // .stars-canvas {
+  //   position: absolute;
+  //   height: 100%;
+  //   width: 1440px;
+  // }
+  .main-board {
+    font-family: sofia-pro, Roboto, Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+    font-weight: 300;
+    line-height: 1.15;
+    text-align: center;
+    width: 800px;
+    height: 10%;
+    margin-left: 22vw;
+    // margin-top: 15%;
+    .title {
+      font-size: 40px;
+    }
+    .description {
+      font-size: 20px;
+    }
+    .demo-btn {
+      background-image: linear-gradient(90deg, #5034ff 25.69%, #b4b4ff 100%);
+      color: $clr8;
+      min-width: 130px;
+      padding: 16px 32px;
+      cursor: pointer;
+      font-size: 18px;
+      border-radius: 40px;
+      border: none;
+      font-weight: 400;
+      line-height: 17px;
+      overflow: hidden;
+      &:hover {
+        filter: brightness(85%);
+        outline: none;
+      }
+      .arrow {
+        padding-left: 12px;
+        padding-right: 6px;
+        transition: padding 0.3s ease-in-out;
+        svg {
+          fill: currentColor;
+          height: 12px;
+          width: 16px;
         }
       }
     }
-    .name {
-      color: #fb275d;
-    }
-
-    .subtitle,
-    p {
-      color: #565656;
-    }
-    &.flex {
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    & > * {
-      padding: 2em;
-    }
   }
-  .bulbs-container {
-    position: fixed;
-    height: 100vh;
-    width: 100vw;
 
-    .bulb {
-      border-radius: 1em;
-      position: fixed;
-      border-radius: 50%;
-      height: 200px;
-      width: 200px;
-    }
-    .green {
-      background-color: #00ca72;
-      top: 80%;
-      left: 62%;
-    }
-    .yellow {
-      background-color: #ffcc00;
-      top: 33%;
-      left: 14%;
-
-      // animation: myAnim 8s linear 0s infinite alternate-reverse both;
-    }
-    .red {
-      left: 74%;
-      // animation: myAnim 8s linear 0s infinite alternate-reverse both;
-      background-color: #fb275d;
+  .picture-component {
+    img {
+      // transform: scale(0.7);
+      // height:800px;
+      background-color: transparent;
+      // z-index:-1;
+      padding-top: 16vh;
+      position:absolute;
+      bottom:0;
+      // padding-bottom:10px;
     }
   }
 }
