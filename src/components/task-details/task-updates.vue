@@ -10,10 +10,10 @@
     <div class="activity-action-container flex">
       <button class="update" @mousedown="addTaskComment">Update</button>
     </div>
-    <ul class="update-list clean-list">
-      <li v-for="(msg, idx) in comments" :key="idx">
+    <ul v-if="task" class="update-list clean-list">
+      <li v-for="(msg, idx) in msgs" :key="idx">
         <div class="user-container flex">
-          <img class="user-img" :src="msg.img" alt="" />
+          <!-- <img class="user-img" :src="msg.img" alt="" /> -->
           <h4 class="comment-title">{{ msg.creator }}</h4>
           <div class="online-indicator"></div>
         </div>
@@ -48,26 +48,15 @@ export default {
     boardMembers: Array,
   },
   created() {
-   
-     this.comments= this.task.comments.map((comment) => {
-        const member = this.boardMembers.find((member) =>
-          member.fullname.startsWith(comment.creator)
-        )
-        return {
-          content: comment.content,
-          creator: comment.creator,
-          img: member.imgUrl,
-        }
-      })
-      console.log(this.comments);
-    
+    //
+    console.log(this.comments)
   },
   data() {
     return {
       commentText: null,
       writing: false,
       BoardNames: [],
-      comments:[]
+      comments: [],
     }
   },
   methods: {
@@ -76,5 +65,6 @@ export default {
       this.commentText = ''
     },
   },
+  
 }
 </script>
