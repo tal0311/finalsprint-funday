@@ -340,7 +340,7 @@ export const boardStore = {
       const board = JSON.parse(JSON.stringify(state.currBoard))
       let gIdx = board.groups.findIndex((dbGroup) => dbGroup.id === groupId)
 
-      console.log(gIdx)
+      // console.log(gIdx)
       const tIdx = board.groups[gIdx].tasks.findIndex(
         (dbTask) => dbTask.id === task.id
       )

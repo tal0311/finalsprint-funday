@@ -69,18 +69,14 @@ export default {
 
       this.taskToSave.comments = JSON.parse(JSON.stringify(this.updates))
       this.$store.dispatch({
-        type: 'updateTask',
+        type: "updateTaskAfterComment",
         boardId: this.boardId,
         groupId: this.group.id,
         task: this.taskToSave,
-      })
-      this.$store.dispatch({
-        type: 'getBoardById',
-        boardId: this.boardId,
-      })
-      if (this.isSender) {
-      }
-      this.isSender = false
+      });
+      // if (this.isSender) {
+      // }
+      this.isSender = false;
     },
     closeTaskDetails() {
       socketService.off('push updated', this.addTaskComment)
