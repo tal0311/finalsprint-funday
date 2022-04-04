@@ -16,7 +16,7 @@
 <script>
 export default {
   name: "priority-picker",
-  emits: ["update-priority", "add", "remove", "update-date"],
+  emits: ["update-priority", "add", "remove", "update-date", 'updateTask'],
   props: {
     task: Object,
     group: Object,

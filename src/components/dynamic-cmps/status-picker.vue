@@ -37,19 +37,19 @@ export default {
     },
      setStatus(status) {
       // this.$emit('setStatus', status, this.task)
-      const board = this.$store.getters.currBoard
+      // const board = this.$store.getters.currBoard
       // const { boardId, groupId, task } = await this.$store.dispatch({
       //   type: "findTask",
       //   boardId: board._id,
       //   taskId: this.task.id,
       // });
-      this.task.cols[0].value = status
-       this.$store.dispatch({
-        type: 'updateTask',
-        groupId: this.group.id,
-        task: this.task,
-      })
-      this.$emit('updateTask')
+      // this.task.cols[0].value = status
+      //  this.$store.dispatch({
+      //   type: 'updateTask',
+      //   groupId: this.group.id,
+      //   task: this.task,
+      // })
+      this.$emit('updateTask', status, this.task)
     },
   },
   computed: {

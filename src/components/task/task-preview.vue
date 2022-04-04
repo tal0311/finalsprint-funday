@@ -103,6 +103,7 @@
           @remove="removeMember"
           @update-date="setDate"
           @update-priority="setPriority"
+          @updateTask="setStatus"
         />
       </div>
 
@@ -165,8 +166,15 @@ export default {
         task,
       })
     },
-    setStatus() {
-      this.$emit('updateTask')
+    setStatus(status, task) {
+       const board = this.$store.getters.currBoard
+       task.cols[0].value = status
+       this.$store.dispatch({
+        type: 'updateTask',
+        groupId: this.group.id,
+        task: this.task,
+      })
+      
     },
     setIsOptions() {
       this.isOptions = !this.isOptions

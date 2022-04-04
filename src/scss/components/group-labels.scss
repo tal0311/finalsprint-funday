@@ -45,6 +45,7 @@
         &.date-picker,
         &.priority-picker {
           @include colPicker;
+         
         }
         &.member-picker {
           width: 100%;
