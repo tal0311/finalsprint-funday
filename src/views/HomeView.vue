@@ -1,6 +1,5 @@
 <template>
   <div class="main-hp">
-    <div class="stars-canvas"></div>
     <div class="main-board">
       <div class="title">A platform built for a new way of working</div>
       <p class="description">What would you like to manage with Planday?</p>
@@ -22,7 +21,15 @@
         </span>
       </button>
     </div>
-    <picture class="jsx-4212101279 picture-component"><img alt="image" class="jsx-4212101279 main-image regular-asset-image" src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/Generator_featured images/Home Page - 2022 Rebrand/first_fold/image.png" style="width: 100%;"></picture>
+    <!-- <picture class="jsx-4212101279 picture-component"> -->
+    
+      <img
+        alt="image"
+        class="jsx-4212101279 main-image regular-asset-image"
+        src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/Generator_featured images/Home Page - 2022 Rebrand/first_fold/image.png"
+        
+      />
+    <!-- </picture> -->
   </div>
 </template>
 
