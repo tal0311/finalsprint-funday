@@ -32,6 +32,7 @@
     }
   }
   .activity-action-container {
+    margin-bottom: toRem(50);
     &.flex {
       width: 100%;
       justify-content: end;
@@ -52,12 +53,56 @@
       border: 1px solid $clr11;
       margin-bottom: 5px;
       border-radius: 0.5rem;
-      padding: 1rem;
+      // padding: 1rem 1rem 0 1rem;
       margin-bottom: 1rem;
-      h4 {
-        height: toRem(50);
-        text-transform: capitalize;
-        font-family: 'Roboto 300';
+      .user-container {
+        .user-img{
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          margin-inline-start:1rem ;
+        }
+        &.flex{
+          align-items: center;
+        }
+        h4 {
+          padding: 1rem 1rem 0 1rem;
+          height: toRem(50);
+          text-transform: capitalize;
+          font-family: 'Roboto 300';
+        }
+        .online-indicator {
+          width: 8px;
+          height: 8px;
+          background-color: rgb(10, 255, 10);
+          border-radius: 50%;
+        }
+      }
+      p {
+        padding-inline-start: 1rem;
+      }
+    }
+    .update-actions-container {
+      border-top: 1px solid $clr11;
+      width: 100%;
+      &.flex {
+        justify-content: space-evenly;
+
+        .action-container {
+          padding-top: 0.2rem;
+          padding-bottom: 0.2rem;
+          width: 100%;
+          // background-color: #777777;
+
+          &:last-of-type {
+            border-left: 1px solid $clr11;
+          }
+          button {
+            text-transform: capitalize;
+            width: 100%;
+            margin: auto;
+          }
+        }
       }
     }
   }
