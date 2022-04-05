@@ -115,7 +115,7 @@ export default {
 
           if (
             task.cols[3].value?.toLowerCase() === "high" &&
-            task.cols[0].value?.toLowerCase() !== "stuck"
+            task.cols[0].value?.toLowerCase() === "stuck"
           ) {
             stuckTasks++;
           }

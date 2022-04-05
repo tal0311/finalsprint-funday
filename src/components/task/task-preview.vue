@@ -21,7 +21,7 @@
       ></div>
       <span
         class="title-chat flex space-between"
-        @click="openTaskDetails"
+        @click.stop="openTaskDetails"
         @mouseover=";[(taskHover = true), (delHover = true)]"
         @mouseleave="taskHover = false"
       >
@@ -36,6 +36,7 @@
             contenteditable="true"
             ref="title"
             @blur="updateTask(task, $event)"
+            @keydown.enter="updateTask(task, $event)"
           >
             {{ task.title }}
           </div>

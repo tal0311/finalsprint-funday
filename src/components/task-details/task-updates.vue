@@ -20,9 +20,9 @@
         <p>{{ msg.content }}</p>
         <div class="update-actions-container flex">
           <div class="action-container flex">
-            <button class="replay">
+            <button class="reply">
               <i class="fa-solid fa-reply"></i>
-              replay
+              Reply
             </button>
           </div>
           <div class="action-container flex">
