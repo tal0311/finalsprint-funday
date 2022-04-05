@@ -172,7 +172,7 @@ function getEmptyGroup(withTask = true) {
     id: 'g' + utilService.makeId(),
     title: 'New Group',
     tasks,
-    groupColor: utilService.getRandomColor(),
+    groupColor: '#CC8899' //utilService.getRandomColor(),
   };
 }
 
