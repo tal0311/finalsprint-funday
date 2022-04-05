@@ -67,9 +67,9 @@ export default {
     this.members.map((member) => {
       var id = member.id
       this.membersIds.push(id)
-      console.log(this.membersIds)
+     
     })
-    console.log(this.boardMembers)
+    
   },
   data() {
     return {
