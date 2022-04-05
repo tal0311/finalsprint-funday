@@ -13,7 +13,6 @@
     >
       <i class="fa fa-caret-down"></i>
     </div>
-
     <div class="task-left-side sticky">
       <div
         class="side-indicator"

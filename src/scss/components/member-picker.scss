@@ -46,7 +46,7 @@ ul {
   position: relative;
   .close-btn {
     position: absolute;
-    top: -10px;
+    top: -7px;
     right: -5px;
     @include headerBtn;
     font-size: 0.8rem;
@@ -66,6 +66,9 @@ ul {
   @include modalShadow;
   padding: 2%;
 
+  .no-members-notification {
+    margin: 0;
+  }
   .members-at-task {
     padding-top: 1rem;
     padding-bottom: 0.3rem;

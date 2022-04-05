@@ -12,7 +12,6 @@
         <img class="member-img" :src="member.imgUrl" :alt="member.fullname" />
       </li>
     </ul>
-
     <div v-else @click="updateMemberList" class="no-member-container flex">
       <img
         class="no-member"

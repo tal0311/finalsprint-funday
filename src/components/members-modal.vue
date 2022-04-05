@@ -1,8 +1,11 @@
 <template>
   <div class="member-modal">
-    <button @click="closeModal" class="close-btn">X</button>
+    <button @click="closeModal" class="close-btn">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
     <div class="members-at-task">
       <ul class="clean-list">
+          <p class="no-members-notification" v-if="members.length===0">Choose member</p>
         <li
           class="member-in-modal flex"
           v-for="(member, index) in members"
@@ -54,7 +57,7 @@
 <script>
 export default {
   name: 'membersModal',
-  emits: ['remove', 'addMember', 'close'],
+  emits: ['remove', 'addMember', 'close', 'removeMember'],
   props: {
     members: Array,
     task: Object,
